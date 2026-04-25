@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -26,15 +26,17 @@ class AuthController extends Controller
             $request->all(),
             [
                 'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:Users,Email',
+                'email' => 'required|string|email|max:255|unique:users,email',
                 'password' => 'required|string|min:8|confirmed',
             ],
             [
-                'name.required' => 'Hãy điền tên của bạn.',
-                'email.required' => 'Hãy điền địa chỉ email.',
-                'email.email' => 'Hãy nhập một địa chỉ email hợp lệ.',
-                'email.unique' => 'Email này đã tồn tại.',
-                'password.required' => 'Hãy điền mật khẩu.',
+                'name.required' => 'Vui lòng nhập họ và tên.',
+                'name.max' => 'Họ và tên không được vượt quá 255 ký tự.',
+                'email.required' => 'Vui lòng nhập địa chỉ email.',
+                'email.email' => 'Địa chỉ email không hợp lệ.',
+                'email.max' => 'Email không được vượt quá 255 ký tự.',
+                'email.unique' => 'Email này đã được đăng ký.',
+                'password.required' => 'Vui lòng nhập mật khẩu.',
                 'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
                 'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
             ]
@@ -45,10 +47,10 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'Name' => $request->name,
-            'Email' => $request->email,
-            'PasswordHash' => Hash::make($request->password),
-            'Role_Id' => 3,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 3,
         ]);
 
         Auth::login($user);
@@ -67,9 +69,9 @@ class AuthController extends Controller
                 'password' => 'required|string',
             ],
             [
-                'email.required' => 'Hãy điền địa chỉ email.',
-                'email.email' => 'Hãy nhập một địa chỉ email hợp lệ.',
-                'password.required' => 'Hãy điền mật khẩu.',
+                'email.required' => 'Vui lòng nhập địa chỉ email.',
+                'email.email' => 'Địa chỉ email không hợp lệ.',
+                'password.required' => 'Vui lòng nhập mật khẩu.',
             ]
         );
 
@@ -77,14 +79,14 @@ class AuthController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        if (Auth::attempt(['Email' => $request->email, 'password' => $request->password], $request->boolean('remember'))) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             return redirect()->intended(route('dashboard'));
         }
 
         return back()->withErrors([
-            'email' => 'Email or password is incorrect.',
+            'email' => 'Email hoặc mật khẩu không đúng.',
         ])->withInput($request->only('email'));
     }
 
@@ -102,5 +104,4 @@ class AuthController extends Controller
     {
         return view('dashboard');
     }
-
 }
