@@ -1,0 +1,342 @@
+<?php
+
+namespace App\Data;
+
+class Lawyers
+{
+    public static function all(): array
+    {
+        return [
+            [
+                'id' => 1,
+                'name' => 'Nguyễn Minh Anh',
+                'slug' => 'nguyen-minh-anh',
+                'primary_specialty' => 'Family Law',
+                'specialty_tags' => ['Family Law', 'Civil Litigation'],
+                'years_of_experience' => 12,
+                'price_per_hour' => 1500000,
+                'rating' => 4.9,
+                'review_count' => 127,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Nguyễn Minh Anh has practiced family law in Hanoi for over a decade. She studied at Hanoi Law University and began her career at a mid-sized firm specializing in matrimonial matters before going independent in 2018. Her work centers on divorce, custody arrangements, and inheritance disputes, with a particular focus on cases involving cross-border families.',
+                    'Anh believes family law is as much about listening as it is about litigation. Clients come to her in some of the most difficult moments of their lives, and she takes seriously the responsibility of making complex legal processes feel manageable. She works in Vietnamese and English, and serves families across Vietnam as well as Vietnamese nationals living abroad.',
+                ],
+                'education' => [
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Bachelor of Laws', 'year' => 2011],
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'Master of Laws', 'year' => 2014],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '10:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '11:00', '15:00']],
+                    ['day_offset' => 2, 'slots' => ['10:00', '11:00', '14:00', '16:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '14:00', '15:00', '17:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '11:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Thanh', 'date' => '2026-03-18', 'stars' => 5, 'text' => 'Ms. Anh walked me through my divorce step by step. Every email was answered within hours, and I never once felt lost in the process. I cannot recommend her enough.'],
+                    ['author' => 'Phương', 'date' => '2026-02-04', 'stars' => 5, 'text' => 'Honest, patient, and exceptionally well prepared. She treated my case as if it were the only one on her desk.'],
+                    ['author' => 'Huyền', 'date' => '2025-12-11', 'stars' => 4, 'text' => 'Professional and clear-eyed. The outcome was not what I had hoped for, but her guidance kept the process calm.'],
+                ],
+            ],
+            [
+                'id' => 2,
+                'name' => 'Trần Văn Hùng',
+                'slug' => 'tran-van-hung',
+                'primary_specialty' => 'Business Law',
+                'specialty_tags' => ['Business Law', 'Civil Litigation'],
+                'years_of_experience' => 15,
+                'price_per_hour' => 2200000,
+                'rating' => 4.8,
+                'review_count' => 203,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Trần Văn Hùng advises startups and established businesses across Vietnam on formation, commercial contracts, and regulatory compliance. After earning his law degree from the University of Law Ho Chi Minh City, he spent seven years with an international firm before founding his own practice to serve Vietnamese entrepreneurs.',
+                    'Hùng\'s approach is pragmatic. He sees his role as helping business owners make clear, informed decisions rather than drowning them in legal jargon. His clients range from first-time founders preparing their first contract to established companies navigating M&A transactions.',
+                ],
+                'education' => [
+                    ['institution' => 'University of Law Ho Chi Minh City', 'degree' => 'Bachelor of Laws', 'year' => 2008],
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'Master of Laws', 'year' => 2013],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '14:00', '16:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '10:00', '11:00', '14:00']],
+                    ['day_offset' => 2, 'slots' => ['15:00', '16:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '11:00', '14:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '10:00', '11:00', '15:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '16:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Dũng', 'date' => '2026-04-02', 'stars' => 5, 'text' => 'Mr. Hùng helped us set up our company and negotiate our first major contract. Clear communication and no unnecessary billing.'],
+                    ['author' => 'Linh', 'date' => '2026-01-22', 'stars' => 5, 'text' => 'Our acquisition would not have closed without him. He spotted risks nobody else had, and kept the deal moving.'],
+                    ['author' => 'Nam', 'date' => '2025-11-30', 'stars' => 4, 'text' => 'Thorough and responsive. Fees were higher than I expected, but the value justified them.'],
+                ],
+            ],
+            [
+                'id' => 3,
+                'name' => 'Lê Thị Hương',
+                'slug' => 'le-thi-huong',
+                'primary_specialty' => 'Real Estate',
+                'specialty_tags' => ['Real Estate', 'Business Law'],
+                'years_of_experience' => 9,
+                'price_per_hour' => 1800000,
+                'rating' => 4.9,
+                'review_count' => 156,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Lê Thị Hương is a real estate attorney based in Da Nang. She handles property transactions, title searches, and leasing arrangements for both individuals and commercial clients. Her practice grew out of a long-standing interest in the intersection of property law and urban development.',
+                    'Hương is known among colleagues for her meticulous contract review. She believes the difference between a smooth transaction and a costly dispute often lies in the paperwork nobody bothers to read carefully. She works in Vietnamese and English, and serves clients throughout central Vietnam.',
+                ],
+                'education' => [
+                    ['institution' => 'University of Law Ho Chi Minh City', 'degree' => 'Bachelor of Laws', 'year' => 2014],
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Master of Laws', 'year' => 2017],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '11:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '14:00', '16:00', '17:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00']],
+                    ['day_offset' => 3, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '10:00', '11:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00', '14:00']],
+                    ['day_offset' => 6, 'slots' => ['11:00', '15:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Bích', 'date' => '2026-04-10', 'stars' => 5, 'text' => 'Ms. Hương caught an unclear clause in my purchase contract that could have cost me dearly. She saved the deal and saved my money.'],
+                    ['author' => 'Quang', 'date' => '2026-02-18', 'stars' => 5, 'text' => 'Careful, thoughtful, and extremely thorough. The kind of lawyer you want on a property purchase.'],
+                    ['author' => 'Tuấn', 'date' => '2025-12-03', 'stars' => 5, 'text' => 'Made the commercial lease process feel simple. Explained every clause in plain language.'],
+                ],
+            ],
+            [
+                'id' => 4,
+                'name' => 'Phạm Quốc Bảo',
+                'slug' => 'pham-quoc-bao',
+                'primary_specialty' => 'Criminal Defense',
+                'specialty_tags' => ['Criminal Defense'],
+                'years_of_experience' => 18,
+                'price_per_hour' => 2500000,
+                'rating' => 4.7,
+                'review_count' => 98,
+                'languages' => ['Vietnamese'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Phạm Quốc Bảo has been a criminal defense attorney for nearly two decades. A graduate of Hanoi Law University, he has represented clients in cases ranging from white-collar charges to serious felonies, always with a focus on ensuring fair process and proportionate outcomes.',
+                    'Bảo\'s reputation rests on his preparation. He is known for spending weeks on case materials that other lawyers might treat in days. For him, the weight of criminal consequences demands nothing less. He practices primarily in Vietnamese.',
+                ],
+                'education' => [
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Bachelor of Laws', 'year' => 2005],
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'Master of Laws', 'year' => 2010],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '14:00', '16:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '11:00', '15:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '14:00']],
+                    ['day_offset' => 3, 'slots' => ['10:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '11:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00', '16:00']],
+                    ['day_offset' => 6, 'slots' => ['09:00', '15:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Hùng', 'date' => '2026-03-25', 'stars' => 5, 'text' => 'Ông Bảo tận tâm và hiểu rõ hồ sơ của tôi đến từng chi tiết. Kết quả tốt hơn những gì tôi kỳ vọng.'],
+                    ['author' => 'Minh', 'date' => '2026-01-14', 'stars' => 4, 'text' => 'Serious and well prepared. Communication could be faster, but his legal work is top tier.'],
+                    ['author' => 'Hoa', 'date' => '2025-11-09', 'stars' => 5, 'text' => 'He stood by us through a very long case. Trustworthy and professional throughout.'],
+                ],
+            ],
+            [
+                'id' => 5,
+                'name' => 'Hoàng Thu Trang',
+                'slug' => 'hoang-thu-trang',
+                'primary_specialty' => 'Labor Law',
+                'specialty_tags' => ['Labor Law', 'Civil Litigation'],
+                'years_of_experience' => 8,
+                'price_per_hour' => 1200000,
+                'rating' => 4.8,
+                'review_count' => 142,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Hoàng Thu Trang represents employees and small employers in labor disputes across Ho Chi Minh City. Her work covers employment contracts, wrongful termination claims, social insurance issues, and collective labor disputes. She transitioned to law after five years in human resources, bringing operational insight to her legal practice.',
+                    'Trang often tells clients that labor law is less about winning arguments and more about helping workplaces function fairly. Her cases tend to end in negotiated resolutions rather than courtroom battles, which she considers a good measure of a job well done.',
+                ],
+                'education' => [
+                    ['institution' => 'University of Law Ho Chi Minh City', 'degree' => 'Bachelor of Laws', 'year' => 2015],
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'Master of Labor Law', 'year' => 2018],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '11:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '10:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['11:00', '14:00', '15:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '10:00']],
+                    ['day_offset' => 4, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '11:00', '15:00', '17:00']],
+                    ['day_offset' => 6, 'slots' => ['10:00', '14:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Ngọc', 'date' => '2026-04-05', 'stars' => 5, 'text' => 'Ms. Trang helped me recover three months of unpaid wages and untangle my social insurance. She made the whole ordeal feel survivable.'],
+                    ['author' => 'Tùng', 'date' => '2026-02-27', 'stars' => 5, 'text' => 'Clear, practical, and on the side of her client. Negotiated a fair severance without anyone having to go to court.'],
+                    ['author' => 'Mai', 'date' => '2025-12-19', 'stars' => 4, 'text' => 'Good advice at a reasonable price. Would consult again.'],
+                ],
+            ],
+            [
+                'id' => 6,
+                'name' => 'Vũ Đức Minh',
+                'slug' => 'vu-duc-minh',
+                'primary_specialty' => 'Civil Litigation',
+                'specialty_tags' => ['Civil Litigation', 'Business Law'],
+                'years_of_experience' => 14,
+                'price_per_hour' => 2000000,
+                'rating' => 4.9,
+                'review_count' => 178,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Vũ Đức Minh has built a civil litigation practice focused on contract disputes, property claims, and tort cases. He trained at Vietnam National University School of Law and spent his first eight years at a large domestic firm handling commercial litigation before opening his own office in 2020.',
+                    'Minh\'s philosophy is that litigation should be the last option, not the first. When it is unavoidable, he favors careful preparation and clear arguments over theatrics. He has appeared before courts across northern Vietnam and works in Vietnamese and English.',
+                ],
+                'education' => [
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'Bachelor of Laws', 'year' => 2010],
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Master of Laws', 'year' => 2013],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '10:00', '11:00']],
+                    ['day_offset' => 1, 'slots' => ['14:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '10:00', '15:00']],
+                    ['day_offset' => 3, 'slots' => ['11:00', '14:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '10:00', '11:00', '14:00', '15:00']],
+                    ['day_offset' => 5, 'slots' => ['15:00', '16:00']],
+                    ['day_offset' => 6, 'slots' => ['09:00', '11:00', '14:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Quỳnh', 'date' => '2026-03-30', 'stars' => 5, 'text' => 'Won a contract dispute we thought was unwinnable. His preparation was on another level.'],
+                    ['author' => 'Đạt', 'date' => '2026-02-08', 'stars' => 5, 'text' => 'Patient, measured, and relentless when it mattered. Rare combination in a litigator.'],
+                    ['author' => 'Nga', 'date' => '2025-12-15', 'stars' => 5, 'text' => 'Helped us settle before trial for terms far better than we had expected. Highly recommended.'],
+                ],
+            ],
+            [
+                'id' => 7,
+                'name' => 'Đặng Thị Mai',
+                'slug' => 'dang-thi-mai',
+                'primary_specialty' => 'Family Law',
+                'specialty_tags' => ['Family Law'],
+                'years_of_experience' => 11,
+                'price_per_hour' => 1600000,
+                'rating' => 4.8,
+                'review_count' => 134,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Đặng Thị Mai is a family law attorney who has built her practice around clients navigating divorce, custody, and guardianship matters. She began her career at a Hanoi firm focused on family mediation before moving into broader family litigation in 2019.',
+                    'Mai is especially attentive to cases involving children, and she routinely coordinates with social workers and family counselors where it helps. She views the legal process as one tool among several, and she is direct with clients about which path is most likely to serve their family well.',
+                ],
+                'education' => [
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Bachelor of Laws', 'year' => 2012],
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Master of Laws', 'year' => 2015],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '11:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00', '14:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '11:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 6, 'slots' => ['10:00', '11:00', '15:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Hằng', 'date' => '2026-04-12', 'stars' => 5, 'text' => 'Ms. Mai handled our custody case with a lot of care. My children felt heard, and so did I.'],
+                    ['author' => 'Phúc', 'date' => '2026-01-28', 'stars' => 4, 'text' => 'Honest advice, even when it was not what I wanted to hear. Helped me make a better decision.'],
+                    ['author' => 'Lan', 'date' => '2025-11-22', 'stars' => 5, 'text' => 'She guided us toward mediation and saved us from a painful court battle. Grateful.'],
+                ],
+            ],
+            [
+                'id' => 8,
+                'name' => 'Bùi Thanh Tùng',
+                'slug' => 'bui-thanh-tung',
+                'primary_specialty' => 'Business Law',
+                'specialty_tags' => ['Business Law', 'Civil Litigation'],
+                'years_of_experience' => 20,
+                'price_per_hour' => 3000000,
+                'rating' => 5.0,
+                'review_count' => 212,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Bùi Thanh Tùng advises corporate clients on governance, M&A, and cross-border transactions. Over two decades of practice, he has worked with companies at every stage — from incorporation filings to nine-figure acquisitions. He trained at Hanoi Law University and completed an LL.M. in commercial law.',
+                    'Tùng is known for plain-spoken counsel and for telling clients what they need to hear, not what they want to hear. He serves clients across Vietnam and routinely works on matters involving parties in Singapore, Japan, and Korea.',
+                ],
+                'education' => [
+                    ['institution' => 'Hanoi Law University', 'degree' => 'Bachelor of Laws', 'year' => 2003],
+                    ['institution' => 'Vietnam National University School of Law', 'degree' => 'LL.M. in Commercial Law', 'year' => 2007],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '14:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['10:00', '11:00', '15:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['14:00', '15:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '11:00', '14:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Sơn', 'date' => '2026-04-18', 'stars' => 5, 'text' => 'Mr. Tùng closed our Series B in record time and caught three issues our previous counsel had missed. Worth every dong.'],
+                    ['author' => 'Yến', 'date' => '2026-03-01', 'stars' => 5, 'text' => 'Two decades of experience shows in every meeting. Direct, efficient, and trustworthy.'],
+                    ['author' => 'Khánh', 'date' => '2025-12-28', 'stars' => 5, 'text' => 'Best commercial lawyer I have worked with, full stop. Makes complicated matters feel simple.'],
+                ],
+            ],
+            [
+                'id' => 9,
+                'name' => 'Ngô Hải Yến',
+                'slug' => 'ngo-hai-yen',
+                'primary_specialty' => 'Real Estate',
+                'specialty_tags' => ['Real Estate'],
+                'years_of_experience' => 7,
+                'price_per_hour' => 1400000,
+                'rating' => 4.7,
+                'review_count' => 89,
+                'languages' => ['Vietnamese', 'English'],
+                'portrait_url' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Ngô Hải Yến handles residential and commercial real estate matters in Ho Chi Minh City. Her work includes purchase and sale transactions, title and land-use right review, and commercial leasing. She began her career with a boutique property firm before going independent in 2023.',
+                    'Yến is especially attentive to first-time buyers, who often need more context than a seasoned investor. She believes the quality of a real estate transaction is set long before the signing — in the questions asked, the documents verified, and the clauses negotiated carefully.',
+                ],
+                'education' => [
+                    ['institution' => 'University of Law Ho Chi Minh City', 'degree' => 'Bachelor of Laws', 'year' => 2016],
+                    ['institution' => 'University of Law Ho Chi Minh City', 'degree' => 'Master of Laws', 'year' => 2019],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '11:00', '14:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '15:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00', '14:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['10:00', '11:00']],
+                    ['day_offset' => 4, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '10:00', '11:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '16:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Trang', 'date' => '2026-04-08', 'stars' => 5, 'text' => 'Helped me buy my first apartment without a single surprise. She explained every document and waited until I understood before moving on.'],
+                    ['author' => 'Đức', 'date' => '2026-02-15', 'stars' => 4, 'text' => 'Responsive and careful. Resolved a title issue that had stalled our purchase for weeks.'],
+                    ['author' => 'Hà', 'date' => '2025-11-05', 'stars' => 5, 'text' => 'A reliable pair of eyes on a large commercial lease. Recommended without reservation.'],
+                ],
+            ],
+        ];
+    }
+
+    public static function findBySlug(string $slug): ?array
+    {
+        foreach (self::all() as $lawyer) {
+            if ($lawyer['slug'] === $slug) {
+                return $lawyer;
+            }
+        }
+        return null;
+    }
+
+    public static function featured(int $count = 3): array
+    {
+        return array_slice(self::all(), 0, $count);
+    }
+}
