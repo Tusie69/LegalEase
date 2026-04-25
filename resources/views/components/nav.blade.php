@@ -27,7 +27,7 @@
 
         <a href="{{ route('login') }}"
            class="inline-flex items-center rounded-full border border-muted px-6 py-3 text-[14px] font-medium text-text transition-colors duration-200 hover:border-accent hover:text-accent">
-            Login
+            Sign in
         </a>
     </div>
 </nav>
