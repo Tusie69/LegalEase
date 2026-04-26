@@ -53,7 +53,7 @@ class Lawyers
                 'rating' => 4.8,
                 'review_count' => 203,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1543132220-3ec99c6094dc?q=80',
                 'bio' => [
                     'Trần Văn Hùng advises startups and established businesses across Vietnam on formation, commercial contracts, and regulatory compliance. After earning his law degree from the University of Law Ho Chi Minh City, he spent seven years with an international firm before founding his own practice to serve Vietnamese entrepreneurs.',
                     'Hùng\'s approach is pragmatic. He sees his role as helping business owners make clear, informed decisions rather than drowning them in legal jargon. His clients range from first-time founders preparing their first contract to established companies navigating M&A transactions.',
@@ -88,7 +88,7 @@ class Lawyers
                 'rating' => 4.9,
                 'review_count' => 156,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1685760259914-ee8d2c92d2e0?q=80',
                 'bio' => [
                     'Lê Thị Hương is a real estate attorney based in Da Nang. She handles property transactions, title searches, and leasing arrangements for both individuals and commercial clients. Her practice grew out of a long-standing interest in the intersection of property law and urban development.',
                     'Hương is known among colleagues for her meticulous contract review. She believes the difference between a smooth transaction and a costly dispute often lies in the paperwork nobody bothers to read carefully. She works in Vietnamese and English, and serves clients throughout central Vietnam.',
@@ -158,7 +158,7 @@ class Lawyers
                 'rating' => 4.8,
                 'review_count' => 142,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1733348137479-2e726d326d9b?q=80',
                 'bio' => [
                     'Hoàng Thu Trang represents employees and small employers in labor disputes across Ho Chi Minh City. Her work covers employment contracts, wrongful termination claims, social insurance issues, and collective labor disputes. She transitioned to law after five years in human resources, bringing operational insight to her legal practice.',
                     'Trang often tells clients that labor law is less about winning arguments and more about helping workplaces function fairly. Her cases tend to end in negotiated resolutions rather than courtroom battles, which she considers a good measure of a job well done.',
@@ -228,7 +228,7 @@ class Lawyers
                 'rating' => 4.8,
                 'review_count' => 134,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1655215993637-5a20b1095d54?q=80',
                 'bio' => [
                     'Đặng Thị Mai is a family law attorney who has built her practice around clients navigating divorce, custody, and guardianship matters. She began her career at a Hanoi firm focused on family mediation before moving into broader family litigation in 2019.',
                     'Mai is especially attentive to cases involving children, and she routinely coordinates with social workers and family counselors where it helps. She views the legal process as one tool among several, and she is direct with clients about which path is most likely to serve their family well.',
@@ -263,7 +263,7 @@ class Lawyers
                 'rating' => 5.0,
                 'review_count' => 212,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1591702694482-ecc51ff9642e?q=80',
                 'bio' => [
                     'Bùi Thanh Tùng advises corporate clients on governance, M&A, and cross-border transactions. Over two decades of practice, he has worked with companies at every stage — from incorporation filings to nine-figure acquisitions. He trained at Hanoi Law University and completed an LL.M. in commercial law.',
                     'Tùng is known for plain-spoken counsel and for telling clients what they need to hear, not what they want to hear. He serves clients across Vietnam and routinely works on matters involving parties in Singapore, Japan, and Korea.',
@@ -298,7 +298,7 @@ class Lawyers
                 'rating' => 4.7,
                 'review_count' => 89,
                 'languages' => ['Vietnamese', 'English'],
-                'portrait_url' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1633600180489-65ef075f6068?q=80',
                 'bio' => [
                     'Ngô Hải Yến handles residential and commercial real estate matters in Ho Chi Minh City. Her work includes purchase and sale transactions, title and land-use right review, and commercial leasing. She began her career with a boutique property firm before going independent in 2023.',
                     'Yến is especially attentive to first-time buyers, who often need more context than a seasoned investor. She believes the quality of a real estate transaction is set long before the signing — in the questions asked, the documents verified, and the clauses negotiated carefully.',
