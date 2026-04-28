@@ -1,10 +1,10 @@
-@extends('layouts.app', ['title' => 'Đăng nhập · LegalEase'])
+@extends('layouts.app', ['title' => 'Sign in · LegalEase'])
 
 @section('content')
 <section class="flex min-h-[calc(100vh-72px)] items-center justify-center px-6 py-16">
     <div class="w-full max-w-[440px]">
-        <h1 class="font-display text-4xl font-medium tracking-tight">Đăng nhập</h1>
-        <p class="mt-2 text-[15px] text-secondary">Đăng nhập để truy cập tài khoản của bạn.</p>
+        <h1 class="font-display text-4xl font-medium tracking-tight">Sign in</h1>
+        <p class="mt-2 text-[15px] text-secondary">Welcome back. Sign in to access your account.</p>
 
         <form method="POST" action="{{ route('login.store') }}" class="mt-8 space-y-5" novalidate>
             @csrf
@@ -12,13 +12,13 @@
             <div>
                 <label for="email" class="block text-[13px] font-medium text-muted">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}"
-                       placeholder="nguyenvanA@gmail.com"
+                       placeholder="you@example.com"
                        class="mt-2 block w-full rounded-xl border border-white/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                 @error('email') <p class="mt-2 text-[13px] text-accent">{{ $message }}</p> @enderror
             </div>
 
             <div x-data="{ show: false }">
-                <label for="password" class="block text-[13px] font-medium text-muted">Mật khẩu</label>
+                <label for="password" class="block text-[13px] font-medium text-muted">Password</label>
                 <div class="relative mt-2">
                     <input id="password" name="password"
                            :type="show ? 'text' : 'password'"
@@ -36,19 +36,19 @@
             <div class="flex items-center justify-between">
                 <label class="inline-flex items-center gap-2 text-[14px] text-muted">
                     <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-white/20 bg-surface text-accent focus:ring-accent">
-                    <span>Nhớ tài khoản</span>
+                    <span>Remember me</span>
                 </label>
-                <a href="#" class="text-[14px] text-muted transition-colors hover:text-accent">Quên mật khẩu?</a>
+                <a href="#" class="text-[14px] text-muted transition-colors hover:text-accent">Forgot password?</a>
             </div>
 
             <button type="submit"
                     class="w-full rounded-full bg-text px-6 py-3 text-[15px] font-medium text-bg transition-opacity hover:opacity-90">
-                Đăng nhập
+                Sign in
             </button>
 
             <p class="text-center text-[14px] text-muted">
-                Chưa có tài khoản?
-                <a href="{{ route('register') }}" class="text-text transition-colors hover:text-accent">Đăng ký</a>
+                Don't have an account?
+                <a href="{{ route('register') }}" class="text-text transition-colors hover:text-accent">Sign up</a>
             </p>
         </form>
     </div>
