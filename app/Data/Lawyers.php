@@ -173,7 +173,7 @@ class Lawyers
                 'bar_association' => 'Ho Chi Minh City Bar Association',
                 'address' => ['province' => 'Ho Chi Minh City', 'street_address' => '234 Pasteur, District 3'],
                 'verification_status' => 'VERIFIED',
-                'portrait_url' => 'https://images.unsplash.com/photo-1654874071275-6a313b4ce20c?q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1746813627956-64cf760e3085?q=80',
                 'bio' => [
                     'Hoàng Thu Trang represents employees and small employers in labor disputes across Ho Chi Minh City. Her work covers employment contracts, wrongful termination claims, social insurance issues, and collective labor disputes. She transitioned to law after five years in human resources, bringing operational insight to her legal practice.',
                     'Trang often tells clients that labor law is less about winning arguments and more about helping workplaces function fairly. Her cases tend to end in negotiated resolutions rather than courtroom battles, which she considers a good measure of a job well done.',
@@ -211,7 +211,7 @@ class Lawyers
                 'bar_association' => 'Hanoi Bar Association',
                 'address' => ['province' => 'Hanoi', 'street_address' => '8 Phạm Văn Đồng, Cầu Giấy'],
                 'verification_status' => 'VERIFIED',
-                'portrait_url' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&q=80',
+                'portrait_url' => 'https://images.unsplash.com/photo-1648474484044-bb82df2f5a1f?q=80',
                 'bio' => [
                     'Vũ Đức Minh has built a civil litigation practice focused on contract disputes, property claims, and tort cases. He trained at Vietnam National University School of Law and spent his first eight years at a large domestic firm handling commercial litigation before opening his own office in 2020.',
                     'Minh\'s philosophy is that litigation should be the last option, not the first. When it is unavoidable, he favors careful preparation and clear arguments over theatrics. He has appeared before courts across northern Vietnam and works in Vietnamese and English.',
