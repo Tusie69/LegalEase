@@ -9,9 +9,16 @@
              class="aspect-[4/5] w-full object-cover object-top grayscale">
     </div>
 
-    <h3 class="mt-5 font-display text-2xl font-medium tracking-tight text-text">
-        {{ $lawyer['name'] }}
-    </h3>
+    <div class="mt-5 flex items-center gap-2">
+        <h3 class="font-display text-2xl font-medium tracking-tight text-text">
+            {{ $lawyer['name'] }}
+        </h3>
+        @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
+            <span title="Verified" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-accent/20 text-accent">
+                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+        @endif
+    </div>
 
     <div class="mt-3 flex flex-wrap gap-2">
         <span class="inline-flex items-center rounded-full border border-muted/60 px-3 py-1 text-[12px] font-medium text-muted">
@@ -22,6 +29,10 @@
     <p class="mt-3 text-[14px] text-muted">
         {{ $lawyer['years_of_experience'] }} years experience · {{ number_format($lawyer['price_per_hour']) }} VND/hr
     </p>
+
+    @if (!empty($lawyer['address']['province']))
+        <p class="mt-1 text-[13px] text-muted">📍 {{ $lawyer['address']['province'] }}</p>
+    @endif
 
     <div class="mt-3">
         <x-rating-stars :rating="$lawyer['rating']" :review-count="$lawyer['review_count']" />

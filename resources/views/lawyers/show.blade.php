@@ -42,11 +42,20 @@
                          class="aspect-[4/5] max-h-[560px] w-full object-cover object-top grayscale">
                 </div>
 
-                <h1 class="mt-10 font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
-                    {{ $lawyer['name'] }}
-                </h1>
+                <div class="mt-10 flex items-center gap-3">
+                    <h1 class="font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
+                        {{ $lawyer['name'] }}
+                    </h1>
+                    @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
+                        <span title="Verified" class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-accent/20 text-accent">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                    @endif
+                </div>
                 <p class="mt-2 text-[15px] text-muted">
-                    Attorney at Law · {{ $lawyer['years_of_experience'] }} years experience
+                    Attorney at Law
+                    @if (!empty($lawyer['bar_association'])) · {{ $lawyer['bar_association'] }} @endif
+                    · {{ $lawyer['years_of_experience'] }} years experience
                 </p>
 
                 <div class="mt-3">
@@ -166,6 +175,16 @@
                             </p>
                             <p class="mt-2 text-[13px] text-muted">per consultation</p>
                         </div>
+
+                        @if (!empty($lawyer['address']['street_address']))
+                            <div class="mt-5 flex items-start gap-2 text-[13px]">
+                                <svg class="mt-[2px] h-4 w-4 flex-none text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span class="text-secondary">
+                                    {{ $lawyer['address']['street_address'] }},
+                                    <span class="text-muted">{{ $lawyer['address']['province'] }}</span>
+                                </span>
+                            </div>
+                        @endif
 
                         <div class="my-6 h-px bg-white/10"></div>
 
