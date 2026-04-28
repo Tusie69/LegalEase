@@ -188,17 +188,17 @@
                         <div class="my-6 h-px bg-white/10"></div>
 
                         {{-- Date pills --}}
-                        <div class="flex gap-2 overflow-x-auto pb-1">
+                        <div class="flex gap-1.5 overflow-hidden pb-1">
                             @foreach ($days as $i => $day)
                                 <button type="button"
                                         @click="selected = {{ $i }}"
                                         :class="selected === {{ $i }} ? 'bg-text text-bg border-text' : 'border-muted/60 text-text hover:border-accent'"
-                                        class="flex min-w-[56px] flex-col items-center rounded-xl border px-2 py-2 transition-colors">
-                                    <span class="text-[11px] font-medium uppercase tracking-[0.08em]"
+                                        class="flex min-w-0 flex-1 flex-col items-center rounded-xl border px-1 py-2 transition-colors">
+                                    <span class="text-[10px] font-medium uppercase tracking-[0.04em]"
                                           :class="selected === {{ $i }} ? 'text-bg/60' : 'text-muted'">
                                         {{ $day['abbrev'] }}
                                     </span>
-                                    <span class="mt-0.5 font-display text-[20px] font-medium leading-none">
+                                    <span class="mt-0.5 font-display text-[18px] font-medium leading-none">
                                         {{ $day['dayNum'] }}
                                     </span>
                                 </button>
