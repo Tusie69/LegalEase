@@ -20,7 +20,7 @@
                     Find the right lawyer, for the moment that matters.
                 </h1>
 
-                <p class="animate-fade-up mt-6 max-w-xl text-[18px] leading-relaxed text-muted"
+                <p class="animate-fade-up mt-6 max-w-xl text-[18px] leading-relaxed text-secondary"
                    style="animation-delay: 200ms">
                     Transparent pricing. Verified credentials. Real-time availability. Meet Vietnam's most trusted legal professionals on your terms.
                 </p>
@@ -115,7 +115,7 @@
                         {{ $step['n'] }}
                     </div>
                     <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                    <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-muted">{{ $step['text'] }}</p>
+                    <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-secondary">{{ $step['text'] }}</p>
                 </div>
             @endforeach
         </div>

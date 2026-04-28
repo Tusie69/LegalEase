@@ -6,7 +6,7 @@
         <h1 class="mt-3 font-display text-5xl font-medium tracking-tight">
             Welcome, {{ auth()->user()->name }}
         </h1>
-        <p class="mt-4 max-w-2xl text-[17px] leading-relaxed text-muted">
+        <p class="mt-4 max-w-2xl text-[17px] leading-relaxed text-secondary">
             Your LegalEase account is active. Use the navigation to find a lawyer or manage your consultations.
         </p>
 

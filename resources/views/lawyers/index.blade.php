@@ -22,7 +22,7 @@
         <h1 class="mt-6 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
             Find your lawyer
         </h1>
-        <p class="mt-3 text-[17px] text-muted">Browse 500+ verified lawyers across Vietnam.</p>
+        <p class="mt-3 text-[17px] text-secondary">Browse 500+ verified lawyers across Vietnam.</p>
 
         <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[240px_1fr]">
             {{-- Sidebar filters --}}

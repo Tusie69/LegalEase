@@ -4,7 +4,7 @@
 <section class="flex min-h-[calc(100vh-72px)] items-center justify-center px-6 py-16">
     <div class="w-full max-w-[440px]">
         <h1 class="font-display text-4xl font-medium tracking-tight">Đăng ký</h1>
-        <p class="mt-2 text-[15px] text-muted">Tiếp cận dịch vụ pháp lý chuyên nghiệp, đặt lịch tư vấn và quản lý nhu cầu pháp lý của bạn.</p>
+        <p class="mt-2 text-[15px] text-secondary">Tiếp cận dịch vụ pháp lý chuyên nghiệp, đặt lịch tư vấn và quản lý nhu cầu pháp lý của bạn.</p>
 
         <form method="POST" action="{{ route('register.store') }}" class="mt-8 space-y-5" novalidate>
             @csrf

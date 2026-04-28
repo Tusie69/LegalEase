@@ -4,7 +4,7 @@
 <section class="flex min-h-[calc(100vh-72px)] items-center justify-center px-6 py-16">
     <div class="w-full max-w-[440px]">
         <h1 class="font-display text-4xl font-medium tracking-tight">Đăng nhập</h1>
-        <p class="mt-2 text-[15px] text-muted">Đăng nhập để truy cập tài khoản của bạn.</p>
+        <p class="mt-2 text-[15px] text-secondary">Đăng nhập để truy cập tài khoản của bạn.</p>
 
         <form method="POST" action="{{ route('login.store') }}" class="mt-8 space-y-5" novalidate>
             @csrf

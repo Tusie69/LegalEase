@@ -64,7 +64,7 @@
                 {{-- About --}}
                 <div class="mt-12">
                     <h2 class="font-display text-[24px] font-medium tracking-tight">About</h2>
-                    <div class="mt-4 space-y-4 text-[16px] leading-relaxed text-muted">
+                    <div class="mt-4 space-y-4 text-[16px] leading-relaxed text-secondary">
                         @foreach ($lawyer['bio'] as $paragraph)
                             <p>{{ $paragraph }}</p>
                         @endforeach
