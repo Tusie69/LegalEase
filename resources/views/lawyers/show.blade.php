@@ -166,7 +166,7 @@
                             window.location.href = "{{ route('login') }}?" + params.toString();
                         }
                     }'>
-                    <div class="rounded-2xl border border-text/10 bg-surface p-8">
+                    <div class="flex min-h-[560px] flex-col rounded-2xl border border-text/10 bg-surface p-8">
                         <h3 class="font-display text-[24px] font-medium tracking-tight">Book a consultation</h3>
 
                         <div class="mt-4">
@@ -221,7 +221,7 @@
                             </div>
                         @endforeach
 
-                        <p class="mt-6 text-[13px] leading-relaxed text-muted">
+                        <p class="mt-auto pt-6 text-[13px] leading-relaxed text-muted">
                             You'll confirm details after choosing a time.
                         </p>
                     </div>
