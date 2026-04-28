@@ -180,8 +180,7 @@
                             <div class="mt-5 flex items-start gap-2 text-[13px]">
                                 <svg class="mt-[2px] h-4 w-4 flex-none text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                 <span class="text-secondary">
-                                    {{ $lawyer['address']['street_address'] }},
-                                    <span class="text-muted">{{ $lawyer['address']['province'] }}</span>
+                                    {{ $lawyer['address']['street_address'] }}, {{ $lawyer['address']['province'] }}
                                 </span>
                             </div>
                         @endif
