@@ -36,7 +36,7 @@
                 <div class="relative animate-fade-up" style="animation-delay: 200ms">
                     <div aria-hidden="true"
                          class="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-br from-muted to-accent opacity-15 blur-3xl"></div>
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=900&h=1200&fit=crop&q=80"
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=900&h=1200&fit=crop&q=80"
                          alt=""
                          class="relative aspect-[3/4] w-full rounded-2xl object-cover grayscale">
                 </div>

@@ -39,7 +39,7 @@
                 <div class="overflow-hidden rounded-2xl">
                     <img src="{{ $lawyer['portrait_url'] }}"
                          alt="{{ $lawyer['name'] }}"
-                         class="aspect-[4/5] w-full object-cover object-top grayscale">
+                         class="aspect-[4/5] max-h-[560px] w-full object-cover object-top grayscale">
                 </div>
 
                 <h1 class="mt-10 font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
@@ -160,11 +160,11 @@
                     <div class="rounded-2xl border border-white/10 bg-surface p-8">
                         <h3 class="font-display text-[24px] font-medium tracking-tight">Book a consultation</h3>
 
-                        <div class="mt-4 flex items-baseline gap-2">
-                            <p class="font-display text-[32px] font-medium tracking-tight text-accent">
+                        <div class="mt-4">
+                            <p class="font-display text-[32px] font-medium leading-none tracking-tight text-accent">
                                 {{ number_format($lawyer['price_per_hour']) }} VND
                             </p>
-                            <p class="text-[14px] text-muted">· per consultation</p>
+                            <p class="mt-2 text-[13px] text-muted">per consultation</p>
                         </div>
 
                         <div class="my-6 h-px bg-white/10"></div>

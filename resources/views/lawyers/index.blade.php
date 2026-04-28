@@ -24,7 +24,7 @@
         </h1>
         <p class="mt-3 text-[17px] text-muted">Browse 500+ verified lawyers across Vietnam.</p>
 
-        <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-[280px_1fr]">
+        <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[240px_1fr]">
             {{-- Sidebar filters --}}
             <aside class="self-start md:sticky md:top-[88px]">
                 <div class="rounded-2xl border border-white/10 bg-surface p-6">

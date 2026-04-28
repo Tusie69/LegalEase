@@ -6,7 +6,7 @@
         <img src="{{ $lawyer['portrait_url'] }}"
              alt="{{ $lawyer['name'] }}"
              loading="lazy"
-             class="aspect-[4/5] w-full object-cover grayscale">
+             class="aspect-[4/5] w-full object-cover object-top grayscale">
     </div>
 
     <h3 class="mt-5 font-display text-2xl font-medium tracking-tight text-text">
