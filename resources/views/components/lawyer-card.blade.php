@@ -1,7 +1,7 @@
 @props(['lawyer'])
 
 <a href="/lawyers/{{ $lawyer['slug'] }}"
-   class="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent">
+   class="group flex flex-col overflow-hidden rounded-2xl border border-text/10 bg-surface p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent">
     <div class="overflow-hidden rounded-xl">
         <img src="{{ $lawyer['portrait_url'] }}"
              alt="{{ $lawyer['name'] }}"
@@ -21,7 +21,7 @@
             {{ $lawyer['name'] }}
         </h3>
         @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-            <span title="Verified" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-white/10 text-text">
+            <span title="Verified" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-text/10 text-text">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
         @endif

@@ -47,7 +47,7 @@
                         {{ $lawyer['name'] }}
                     </h1>
                     @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-                        <span title="Verified" class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-text">
+                        <span title="Verified" class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-text/10 text-text">
                             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                         </span>
                     @endif
@@ -85,7 +85,7 @@
                     <h2 class="font-display text-[24px] font-medium tracking-tight">Education</h2>
                     <ul class="mt-4 space-y-3">
                         @foreach ($lawyer['education'] as $edu)
-                            <li class="flex items-baseline justify-between gap-6 border-b border-white/10 pb-3">
+                            <li class="flex items-baseline justify-between gap-6 border-b border-text/10 pb-3">
                                 <div>
                                     <p class="text-[15px] text-text">{{ $edu['degree'] }}</p>
                                     <p class="text-[14px] text-muted">{{ $edu['institution'] }}</p>
@@ -129,9 +129,9 @@
                                 $initial = mb_strtoupper(mb_substr($review['author'], 0, 1));
                                 $reviewDate = Carbon::parse($review['date'])->format('M j, Y');
                             @endphp
-                            <article class="rounded-2xl border border-white/10 bg-surface p-6">
+                            <article class="rounded-2xl border border-text/10 bg-surface p-6">
                                 <header class="flex items-start gap-4">
-                                    <div class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-accent font-display text-[18px] font-medium text-bg">
+                                    <div class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-avatar font-display text-[18px] font-medium text-text">
                                         {{ $initial }}
                                     </div>
                                     <div class="flex-1">
@@ -166,7 +166,7 @@
                             window.location.href = "{{ route('login') }}?" + params.toString();
                         }
                     }'>
-                    <div class="rounded-2xl border border-white/10 bg-surface p-8">
+                    <div class="rounded-2xl border border-text/10 bg-surface p-8">
                         <h3 class="font-display text-[24px] font-medium tracking-tight">Book a consultation</h3>
 
                         <div class="mt-4">
@@ -185,7 +185,7 @@
                             </div>
                         @endif
 
-                        <div class="my-6 h-px bg-white/10"></div>
+                        <div class="my-6 h-px bg-text/10"></div>
 
                         {{-- Date pills --}}
                         <div class="flex gap-1.5 overflow-hidden pb-1">

@@ -7,7 +7,7 @@
     ];
 @endphp
 
-<nav class="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-white/10 bg-bg/80 backdrop-blur-md">
+<nav class="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-text/10 bg-bg/80 backdrop-blur-md">
     <div class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-8">
         <a href="/" class="inline-flex items-center gap-2 font-display text-xl font-medium tracking-tight text-text">
             <img src="{{ asset('images/logo2.png') }}" alt="" class="h-8 w-8 object-contain brightness-0 invert">

@@ -1,4 +1,4 @@
-<footer class="border-t border-white/10 bg-bg">
+<footer class="border-t border-text/10 bg-bg">
     <div class="mx-auto max-w-[1280px] px-8 py-20">
         <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
             <div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center">
+        <div class="mt-16 flex flex-col items-start justify-between gap-4 border-t border-text/10 pt-8 md:flex-row md:items-center">
             <p class="text-[13px] text-muted">© 2026 LegalEase. All rights reserved.</p>
 
             <div class="flex items-center gap-4">

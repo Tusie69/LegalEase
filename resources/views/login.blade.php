@@ -13,7 +13,7 @@
                 <label for="email" class="block text-[13px] font-medium text-muted">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}"
                        placeholder="you@example.com"
-                       class="mt-2 block w-full rounded-xl border border-white/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                       class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                 @error('email') <p class="mt-2 text-[13px] text-accent">{{ $message }}</p> @enderror
             </div>
 
@@ -23,7 +23,7 @@
                     <input id="password" name="password"
                            :type="show ? 'text' : 'password'"
                            placeholder="••••••••••••"
-                           class="block w-full rounded-xl border border-white/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                           class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     <button type="button" @click="show = !show" aria-label="Toggle password"
                             class="absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-accent">
                         <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -35,7 +35,7 @@
 
             <div class="flex items-center justify-between">
                 <label class="inline-flex items-center gap-2 text-[14px] text-muted">
-                    <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-white/20 bg-surface text-accent focus:ring-accent">
+                    <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-text/20 bg-surface text-accent focus:ring-accent">
                     <span>Remember me</span>
                 </label>
                 <a href="#" class="text-[14px] text-muted transition-colors hover:text-accent">Forgot password?</a>

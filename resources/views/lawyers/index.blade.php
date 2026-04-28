@@ -27,7 +27,7 @@
         <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[240px_1fr]">
             {{-- Sidebar filters --}}
             <aside class="self-start md:sticky md:top-[88px]">
-                <div class="rounded-2xl border border-white/10 bg-surface p-6">
+                <div class="rounded-2xl border border-text/10 bg-surface p-6">
                     <h3 class="font-display text-[20px] font-medium tracking-tight">Filters</h3>
 
                     {{-- Specialty --}}
@@ -63,7 +63,7 @@
                                 <button type="button"
                                         @click="stars = {{ $i }}"
                                         class="p-0.5 transition-colors"
-                                        :class="stars >= {{ $i }} ? 'text-accent' : 'text-white/20 hover:text-white/40'">
+                                        :class="stars >= {{ $i }} ? 'text-accent' : 'text-text/20 hover:text-text/40'">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 2l2.9 6.9L22 9.8l-5.5 4.8 1.7 7.4L12 18l-6.2 4 1.7-7.4L2 9.8l7.1-.9L12 2z"/>
                                     </svg>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 border-t border-white/10 pt-4">
+                    <div class="mt-8 border-t border-text/10 pt-4">
                         <button type="button" class="text-[14px] text-muted transition-colors hover:text-accent hover:underline underline-offset-4">
                             Reset filters
                         </button>
@@ -107,11 +107,11 @@
                         </span>
                         <input type="search"
                                placeholder="Search by name or specialty"
-                               class="w-full rounded-full border border-white/10 bg-surface py-3 pl-11 pr-4 text-[14px] text-text placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                               class="w-full rounded-full border border-text/10 bg-surface py-3 pl-11 pr-4 text-[14px] text-text placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     </div>
 
                     <div class="relative">
-                        <select class="appearance-none rounded-full border border-white/10 bg-surface py-3 pl-5 pr-11 text-[14px] text-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                        <select class="appearance-none rounded-full border border-text/10 bg-surface py-3 pl-5 pr-11 text-[14px] text-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                             <option>Best match</option>
                             <option>Highest rated</option>
                             <option>Lowest price</option>

@@ -47,7 +47,7 @@
     {{-- Trust strip --}}
     <section class="bg-surface">
         <div class="mx-auto flex h-24 max-w-[1280px] items-center justify-center px-8">
-            <div class="grid w-full grid-cols-1 divide-y divide-white/10 md:grid-cols-3 md:divide-x md:divide-y-0">
+            <div class="grid w-full grid-cols-1 divide-y divide-text/10 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">500+</p>
                     <p class="mt-2 text-[14px] text-muted">Verified lawyers</p>
@@ -70,7 +70,7 @@
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($practiceAreas as $area)
-                <div class="group rounded-2xl border border-white/10 bg-surface p-8 transition-colors duration-200 hover:border-accent">
+                <div class="group rounded-2xl border border-text/10 bg-surface p-8 transition-colors duration-200 hover:border-accent">
                     <x-icon :name="$area['icon']" :size="32" class="text-accent" />
                     <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $area['name'] }}</h3>
                     <p class="mt-2 text-[14px] text-muted">{{ $area['description'] }}</p>
@@ -107,7 +107,7 @@
 
         <div class="relative mt-16 grid gap-12 md:grid-cols-3">
             <div aria-hidden="true"
-                 class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/10 md:block"></div>
+                 class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-text/10 md:block"></div>
 
             @foreach ($steps as $step)
                 <div class="relative">
