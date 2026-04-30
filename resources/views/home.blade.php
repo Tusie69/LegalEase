@@ -70,7 +70,7 @@
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($practiceAreas as $area)
-                <div class="group rounded-2xl border border-text/10 bg-surface p-8 transition-colors duration-200 hover:border-accent">
+                <div class="rounded-2xl border border-text/10 bg-surface p-8">
                     <x-icon :name="$area['icon']" :size="32" class="text-accent" />
                     <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $area['name'] }}</h3>
                     <p class="mt-2 text-[14px] text-muted">{{ $area['description'] }}</p>
