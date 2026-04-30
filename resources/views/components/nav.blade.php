@@ -2,7 +2,7 @@
     $links = [
         ['label' => 'Home', 'url' => '/'],
         ['label' => 'Lawyers', 'url' => '/lawyers'],
-        ['label' => 'Legal Services', 'url' => '#'],
+        ['label' => 'Legal Services', 'url' => '/legal-services'],
         ['label' => 'Contact', 'url' => '/contact'],
     ];
 @endphp

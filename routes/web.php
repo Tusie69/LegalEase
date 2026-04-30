@@ -20,6 +20,7 @@ Route::get('/lawyers/{slug}', function (string $slug) {
 
 Route::get('/about', fn () => view('about'))->name('about');
 Route::get('/contact', fn () => view('contact'))->name('contact');
+Route::get('/legal-services', fn () => view('legal-services'))->name('legal-services');
 
 Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
 
