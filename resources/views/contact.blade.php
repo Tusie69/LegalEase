@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Hero --}}
-    <section class="mx-auto flex min-h-[320px] max-w-[1280px] items-center px-8 py-20">
+    <section class="mx-auto flex min-h-[320px] max-w-[1280px] items-center px-8 pt-32 pb-12">
         <div class="max-w-[720px]">
             <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
                style="animation-delay: 0ms">
@@ -21,8 +21,8 @@
         </div>
     </section>
 
-    {{-- Contact details (left column — form will be added in next step) --}}
-    <section class="mx-auto max-w-[1280px] px-8 py-20">
+    {{-- Contact details + form --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-12">
         <div class="grid gap-16 md:grid-cols-[2fr_3fr]">
             <div class="space-y-10">
                 {{-- Email --}}
@@ -39,14 +39,20 @@
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Phone</p>
                     <ul class="mt-3 space-y-1 text-[15px] text-text">
                         <li>Customer support: <a href="tel:+842473001234" class="transition-colors hover:text-accent">+84 24 7300 1234</a></li>
-                        <li class="text-muted">Hours: Monday — Friday, 9:00 AM — 6:00 PM ICT</li>
+                        <li class="text-muted">Hours: Monday to Friday, 9:00 AM to 6:00 PM ICT</li>
                     </ul>
                 </div>
 
                 {{-- Office --}}
                 <div>
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Office</p>
-                    <address class="mt-3 not-italic text-[15px] text-text">
+                    <div class="mt-3 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=450&fit=crop&q=80"
+                             alt=""
+                             loading="lazy"
+                             class="aspect-[4/3] w-full object-cover grayscale">
+                    </div>
+                    <address class="mt-4 not-italic text-[15px] text-text">
                         Tầng 8, Tòa nhà Capital Tower<br>
                         109 Trần Hưng Đạo, Hoàn Kiếm<br>
                         Hà Nội, Việt Nam
@@ -140,7 +146,7 @@
 
                         <p x-show="submitted" x-cloak
                            class="text-[14px] text-muted">
-                            Thanks — we'll be in touch within 1–2 business days.
+                            Thanks. We'll be in touch within 1 to 2 business days.
                         </p>
                     </div>
                 </form>
@@ -149,7 +155,7 @@
     </section>
 
     {{-- Reassurance line --}}
-    <section class="mx-auto max-w-[1280px] px-8 pb-16 text-center">
+    <section class="mx-auto max-w-[1280px] px-8 pt-20 pb-24 text-center">
         <p class="text-[14px] text-muted">
             All messages are read by a real person. We aim to respond within one business day.
         </p>
