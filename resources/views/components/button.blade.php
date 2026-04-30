@@ -8,7 +8,7 @@
     $base = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-[14px] font-medium transition-all duration-200';
 
     $styles = match ($variant) {
-        'primary'   => 'bg-text text-bg shadow-[0_0_0_0_rgba(245,243,240,0)] hover:shadow-[0_0_22px_2px_rgba(245,243,240,0.26)]',
+        'primary'   => 'bg-text text-bg shadow-[0_0_0_0_rgba(212,162,76,0)] hover:shadow-[0_0_24px_3px_rgba(212,162,76,0.45)]',
         'secondary' => 'border border-muted text-text hover:border-accent hover:text-accent',
         'ghost'     => 'text-muted hover:text-accent hover:underline underline-offset-4',
         default     => '',

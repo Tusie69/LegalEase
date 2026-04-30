@@ -16,7 +16,18 @@
     --color-muted: #a9b1bc;
     --color-accent: #F5F3F0;
     --color-avatar: #3A3A3A;
+    --color-gold: #D4A24C;
 }
+
+/*
+ * GOLD ACCENT BOUNDARY
+ * The gold token (#D4A24C) is used in EXACTLY THREE places, nowhere else:
+ *   1. Primary CTA button hover glow
+ *   2. Verified checkmark badges (cards + detail page)
+ *   3. Filled rating stars (display + filter)
+ * If you find yourself reaching for `text-gold`, `bg-gold`, or `border-gold`
+ * anywhere outside those three contexts, stop. The discipline is the design.
+ */
 
 @layer base {
     html {

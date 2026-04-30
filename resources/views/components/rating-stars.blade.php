@@ -13,7 +13,7 @@
 <div {{ $attributes->class('inline-flex items-center gap-2') }}>
     <div class="inline-flex items-center gap-0.5">
         @for ($i = 1; $i <= 5; $i++)
-            <svg class="{{ $sizeClass }} {{ $i <= $filled ? 'text-accent' : 'text-text/20' }}"
+            <svg class="{{ $sizeClass }} {{ $i <= $filled ? 'text-gold' : 'text-text/20' }}"
                  viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l2.9 6.9L22 9.8l-5.5 4.8 1.7 7.4L12 18l-6.2 4 1.7-7.4L2 9.8l7.1-.9L12 2z"/>
             </svg>

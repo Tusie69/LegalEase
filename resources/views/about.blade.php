@@ -27,7 +27,7 @@
     <section class="mx-auto max-w-[1280px] px-8 pt-24 text-center">
         <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Le · gal · ease</p>
         <h2 class="mx-auto mt-6 max-w-[820px] font-display text-[40px] font-medium leading-[1.15] tracking-[-0.01em] md:text-[56px]">
-            LegalEase: <span class="text-secondary">/lē&middot;gəl ēz/</span>
+            LegalEase: <span class="text-secondary">/lē &middot; gəl &middot; ēz/</span>
         </h2>
         <p class="mx-auto mt-6 max-w-[600px] text-[17px] leading-relaxed text-secondary">
             A platform built so finding a lawyer feels less like a guess and more like a choice.

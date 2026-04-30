@@ -63,7 +63,7 @@
                                 <button type="button"
                                         @click="stars = {{ $i }}"
                                         class="p-0.5 transition-colors"
-                                        :class="stars >= {{ $i }} ? 'text-accent' : 'text-text/20 hover:text-text/40'">
+                                        :class="stars >= {{ $i }} ? 'text-gold' : 'text-text/20 hover:text-text/40'">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 2l2.9 6.9L22 9.8l-5.5 4.8 1.7 7.4L12 18l-6.2 4 1.7-7.4L2 9.8l7.1-.9L12 2z"/>
                                     </svg>

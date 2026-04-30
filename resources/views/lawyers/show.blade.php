@@ -47,7 +47,7 @@
                         {{ $lawyer['name'] }}
                     </h1>
                     @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-                        <span title="Verified" class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-text/10 text-text">
+                        <span title="Verified" class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-gold/15 text-gold">
                             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                         </span>
                     @endif
