@@ -41,10 +41,7 @@
                 <a href="#" class="text-[14px] text-muted transition-colors hover:text-accent">Forgot password?</a>
             </div>
 
-            <button type="submit"
-                    class="w-full rounded-full bg-text px-6 py-3 text-[15px] font-medium text-bg transition-opacity hover:opacity-90">
-                Sign in
-            </button>
+            <x-button variant="primary" type="submit" class="w-full">Sign in</x-button>
 
             <p class="text-center text-[14px] text-muted">
                 Don't have an account?

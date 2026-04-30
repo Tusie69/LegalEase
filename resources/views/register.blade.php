@@ -61,10 +61,7 @@
                 <span>I agree to the <a href="#" class="text-text transition-colors hover:text-accent">Terms of Service</a> and <a href="#" class="text-text transition-colors hover:text-accent">Privacy Policy</a>.</span>
             </label>
 
-            <button type="submit"
-                    class="w-full rounded-full bg-text px-6 py-3 text-[15px] font-medium text-bg transition-opacity hover:opacity-90">
-                Create account
-            </button>
+            <x-button variant="primary" type="submit" class="w-full">Create account</x-button>
 
             <p class="text-center text-[14px] text-muted">
                 Already have an account?
