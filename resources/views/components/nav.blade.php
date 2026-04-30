@@ -3,7 +3,7 @@
         ['label' => 'Home', 'url' => '/'],
         ['label' => 'Lawyers', 'url' => '/lawyers'],
         ['label' => 'Legal Services', 'url' => '#'],
-        ['label' => 'Contact', 'url' => '#'],
+        ['label' => 'Contact', 'url' => '/contact'],
     ];
 @endphp
 

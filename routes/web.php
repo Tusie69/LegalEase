@@ -18,6 +18,9 @@ Route::get('/lawyers/{slug}', function (string $slug) {
     return view('lawyers.show', ['lawyer' => $lawyer]);
 })->name('lawyers.show');
 
+Route::get('/about', fn () => view('about'))->name('about');
+Route::get('/contact', fn () => view('contact'))->name('contact');
+
 Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
 
 Route::middleware('guest')->group(function () {
