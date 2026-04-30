@@ -8,12 +8,6 @@
         ['title' => 'Learning budget', 'desc' => "Annual stipend for what sharpens your craft."],
     ];
 
-    $hiring = [
-        ['n' => '01', 'title' => 'Apply',          'desc' => "No cover letter."],
-        ['n' => '02', 'title' => 'Two interviews', 'desc' => "Hiring manager, then team."],
-        ['n' => '03', 'title' => 'Decision',       'desc' => "Within ten days."],
-    ];
-
     $roles = [
         [
             'title' => 'Senior Backend Engineer',
@@ -41,6 +35,12 @@
             'desc'  => "Brand, content, and growth across Vietnam.",
         ],
     ];
+
+    $hiring = [
+        ['n' => '01', 'title' => 'Apply',          'desc' => "No cover letter."],
+        ['n' => '02', 'title' => 'Two interviews', 'desc' => "Hiring manager, then team."],
+        ['n' => '03', 'title' => 'Decision',       'desc' => "Within ten days."],
+    ];
 @endphp
 
 @section('content')
@@ -60,75 +60,80 @@
         </div>
     </section>
 
-    {{-- Two-column: context (left) + roles (right) --}}
+    {{-- 01 / Why work here --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <div class="grid gap-16 md:grid-cols-3">
+        <div class="flex items-baseline gap-4">
+            <p class="font-display text-[14px] font-medium text-muted">01</p>
+            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Why work here</h2>
+        </div>
+        <p class="mt-6 max-w-[680px] text-[18px] leading-relaxed text-secondary">
+            We're building the legal platform Vietnam doesn't have yet. Small team, big mission.
+        </p>
+    </section>
 
-            {{-- Left: context --}}
-            <aside class="md:col-span-1">
+    {{-- 02 / What it's like --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+        <div class="flex items-baseline gap-4">
+            <p class="font-display text-[14px] font-medium text-muted">02</p>
+            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">What it's like</h2>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            @foreach ($values as $v)
+                <div class="rounded-2xl border border-text/10 bg-surface p-6">
+                    <h3 class="font-display text-[20px] font-medium tracking-tight">{{ $v['title'] }}</h3>
+                    <p class="mt-2 text-[14px] leading-relaxed text-muted">{{ $v['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- 03 / Open positions --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+        <div class="flex items-baseline gap-4">
+            <p class="font-display text-[14px] font-medium text-muted">03</p>
+            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Open positions</h2>
+        </div>
+
+        <div class="mt-10 divide-y divide-text/10 border-y border-text/10">
+            @foreach ($roles as $role)
+                <article class="grid gap-6 py-8 md:grid-cols-[1fr_auto] md:items-baseline">
+                    <div>
+                        <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[30px]">
+                            {{ $role['title'] }}
+                        </h3>
+                        <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
+                            {{ $role['meta'] }}
+                        </p>
+                        <p class="mt-4 max-w-[640px] text-[15px] leading-relaxed text-secondary">
+                            {{ $role['desc'] }}
+                        </p>
+                    </div>
+                    <a href="mailto:careers@legalease.vn?subject={{ urlencode('Application: ' . $role['title']) }}"
+                       class="inline-flex items-center gap-2 self-start whitespace-nowrap text-[14px] font-medium text-text transition-colors hover:text-secondary">
+                        Apply
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </article>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- 04 / How we hire --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+        <div class="flex items-baseline gap-4">
+            <p class="font-display text-[14px] font-medium text-muted">04</p>
+            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">How we hire</h2>
+        </div>
+
+        <div class="mt-10 grid gap-12 md:grid-cols-3">
+            @foreach ($hiring as $step)
                 <div>
-                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Why work here</p>
-                    <p class="mt-4 text-[16px] leading-relaxed text-secondary">
-                        We're building the legal platform Vietnam doesn't have yet. Small team, big mission.
-                    </p>
+                    <p class="font-display text-[14px] font-medium text-muted">{{ $step['n'] }}</p>
+                    <h3 class="mt-3 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
+                    <p class="mt-2 text-[15px] leading-relaxed text-muted">{{ $step['desc'] }}</p>
                 </div>
-
-                <div class="mt-12">
-                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">What it's like</p>
-                    <div class="mt-4 space-y-5">
-                        @foreach ($values as $v)
-                            <div class="border-t border-text/10 pt-4">
-                                <h3 class="font-display text-[18px] font-medium tracking-tight">{{ $v['title'] }}</h3>
-                                <p class="mt-1 text-[14px] leading-relaxed text-muted">{{ $v['desc'] }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="mt-12">
-                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">How we hire</p>
-                    <div class="mt-4 space-y-5">
-                        @foreach ($hiring as $step)
-                            <div class="flex gap-4">
-                                <span class="font-display text-[14px] font-medium text-muted">{{ $step['n'] }}</span>
-                                <div>
-                                    <h3 class="font-display text-[16px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                                    <p class="mt-1 text-[14px] leading-relaxed text-muted">{{ $step['desc'] }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </aside>
-
-            {{-- Right: roles --}}
-            <div class="md:col-span-2">
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Open positions</p>
-                <h2 class="mt-4 font-display text-[36px] font-medium tracking-[-0.01em] md:text-[44px]">
-                    {{ count($roles) }} roles, all in Vietnam.
-                </h2>
-
-                <div class="mt-10 space-y-12">
-                    @foreach ($roles as $role)
-                        <article>
-                            <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[28px]">
-                                {{ $role['title'] }}
-                            </h3>
-                            <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
-                                {{ $role['meta'] }}
-                            </p>
-                            <p class="mt-4 max-w-[560px] text-[15px] leading-relaxed text-secondary">
-                                {{ $role['desc'] }}
-                            </p>
-                            <a href="mailto:careers@legalease.vn?subject={{ urlencode('Application: ' . $role['title']) }}"
-                               class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                                Apply
-                                <span aria-hidden="true">→</span>
-                            </a>
-                        </article>
-                    @endforeach
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -137,9 +142,8 @@
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
             Don't see your role?
         </h2>
-        <div class="mt-10 flex flex-col items-center gap-3">
+        <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="mailto:careers@legalease.vn">Get in touch →</x-button>
-            <p class="text-[13px] text-muted">careers@legalease.vn</p>
         </div>
     </section>
 @endsection
