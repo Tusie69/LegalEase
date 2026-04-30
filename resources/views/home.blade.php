@@ -62,7 +62,10 @@
 
     {{-- Practice areas --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-20">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Areas we cover</h2>
+        <div class="flex items-end justify-between">
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Areas we cover</h2>
+            <x-button variant="ghost" href="/legal-services">See all areas →</x-button>
+        </div>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($practiceAreas as $area)
