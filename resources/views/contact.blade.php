@@ -46,17 +46,25 @@
                 {{-- Office --}}
                 <div>
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Office</p>
-                    <div class="mt-3 overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=450&fit=crop&q=80"
-                             alt=""
-                             loading="lazy"
-                             class="aspect-[4/3] w-full object-cover grayscale">
+                    <div class="mt-3 overflow-hidden rounded-xl border border-text/10">
+                        <iframe
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=105.8423%2C21.0205%2C105.8503%2C21.0285&amp;layer=mapnik&amp;marker=21.0245%2C105.8463"
+                            class="aspect-[4/3] w-full border-0 grayscale"
+                            loading="lazy"
+                            title="Map showing LegalEase office at 109 Trần Hưng Đạo, Hoàn Kiếm, Hanoi"></iframe>
                     </div>
                     <address class="mt-4 not-italic text-[15px] text-text">
                         Tầng 8, Tòa nhà Capital Tower<br>
                         109 Trần Hưng Đạo, Hoàn Kiếm<br>
                         Hà Nội, Việt Nam
                     </address>
+                    <p class="mt-3 text-[13px]">
+                        <a href="https://www.openstreetmap.org/?mlat=21.0245&mlon=105.8463#map=17/21.0245/105.8463"
+                           target="_blank" rel="noopener"
+                           class="text-muted transition-colors hover:text-accent">
+                            View larger map →
+                        </a>
+                    </p>
                 </div>
 
                 {{-- Social --}}
@@ -95,13 +103,13 @@
                         }
                     }'
                       @submit.prevent="send"
-                      class="rounded-2xl border border-text/10 bg-surface p-8">
+                      class="flex h-full flex-col rounded-2xl border border-text/10 bg-surface p-8">
 
                     <h2 class="font-display text-[28px] font-medium tracking-tight">
                         Send us a message
                     </h2>
 
-                    <div class="mt-6 space-y-5">
+                    <div class="mt-6 flex flex-1 flex-col gap-5">
                         <div>
                             <label for="name" class="mb-2 block text-[14px] text-muted">Your name</label>
                             <input id="name" type="text" x-model="name" required
@@ -133,11 +141,11 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="flex min-h-0 flex-1 flex-col">
                             <label for="message" class="mb-2 block text-[14px] text-muted">Your message</label>
-                            <textarea id="message" rows="5" x-model="message" required
+                            <textarea id="message" x-model="message" required
                                       placeholder="Tell us a little about what you need."
-                                      class="block w-full resize-y rounded-xl border border-muted/30 bg-text/5 px-4 py-3.5 text-[15px] leading-relaxed text-text placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none"></textarea>
+                                      class="block w-full flex-1 min-h-[140px] resize-y rounded-xl border border-muted/30 bg-text/5 px-4 py-3.5 text-[15px] leading-relaxed text-text placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none"></textarea>
                         </div>
 
                         <x-button variant="primary" type="submit" class="w-full">
