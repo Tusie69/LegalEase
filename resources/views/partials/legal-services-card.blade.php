@@ -1,7 +1,7 @@
 <article class="flex flex-col rounded-2xl border border-text/10 bg-surface p-8 md:p-10">
-    <div class="flex items-start justify-between">
+    <div class="flex items-center justify-between">
         <x-icon :name="$area['icon']" :size="56" class="text-text" />
-        <span class="font-display text-[14px] font-medium text-muted">
+        <span class="font-display text-[28px] font-medium text-muted">
             {{ str_pad($number, 2, '0', STR_PAD_LEFT) }}
         </span>
     </div>

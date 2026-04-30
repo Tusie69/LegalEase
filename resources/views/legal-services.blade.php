@@ -15,32 +15,22 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
-               style="animation-delay: 0ms">
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 Browse by need
             </p>
 
-            <h1 class="animate-fade-up mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]"
-                style="animation-delay: 100ms">
+            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
                 Not sure where to start?
             </h1>
 
-            <p class="animate-fade-up mx-auto mt-8 max-w-[600px] text-[18px] leading-relaxed text-secondary"
-               style="animation-delay: 200ms">
+            <p class="mx-auto mt-8 max-w-[600px] text-[18px] leading-relaxed text-secondary">
                 Most people don't know what kind of lawyer they need until someone explains it. This page does that.
             </p>
         </div>
     </section>
 
-    {{-- Intro --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <p class="max-w-[720px] text-[17px] leading-relaxed text-secondary">
-            Each practice area below covers a different kind of legal problem. Find the one that matches your situation, then browse lawyers who specialize in it.
-        </p>
-    </section>
-
     {{-- Practice areas grid: first half --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-12">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="grid gap-6 md:grid-cols-3">
             @foreach ($firstHalf as $i => $area)
                 @include('partials.legal-services-card', ['area' => $area, 'number' => $i + 1])

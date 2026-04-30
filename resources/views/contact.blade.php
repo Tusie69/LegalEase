@@ -4,18 +4,15 @@
     {{-- Hero --}}
     <section class="mx-auto flex min-h-[320px] max-w-[1280px] items-center px-8 pt-32 pb-12">
         <div class="max-w-[720px]">
-            <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
-               style="animation-delay: 0ms">
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 Get in touch
             </p>
 
-            <h1 class="animate-fade-up mt-6 font-display text-[48px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[60px]"
-                style="animation-delay: 100ms">
+            <h1 class="mt-6 font-display text-[48px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[60px]">
                 We're here when you need us.
             </h1>
 
-            <p class="animate-fade-up mt-6 max-w-[600px] text-[18px] leading-relaxed text-secondary"
-               style="animation-delay: 200ms">
+            <p class="mt-6 max-w-[600px] text-[18px] leading-relaxed text-secondary">
                 Whether you have a question about the platform, a partnership inquiry, or feedback we should hear, we read every message.
             </p>
         </div>

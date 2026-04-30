@@ -9,18 +9,15 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/50 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
-               style="animation-delay: 0ms">
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 Our story
             </p>
 
-            <h1 class="animate-fade-up mx-auto mt-6 max-w-[900px] font-display text-[56px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[88px]"
-                style="animation-delay: 100ms">
+            <h1 class="mx-auto mt-6 max-w-[900px] font-display text-[56px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[88px]">
                 Legal help, without the guesswork.
             </h1>
 
-            <p class="animate-fade-up mx-auto mt-8 max-w-[560px] text-[18px] leading-relaxed text-secondary"
-               style="animation-delay: 200ms">
+            <p class="mx-auto mt-8 max-w-[560px] text-[18px] leading-relaxed text-secondary">
                 We connect people in Vietnam with verified lawyers, fast.
             </p>
         </div>

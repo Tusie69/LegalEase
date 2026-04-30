@@ -10,30 +10,26 @@
     <section class="relative mx-auto flex min-h-[85vh] max-w-[1280px] items-center px-8 py-20">
         <div class="grid w-full items-center gap-12 md:grid-cols-5">
             <div class="md:col-span-3">
-                <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
-                   style="animation-delay: 0ms">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                     Trusted legal consultation
                 </p>
 
-                <h1 class="animate-fade-up mt-6 font-display text-[64px] font-medium leading-[1.02] tracking-[-0.03em] md:text-[80px]"
-                    style="animation-delay: 100ms">
+                <h1 class="mt-6 font-display text-[64px] font-medium leading-[1.02] tracking-[-0.03em] md:text-[80px]">
                     Find the right lawyer, for the moment that matters.
                 </h1>
 
-                <p class="animate-fade-up mt-6 max-w-xl text-[18px] leading-relaxed text-secondary"
-                   style="animation-delay: 200ms">
+                <p class="mt-6 max-w-xl text-[18px] leading-relaxed text-secondary">
                     Transparent pricing. Verified credentials. Real-time availability. Meet Vietnam's most trusted legal professionals on your terms.
                 </p>
 
-                <div class="animate-fade-up mt-10 flex flex-wrap items-center gap-4"
-                     style="animation-delay: 300ms">
+                <div class="mt-10 flex flex-wrap items-center gap-4">
                     <x-button variant="primary" href="/lawyers">Browse lawyers →</x-button>
                     <x-button variant="ghost" href="#how-it-works">How it works</x-button>
                 </div>
             </div>
 
             <div class="md:col-span-2">
-                <div class="relative animate-fade-up" style="animation-delay: 200ms">
+                <div class="relative">
                     <div aria-hidden="true"
                          class="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-br from-muted to-accent opacity-15 blur-3xl"></div>
                     <img src="https://images.unsplash.com/photo-1758518727600-2c5f48419eac?q=80"
