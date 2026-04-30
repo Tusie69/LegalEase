@@ -97,20 +97,18 @@
 
         <div class="mt-10 divide-y divide-text/10 border-y border-text/10">
             @foreach ($roles as $role)
-                <article class="grid gap-6 py-8 md:grid-cols-[1fr_auto] md:items-baseline">
-                    <div>
-                        <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[30px]">
-                            {{ $role['title'] }}
-                        </h3>
-                        <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
-                            {{ $role['meta'] }}
-                        </p>
-                        <p class="mt-4 max-w-[640px] text-[15px] leading-relaxed text-secondary">
-                            {{ $role['desc'] }}
-                        </p>
-                    </div>
+                <article class="py-10">
+                    <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[30px]">
+                        {{ $role['title'] }}
+                    </h3>
+                    <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
+                        {{ $role['meta'] }}
+                    </p>
+                    <p class="mt-4 max-w-[640px] text-[15px] leading-relaxed text-secondary">
+                        {{ $role['desc'] }}
+                    </p>
                     <a href="mailto:careers@legalease.vn?subject={{ urlencode('Application: ' . $role['title']) }}"
-                       class="inline-flex items-center gap-2 self-start whitespace-nowrap text-[14px] font-medium text-text transition-colors hover:text-secondary">
+                       class="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
                         Apply
                         <span aria-hidden="true">→</span>
                     </a>
@@ -126,12 +124,20 @@
             <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">How we hire</h2>
         </div>
 
-        <div class="mt-10 grid gap-12 md:grid-cols-3">
+        <div class="mt-10 max-w-[720px] divide-y divide-text/10 border-y border-text/10">
             @foreach ($hiring as $step)
-                <div>
-                    <p class="font-display text-[14px] font-medium text-muted">{{ $step['n'] }}</p>
-                    <h3 class="mt-3 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                    <p class="mt-2 text-[15px] leading-relaxed text-muted">{{ $step['desc'] }}</p>
+                <div class="grid grid-cols-[64px_1fr] items-baseline gap-6 py-8 md:grid-cols-[88px_1fr]">
+                    <p class="font-display text-[36px] font-medium leading-none text-muted md:text-[44px]">
+                        {{ $step['n'] }}
+                    </p>
+                    <div>
+                        <h3 class="font-display text-[24px] font-medium tracking-tight md:text-[28px]">
+                            {{ $step['title'] }}
+                        </h3>
+                        <p class="mt-2 text-[15px] leading-relaxed text-secondary">
+                            {{ $step['desc'] }}
+                        </p>
+                    </div>
                 </div>
             @endforeach
         </div>
