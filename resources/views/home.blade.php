@@ -65,7 +65,7 @@
     </section>
 
     {{-- Practice areas --}}
-    <section class="mx-auto max-w-[1280px] px-8 py-32">
+    <section class="mx-auto max-w-[1280px] px-8 pt-20">
         <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Areas we cover</h2>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -80,7 +80,7 @@
     </section>
 
     {{-- Featured lawyers --}}
-    <section class="mx-auto max-w-[1280px] px-8 py-32">
+    <section class="mx-auto max-w-[1280px] px-8 pt-20">
         <div class="flex items-end justify-between">
             <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Featured lawyers</h2>
             <x-button variant="ghost" href="/lawyers">See all lawyers →</x-button>
@@ -94,7 +94,7 @@
     </section>
 
     {{-- How it works --}}
-    <section id="how-it-works" class="mx-auto max-w-[1280px] px-8 py-32">
+    <section id="how-it-works" class="mx-auto max-w-[1280px] px-8 py-20">
         <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">How it works</h2>
 
         @php
