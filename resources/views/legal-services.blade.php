@@ -2,23 +2,30 @@
 
 @php
     $practiceAreas = \App\Data\PracticeAreas::all();
+    $firstHalf  = array_slice($practiceAreas, 0, 3);
+    $secondHalf = array_slice($practiceAreas, 3);
 @endphp
 
 @section('content')
-    {{-- Hero --}}
-    <section class="mx-auto flex min-h-[320px] max-w-[1280px] items-end px-8 pt-32 pb-16">
-        <div class="max-w-[820px]">
+    {{-- Hero: full-bleed photo with overlay --}}
+    <section class="relative -mt-[72px] flex min-h-[70vh] items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=2000&h=1200&fit=crop&q=80"
+             alt=""
+             class="absolute inset-0 h-full w-full object-cover grayscale">
+        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+
+        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
             <p class="animate-fade-up text-[12px] font-medium uppercase tracking-[0.1em] text-muted"
                style="animation-delay: 0ms">
                 Browse by need
             </p>
 
-            <h1 class="animate-fade-up mt-6 font-display text-[52px] font-medium leading-[1.04] tracking-[-0.02em] md:text-[76px]"
+            <h1 class="animate-fade-up mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]"
                 style="animation-delay: 100ms">
                 Not sure where to start?
             </h1>
 
-            <p class="animate-fade-up mt-8 max-w-[640px] text-[18px] leading-relaxed text-secondary"
+            <p class="animate-fade-up mx-auto mt-8 max-w-[600px] text-[18px] leading-relaxed text-secondary"
                style="animation-delay: 200ms">
                 Most people don't know what kind of lawyer they need until someone explains it. This page does that.
             </p>
@@ -26,55 +33,38 @@
     </section>
 
     {{-- Intro --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-16">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <p class="max-w-[720px] text-[17px] leading-relaxed text-secondary">
             Each practice area below covers a different kind of legal problem. Find the one that matches your situation, then browse lawyers who specialize in it.
         </p>
     </section>
 
-    {{-- Practice areas grid --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-16">
-        <div class="grid gap-px overflow-hidden rounded-2xl bg-text/10 md:grid-cols-2">
-            @foreach ($practiceAreas as $i => $area)
-                <article class="flex flex-col bg-bg p-8 md:p-10">
-                    <div class="flex items-center gap-4">
-                        <span class="font-display text-[14px] font-medium text-muted">
-                            {{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}
-                        </span>
-                        <span class="h-px flex-1 max-w-[40px] bg-text/20"></span>
-                        <x-icon :name="$area['icon']" :size="22" class="text-muted" />
-                    </div>
+    {{-- Practice areas grid: first half --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-12">
+        <div class="grid gap-6 md:grid-cols-3">
+            @foreach ($firstHalf as $i => $area)
+                @include('partials.legal-services-card', ['area' => $area, 'number' => $i + 1])
+            @endforeach
+        </div>
+    </section>
 
-                    <h2 class="mt-6 font-display text-[28px] font-medium leading-tight tracking-[-0.01em] md:text-[32px]">
-                        {{ $area['name'] }}
-                    </h2>
+    {{-- Pull quote --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+        <div class="border-y border-text/10 py-16 md:py-20">
+            <blockquote class="mx-auto max-w-[900px] text-center font-display text-[28px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[40px]">
+                <span class="text-muted">“</span>You're going through a divorce and need to figure out child custody.<span class="text-muted">”</span>
+            </blockquote>
+            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.12em] text-muted">
+                The kind of sentence that brings someone here
+            </p>
+        </div>
+    </section>
 
-                    <p class="mt-3 text-[15px] text-muted">
-                        {{ $area['description'] }}
-                    </p>
-
-                    @if (!empty($area['scenarios']))
-                        <p class="mt-8 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                            You might come here if
-                        </p>
-                        <ul class="mt-4 space-y-3 text-[15px] leading-relaxed text-secondary">
-                            @foreach ($area['scenarios'] as $scenario)
-                                <li class="flex gap-3">
-                                    <span class="mt-[10px] block h-px w-3 flex-none bg-text/30"></span>
-                                    <span>{{ $scenario }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                    <div class="mt-auto pt-8">
-                        <a href="/lawyers"
-                           class="inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                            Browse {{ $area['name'] }} lawyers
-                            <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-                </article>
+    {{-- Practice areas grid: second half --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+        <div class="grid gap-6 md:grid-cols-3">
+            @foreach ($secondHalf as $i => $area)
+                @include('partials.legal-services-card', ['area' => $area, 'number' => $i + 4])
             @endforeach
         </div>
     </section>
