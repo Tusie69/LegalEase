@@ -12,7 +12,7 @@
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Company</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
                     <li><a href="/about" class="text-text transition-colors hover:text-accent">About</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Careers</a></li>
+                    <li><a href="/careers" class="text-text transition-colors hover:text-accent">Careers</a></li>
                     <li><a href="#" class="text-text transition-colors hover:text-accent">Press</a></li>
                 </ul>
             </div>
