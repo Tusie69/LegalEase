@@ -76,10 +76,10 @@
 
     {{-- Two-column: sticky context (left) + scrolling roles (right) --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <div class="grid gap-16 md:grid-cols-[340px_1fr]">
+        <div class="grid gap-16 md:grid-cols-3">
 
             {{-- Left: sticky context --}}
-            <aside class="self-start md:sticky md:top-[88px]">
+            <aside class="self-start md:sticky md:top-[88px] md:col-span-1">
                 {{-- Why work here --}}
                 <div>
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Why work here</p>
@@ -119,7 +119,7 @@
             </aside>
 
             {{-- Right: roles list --}}
-            <div>
+            <div class="md:col-span-2">
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Open positions</p>
                 <h2 class="mt-4 font-display text-[36px] font-medium tracking-[-0.01em] md:text-[44px]">
                     {{ count($roles) }} roles, all in Vietnam.
@@ -160,8 +160,9 @@
         <p class="mx-auto mt-6 max-w-[520px] text-[17px] text-secondary">
             We're a small team and we keep an eye out for people who care about legal access in Vietnam.
         </p>
-        <div class="mt-10 flex justify-center">
-            <x-button variant="primary" href="mailto:careers@legalease.vn">careers@legalease.vn</x-button>
+        <div class="mt-10 flex flex-col items-center gap-3">
+            <x-button variant="primary" href="mailto:careers@legalease.vn">Get in touch →</x-button>
+            <p class="text-[13px] text-muted">careers@legalease.vn</p>
         </div>
     </section>
 @endsection
