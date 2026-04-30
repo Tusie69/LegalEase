@@ -2,53 +2,43 @@
 
 @php
     $values = [
-        ['title' => 'Mission-driven',  'desc' => "Every feature changes how someone in Vietnam finds legal help."],
-        ['title' => 'Hybrid in Hanoi', 'desc' => "Three days in office, two days remote. Anchored in one city."],
-        ['title' => 'Real impact',     'desc' => "Small team. The work you ship reaches users this week."],
-        ['title' => 'Learning budget', 'desc' => "Annual stipend for courses, conferences, books, whatever sharpens your craft."],
+        ['title' => 'Mission-driven',  'desc' => "Work that reaches users this week."],
+        ['title' => 'Hybrid in Hanoi', 'desc' => "Three days office, two days remote."],
+        ['title' => 'Real impact',     'desc' => "Small team. Your work ships fast."],
+        ['title' => 'Learning budget', 'desc' => "Annual stipend for what sharpens your craft."],
     ];
 
     $hiring = [
-        ['n' => '01', 'title' => 'Apply',          'desc' => "Short application, no cover letter."],
-        ['n' => '02', 'title' => 'Two interviews', 'desc' => "One with the hiring manager, one with the team."],
-        ['n' => '03', 'title' => 'Decision',       'desc' => "Yes, no, or what's needed within ten days."],
+        ['n' => '01', 'title' => 'Apply',          'desc' => "No cover letter."],
+        ['n' => '02', 'title' => 'Two interviews', 'desc' => "Hiring manager, then team."],
+        ['n' => '03', 'title' => 'Decision',       'desc' => "Within ten days."],
     ];
 
     $roles = [
         [
             'title' => 'Senior Backend Engineer',
-            'department' => 'Engineering',
-            'location' => 'Hanoi',
-            'type' => 'Full-time',
-            'description' => "Build and maintain the platform that connects 500+ lawyers with clients across Vietnam. Laravel, MySQL, and a small React front end.",
+            'meta'  => 'Engineering · Hanoi · Full-time',
+            'desc'  => "Laravel and MySQL. Scale the platform that powers 500+ lawyer profiles.",
         ],
         [
             'title' => 'Product Designer',
-            'department' => 'Product',
-            'location' => 'Hanoi',
-            'type' => 'Full-time',
-            'description' => "Lead the customer flow from search to consultation. Work alongside engineering and lawyers to design end-to-end experiences.",
+            'meta'  => 'Product · Hanoi · Full-time',
+            'desc'  => "Lead the customer flow from search to consultation.",
         ],
         [
             'title' => 'Lawyer Verification Specialist',
-            'department' => 'Operations',
-            'location' => 'Hanoi',
-            'type' => 'Full-time',
-            'description' => "Vet every lawyer before they list. Review credentials, bar memberships, and practice histories. Background in law preferred.",
+            'meta'  => 'Operations · Hanoi · Full-time',
+            'desc'  => "Vet every lawyer before they list. Background in law preferred.",
         ],
         [
             'title' => 'Customer Operations Lead',
-            'department' => 'Operations',
-            'location' => 'Hanoi or Ho Chi Minh City',
-            'type' => 'Full-time',
-            'description' => "First responder for client questions, escalations, and platform issues. Build the playbooks that scale our support function.",
+            'meta'  => 'Operations · Hanoi or Ho Chi Minh City · Full-time',
+            'desc'  => "First responder for clients. Build the playbooks that scale support.",
         ],
         [
             'title' => 'Marketing Manager',
-            'department' => 'Marketing',
-            'location' => 'Hanoi',
-            'type' => 'Full-time',
-            'description' => "Run brand, content, and growth across Vietnam. Tell our story to people who haven't thought about hiring a lawyer online.",
+            'meta'  => 'Marketing · Hanoi · Full-time',
+            'desc'  => "Brand, content, and growth across Vietnam.",
         ],
     ];
 @endphp
@@ -67,28 +57,22 @@
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
                 Build the legal layer for Vietnam.
             </h1>
-
-            <p class="mx-auto mt-8 max-w-[600px] text-[18px] leading-relaxed text-secondary">
-                A small team in Hanoi making legal help feel like a choice, not a guess.
-            </p>
         </div>
     </section>
 
-    {{-- Two-column: sticky context (left) + scrolling roles (right) --}}
+    {{-- Two-column: context (left) + roles (right) --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="grid gap-16 md:grid-cols-3">
 
-            {{-- Left: sticky context --}}
-            <aside class="self-start md:sticky md:top-[88px] md:col-span-1">
-                {{-- Why work here --}}
+            {{-- Left: context --}}
+            <aside class="md:col-span-1">
                 <div>
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Why work here</p>
                     <p class="mt-4 text-[16px] leading-relaxed text-secondary">
-                        We're building the legal platform Vietnam doesn't have yet. A small team out of Hanoi connecting people to verified lawyers, fast and clear.
+                        We're building the legal platform Vietnam doesn't have yet. Small team, big mission.
                     </p>
                 </div>
 
-                {{-- Values --}}
                 <div class="mt-12">
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">What it's like</p>
                     <div class="mt-4 space-y-5">
@@ -101,7 +85,6 @@
                     </div>
                 </div>
 
-                {{-- Hiring process --}}
                 <div class="mt-12">
                     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">How we hire</p>
                     <div class="mt-4 space-y-5">
@@ -118,29 +101,27 @@
                 </div>
             </aside>
 
-            {{-- Right: roles list --}}
+            {{-- Right: roles --}}
             <div class="md:col-span-2">
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Open positions</p>
                 <h2 class="mt-4 font-display text-[36px] font-medium tracking-[-0.01em] md:text-[44px]">
                     {{ count($roles) }} roles, all in Vietnam.
                 </h2>
 
-                <div class="mt-10 divide-y divide-text/10 border-y border-text/10">
+                <div class="mt-10 space-y-12">
                     @foreach ($roles as $role)
-                        <article class="grid gap-6 py-8 md:grid-cols-[1fr_auto] md:items-start">
-                            <div>
-                                <h3 class="font-display text-[24px] font-medium leading-tight tracking-[-0.01em] md:text-[26px]">
-                                    {{ $role['title'] }}
-                                </h3>
-                                <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
-                                    {{ $role['department'] }} · {{ $role['location'] }} · {{ $role['type'] }}
-                                </p>
-                                <p class="mt-4 max-w-[560px] text-[15px] leading-relaxed text-secondary">
-                                    {{ $role['description'] }}
-                                </p>
-                            </div>
+                        <article>
+                            <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[28px]">
+                                {{ $role['title'] }}
+                            </h3>
+                            <p class="mt-2 text-[13px] uppercase tracking-[0.08em] text-muted">
+                                {{ $role['meta'] }}
+                            </p>
+                            <p class="mt-4 max-w-[560px] text-[15px] leading-relaxed text-secondary">
+                                {{ $role['desc'] }}
+                            </p>
                             <a href="mailto:careers@legalease.vn?subject={{ urlencode('Application: ' . $role['title']) }}"
-                               class="inline-flex items-center gap-2 self-end whitespace-nowrap text-[14px] font-medium text-text transition-colors hover:text-secondary md:self-start md:mt-2">
+                               class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
                                 Apply
                                 <span aria-hidden="true">→</span>
                             </a>
@@ -153,13 +134,9 @@
 
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Don't see your role?</p>
-        <h2 class="mt-6 font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Send us a note anyway.
+        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
+            Don't see your role?
         </h2>
-        <p class="mx-auto mt-6 max-w-[520px] text-[17px] text-secondary">
-            We're a small team and we keep an eye out for people who care about legal access in Vietnam.
-        </p>
         <div class="mt-10 flex flex-col items-center gap-3">
             <x-button variant="primary" href="mailto:careers@legalease.vn">Get in touch →</x-button>
             <p class="text-[13px] text-muted">careers@legalease.vn</p>
