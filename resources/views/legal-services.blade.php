@@ -8,7 +8,7 @@
 
 @section('content')
     {{-- Hero: full-bleed photo with overlay --}}
-    <section class="relative -mt-[72px] flex min-h-[70vh] items-center overflow-hidden">
+    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=2000&h=1200&fit=crop&q=80"
              alt=""
              class="absolute inset-0 h-full w-full object-cover grayscale">
@@ -41,7 +41,7 @@
     {{-- Pull quote --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-20">
         <div class="border-y border-text/10 py-16 md:py-20">
-            <blockquote class="mx-auto max-w-[900px] text-center font-display text-[28px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[40px]">
+            <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
                 <span class="text-muted">“</span>You're going through a divorce and need to figure out child custody.<span class="text-muted">”</span>
             </blockquote>
             <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.12em] text-muted">

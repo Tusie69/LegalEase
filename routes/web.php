@@ -22,6 +22,10 @@ Route::get('/about', fn () => view('about'))->name('about');
 Route::get('/contact', fn () => view('contact'))->name('contact');
 Route::get('/legal-services', fn () => view('legal-services'))->name('legal-services');
 Route::get('/careers', fn () => view('careers'))->name('careers');
+Route::get('/press', fn () => view('press'))->name('press');
+
+Route::get('/lawyer-login', fn () => view('lawyer-login'))->name('lawyer.login');
+Route::get('/lawyer-register', fn () => view('lawyer-register'))->name('lawyer.register');
 
 Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
 

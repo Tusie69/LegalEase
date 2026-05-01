@@ -64,17 +64,6 @@
                     </p>
                 </div>
 
-                {{-- Social --}}
-                <div>
-                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Follow</p>
-                    <p class="mt-3 text-[15px] text-text">
-                        <a href="#" class="transition-colors hover:text-accent">LinkedIn</a>
-                        <span class="mx-2 text-muted">·</span>
-                        <a href="#" class="transition-colors hover:text-accent">Facebook</a>
-                        <span class="mx-2 text-muted">·</span>
-                        <a href="#" class="transition-colors hover:text-accent">Zalo</a>
-                    </p>
-                </div>
             </div>
 
             {{-- Right column (form) --}}

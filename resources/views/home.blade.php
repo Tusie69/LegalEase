@@ -61,9 +61,9 @@
     </section>
 
     {{-- Practice areas --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="flex items-end justify-between">
-            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Areas we cover</h2>
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Areas we cover</h2>
             <x-button variant="ghost" href="/legal-services">See all areas →</x-button>
         </div>
 
@@ -79,9 +79,9 @@
     </section>
 
     {{-- Featured lawyers --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="flex items-end justify-between">
-            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">Featured lawyers</h2>
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Featured lawyers</h2>
             <x-button variant="ghost" href="/lawyers">See all lawyers →</x-button>
         </div>
 
@@ -93,8 +93,8 @@
     </section>
 
     {{-- How it works --}}
-    <section id="how-it-works" class="mx-auto max-w-[1280px] px-8 py-20">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[40px]">How it works</h2>
+    <section id="how-it-works" class="mx-auto max-w-[1280px] px-8 py-24">
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">How it works</h2>
 
         @php
             $steps = [
@@ -104,7 +104,7 @@
             ];
         @endphp
 
-        <div class="relative mt-16 grid gap-12 md:grid-cols-3">
+        <div class="relative mt-12 grid gap-12 md:grid-cols-3">
             <div aria-hidden="true"
                  class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-text/10 md:block"></div>
 

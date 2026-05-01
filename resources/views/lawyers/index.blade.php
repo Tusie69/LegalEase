@@ -5,7 +5,7 @@
 
     $specialties = [
         'Family Law', 'Business Law', 'Real Estate', 'Criminal Defense',
-        'Labor Law', 'Civil Litigation', 'Tax Law', 'Immigration Law',
+        'Labor Law', 'Civil Litigation',
     ];
     $languages = ['Vietnamese', 'English', 'Both'];
 @endphp
@@ -32,7 +32,7 @@
 
                     {{-- Specialty --}}
                     <div class="mt-6">
-                        <h4 class="text-[13px] font-medium uppercase tracking-[0.08em] text-muted">Specialty</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Specialty</h4>
                         <div class="mt-3 space-y-2">
                             @foreach ($specialties as $spec)
                                 <label class="flex items-center gap-3 text-[14px] text-text">
@@ -46,18 +46,18 @@
 
                     {{-- Price range --}}
                     <div class="mt-8" x-data="{ max: 3000000 }">
-                        <h4 class="text-[13px] font-medium uppercase tracking-[0.08em] text-muted">Price range</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Price range</h4>
                         <input type="range" min="500000" max="5000000" step="100000"
                                x-model="max"
                                class="mt-4 w-full accent-accent">
                         <p class="mt-2 text-[13px] text-muted">
-                            500,000 — <span x-text="Number(max).toLocaleString('en-US')"></span> VND
+                            500,000 - <span x-text="Number(max).toLocaleString('en-US')"></span> VND
                         </p>
                     </div>
 
                     {{-- Minimum rating --}}
                     <div class="mt-8" x-data="{ stars: 4 }">
-                        <h4 class="text-[13px] font-medium uppercase tracking-[0.08em] text-muted">Minimum rating</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Minimum rating</h4>
                         <div class="mt-3 flex items-center gap-1">
                             @for ($i = 1; $i <= 5; $i++)
                                 <button type="button"
@@ -77,7 +77,7 @@
 
                     {{-- Language --}}
                     <div class="mt-8">
-                        <h4 class="text-[13px] font-medium uppercase tracking-[0.08em] text-muted">Language</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Language</h4>
                         <div class="mt-3 space-y-2">
                             @foreach ($languages as $lang)
                                 <label class="flex items-center gap-3 text-[14px] text-text">

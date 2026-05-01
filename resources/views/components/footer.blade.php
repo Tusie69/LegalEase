@@ -11,25 +11,25 @@
             <div>
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Company</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
-                    <li><a href="/about" class="text-text transition-colors hover:text-accent">About</a></li>
+                    <li><a href="/about" class="text-text transition-colors hover:text-accent">About Us</a></li>
                     <li><a href="/careers" class="text-text transition-colors hover:text-accent">Careers</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Press</a></li>
+                    <li><a href="{{ route('press') }}" class="text-text transition-colors hover:text-accent">Press</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">For Lawyers</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Join the platform</a></li>
+                    <li><a href="{{ route('lawyer.register') }}" class="text-text transition-colors hover:text-accent">Join the platform</a></li>
                     <li><a href="#" class="text-text transition-colors hover:text-accent">Resources</a></li>
-                    <li><a href="{{ route('login') }}" class="text-text transition-colors hover:text-accent">Lawyer login</a></li>
+                    <li><a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">Lawyer login</a></li>
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Support</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Contact</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">Contact</a></li>
                     <li><a href="#" class="text-text transition-colors hover:text-accent">FAQ</a></li>
                     <li><a href="#" class="text-text transition-colors hover:text-accent">Terms</a></li>
                     <li><a href="#" class="text-text transition-colors hover:text-accent">Privacy</a></li>

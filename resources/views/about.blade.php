@@ -150,7 +150,7 @@
                              loading="lazy"
                              class="aspect-[4/5] w-full object-cover object-top grayscale">
                     </div>
-                    <h3 class="mt-5 font-display text-[22px] font-medium tracking-tight">{{ $member['name'] }}</h3>
+                    <h3 class="mt-5 font-display text-[24px] font-medium tracking-tight">{{ $member['name'] }}</h3>
                     <p class="mt-1 text-[13px] uppercase tracking-[0.06em] text-muted">{{ $member['role'] }}</p>
                     <p class="mt-3 text-[15px] leading-relaxed text-secondary">{{ $member['bio'] }}</p>
                 </div>
@@ -186,7 +186,7 @@
 
     {{-- CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
-        <h2 class="font-display text-[44px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[60px]">
+        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
             Ready to find your lawyer?
         </h2>
         <div class="mt-10 flex justify-center">
