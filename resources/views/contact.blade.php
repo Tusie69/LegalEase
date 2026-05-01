@@ -149,7 +149,7 @@
     </section>
 
     {{-- Reassurance line --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-20 pb-24 text-center">
+    <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <p class="text-[14px] text-muted">
             All messages are read by a real person. We aim to respond within one business day.
         </p>

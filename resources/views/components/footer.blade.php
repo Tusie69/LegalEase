@@ -30,9 +30,9 @@
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Support</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
                     <li><a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">Contact</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">FAQ</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Terms</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Privacy</a></li>
+                    <li><a href="{{ route('faq') }}" class="text-text transition-colors hover:text-accent">FAQ</a></li>
+                    <li><a href="{{ route('terms') }}" class="text-text transition-colors hover:text-accent">Terms</a></li>
+                    <li><a href="{{ route('privacy') }}" class="text-text transition-colors hover:text-accent">Privacy</a></li>
                 </ul>
             </div>
         </div>

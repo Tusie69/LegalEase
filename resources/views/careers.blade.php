@@ -55,8 +55,8 @@
 
 @section('content')
     {{-- Hero: full-bleed photo --}}
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=2000&h=1200&fit=crop&q=80"
+    <section class="relative -mt-[72px] flex min-h-screen items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80"
              alt=""
              class="absolute inset-0 h-full w-full object-cover grayscale">
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
@@ -123,7 +123,7 @@
                         <p class="font-display text-[28px] font-medium tracking-tight md:text-[32px]">
                             {{ $role['salary'] }}
                         </p>
-                        <p class="mt-1 text-[12px] uppercase tracking-[0.08em] text-muted">
+                        <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-muted">
                             VND / month
                         </p>
                     </div>

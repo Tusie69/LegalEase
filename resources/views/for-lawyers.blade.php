@@ -41,8 +41,8 @@
 
 @section('content')
     {{-- Hero: full-bleed photo --}}
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80"
+    <section class="relative -mt-[72px] flex min-h-screen items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1668239596261-62f94059533e?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
              alt=""
              class="absolute inset-0 h-full w-full object-cover grayscale">
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
@@ -87,6 +87,18 @@
                     <p class="mt-2 text-[14px] leading-relaxed text-muted">{{ $v['desc'] }}</p>
                 </div>
             @endforeach
+        </div>
+    </section>
+
+    {{-- Lawyer testimonial --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+        <div class="border-y border-text/10 py-20 md:py-24">
+            <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
+                <span class="text-muted">“</span>Six months in, half my new clients come through LegalEase. The verification gave me credibility I couldn't buy.<span class="text-muted">”</span>
+            </blockquote>
+            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
+                Lê Văn Thanh, Civil Litigation, Ho Chi Minh City
+            </p>
         </div>
     </section>
 

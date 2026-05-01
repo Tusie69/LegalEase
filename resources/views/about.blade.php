@@ -23,17 +23,6 @@
         </div>
     </section>
 
-    {{-- Pronunciation moment --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24 text-center">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Le · gal · ease</p>
-        <h2 class="mx-auto mt-6 max-w-[820px] font-display text-[40px] font-medium leading-[1.15] tracking-[-0.01em] md:text-[56px]">
-            LegalEase: <span class="text-secondary">/lē &middot; gəl &middot; ēz/</span>
-        </h2>
-        <p class="mx-auto mt-6 max-w-[600px] text-[17px] leading-relaxed text-secondary">
-            A platform built so finding a lawyer feels less like a guess and more like a choice.
-        </p>
-    </section>
-
     {{-- Problem block: image left, text right --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32">
         <div class="grid items-center gap-12 md:grid-cols-2">
@@ -151,7 +140,7 @@
                              class="aspect-[4/5] w-full object-cover object-top grayscale">
                     </div>
                     <h3 class="mt-5 font-display text-[24px] font-medium tracking-tight">{{ $member['name'] }}</h3>
-                    <p class="mt-1 text-[13px] uppercase tracking-[0.06em] text-muted">{{ $member['role'] }}</p>
+                    <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-muted">{{ $member['role'] }}</p>
                     <p class="mt-3 text-[15px] leading-relaxed text-secondary">{{ $member['bio'] }}</p>
                 </div>
             @endforeach

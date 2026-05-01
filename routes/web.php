@@ -29,6 +29,10 @@ Route::get('/press', fn () => view('press'))->name('press');
 
 Route::get('/for-lawyers', fn () => view('for-lawyers'))->name('for-lawyers');
 Route::get('/lawyer-resources', fn () => view('lawyer-resources'))->name('lawyer.resources');
+
+Route::get('/terms', fn () => view('terms'))->name('terms');
+Route::get('/privacy', fn () => view('privacy'))->name('privacy');
+Route::get('/faq', fn () => view('faq'))->name('faq');
 Route::get('/lawyer-login', fn () => view('lawyer-login'))->name('lawyer.login');
 Route::post('/lawyer-login', [AuthController::class, 'lawyerLogin'])->name('lawyer.login.store');
 Route::get('/lawyer-register', fn () => view('lawyer-register'))->name('lawyer.register');

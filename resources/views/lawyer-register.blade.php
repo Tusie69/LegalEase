@@ -21,15 +21,15 @@
 
                 <div class="grid gap-5 md:grid-cols-2">
                     <div>
-                        <label for="first_name" class="block text-[13px] font-medium text-muted">First name</label>
-                        <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}"
+                        <label for="first_name" class="block text-[13px] font-medium text-muted">First name <span class="text-gold">*</span></label>
+                        <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}" required
                                placeholder="Lan"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                         @error('first_name') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
                     </div>
                     <div>
-                        <label for="last_name" class="block text-[13px] font-medium text-muted">Last name</label>
-                        <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}"
+                        <label for="last_name" class="block text-[13px] font-medium text-muted">Last name <span class="text-gold">*</span></label>
+                        <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}" required
                                placeholder="Nguyễn"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                         @error('last_name') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -37,16 +37,16 @@
                 </div>
 
                 <div>
-                    <label for="email" class="block text-[13px] font-medium text-muted">Email</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}"
+                    <label for="email" class="block text-[13px] font-medium text-muted">Email <span class="text-gold">*</span></label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required
                            placeholder="you@example.com"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     @error('email') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
-                    <label for="phone" class="block text-[13px] font-medium text-muted">Phone</label>
-                    <input id="phone" type="tel" name="phone" value="{{ old('phone') }}"
+                    <label for="phone" class="block text-[13px] font-medium text-muted">Phone <span class="text-gold">*</span></label>
+                    <input id="phone" type="tel" name="phone" value="{{ old('phone') }}" required
                            placeholder="09xxxxxxxx"
                            pattern="[\d\+\s\-\(\)]{9,15}"
                            title="Digits, spaces, dashes, parentheses, and a leading + are allowed."
@@ -55,25 +55,25 @@
                 </div>
 
                 <div>
-                    <label for="bar_association" class="block text-[13px] font-medium text-muted">Bar association</label>
-                    <input id="bar_association" type="text" name="bar_association" value="{{ old('bar_association') }}"
+                    <label for="bar_association" class="block text-[13px] font-medium text-muted">Bar association <span class="text-gold">*</span></label>
+                    <input id="bar_association" type="text" name="bar_association" value="{{ old('bar_association') }}" required
                            placeholder="Hanoi Bar Association"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     @error('bar_association') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
-                    <label for="bar_card_number" class="block text-[13px] font-medium text-muted">Bar card number</label>
-                    <input id="bar_card_number" type="text" name="bar_card_number" value="{{ old('bar_card_number') }}"
+                    <label for="bar_card_number" class="block text-[13px] font-medium text-muted">Bar card number <span class="text-gold">*</span></label>
+                    <input id="bar_card_number" type="text" name="bar_card_number" value="{{ old('bar_card_number') }}" required
                            placeholder="e.g. 12345/HN"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     @error('bar_card_number') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div x-data="{ show: false }">
-                    <label for="password" class="block text-[13px] font-medium text-muted">Password</label>
+                    <label for="password" class="block text-[13px] font-medium text-muted">Password <span class="text-gold">*</span></label>
                     <div class="relative mt-2">
-                        <input id="password" name="password"
+                        <input id="password" name="password" required
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
                                class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
@@ -88,9 +88,9 @@
                 </div>
 
                 <div x-data="{ show: false }">
-                    <label for="password_confirmation" class="block text-[13px] font-medium text-muted">Confirm password</label>
+                    <label for="password_confirmation" class="block text-[13px] font-medium text-muted">Confirm password <span class="text-gold">*</span></label>
                     <div class="relative mt-2">
-                        <input id="password_confirmation" name="password_confirmation"
+                        <input id="password_confirmation" name="password_confirmation" required
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
                                class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
@@ -102,11 +102,13 @@
                     </div>
                 </div>
 
-                <label class="flex items-start gap-2 text-[13px] text-muted">
-                    <input type="checkbox" name="agreed_terms" value="1" class="mt-0.5 h-4 w-4 rounded border-text/20 bg-surface text-accent focus:ring-accent">
-                    <span>I agree to the <a href="#" class="text-text transition-colors hover:text-accent">Terms of Service</a> and <a href="#" class="text-text transition-colors hover:text-accent">Privacy Policy</a>.</span>
-                </label>
-                @error('agreed_terms') <p class="text-[13px] text-error">{{ $message }}</p> @enderror
+                <div>
+                    <label class="flex items-start gap-2 text-[13px] text-muted">
+                        <input type="checkbox" name="agreed_terms" value="1" required @checked(old('agreed_terms')) class="mt-0.5 h-4 w-4 rounded border-text/20 bg-surface text-accent focus:ring-accent">
+                        <span>I agree to the <a href="{{ route('terms') }}" class="text-text transition-colors hover:text-accent">Terms of Service</a> and <a href="{{ route('privacy') }}" class="text-text transition-colors hover:text-accent">Privacy Policy</a>. <span class="text-gold">*</span></span>
+                    </label>
+                    @error('agreed_terms') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
+                </div>
 
                 <x-button variant="primary" type="submit" class="w-full">Submit application</x-button>
 

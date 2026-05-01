@@ -39,7 +39,7 @@
     </section>
 
     {{-- Pull quote --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="border-y border-text/10 py-16 md:py-20">
             <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
                 <span class="text-muted">“</span>You're going through a divorce and need to figure out child custody.<span class="text-muted">”</span>
@@ -51,7 +51,7 @@
     </section>
 
     {{-- Practice areas grid: second half --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-20">
+    <section class="mx-auto max-w-[1280px] px-8 pt-24">
         <div class="grid gap-6 md:grid-cols-3">
             @foreach ($secondHalf as $i => $area)
                 @include('partials.legal-services-card', ['area' => $area, 'number' => $i + 4])

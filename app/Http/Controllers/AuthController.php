@@ -33,9 +33,11 @@ class AuthController extends Controller
                 'date_of_birth' => 'required|date',
                 'gender'        => 'required|string|in:female,male,other,undisclosed',
                 'password'      => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+                'agreed_terms'  => 'required|accepted',
             ],
             [
-                'phone.regex' => 'Phone number can only contain digits, spaces, dashes, parentheses, and a leading +.',
+                'phone.regex'           => 'Phone number can only contain digits, spaces, dashes, parentheses, and a leading +.',
+                'agreed_terms.accepted' => 'You must agree to the Terms of Service and Privacy Policy.',
             ]
         );
 
