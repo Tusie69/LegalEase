@@ -38,7 +38,6 @@ Route::post('/lawyer-login', [AuthController::class, 'lawyerLogin'])->name('lawy
 Route::get('/lawyer-register', fn () => view('lawyer-register'))->name('lawyer.register');
 Route::post('/lawyer-register', [AuthController::class, 'lawyerRegister'])->name('lawyer.register.store');
 
-// Guest booking flow — Steps 7 onward
 Route::get('/book/start', function (\Illuminate\Http\Request $request) {
     $request->validate([
         'lawyer' => 'required|string',
@@ -117,12 +116,21 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
     Route::get('/lawyer-dashboard', fn () => view('lawyer-dashboard'))->name('lawyer.dashboard');
+    Route::get('/lawyer-credentials', fn () => view('lawyer-credentials'))->name('lawyer.credentials');
+    Route::post('/lawyer-credentials', function () {
+        return redirect()->route('lawyer.dashboard')->with('status', 'Documents submitted. Our team will review within 2 to 3 business days.');
+    })->name('lawyer.credentials.store');
     Route::get('/appointments', [BookingController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/book/{lawyer}', [BookingController::class, 'showBookingForm'])->name('appointments.book');
     Route::post('/appointments/book/{lawyer}', [BookingController::class, 'storeAppointment'])->name('appointments.store');

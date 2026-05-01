@@ -7,13 +7,14 @@
     $onboardingSteps = [
         [
             'title'  => 'Account created',
-            'desc'   => 'Your application is submitted.',
+            'desc'   => 'Your account is set up.',
             'status' => 'done',
         ],
         [
-            'title'  => 'Profile under review',
-            'desc'   => "We're verifying your bar credentials. Usually within a few business days.",
+            'title'  => 'Upload credentials',
+            'desc'   => 'Submit your bar card, identity document, and education certificate. Reviewed within 2 to 3 business days.',
             'status' => 'current',
+            'action' => ['route' => 'lawyer.credentials', 'label' => 'Upload now →'],
         ],
         [
             'title'  => 'Set availability',
@@ -29,7 +30,21 @@
 @endphp
 
 @section('content')
-<section class="mx-auto max-w-[1280px] px-8 py-20">
+{{-- Visual strip --}}
+<div class="relative -mt-[72px] h-[280px] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1714974528749-fc028e54feb9?q=80"
+         alt=""
+         class="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.55]">
+    <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/20 to-bg"></div>
+</div>
+
+<section class="mx-auto max-w-[1280px] px-8 pt-24 pb-24">
+    @if (session('status'))
+        <div class="mb-12 rounded-2xl border border-success/40 bg-surface px-6 py-4">
+            <p class="text-[14px] text-success">{{ session('status') }}</p>
+        </div>
+    @endif
+
     {{-- Header --}}
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Welcome back</p>
     <h1 class="mt-3 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
@@ -41,7 +56,7 @@
 
     {{-- Getting set up / onboarding checklist --}}
     <div class="mt-16 max-w-[760px]">
-        <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Getting set up</h2>
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Getting set up</h2>
         <div class="mt-8 rounded-2xl border border-text/10 bg-surface">
             @foreach ($onboardingSteps as $i => $step)
                 <div class="flex items-start gap-5 px-8 py-8 {{ $i > 0 ? 'border-t border-text/10' : '' }}">
@@ -66,6 +81,12 @@
                         <p class="mt-1 text-[14px] leading-relaxed {{ $step['status'] === 'pending' ? 'text-muted/70' : 'text-secondary' }}">
                             {{ $step['desc'] }}
                         </p>
+                        @if (isset($step['action']) && $step['status'] === 'current')
+                            <a href="{{ route($step['action']['route']) }}"
+                               class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
+                                {{ $step['action']['label'] }}
+                            </a>
+                        @endif
                     </div>
                 </div>
             @endforeach

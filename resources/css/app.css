@@ -39,16 +39,12 @@
 
     [x-cloak] { display: none !important; }
 
-    /* Disable native drag on images and anchors wrapping them — prevents color-flash on
-       CSS-grayscaled photos AND the URL drag preview that appears when only the image is
-       blocked but the parent <a> still drags. */
     img,
     a:has(img) {
         -webkit-user-drag: none;
         user-drag: none;
     }
 
-    /* Invert the native date-picker calendar icon so it reads white on dark surfaces */
     input[type="date"]::-webkit-calendar-picker-indicator {
         cursor: pointer;
         filter: invert(1);

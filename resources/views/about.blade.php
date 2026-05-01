@@ -45,7 +45,7 @@
     </section>
 
     {{-- Solution block: text left, image right --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+    <section class="mx-auto max-w-[1280px] px-8 pt-32">
         <div class="grid items-center gap-12 md:grid-cols-2">
             <div class="md:order-2 overflow-hidden rounded-2xl">
                 <img src="https://images.unsplash.com/photo-1758518726775-70e538b0d46e?q=80"
@@ -94,7 +94,7 @@
             <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
                 <span class="text-muted">“</span>It felt like having a friend who happens to be a lawyer.<span class="text-muted">”</span>
             </blockquote>
-            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.12em] text-muted">
+            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 A client, divorce case in Hanoi
             </p>
         </div>

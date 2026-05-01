@@ -20,7 +20,7 @@
 @endphp
 
 @section('content')
-    <section class="mx-auto max-w-[1280px] px-8 py-20"
+    <section class="mx-auto max-w-[1280px] px-8 pt-24 pb-24"
              x-data="lawyerFilters({{ json_encode($lawyersForFilter) }})">
         {{-- Header --}}
         <nav class="text-[14px] text-muted">

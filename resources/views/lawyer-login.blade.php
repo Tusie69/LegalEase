@@ -3,7 +3,7 @@
 @section('content')
 <section class="relative -mt-[72px] flex min-h-screen flex-col md:flex-row">
     {{-- Photo --}}
-    <div class="relative h-[35vh] overflow-hidden md:h-auto md:flex-1">
+    <div class="relative h-[35vh] overflow-hidden md:sticky md:top-0 md:h-screen md:flex-1">
         <img src="https://images.unsplash.com/photo-1483600516620-7254872369ae?q=80"
              alt=""
              class="absolute inset-0 h-full w-full object-cover grayscale">
@@ -13,7 +13,7 @@
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">
         <div class="w-full max-w-[440px]">
             <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">For lawyers</p>
-            <h1 class="mt-3 font-display text-4xl font-medium tracking-tight">Log in</h1>
+            <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Log in</h1>
             <p class="mt-2 text-[15px] text-secondary">Manage your appointments and availability.</p>
 
             <form method="POST" action="{{ route('lawyer.login.store') }}" class="mt-8 space-y-5" novalidate>
@@ -48,7 +48,7 @@
                         <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-text/20 bg-surface text-accent focus:ring-accent">
                         <span>Remember me</span>
                     </label>
-                    <a href="#" class="text-[14px] text-muted transition-colors hover:text-accent">Forgot password?</a>
+                    <a href="{{ route('password.request') }}" class="text-[14px] text-muted transition-colors hover:text-accent">Forgot password?</a>
                 </div>
 
                 <x-button variant="primary" type="submit" class="w-full">Log in</x-button>

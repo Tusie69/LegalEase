@@ -26,18 +26,19 @@ class AuthController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'first_name'    => 'required|string|max:100',
-                'last_name'     => 'required|string|max:100',
+                'first_name'    => 'required|string|min:2|max:20',
+                'last_name'     => 'required|string|min:2|max:20',
                 'email'         => 'required|string|email|max:255|unique:users,email',
                 'phone'         => ['required', 'string', 'min:9', 'max:15', 'regex:/^[\d\+\s\-\(\)]+$/'],
-                'date_of_birth' => 'required|date',
+                'date_of_birth' => ['required', 'date', 'before_or_equal:' . now()->subYears(18)->toDateString()],
                 'gender'        => 'required|string|in:female,male,other,undisclosed',
                 'password'      => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
                 'agreed_terms'  => 'required|accepted',
             ],
             [
-                'phone.regex'           => 'Phone number can only contain digits, spaces, dashes, parentheses, and a leading +.',
-                'agreed_terms.accepted' => 'You must agree to the Terms of Service and Privacy Policy.',
+                'phone.regex'                    => 'Phone number can only contain digits, spaces, dashes, parentheses, and a leading +.',
+                'date_of_birth.before_or_equal'  => 'You must be at least 18 to create an account.',
+                'agreed_terms.accepted'          => 'You must agree to the Terms of Service and Privacy Policy.',
             ]
         );
 
@@ -92,7 +93,6 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            // Lawyers go to their own dashboard, skipping the customer booking flow
             if ((int) auth()->user()->role_id === 2) {
                 return redirect()->route('lawyer.dashboard');
             }
@@ -131,22 +131,72 @@ class AuthController extends Controller
         return view('dashboard');
     }
 
+    public function showForgotPasswordForm()
+    {
+        return view('forgot-password');
+    }
+
+    public function sendResetLink(Request $request)
+    {
+        $validator = Validator::make(
+            $request->only('email'),
+            ['email' => 'required|email'],
+            [
+                'email.required' => 'Please enter your email address.',
+                'email.email'    => 'Please enter a valid email address.',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        return redirect()->route('password.request')->with('reset_link_sent', $request->email);
+    }
+
+    public function showResetPasswordForm(Request $request, string $token)
+    {
+        return view('reset-password', [
+            'token' => $token,
+            'email' => $request->query('email', ''),
+        ]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'token'    => 'required|string',
+                'email'    => 'required|email',
+                'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+            ]
+        );
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        return redirect()->route('login')->with('status', 'Your password has been reset. Log in with your new password.');
+    }
+
     public function lawyerRegister(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
             [
-                'first_name'      => 'required|string|max:100',
-                'last_name'       => 'required|string|max:100',
+                'first_name'      => 'required|string|min:2|max:20',
+                'last_name'       => 'required|string|min:2|max:20',
                 'email'           => 'required|string|email|max:255|unique:users,email',
                 'phone'           => ['required', 'string', 'min:9', 'max:15', 'regex:/^[\d\+\s\-\(\)]+$/'],
-                'bar_association' => 'required|string|max:255',
+                'bar_association' => 'required|in:Hanoi Bar Association,Ho Chi Minh City Bar Association',
                 'bar_card_number' => 'required|string|max:100',
                 'password'        => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
                 'agreed_terms'    => 'required|accepted',
             ],
             [
                 'phone.regex'           => 'Phone number can only contain digits, spaces, dashes, parentheses, and a leading +.',
+                'bar_association.in'    => 'Please select your bar association.',
                 'agreed_terms.accepted' => 'You must agree to the Terms of Service and Privacy Policy.',
             ]
         );

@@ -9,7 +9,7 @@
 @section('content')
     {{-- Hero: full-bleed photo with overlay --}}
     <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80"
+        <img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?q=80"
              alt=""
              class="absolute inset-0 h-full w-full object-cover grayscale">
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
@@ -44,7 +44,7 @@
             <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
                 <span class="text-muted">“</span>You're going through a divorce and need to figure out child custody.<span class="text-muted">”</span>
             </blockquote>
-            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.12em] text-muted">
+            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 The kind of sentence that brings someone here
             </p>
         </div>

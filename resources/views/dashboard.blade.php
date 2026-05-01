@@ -10,7 +10,7 @@
 @endphp
 
 @section('content')
-<section class="mx-auto max-w-[1280px] px-8 py-20">
+<section class="mx-auto max-w-[1280px] px-8 pt-24 pb-24">
     {{-- Header --}}
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Welcome back</p>
     <h1 class="mt-3 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
@@ -22,10 +22,10 @@
         </p>
     @endunless
 
-    {{-- Upcoming consultations (only when one exists) --}}
+    {{-- Upcoming consultations --}}
     @if ($hasUpcoming)
         <div class="mt-16">
-            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Upcoming consultations</h2>
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Upcoming consultations</h2>
 
             <div class="mt-8 rounded-2xl border border-text/10 bg-surface p-8">
                 <div class="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-center">
@@ -66,7 +66,7 @@
     {{-- Lawyers we recommend --}}
     <div class="mt-24">
         <div class="flex items-end justify-between">
-            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Lawyers we recommend</h2>
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Lawyers we recommend</h2>
             <x-button variant="ghost" href="{{ route('lawyers.index') }}">See all lawyers →</x-button>
         </div>
 

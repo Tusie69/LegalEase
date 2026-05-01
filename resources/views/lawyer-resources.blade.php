@@ -115,7 +115,7 @@
                              class="aspect-[4/3] w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.02]">
                     </div>
                     <p class="mt-5 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">{{ $article['category'] }}</p>
-                    <h3 class="mt-2 font-display text-[22px] font-medium leading-tight tracking-tight transition-colors group-hover:text-accent">
+                    <h3 class="mt-2 font-display text-[24px] font-medium leading-tight tracking-tight transition-colors group-hover:text-accent">
                         {{ $article['title'] }}
                     </h3>
                     <p class="mt-2 text-[14px] leading-relaxed text-secondary">

@@ -206,7 +206,7 @@
                         </div>
 
                         <div class="mt-6">
-                            <h4 class="text-[13px] font-medium uppercase tracking-[0.08em] text-muted">Available times</h4>
+                            <h4 class="text-[13px] font-medium uppercase tracking-[0.1em] text-muted">Available times</h4>
                         </div>
 
                         @foreach ($days as $i => $day)

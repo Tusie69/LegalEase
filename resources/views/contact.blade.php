@@ -1,14 +1,14 @@
 @extends('layouts.app', ['title' => 'Contact · LegalEase'])
 
 @section('content')
-    {{-- Hero --}}
-    <section class="mx-auto flex min-h-[320px] max-w-[1280px] items-center px-8 pt-32 pb-12">
+    {{-- Header + contact details + form --}}
+    <section class="mx-auto max-w-[1280px] px-8 pt-24 pb-24">
         <div class="max-w-[720px]">
             <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
                 Get in touch
             </p>
 
-            <h1 class="mt-6 font-display text-[48px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[60px]">
+            <h1 class="mt-6 font-display text-[48px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[56px]">
                 We're here when you need us.
             </h1>
 
@@ -16,11 +16,8 @@
                 Whether you have a question about the platform, a partnership inquiry, or feedback we should hear, we read every message.
             </p>
         </div>
-    </section>
 
-    {{-- Contact details + form --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-12">
-        <div class="grid gap-16 md:grid-cols-[2fr_3fr]">
+        <div class="mt-16 grid gap-16 md:grid-cols-[2fr_3fr]">
             <div class="space-y-10">
                 {{-- Email --}}
                 <div>
@@ -91,9 +88,9 @@
                       @submit.prevent="send"
                       class="flex h-full flex-col rounded-2xl border border-text/10 bg-surface p-8">
 
-                    <h2 class="font-display text-[28px] font-medium tracking-tight">
+                    <h3 class="font-display text-[24px] font-medium tracking-tight">
                         Send us a message
-                    </h2>
+                    </h3>
 
                     <div class="mt-6 flex flex-1 flex-col gap-5">
                         <div>
