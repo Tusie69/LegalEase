@@ -1,0 +1,10 @@
+﻿{
+  "pages": [
+    {"name": "Dashboard", "url": "javascript:void(0);", "icon": "ri-home-4-line"},
+    {"name": "Appointments", "url": "javascript:void(0);", "icon": "ri-calendar-check-line"},
+    {"name": "Lawyers", "url": "javascript:void(0);", "icon": "ri-scales-3-line"},
+    {"name": "Customers", "url": "javascript:void(0);", "icon": "ri-user-3-line"}
+  ],
+  "files": [],
+  "members": []
+}
