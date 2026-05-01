@@ -25,9 +25,38 @@
             @endforeach
         </div>
 
-        <a href="{{ route('login') }}"
-           class="inline-flex items-center rounded-full border border-muted px-6 py-3 text-[14px] font-medium text-text transition-colors duration-200 hover:border-accent hover:text-accent">
-            Login
-        </a>
+        @auth
+            @php $firstName = explode(' ', trim(auth()->user()->name))[0]; @endphp
+            <div x-data="{ open: false }" @click.outside="open = false" class="relative">
+                <button type="button" @click="open = !open"
+                        class="inline-flex items-center gap-2 rounded-full border border-muted px-5 py-3 text-[14px] font-medium text-text transition-colors duration-200 hover:border-accent hover:text-accent">
+                    <span>{{ $firstName }}</span>
+                    <svg class="h-4 w-4 transition-transform duration-200" :class="open ? 'rotate-180' : ''"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition x-cloak
+                     class="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl border border-text/10 bg-surface py-2 shadow-lg">
+                    <div class="px-4 py-2">
+                        <p class="font-display text-[15px] font-medium text-text">{{ auth()->user()->name }}</p>
+                        <p class="truncate text-[12px] text-muted">{{ auth()->user()->email }}</p>
+                    </div>
+                    <div class="my-1 h-px bg-text/10"></div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                                class="block w-full px-4 py-2 text-left text-[14px] text-text transition-colors hover:bg-text/5 hover:text-accent">
+                            Log out
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @else
+            <a href="{{ route('login') }}"
+               class="inline-flex items-center rounded-full border border-muted px-6 py-3 text-[14px] font-medium text-text transition-colors duration-200 hover:border-accent hover:text-accent">
+                Login
+            </a>
+        @endauth
     </div>
 </nav>

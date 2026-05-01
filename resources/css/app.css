@@ -17,6 +17,8 @@
     --color-accent: #F5F3F0;
     --color-avatar: #3A3A3A;
     --color-gold: #D4A24C;
+    --color-success: #7BAE7F;
+    --color-error: #D9826E;
 }
 
 @layer base {
@@ -36,6 +38,25 @@
     }
 
     [x-cloak] { display: none !important; }
+
+    /* Disable native drag on images and anchors wrapping them — prevents color-flash on
+       CSS-grayscaled photos AND the URL drag preview that appears when only the image is
+       blocked but the parent <a> still drags. */
+    img,
+    a:has(img) {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+
+    /* Invert the native date-picker calendar icon so it reads white on dark surfaces */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        filter: invert(1);
+        opacity: 0.6;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+        opacity: 1;
+    }
 }
 
 @layer utilities {

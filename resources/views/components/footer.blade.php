@@ -20,8 +20,8 @@
             <div>
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">For Lawyers</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
-                    <li><a href="{{ route('lawyer.register') }}" class="text-text transition-colors hover:text-accent">Join the platform</a></li>
-                    <li><a href="#" class="text-text transition-colors hover:text-accent">Resources</a></li>
+                    <li><a href="{{ route('for-lawyers') }}" class="text-text transition-colors hover:text-accent">Join the platform</a></li>
+                    <li><a href="{{ route('lawyer.resources') }}" class="text-text transition-colors hover:text-accent">Resources</a></li>
                     <li><a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">Lawyer login</a></li>
                 </ul>
             </div>

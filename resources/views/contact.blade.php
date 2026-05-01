@@ -139,7 +139,7 @@
                         </x-button>
 
                         <p x-show="submitted" x-cloak
-                           class="text-[14px] text-muted">
+                           class="text-[14px] text-success">
                             Thanks. We'll be in touch within 1 to 2 business days.
                         </p>
                     </div>

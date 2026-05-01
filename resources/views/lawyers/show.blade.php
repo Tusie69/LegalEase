@@ -163,7 +163,7 @@
                                 date: dateStr,
                                 time: time,
                             });
-                            window.location.href = "{{ route('login') }}?" + params.toString();
+                            window.location.href = "{{ route('book.start') }}?" + params.toString();
                         }
                     }'>
                     <div class="flex min-h-[560px] flex-col rounded-2xl border border-text/10 bg-surface p-8">
