@@ -18,6 +18,21 @@ Route::get('/lawyers', function () {
 Route::get('/lawyers/{slug}', function (string $slug) {
     $lawyer = \App\Data\Lawyers::findBySlug($slug);
     abort_if($lawyer === null, 404);
+
+    $booking = session('completed_booking');
+    if ($booking && ($booking['lawyer_slug'] ?? null) === $slug) {
+        $bookedDate = $booking['date'];
+        $bookedTime = $booking['time'];
+
+        $lawyer['availability'] = array_map(function ($day) use ($bookedDate, $bookedTime) {
+            $dayDate = \Carbon\Carbon::today()->addDays($day['day_offset'])->toDateString();
+            if ($dayDate === $bookedDate) {
+                $day['slots'] = array_values(array_filter($day['slots'], fn ($slot) => $slot !== $bookedTime));
+            }
+            return $day;
+        }, $lawyer['availability']);
+    }
+
     return view('lawyers.show', ['lawyer' => $lawyer]);
 })->name('lawyers.show');
 
@@ -87,7 +102,14 @@ Route::post('/book/details', function (\Illuminate\Http\Request $request) {
 
 Route::get('/book/review', fn () => view('book.review'))->name('book.review');
 
-Route::post('/book/confirm', function () {
+Route::get('/book/payment', function () {
+    if (!session('booking') || !session('booking_details')) {
+        return redirect()->route('lawyers.index');
+    }
+    return view('book.payment');
+})->name('book.payment');
+
+Route::post('/book/payment', function () {
     if (!session('booking') || !session('booking_details')) {
         return redirect()->route('lawyers.index');
     }
@@ -104,7 +126,7 @@ Route::post('/book/confirm', function () {
     session()->forget(['booking', 'booking_details']);
 
     return redirect()->route('book.success');
-})->name('book.confirm');
+})->name('book.payment.store');
 
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
 
@@ -126,7 +148,155 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
+
+    Route::get('/consultations/{code}', function (string $code) {
+        $consultation = \App\Data\PastConsultations::findByCodeWithReview($code);
+
+        if ($consultation !== null) {
+            $consultation['status'] = 'past';
+        } else {
+            $session = session('completed_booking');
+            if ($session && ($session['booking_code'] ?? null) === $code) {
+                $consultation = [
+                    'lawyer_slug'  => $session['lawyer_slug'],
+                    'date'         => $session['date'],
+                    'time'         => $session['time'],
+                    'booking_code' => $session['booking_code'],
+                    'status'       => 'upcoming',
+                    'rated'        => false,
+                ];
+            } else {
+                $cancelled = session('cancelled_consultations', []);
+                if (isset($cancelled[$code])) {
+                    $consultation = $cancelled[$code] + [
+                        'booking_code' => $code,
+                        'status'       => 'cancelled',
+                    ];
+                }
+            }
+        }
+
+        abort_if($consultation === null, 404);
+
+        $lawyer = \App\Data\Lawyers::findBySlug($consultation['lawyer_slug']);
+        abort_if($lawyer === null, 404);
+
+        return view('consultations.show', compact('consultation', 'lawyer'));
+    })->name('consultations.show');
+
+    Route::get('/consultations/{code}/cancel', function (string $code) {
+        $session = session('completed_booking');
+        abort_unless($session && ($session['booking_code'] ?? null) === $code, 404);
+
+        $lawyer = \App\Data\Lawyers::findBySlug($session['lawyer_slug']);
+        abort_if($lawyer === null, 404);
+
+        $consultation = [
+            'lawyer_slug'  => $session['lawyer_slug'],
+            'date'         => $session['date'],
+            'time'         => $session['time'],
+            'booking_code' => $session['booking_code'],
+        ];
+
+        return view('consultations.cancel', compact('consultation', 'lawyer'));
+    })->name('consultations.cancel');
+
+    Route::post('/consultations/{code}/cancel', function (string $code) {
+        $session = session('completed_booking');
+        abort_unless($session && ($session['booking_code'] ?? null) === $code, 404);
+
+        $consultationStart = \Carbon\Carbon::parse($session['date'] . ' ' . $session['time']);
+        $refundEligible = now()->diffInHours($consultationStart, false) > 24;
+
+        $cancelled = session('cancelled_consultations', []);
+        $cancelled[$code] = [
+            'lawyer_slug'     => $session['lawyer_slug'],
+            'date'            => $session['date'],
+            'time'            => $session['time'],
+            'cancelled_at'    => now()->toDateString(),
+            'refund_eligible' => $refundEligible,
+        ];
+        session(['cancelled_consultations' => $cancelled]);
+        session()->forget('completed_booking');
+
+        return redirect()->route('consultations.show', $code)->with('status', 'Your consultation has been cancelled.');
+    })->name('consultations.cancel.store');
+
+    Route::get('/consultations/{code}/rate', function (string $code) {
+        $consultation = \App\Data\PastConsultations::findByCode($code);
+        abort_if($consultation === null, 404);
+        $lawyer = \App\Data\Lawyers::findBySlug($consultation['lawyer_slug']);
+        abort_if($lawyer === null, 404);
+        return view('lawyers.rate', compact('consultation', 'lawyer'));
+    })->name('consultations.rate');
+
+    Route::post('/consultations/{code}/rate', function (\Illuminate\Http\Request $request, string $code) {
+        $consultation = \App\Data\PastConsultations::findByCode($code);
+        abort_if($consultation === null, 404);
+
+        $validated = $request->validate([
+            'stars'       => 'required|integer|min:1|max:5',
+            'review_text' => 'nullable|string|max:2000',
+        ], [
+            'stars.required' => 'Please choose a rating.',
+            'stars.min'      => 'Please choose between 1 and 5 stars.',
+            'stars.max'      => 'Please choose between 1 and 5 stars.',
+        ]);
+
+        $reviews = session('consultation_reviews', []);
+        $reviews[$code] = [
+            'stars'       => (int) $validated['stars'],
+            'review_text' => $validated['review_text'] ?? null,
+            'reviewed_at' => now()->toDateString(),
+        ];
+        session(['consultation_reviews' => $reviews]);
+
+        return redirect()->route('consultations.show', $code)->with('status', 'Thanks for your review.');
+    })->name('consultations.rate.store');
+
     Route::get('/lawyer-dashboard', fn () => view('lawyer-dashboard'))->name('lawyer.dashboard');
+
+    Route::get('/lawyer/appointments/{code}', function (string $code) {
+        $appointment = \App\Data\LawyerAppointments::findByCodeWithOutcome($code);
+        abort_if($appointment === null, 404);
+        return view('lawyer.appointments.show', compact('appointment'));
+    })->name('lawyer.appointments.show');
+
+    Route::get('/lawyer/appointments/{code}/outcome', function (string $code) {
+        $appointment = \App\Data\LawyerAppointments::findByCodeWithOutcome($code);
+        abort_if($appointment === null, 404);
+
+        if ($appointment['outcome_reported_at'] !== null) {
+            return redirect()->route('lawyer.appointments.show', $code);
+        }
+
+        return view('lawyer.appointments.outcome', compact('appointment'));
+    })->name('lawyer.appointments.outcome');
+
+    Route::post('/lawyer/appointments/{code}/outcome', function (\Illuminate\Http\Request $request, string $code) {
+        $appointment = \App\Data\LawyerAppointments::findByCode($code);
+        abort_if($appointment === null, 404);
+
+        $validated = $request->validate([
+            'outcome' => 'required|in:completed,no_show_customer',
+        ], [
+            'outcome.required' => 'Please choose an outcome.',
+            'outcome.in'       => 'Please choose an outcome.',
+        ]);
+
+        $outcomes = session('appointment_outcomes', []);
+        $outcomes[$code] = [
+            'outcome'     => $validated['outcome'],
+            'reported_at' => now()->toDateString(),
+        ];
+        session(['appointment_outcomes' => $outcomes]);
+
+        $message = $validated['outcome'] === 'completed'
+            ? 'Outcome recorded. The customer can now leave a review.'
+            : 'No-show recorded. Your compensation (25% of the deposit) will be processed within 3 to 5 business days.';
+
+        return redirect()->route('lawyer.appointments.show', $code)->with('status', $message);
+    })->name('lawyer.appointments.outcome.store');
     Route::get('/lawyer-credentials', fn () => view('lawyer-credentials'))->name('lawyer.credentials');
     Route::post('/lawyer-credentials', function () {
         return redirect()->route('lawyer.dashboard')->with('status', 'Documents submitted. Our team will review within 2 to 3 business days.');

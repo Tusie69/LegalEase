@@ -4,29 +4,21 @@
     $user = auth()->user();
     $firstName = explode(' ', trim($user->name))[0];
 
-    $onboardingSteps = [
-        [
-            'title'  => 'Account created',
-            'desc'   => 'Your account is set up.',
-            'status' => 'done',
-        ],
-        [
-            'title'  => 'Upload credentials',
-            'desc'   => 'Submit your bar card, identity document, and education certificate. Reviewed within 2 to 3 business days.',
-            'status' => 'current',
-            'action' => ['route' => 'lawyer.credentials', 'label' => 'Upload now →'],
-        ],
-        [
-            'title'  => 'Set availability',
-            'desc'   => 'Add your office hours and slot preferences once verified.',
-            'status' => 'pending',
-        ],
-        [
-            'title'  => 'Receive bookings',
-            'desc'   => 'Customers will see your profile and book consultations.',
-            'status' => 'pending',
-        ],
-    ];
+    $appointments = collect(\App\Data\LawyerAppointments::withSessionOutcomes());
+
+    $upcoming = $appointments->filter(function ($a) {
+        $start = \Carbon\Carbon::parse($a['date'] . ' ' . $a['time']);
+        return $a['status'] === 'CONFIRMED' && $start->isFuture();
+    })->sortBy('date')->values();
+
+    $awaitingOutcome = $appointments->filter(function ($a) {
+        $start = \Carbon\Carbon::parse($a['date'] . ' ' . $a['time']);
+        return $a['status'] === 'CONFIRMED' && $start->isPast();
+    })->sortByDesc('date')->values();
+
+    $reported = $appointments->filter(function ($a) {
+        return in_array($a['status'], ['COMPLETED', 'NO_SHOW_BY_CUSTOMER'], true);
+    })->sortByDesc('date')->values();
 @endphp
 
 @section('content')
@@ -51,47 +43,156 @@
         Hi, {{ $firstName }}.
     </h1>
     <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
-        Your account is being reviewed. Once verified, you'll be able to set availability and receive bookings.
+        @if ($upcoming->isEmpty() && $awaitingOutcome->isEmpty())
+            No appointments on the books right now. Open up more time to receive new bookings.
+        @else
+            Here's what's on your schedule.
+        @endif
     </p>
 
-    {{-- Getting set up / onboarding checklist --}}
-    <div class="mt-16 max-w-[760px]">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Getting set up</h2>
-        <div class="mt-8 rounded-2xl border border-text/10 bg-surface">
-            @foreach ($onboardingSteps as $i => $step)
-                <div class="flex items-start gap-5 px-8 py-8 {{ $i > 0 ? 'border-t border-text/10' : '' }}">
-                    {{-- Status indicator --}}
-                    <div class="mt-1 flex-none">
-                        @if ($step['status'] === 'done')
-                            <svg class="h-5 w-5 text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        @elseif ($step['status'] === 'current')
-                            <span class="block h-5 w-5 rounded-full border-2 border-text"></span>
-                        @else
-                            <span class="block h-5 w-5 rounded-full border border-text/20"></span>
-                        @endif
-                    </div>
+    {{-- Awaiting outcome --}}
+    @if ($awaitingOutcome->isNotEmpty())
+        <div class="mt-16">
+            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Awaiting your outcome</h2>
+            <p class="mt-3 max-w-[560px] text-[15px] text-secondary">
+                These appointments have passed. Report whether each one took place so the customer can leave a review.
+            </p>
 
-                    {{-- Step content --}}
-                    <div class="flex-1 min-w-0">
-                        <p class="font-display text-[18px] font-medium tracking-tight {{ $step['status'] === 'pending' ? 'text-muted' : 'text-text' }}">
-                            {{ $step['title'] }}
-                        </p>
-                        <p class="mt-1 text-[14px] leading-relaxed {{ $step['status'] === 'pending' ? 'text-muted/70' : 'text-secondary' }}">
-                            {{ $step['desc'] }}
-                        </p>
-                        @if (isset($step['action']) && $step['status'] === 'current')
-                            <a href="{{ route($step['action']['route']) }}"
-                               class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                                {{ $step['action']['label'] }}
-                            </a>
-                        @endif
-                    </div>
-                </div>
-            @endforeach
+            <div class="mt-12 space-y-4">
+                @foreach ($awaitingOutcome as $appt)
+                    <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
+                       class="group block rounded-2xl border border-gold/40 bg-surface p-6 transition-colors hover:border-gold ">
+                        <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-avatar">
+                                    <span class="font-display text-[15px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-display text-[18px] font-medium tracking-tight">{{ $appt['customer_name'] }}</p>
+                                    <p class="text-[13px] text-muted">{{ $appt['customer_phone'] }}</p>
+                                </div>
+                            </div>
+
+                            {{-- When --}}
+                            <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
+                                    {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
+                                </p>
+                                <p class="text-[12px] text-muted">{{ $appt['booking_code'] }}</p>
+                            </div>
+
+                            {{-- Action --}}
+                            <div class="md:text-right">
+                                <p class="text-[14px] font-medium text-gold transition-colors group-hover:text-text">
+                                    Report outcome →
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
+    @endif
+
+    {{-- Upcoming --}}
+    <div class="mt-24">
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Upcoming appointments</h2>
+
+        @if ($upcoming->isEmpty())
+            <p class="mt-12 text-[15px] text-muted">No upcoming appointments.</p>
+        @else
+            <div class="mt-12 space-y-4">
+                @foreach ($upcoming as $appt)
+                    <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
+                       class="group block rounded-2xl border border-text/10 bg-surface p-6 transition-colors hover:border-accent ">
+                        <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-avatar">
+                                    <span class="font-display text-[15px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-display text-[18px] font-medium tracking-tight">{{ $appt['customer_name'] }}</p>
+                                    <p class="text-[13px] text-muted">{{ $appt['customer_phone'] }}</p>
+                                </div>
+                            </div>
+
+                            {{-- When --}}
+                            <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
+                                    {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
+                                </p>
+                                <p class="text-[12px] text-muted">{{ $appt['booking_code'] }}</p>
+                            </div>
+
+                            {{-- Status --}}
+                            <div class="md:text-right">
+                                <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
+                                    <span class="text-[12px] font-medium text-success">Confirmed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @endif
     </div>
 
+    {{-- Past --}}
+    <div class="mt-24">
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Past appointments</h2>
+
+        @if ($reported->isEmpty())
+            <p class="mt-12 text-[15px] text-muted">No past appointments yet.</p>
+        @else
+            <div class="mt-12 space-y-4">
+                @foreach ($reported as $appt)
+                    <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
+                       class="group block rounded-2xl border border-text/10 bg-surface p-6 transition-colors hover:border-accent ">
+                        <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-avatar">
+                                    <span class="font-display text-[15px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-display text-[18px] font-medium tracking-tight">{{ $appt['customer_name'] }}</p>
+                                    <p class="text-[13px] text-muted">{{ $appt['customer_phone'] }}</p>
+                                </div>
+                            </div>
+
+                            {{-- When --}}
+                            <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
+                                    {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
+                                </p>
+                                <p class="text-[12px] text-muted">{{ $appt['booking_code'] }}</p>
+                            </div>
+
+                            {{-- Status --}}
+                            <div class="md:text-right">
+                                @if ($appt['status'] === 'COMPLETED')
+                                    <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
+                                        <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
+                                        <span class="text-[12px] font-medium text-success">Completed</span>
+                                    </div>
+                                @else
+                                    <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">
+                                        <span class="block h-1.5 w-1.5 rounded-full bg-error"></span>
+                                        <span class="text-[12px] font-medium text-error">Customer no-show</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @endif
+    </div>
 </section>
 @endsection

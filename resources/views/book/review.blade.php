@@ -98,10 +98,9 @@
         </div>
 
         {{-- Actions --}}
-        <form method="POST" action="{{ route('book.confirm') }}" class="mt-10">
-            @csrf
-            <x-button variant="primary" type="submit" class="w-full">Confirm booking</x-button>
-        </form>
+        <div class="mt-10">
+            <x-button variant="primary" :href="route('book.payment')" class="w-full">Continue to payment</x-button>
+        </div>
 
         <p class="mt-4 text-center text-[14px]">
             <a href="{{ route('book.details') }}" class="text-muted transition-colors hover:text-accent">

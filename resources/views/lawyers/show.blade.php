@@ -210,14 +210,20 @@
                         </div>
 
                         @foreach ($days as $i => $day)
-                            <div x-show="selected === {{ $i }}" x-cloak class="mt-4 grid grid-cols-2 gap-3">
-                                @foreach ($day['slots'] as $slot)
-                                    <button type="button"
-                                            @click="pickSlot('{{ $day['dateStr'] }}', '{{ $slot['time'] }}', '{{ $slot['label'] }}')"
-                                            class="rounded-xl border border-muted/60 px-3 py-3 text-center text-[13px] text-text transition-colors hover:border-accent hover:bg-accent/10">
-                                        {{ $slot['label'] }}
-                                    </button>
-                                @endforeach
+                            <div x-show="selected === {{ $i }}" x-cloak class="mt-4">
+                                @if (count($day['slots']) === 0)
+                                    <p class="text-[13px] text-muted">No times available on this day.</p>
+                                @else
+                                    <div class="grid grid-cols-2 gap-3">
+                                        @foreach ($day['slots'] as $slot)
+                                            <button type="button"
+                                                    @click="pickSlot('{{ $day['dateStr'] }}', '{{ $slot['time'] }}', '{{ $slot['label'] }}')"
+                                                    class="rounded-xl border border-muted/60 px-3 py-3 text-center text-[13px] text-text transition-colors hover:border-accent hover:bg-accent/10">
+                                                {{ $slot['label'] }}
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
 

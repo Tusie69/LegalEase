@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RealisticDemoSeeder::class,
+            TestUsersSeeder::class,
         ]);
+
+        if (class_exists(\Database\Seeders\RealisticDemoSeeder::class)) {
+            $this->call(\Database\Seeders\RealisticDemoSeeder::class);
+        }
     }
 }
