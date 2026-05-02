@@ -116,7 +116,7 @@
                 'portrait' => 'https://images.unsplash.com/photo-1591702694482-ecc51ff9642e?q=80',
             ],
             [
-                'name' => 'Nguyá»…n HÃ  My',
+                'name' => 'Nguyễn Hà My',
                 'role' => 'Đồng sáng lập, Sản phẩm',
                 'bio'  => "Built consumer fintech products used by millions of Vietnamese.",
                 'portrait' => 'https://images.unsplash.com/photo-1733348137479-2e726d326d9b?q=80',

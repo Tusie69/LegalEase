@@ -54,7 +54,7 @@
 
                                 <a class="btn light" href="{{ route('appointments.confirmation', $appointment) }}">Chi tiết</a>
 
-                                @if($appointment->status !== 'CANCELLED' && $appointment->appointment_start_at->là Tương lai())
+                                @if($appointment->status !== 'CANCELLED' && $appointment->appointment_start_at->isFuture())
                                     <form method="POST" action="{{ route('appointments.cancel', $appointment) }}" onsubmit="return confirm('Bạn có chắc muốn hủy lịch hẹn này?')">
                                         @csrf
                                         <button class="btn danger" type="submit">Hủy lịch</button>

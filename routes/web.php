@@ -133,6 +133,21 @@ Route::post('/book/payment', function () {
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
 
 Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
+Route::get('/admin-view-test', function () {
+    $stats = [
+        'total_lawyers' => 128,
+        'total_customers' => 542,
+        'total_appointments' => 913,
+        'revenue_vnd' => 125000000,
+        'pending_appointments' => 27,
+        'completed_appointments' => 801,
+        'cancelled_appointments' => 85,
+        'unread_notifications' => 14,
+        'paid_payments' => 766,
+    ];
+
+    return view('admin_view', compact('stats'));
+})->name('admin.view.test');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');

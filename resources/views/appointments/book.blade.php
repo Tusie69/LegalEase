@@ -40,7 +40,7 @@
                 @csrf
                 <h2>Hoàn tất đặt lịch</h2>
 
-                @if($errors->bất kì())
+                @if($errors->any())
                     <div class="alert error">Vui lòng kiểm tra lại thông tin và thử lại.</div>
                 @endif
 

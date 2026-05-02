@@ -125,7 +125,7 @@
                                         <td class="px-3 py-3">{{ $appointment->lawyer->display_name ?? '-' }}</td>
                                         <td class="px-3 py-3">{{ $appointment->appointment_start_at->format('d/m/Y H:i') }}</td>
                                         <td class="px-3 py-3">
-                                            @if($appointment->trạng thái === 'ĐÃ HỦY')
+                                            @if($appointment->status === 'CANCELLED')
                                                 <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">{{ $appointment->status_label }}</span>
                                             @else
                                                 <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">{{ $appointment->status_label }}</span>
