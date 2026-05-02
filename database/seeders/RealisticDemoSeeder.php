@@ -20,7 +20,7 @@ class RealisticDemoSeeder extends Seeder
             $roles = DB::table('roles')->pluck('id', 'code');
 
             if (!isset($roles['ADMIN'], $roles['LAWYER'], $roles['CUSTOMER'])) {
-                throw new \RuntimeException('Missing roles. Run migrations first.');
+                throw new \RuntimeException('Thi?u d? li?u vai tr?. H?y ch?y migration tr??c.');
             }
 
             $adminIds = [];

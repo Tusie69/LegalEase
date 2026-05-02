@@ -1,0 +1,372 @@
+<?php
+
+namespace App\Data;
+
+class Lawyers
+{
+    public static function all(): array
+    {
+        return [
+            [
+                'id' => 1,
+                'name' => 'Nguyá»…n Minh Anh',
+                'slug' => 'nguyen-minh-anh',
+                'primary_specialty' => 'Lu?t Hï¿½n nhï¿½n & Gia ?ï¿½nh',
+                'specialty_tags' => ['Lu?t Hï¿½n nhï¿½n & Gia ?ï¿½nh', 'T? t?ng dï¿½n s?'],
+                'years_of_experience' => 12,
+                'price_per_hour' => 1500000,
+                'rating' => 4.9,
+                'review_count' => 127,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? Hï¿½ N?i',
+                'address' => ['province' => 'Hanoi', 'street_address' => '12 LÃ½ ThÆ°ï¿½?ng Kiá»‡t, HoÃ n Kiáº¿m'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Ã”ng Nguyá»…n Minh Anh Ä‘Ã£ hÃ nh nghï¿½? luáº­t gia Ä‘Ã¬nh á»Ÿ HÃ  Ná»™i hÆ¡n chá»¥c nÄƒm. CÃ´ hï¿½?c táº¡i ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i vÃ  báº¯t Ä‘áº§u sá»± nghiá»‡p táº¡i má»™t cÃ´ng ty cá»¡ trung chuyÃªn vï¿½? cÃ¡c váº¥n Ä‘ï¿½? hÃ´n nhÃ¢n trÆ°á»›c khi hoáº¡t Ä‘á»™ng Ä‘á»™c láº­p vÃ o nÄƒm 2018. CÃ´ng viá»‡c cá»§a cÃ´ táº­p trung vÃ o viá»‡c ly hÃ´n, thï¿½?a thuáº­n quyï¿½?n nuÃ´i con vÃ  tranh cháº¥p thá»«a káº¿, Ä‘áº·c biá»‡t táº­p trung vÃ o cÃ¡c vá»¥ Ã¡n liÃªn quan Ä‘áº¿n gia Ä‘Ã¬nh xuyÃªn biÃªn giá»›i.',
+                    'Anh tin ráº±ng luáº­t gia Ä‘Ã¬nh chÃº trï¿½?ng Ä‘áº¿n viá»‡c láº¯ng nghe cÅ©ng nhÆ° kiá»‡n tá»¥ng. KhÃ¡ch hÃ ng Ä‘áº¿n vá»›i cÃ´ trong nhá»¯ng thï¿½?i Ä‘iá»ƒm khÃ³ khÄƒn nháº¥t trong cuá»™c Ä‘ï¿½?i hï¿½? vÃ  cÃ´ thá»±c hiá»‡n nghiÃªm tÃºc trÃ¡ch nhiá»‡m lÃ m cho cÃ¡c quy trÃ¬nh phÃ¡p lÃ½ phá»©c táº¡p trá»Ÿ nÃªn dá»… quáº£n lÃ½. CÃ´ lÃ m viá»‡c báº±ng tiáº¿ng Viá»‡t vÃ  tiáº¿ng Anh, phá»¥c vá»¥ cÃ¡c gia Ä‘Ã¬nh trÃªn kháº¯p Viá»‡t Nam cÅ©ng nhÆ° ngÆ°ï¿½?i Viá»‡t Nam sá»‘ng á»Ÿ nÆ°á»›c ngoÃ i.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Bachelor of Laws', 'year' => 2011],
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2014],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '10:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '11:00', '15:00']],
+                    ['day_offset' => 2, 'slots' => ['10:00', '11:00', '14:00', '16:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '14:00', '15:00', '17:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '11:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Thanh', 'date' => '2026-03-18', 'stars' => 5, 'text' => 'CÃ´ Anh hÆ°á»›ng dáº«n tÃ´i tá»«ng bÆ°á»›c ly hÃ´n. Mï¿½?i email Ä‘ï¿½?u Ä‘Æ°á»£c tráº£ lï¿½?i trong vÃ²ng vÃ i giï¿½? vÃ  tÃ´i chÆ°a bao giï¿½? cáº£m tháº¥y láº¡c lÃµng trong quÃ¡ trÃ¬nh nÃ y. TÃ´i khÃ´ng thá»ƒ giá»›i thiá»‡u cÃ´ áº¥y Ä‘á»§.'],
+                    ['author' => 'PhÆ°Æ¡ng', 'date' => '2026-02-04', 'stars' => 5, 'text' => 'Trung thá»±c, kiÃªn nháº«n vÃ  cÃ³ sá»± chuáº©n bá»‹ Ä‘áº·c biá»‡t tá»‘t. CÃ´ áº¥y coi trÆ°ï¿½?ng há»£p cá»§a tÃ´i nhÆ° thá»ƒ Ä‘Ã³ lÃ  trÆ°ï¿½?ng há»£p duy nháº¥t trÃªn bÃ n lÃ m viá»‡c cá»§a cÃ´ áº¥y.'],
+                    ['author' => 'Huyï¿½?n', 'date' => '2025-12-11', 'stars' => 4, 'text' => 'ChuyÃªn nghiá»‡p vÃ  rÃµ rÃ ng. Káº¿t quáº£ khÃ´ng nhÆ° tÃ´i mong Ä‘á»£i nhÆ°ng sá»± hÆ°á»›ng dáº«n cá»§a cÃ´ áº¥y Ä‘Ã£ giÃºp quÃ¡ trÃ¬nh diá»…n ra suÃ´n sáº».'],
+                ],
+            ],
+            [
+                'id' => 2,
+                'name' => 'Tráº§n VÄƒn HÃ¹ng',
+                'slug' => 'tran-van-hung',
+                'primary_specialty' => 'Lu?t Doanh nghi?p',
+                'specialty_tags' => ['Lu?t Doanh nghi?p', 'T? t?ng dï¿½n s?'],
+                'years_of_experience' => 15,
+                'price_per_hour' => 2200000,
+                'rating' => 4.8,
+                'review_count' => 203,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? TP.HCM',
+                'address' => ['province' => 'ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'street_address' => '45 Nguyá»…n Huá»‡, Quáº­n 1'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1739417202150-07df354f2a3c?q=80',
+                'bio' => [
+                    'Tráº§n VÄƒn HÃ¹ng tÆ° váº¥n cho cÃ¡c cÃ´ng ty khá»Ÿi nghiá»‡p vÃ  thÃ nh láº­p doanh nghiá»‡p trÃªn kháº¯p Viá»‡t Nam vï¿½? viá»‡c thÃ nh láº­p, há»£p Ä‘á»“ng thÆ°Æ¡ng máº¡i vÃ  tuÃ¢n thá»§ quy Ä‘á»‹nh. Sau khi láº¥y báº±ng luáº­t táº¡i ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh, Ã´ng Ä‘Ã£ lÃ m viá»‡c báº£y nÄƒm cho má»™t cÃ´ng ty quá»‘c táº¿ trÆ°á»›c khi thÃ nh láº­p vÄƒn phÃ²ng riÃªng cá»§a mÃ¬nh Ä‘á»ƒ phá»¥c vá»¥ cÃ¡c doanh nhÃ¢n Viá»‡t Nam.',
+                    'CÃ¡ch tiáº¿p cáº­n cá»§a HÃ¹ng lÃ  thá»±c dá»¥ng. Anh tháº¥y vai trÃ² cá»§a mÃ¬nh lÃ  giÃºp cÃ¡c chá»§ doanh nghiá»‡p Ä‘Æ°a ra nhá»¯ng quyáº¿t Ä‘á»‹nh rÃµ rÃ ng, sÃ¡ng suá»‘t thay vÃ¬ nháº¥n chÃ¬m chÃºng trong nhá»¯ng thuáº­t ngá»¯ phÃ¡p lÃ½. KhÃ¡ch hÃ ng cá»§a anh bao gá»“m tá»« nhá»¯ng ngÆ°ï¿½?i sÃ¡ng láº­p láº§n Ä‘áº§u chuáº©n bá»‹ há»£p Ä‘á»“ng Ä‘áº§u tiÃªn cho Ä‘áº¿n cÃ¡c cÃ´ng ty Ä‘Ã£ thÃ nh láº­p Ä‘ang Ä‘iï¿½?u hÆ°á»›ng cÃ¡c giao dá»‹ch M&A.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2008],
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2013],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '14:00', '16:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '10:00', '11:00', '14:00']],
+                    ['day_offset' => 2, 'slots' => ['15:00', '16:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '11:00', '14:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '10:00', '11:00', '15:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '16:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'DÅ©ng', 'date' => '2026-04-02', 'stars' => 5, 'text' => 'Anh HÃ¹ng Ä‘Ã£ giÃºp chÃºng tÃ´i thÃ nh láº­p cÃ´ng ty vÃ  Ä‘Ã m phÃ¡n há»£p Ä‘á»“ng lá»›n Ä‘áº§u tiÃªn. Giao tiáº¿p rÃµ rÃ ng vÃ  khÃ´ng cÃ³ hÃ³a Ä‘Æ¡n khÃ´ng cáº§n thiáº¿t.'],
+                    ['author' => 'Linh', 'date' => '2026-01-22', 'stars' => 5, 'text' => 'Viá»‡c mua láº¡i cá»§a chÃºng tÃ´i sáº½ khÃ´ng káº¿t thÃºc náº¿u khÃ´ng cÃ³ anh áº¥y. Anh áº¥y phÃ¡t hiá»‡n ra nhá»¯ng rá»§i ro mÃ  khÃ´ng ai khÃ¡c gáº·p pháº£i vÃ  tiáº¿p tá»¥c thá»±c hiá»‡n giao dá»‹ch.'],
+                    ['author' => 'Nam', 'date' => '2025-11-30', 'stars' => 4, 'text' => 'Triá»‡t Ä‘á»ƒ vÃ  Ä‘Ã¡p á»©ng. Lá»‡ phÃ­ cao hÆ¡n tÃ´i mong Ä‘á»£i, nhÆ°ng giÃ¡ trá»‹ xá»©ng Ä‘Ã¡ng vá»›i chÃºng.'],
+                ],
+            ],
+            [
+                'id' => 3,
+                'name' => 'LÃª Thá»‹ HÆ°Æ¡ng',
+                'slug' => 'le-thi-huong',
+                'primary_specialty' => 'B?t ??ng s?n',
+                'specialty_tags' => ['B?t ??ng s?n', 'Lu?t Doanh nghi?p'],
+                'years_of_experience' => 9,
+                'price_per_hour' => 1800000,
+                'rating' => 4.9,
+                'review_count' => 156,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?o?n Lu?t s? ?? N?ng',
+                'address' => ['province' => 'ï¿½?Ã  Náºµng', 'street_address' => '88 Báº¡ch ï¿½?áº±ng, Háº£i ChÃ¢u'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1685760259914-ee8d2c92d2e0?q=80',
+                'bio' => [
+                    'LÃª Thá»‹ HÆ°Æ¡ng lÃ  má»™t luáº­t sÆ° báº¥t Ä‘á»™ng sáº£n cÃ³ trá»¥ sá»Ÿ táº¡i ï¿½?Ã  Náºµng. CÃ´ xá»­ lÃ½ cÃ¡c giao dá»‹ch tÃ i sáº£n, tÃ¬m kiáº¿m quyï¿½?n sá»Ÿ há»¯u vÃ  sáº¯p xáº¿p cho thuÃª cho cáº£ cÃ¡ nhÃ¢n vÃ  khÃ¡ch hÃ ng thÆ°Æ¡ng máº¡i. CÃ´ng viá»‡c cá»§a cÃ´ xuáº¥t phÃ¡t tá»« má»‘i quan tÃ¢m lÃ¢u dÃ i vï¿½? sá»± giao thoa giá»¯a luáº­t tÃ i sáº£n vÃ  phÃ¡t triá»ƒn Ä‘Ã´ thá»‹.',
+                    'HÆ°Æ¡ng Ä‘Æ°á»£c Ä‘á»“ng nghiá»‡p biáº¿t Ä‘áº¿n vÃ¬ kháº£ nÄƒng xem xÃ©t há»£p Ä‘á»“ng tá»‰ má»‰. CÃ´ tin ráº±ng sá»± khÃ¡c biá»‡t giá»¯a má»™t giao dá»‹ch suÃ´n sáº» vÃ  má»™t tranh cháº¥p tá»‘n kÃ©m thÆ°ï¿½?ng náº±m á»Ÿ chá»— cÃ¡c thá»§ tá»¥c giáº¥y tï¿½? khÃ´ng ai thÃ¨m Ä‘ï¿½?c ká»¹. CÃ´ lÃ m viá»‡c báº±ng tiáº¿ng Viá»‡t vÃ  tiáº¿ng Anh, phá»¥c vá»¥ khÃ¡ch hÃ ng kháº¯p miï¿½?n Trung Viá»‡t Nam.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2014],
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2017],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '11:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '14:00', '16:00', '17:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00']],
+                    ['day_offset' => 3, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '10:00', '11:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00', '14:00']],
+                    ['day_offset' => 6, 'slots' => ['11:00', '15:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'BÃ­ch', 'date' => '2026-04-10', 'stars' => 5, 'text' => 'CÃ´ HÆ°Æ¡ng phÃ¡t hiá»‡n ra má»™t Ä‘iï¿½?u khoáº£n khÃ´ng rÃµ rÃ ng trong há»£p Ä‘á»“ng mua bÃ¡n cá»§a tÃ´i cÃ³ thá»ƒ khiáº¿n tÃ´i pháº£i tráº£ giÃ¡ Ä‘áº¯t. CÃ´ áº¥y Ä‘Ã£ cá»©u Ä‘Æ°á»£c thï¿½?a thuáº­n vÃ  tiáº¿t kiá»‡m tiï¿½?n cá»§a tÃ´i.'],
+                    ['author' => 'Quang', 'date' => '2026-02-18', 'stars' => 5, 'text' => 'Cáº©n tháº­n, chu Ä‘Ã¡o vÃ  cá»±c ká»³ ká»¹ cÃ ng. Loáº¡i luáº­t sÆ° báº¡n muá»‘n khi mua báº¥t Ä‘á»™ng sáº£n.'],
+                    ['author' => 'Tuáº¥n', 'date' => '2025-12-03', 'stars' => 5, 'text' => 'LÃ m cho quÃ¡ trÃ¬nh cho thuÃª thÆ°Æ¡ng máº¡i trá»Ÿ nÃªn Ä‘Æ¡n giáº£n. Giáº£i thÃ­ch mï¿½?i má»‡nh Ä‘ï¿½? báº±ng ngÃ´n ngá»¯ Ä‘Æ¡n giáº£n.'],
+                ],
+            ],
+            [
+                'id' => 4,
+                'name' => 'Pháº¡m Quá»‘c Báº£o',
+                'slug' => 'pham-quoc-bao',
+                'primary_specialty' => 'Bï¿½o ch?a hï¿½nh s?',
+                'specialty_tags' => ['Bï¿½o ch?a hï¿½nh s?'],
+                'years_of_experience' => 18,
+                'price_per_hour' => 2500000,
+                'rating' => 4.7,
+                'review_count' => 98,
+                'languages' => ['Ti?ng Vi?t'],
+                'bar_association' => '?oï¿½n Lu?t s? Hï¿½ N?i',
+                'address' => ['province' => 'Hanoi', 'street_address' => '27 Tráº§n PhÃº, Ba ï¿½?Ã¬nh'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1000&fit=crop&q=80',
+                'bio' => [
+                    'Pháº¡m Quá»‘c Báº£o lÃ  luáº­t sÆ° bÃ o chá»¯a hÃ¬nh sá»± gáº§n hai chá»¥c nÄƒm. Tá»‘t nghiá»‡p ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i, Ã´ng Ä‘Ã£ Ä‘áº¡i diá»‡n cho khÃ¡ch hÃ ng trong cÃ¡c vá»¥ Ã¡n tá»« tá»™i pháº¡m cá»• tráº¯ng Ä‘áº¿n trï¿½?ng tá»™i, luÃ´n táº­p trung vÃ o viá»‡c Ä‘áº£m báº£o quy trÃ¬nh cÃ´ng báº±ng vÃ  káº¿t quáº£ tÆ°Æ¡ng xá»©ng.',
+                    'Danh tiáº¿ng cá»§a Báº£o náº±m á»Ÿ sá»± chuáº©n bá»‹ cá»§a anh áº¥y. Ã”ng ná»•i tiáº¿ng vÃ¬ Ä‘Ã£ dÃ nh hÃ ng tuáº§n Ä‘á»ƒ nghiÃªn cá»©u cÃ¡c tÃ i liá»‡u vá»¥ Ã¡n mÃ  cÃ¡c luáº­t sÆ° khÃ¡c cÃ³ thá»ƒ xá»­ lÃ½ trong vÃ i ngÃ y. ï¿½?á»‘i vá»›i anh ta, sá»©c náº·ng cá»§a háº­u quáº£ tá»™i pháº¡m khÃ´ng Ä‘Ã²i hï¿½?i gÃ¬ hÆ¡n. Anh thá»±c hÃ nh chá»§ yáº¿u báº±ng tiáº¿ng Viá»‡t.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2005],
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2010],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '14:00', '16:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '11:00', '15:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '14:00']],
+                    ['day_offset' => 3, 'slots' => ['10:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '11:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00', '16:00']],
+                    ['day_offset' => 6, 'slots' => ['09:00', '15:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'HÃ¹ng', 'date' => '2026-03-25', 'stars' => 5, 'text' => 'Ã”ng Báº£o táº­n tÃ¢m vÃ  tÃ¬m hiá»ƒu há»“ sÆ¡ cá»§a tÃ´i Ä‘áº¿n tá»«ng chi tiáº¿t. Káº¿t quáº£ tá»‘t hÆ¡n nhá»¯ng gÃ¬ tÃ´i mong Ä‘á»£i.'],
+                    ['author' => 'Minh', 'date' => '2026-01-14', 'stars' => 4, 'text' => 'NghiÃªm tÃºc vÃ  chuáº©n bá»‹ tá»‘t. Giao tiáº¿p cÃ³ thá»ƒ nhanh hÆ¡n, nhÆ°ng cÃ´ng viá»‡c phÃ¡p lÃ½ cá»§a anh áº¥y lÃ  hÃ ng Ä‘áº§u.'],
+                    ['author' => 'Hoa', 'date' => '2025-11-09', 'stars' => 5, 'text' => 'Anh áº¥y Ä‘Ã£ sÃ¡t cÃ¡nh cÃ¹ng chÃºng tÃ´i trong má»™t vá»¥ Ã¡n ráº¥t dÃ i. ï¿½?Ã¡ng tin cáº­y vÃ  chuyÃªn nghiá»‡p xuyÃªn suá»‘t.'],
+                ],
+            ],
+            [
+                'id' => 5,
+                'name' => 'HoÃ ng Thu Trang',
+                'slug' => 'hoang-thu-trang',
+                'primary_specialty' => 'Lu?t Lao ??ng',
+                'specialty_tags' => ['Lu?t Lao ??ng', 'T? t?ng dï¿½n s?'],
+                'years_of_experience' => 8,
+                'price_per_hour' => 1200000,
+                'rating' => 4.8,
+                'review_count' => 142,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? TP.HCM',
+                'address' => ['province' => 'ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'street_address' => '234 Pasteur, Quáº­n 3'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1746813627956-64cf760e3085?q=80',
+                'bio' => [
+                    'HoÃ ng Thu Trang Ä‘áº¡i diá»‡n cho ngÆ°ï¿½?i lao Ä‘á»™ng vÃ  ngÆ°ï¿½?i sá»­ dá»¥ng lao Ä‘á»™ng nhï¿½? trong cÃ¡c tranh cháº¥p lao Ä‘á»™ng trÃªn Ä‘á»‹a bÃ n TP.HCM. CÃ´ng viá»‡c cá»§a cÃ´ bao gá»“m cÃ¡c há»£p Ä‘á»“ng lao Ä‘á»™ng, yÃªu cáº§u cháº¥m dá»©t há»£p Ä‘á»“ng sai trÃ¡i, cÃ¡c váº¥n Ä‘ï¿½? vï¿½? báº£o hiá»ƒm xÃ£ há»™i vÃ  tranh cháº¥p lao Ä‘á»™ng táº­p thá»ƒ. CÃ´ chuyá»ƒn sang lÃ m luáº­t sau 5 nÄƒm lÃ m viá»‡c trong lÄ©nh vá»±c nhÃ¢n sá»±, mang láº¡i hiá»ƒu biáº¿t sÃ¢u sáº¯c vï¿½? hoáº¡t Ä‘á»™ng cho hoáº¡t Ä‘á»™ng phÃ¡p lÃ½ cá»§a mÃ¬nh.',
+                    'Trang thÆ°ï¿½?ng nÃ³i vá»›i khÃ¡ch hÃ ng ráº±ng luáº­t lao Ä‘á»™ng khÃ´ng nháº±m má»¥c Ä‘Ã­ch giÃ nh chiáº¿n tháº¯ng trong tranh luáº­n mÃ  thiÃªn vï¿½? giÃºp Ä‘á»¡ nÆ¡i lÃ m viá»‡c hoáº¡t Ä‘á»™ng cÃ´ng báº±ng hÆ¡n. CÃ¡c vá»¥ Ã¡n cá»§a cÃ´ cÃ³ xu hÆ°á»›ng káº¿t thÃºc báº±ng cÃ¡c giáº£i phÃ¡p thÆ°Æ¡ng lÆ°á»£ng hÆ¡n lÃ  cÃ¡c cuá»™c chiáº¿n táº¡i tÃ²a Ã¡n, Ä‘iï¿½?u mÃ  cÃ´ coi lÃ  thÆ°á»›c Ä‘o tá»‘t cho viá»‡c hoÃ n thÃ nh tá»‘t cÃ´ng viá»‡c.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2015],
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'Tháº¡c sÄ© Luáº­t lao Ä‘á»™ng', 'year' => 2018],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '11:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '10:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['11:00', '14:00', '15:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['09:00', '10:00']],
+                    ['day_offset' => 4, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '11:00', '15:00', '17:00']],
+                    ['day_offset' => 6, 'slots' => ['10:00', '14:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Ngï¿½?c', 'date' => '2026-04-05', 'stars' => 5, 'text' => 'CÃ´ Trang Ä‘Ã£ giÃºp tÃ´i Ä‘Ã²i láº¡i ba thÃ¡ng lÆ°Æ¡ng chÆ°a tráº£ vÃ  thÃ¡o gá»¡ vÆ°á»›ng máº¯c vï¿½? báº£o hiá»ƒm xÃ£ há»™i. CÃ´ áº¥y lÃ m cho toÃ n bá»™ thá»­ thÃ¡ch cáº£m tháº¥y cÃ³ thá»ƒ sá»‘ng sÃ³t Ä‘Æ°á»£c.'],
+                    ['author' => 'TÃ¹ng', 'date' => '2026-02-27', 'stars' => 5, 'text' => 'RÃµ rÃ ng, thiáº¿t thá»±c vÃ  Ä‘á»©ng vï¿½? phÃ­a khÃ¡ch hÃ ng cá»§a cÃ´ áº¥y. ï¿½?Ã£ thÆ°Æ¡ng lÆ°á»£ng vï¿½? viá»‡c thÃ´i viá»‡c má»™t cÃ¡ch cÃ´ng báº±ng mÃ  khÃ´ng cáº§n ai pháº£i ra tÃ²a.'],
+                    ['author' => 'Mai', 'date' => '2025-12-19', 'stars' => 4, 'text' => 'Lï¿½?i khuyÃªn tá»‘t vá»›i giÃ¡ cáº£ há»£p lÃ½. Sáº½ tÆ° váº¥n láº¡i.'],
+                ],
+            ],
+            [
+                'id' => 6,
+                'name' => 'VÅ© ï¿½?á»©c Minh',
+                'slug' => 'vu-duc-minh',
+                'primary_specialty' => 'T? t?ng dï¿½n s?',
+                'specialty_tags' => ['T? t?ng dï¿½n s?', 'Lu?t Doanh nghi?p'],
+                'years_of_experience' => 14,
+                'price_per_hour' => 2000000,
+                'rating' => 4.9,
+                'review_count' => 178,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? Hï¿½ N?i',
+                'address' => ['province' => 'Hanoi', 'street_address' => '8 Pháº¡m VÄƒn ï¿½?á»“ng, Cáº§u Giáº¥y'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1648474484044-bb82df2f5a1f?q=80',
+                'bio' => [
+                    'VÅ© ï¿½?á»©c Minh Ä‘Ã£ xÃ¢y dá»±ng má»™t hoáº¡t Ä‘á»™ng tá»‘ tá»¥ng dÃ¢n sá»± táº­p trung vÃ o cÃ¡c tranh cháº¥p há»£p Ä‘á»“ng, khiáº¿u náº¡i tÃ i sáº£n vÃ  cÃ¡c vá»¥ Ã¡n vi pháº¡m phÃ¡p luáº­t. Ã”ng Ä‘Æ°á»£c Ä‘Ã o táº¡o táº¡i TrÆ°ï¿½?ng Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam vÃ  dÃ nh 8 nÄƒm Ä‘áº§u tiÃªn lÃ m viá»‡c táº¡i má»™t cÃ´ng ty lá»›n trong nÆ°á»›c chuyÃªn xá»­ lÃ½ cÃ¡c vá»¥ kiá»‡n tá»¥ng thÆ°Æ¡ng máº¡i trÆ°á»›c khi má»Ÿ vÄƒn phÃ²ng riÃªng vÃ o nÄƒm 2020.',
+                    'Triáº¿t lÃ½ cá»§a Minh lÃ  kiá»‡n tá»¥ng pháº£i lÃ  phÆ°Æ¡ng Ã¡n cuá»‘i cÃ¹ng chá»© khÃ´ng pháº£i phÆ°Æ¡ng Ã¡n Ä‘áº§u tiÃªn. Khi Ä‘iï¿½?u Ä‘Ã³ lÃ  khÃ´ng thá»ƒ trÃ¡nh khï¿½?i, anh áº¥y thÃ­ch sá»± chuáº©n bá»‹ cáº©n tháº­n vÃ  láº­p luáº­n rÃµ rÃ ng hÆ¡n lÃ  diá»…n ká»‹ch. Ã”ng Ä‘Ã£ háº§u tÃ²a kháº¯p miï¿½?n Báº¯c Viá»‡t Nam vÃ  lÃ m viá»‡c báº±ng tiáº¿ng Viá»‡t vÃ  tiáº¿ng Anh.',
+                ],
+                'education' => [
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2010],
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2013],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '10:00', '11:00']],
+                    ['day_offset' => 1, 'slots' => ['14:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '10:00', '15:00']],
+                    ['day_offset' => 3, 'slots' => ['11:00', '14:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '10:00', '11:00', '14:00', '15:00']],
+                    ['day_offset' => 5, 'slots' => ['15:00', '16:00']],
+                    ['day_offset' => 6, 'slots' => ['09:00', '11:00', '14:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Quá»³nh', 'date' => '2026-03-30', 'stars' => 5, 'text' => 'Tháº¯ng má»™t vá»¥ tranh cháº¥p há»£p Ä‘á»“ng mÃ  chÃºng tÃ´i nghÄ© lÃ  khÃ´ng thá»ƒ tháº¯ng Ä‘Æ°á»£c. Sá»± chuáº©n bá»‹ cá»§a anh áº¥y á»Ÿ má»™t cáº¥p Ä‘á»™ khÃ¡c.'],
+                    ['author' => 'ï¿½?áº¡t', 'date' => '2026-02-08', 'stars' => 5, 'text' => 'KiÃªn nháº«n, Ä‘o lÆ°ï¿½?ng vÃ  khÃ´ng ngá»«ng nghá»‰ khi cÃ³ váº¥n Ä‘ï¿½?. Sá»± káº¿t há»£p hiáº¿m cÃ³ á»Ÿ má»™t ngÆ°ï¿½?i tranh tá»¥ng.'],
+                    ['author' => 'Nga', 'date' => '2025-12-15', 'stars' => 5, 'text' => 'ï¿½?Ã£ giÃºp chÃºng tÃ´i giáº£i quyáº¿t trÆ°á»›c phiÃªn tÃ²a vá»›i nhá»¯ng Ä‘iï¿½?u khoáº£n tá»‘t hÆ¡n nhiï¿½?u so vá»›i nhá»¯ng gÃ¬ chÃºng tÃ´i mong Ä‘á»£i. Ráº¥t khuyáº¿n khÃ­ch.'],
+                ],
+            ],
+            [
+                'id' => 7,
+                'name' => 'ï¿½?áº·ng Thá»‹ Mai',
+                'slug' => 'dang-thi-mai',
+                'primary_specialty' => 'Lu?t Hï¿½n nhï¿½n & Gia ?ï¿½nh',
+                'specialty_tags' => ['Lu?t Hï¿½n nhï¿½n & Gia ?ï¿½nh'],
+                'years_of_experience' => 11,
+                'price_per_hour' => 1600000,
+                'rating' => 4.8,
+                'review_count' => 134,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? Hï¿½ N?i',
+                'address' => ['province' => 'Hanoi', 'street_address' => '56 ThÃ¡i HÃ , ï¿½?á»‘ng ï¿½?a'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1582896911227-c966f6e7fb93?q=80',
+                'bio' => [
+                    'ï¿½?áº·ng Thá»‹ Mai lÃ  má»™t luáº­t sÆ° luáº­t gia Ä‘Ã¬nh, ngÆ°ï¿½?i Ä‘Ã£ xÃ¢y dá»±ng cÆ¡ sá»Ÿ hÃ nh nghï¿½? cá»§a mÃ¬nh xoay quanh cÃ¡c khÃ¡ch hÃ ng trong viá»‡c giáº£i quyáº¿t cÃ¡c váº¥n Ä‘ï¿½? vï¿½? ly hÃ´n, quyï¿½?n nuÃ´i con vÃ  quyï¿½?n giÃ¡m há»™. CÃ´ báº¯t Ä‘áº§u sá»± nghiá»‡p cá»§a mÃ¬nh táº¡i má»™t cÃ´ng ty á»Ÿ HÃ  Ná»™i chuyÃªn vï¿½? hÃ²a giáº£i gia Ä‘Ã¬nh trÆ°á»›c khi chuyá»ƒn sang lÄ©nh vá»±c kiá»‡n tá»¥ng gia Ä‘Ã¬nh rá»™ng hÆ¡n vÃ o nÄƒm 2019.',
+                    'Mai Ä‘áº·c biá»‡t chÃº Ã½ Ä‘áº¿n cÃ¡c trÆ°ï¿½?ng há»£p liÃªn quan Ä‘áº¿n tráº» em vÃ  cÃ´ thÆ°ï¿½?ng xuyÃªn phá»‘i há»£p vá»›i cÃ¡c nhÃ¢n viÃªn xÃ£ há»™i vÃ  cá»‘ váº¥n gia Ä‘Ã¬nh Ä‘á»ƒ giÃºp Ä‘á»¡. CÃ´ coi quy trÃ¬nh phÃ¡p lÃ½ lÃ  má»™t trong sá»‘ nhiï¿½?u cÃ´ng cá»¥ vÃ  cÃ´ trá»±c tiáº¿p vá»›i khÃ¡ch hÃ ng vï¿½? con Ä‘Æ°ï¿½?ng nÃ o cÃ³ nhiï¿½?u kháº£ nÄƒng phá»¥c vá»¥ tá»‘t nháº¥t cho gia Ä‘Ã¬nh hï¿½?.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2012],
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2015],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '14:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '11:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00', '14:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['15:00', '16:00']],
+                    ['day_offset' => 4, 'slots' => ['10:00', '11:00', '14:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '15:00', '16:00', '17:00']],
+                    ['day_offset' => 6, 'slots' => ['10:00', '11:00', '15:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Háº±ng', 'date' => '2026-04-12', 'stars' => 5, 'text' => 'CÃ´ Mai xá»­ lÃ½ viá»‡c giÃ nh quyï¿½?n nuÃ´i con cá»§a chÃºng tÃ´i ráº¥t cáº©n tháº­n. CÃ¡c con tÃ´i cáº£m tháº¥y Ä‘Æ°á»£c láº¯ng nghe vÃ  tÃ´i cÅ©ng váº­y.'],
+                    ['author' => 'PhÃºc', 'date' => '2026-01-28', 'stars' => 4, 'text' => 'Lï¿½?i khuyÃªn chÃ¢n thÃ nh, ngay cáº£ khi Ä‘Ã³ khÃ´ng pháº£i lÃ  Ä‘iï¿½?u tÃ´i muá»‘n nghe. ï¿½?Ã£ giÃºp tÃ´i Ä‘Æ°a ra quyáº¿t Ä‘á»‹nh tá»‘t hÆ¡n.'],
+                    ['author' => 'Lan', 'date' => '2025-11-22', 'stars' => 5, 'text' => 'CÃ´ áº¥y Ä‘Ã£ hÆ°á»›ng dáº«n chÃºng tÃ´i Ä‘áº¿n viá»‡c hÃ²a giáº£i vÃ  cá»©u chÃºng tÃ´i khï¿½?i má»™t cuá»™c chiáº¿n Ä‘au Ä‘á»›n táº¡i tÃ²a Ã¡n. Tri Ã¢n.'],
+                ],
+            ],
+            [
+                'id' => 8,
+                'name' => 'BÃ¹i Thanh TÃ¹ng',
+                'slug' => 'bui-thanh-tung',
+                'primary_specialty' => 'Lu?t Doanh nghi?p',
+                'specialty_tags' => ['Lu?t Doanh nghi?p', 'T? t?ng dï¿½n s?'],
+                'years_of_experience' => 20,
+                'price_per_hour' => 3000000,
+                'rating' => 5.0,
+                'review_count' => 212,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? Hï¿½ N?i',
+                'address' => ['province' => 'Hanoi', 'street_address' => '203 Hai BÃ  TrÆ°ng, â€‹â€‹HoÃ n Kiáº¿m'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1758599543230-652cc6831d69?q=80',
+                'bio' => [
+                    'BÃ¹i Thanh TÃ¹ng tÆ° váº¥n cho khÃ¡ch hÃ ng doanh nghiá»‡p vï¿½? quáº£n trá»‹, M&A vÃ  giao dá»‹ch xuyÃªn biÃªn giá»›i. HÆ¡n hai tháº­p ká»· hÃ nh nghï¿½?, Ã´ng Ä‘Ã£ lÃ m viá»‡c vá»›i cÃ¡c cÃ´ng ty á»Ÿ mï¿½?i giai Ä‘oáº¡n - tá»« há»“ sÆ¡ thÃ nh láº­p cÃ´ng ty cho Ä‘áº¿n cÃ¡c thÆ°Æ¡ng vá»¥ mua láº¡i cÃ³ giÃ¡ trá»‹ chÃ­n con sá»‘. Ã”ng Ä‘Æ°á»£c Ä‘Ã o táº¡o táº¡i ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i vÃ  hoÃ n thÃ nh báº±ng Tháº¡c sÄ© Luáº­t. trong luáº­t thÆ°Æ¡ng máº¡i.',
+                    'TÃ¹ng ná»•i tiáº¿ng vá»›i lá»‘i tÆ° váº¥n tháº³ng tháº¯n vÃ  nÃ³i vá»›i khÃ¡ch hÃ ng nhá»¯ng gÃ¬ hï¿½? cáº§n nghe chá»© khÃ´ng pháº£i nhá»¯ng gÃ¬ hï¿½? muá»‘n nghe. Ã”ng phá»¥c vá»¥ khÃ¡ch hÃ ng trÃªn kháº¯p Viá»‡t Nam vÃ  thÆ°ï¿½?ng xuyÃªn giáº£i quyáº¿t cÃ¡c váº¥n Ä‘ï¿½? liÃªn quan Ä‘áº¿n cÃ¡c bÃªn á»Ÿ Singapore, Nháº­t Báº£n vÃ  HÃ n Quá»‘c.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t HÃ  Ná»™i', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2003],
+                    ['institution' => 'Khoa Luáº­t ï¿½?áº¡i hï¿½?c Quá»‘c gia Viá»‡t Nam', 'degree' => 'LL.M. trong Luáº­t ThÆ°Æ¡ng máº¡i', 'year' => 2007],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['10:00', '15:00']],
+                    ['day_offset' => 1, 'slots' => ['09:00', '14:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['10:00', '11:00', '15:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['14:00', '15:00']],
+                    ['day_offset' => 4, 'slots' => ['09:00', '11:00', '14:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['10:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00', '17:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'SÆ¡n', 'date' => '2026-04-18', 'stars' => 5, 'text' => 'Ã”ng TÃ¹ng Ä‘Ã£ káº¿t thÃºc Series B cá»§a chÃºng tÃ´i trong thï¿½?i gian ká»· lá»¥c vÃ  phÃ¡t hiá»‡n ra ba váº¥n Ä‘ï¿½? mÃ  cá»‘ váº¥n trÆ°á»›c Ä‘Ã¢y cá»§a chÃºng tÃ´i Ä‘Ã£ bï¿½? sÃ³t. ï¿½?Ã¡ng giÃ¡ tá»«ng Ä‘á»“ng.'],
+                    ['author' => 'Yáº¿n', 'date' => '2026-03-01', 'stars' => 5, 'text' => 'Kinh nghiá»‡m hai chá»¥c nÄƒm thá»ƒ hiá»‡n trong mï¿½?i cuá»™c gáº·p gá»¡. Trá»±c tiáº¿p, hiá»‡u quáº£ vÃ  Ä‘Ã¡ng tin cáº­y.'],
+                    ['author' => 'KhÃ¡nh', 'date' => '2025-12-28', 'stars' => 5, 'text' => 'Luáº­t sÆ° thÆ°Æ¡ng máº¡i giï¿½?i nháº¥t mÃ  tÃ´i tá»«ng lÃ m viá»‡c cÃ¹ng, cháº¥m háº¿t. LÃ m cho nhá»¯ng váº¥n Ä‘ï¿½? phá»©c táº¡p trá»Ÿ nÃªn Ä‘Æ¡n giáº£n.'],
+                ],
+            ],
+            [
+                'id' => 9,
+                'name' => 'NgÃ´ Háº£i Yáº¿n',
+                'slug' => 'ngo-hai-yen',
+                'primary_specialty' => 'B?t ??ng s?n',
+                'specialty_tags' => ['B?t ??ng s?n'],
+                'years_of_experience' => 7,
+                'price_per_hour' => 1400000,
+                'rating' => 4.7,
+                'review_count' => 89,
+                'languages' => ['Ti?ng Vi?t', 'Ti?ng Anh'],
+                'bar_association' => '?oï¿½n Lu?t s? TP.HCM',
+                'address' => ['province' => 'ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'street_address' => '112 Nguyá»…n ï¿½?Ã¬nh Chiá»ƒu, Quáº­n 1'],
+                'verification_status' => 'VERIFIED',
+                'portrait_url' => 'https://images.unsplash.com/photo-1633600180489-65ef075f6068?q=80',
+                'bio' => [
+                    'NgÃ´ Háº£i Yáº¿n xá»­ lÃ½ cÃ¡c váº¥n Ä‘ï¿½? báº¥t Ä‘á»™ng sáº£n nhÃ  á»Ÿ vÃ  thÆ°Æ¡ng máº¡i táº¡i ThÃ nh phá»‘ Há»“ ChÃ­ Minh. CÃ´ng viá»‡c cá»§a cÃ´ bao gá»“m cÃ¡c giao dá»‹ch mua bÃ¡n, xem xÃ©t quyï¿½?n sá»Ÿ há»¯u vÃ  quyï¿½?n sá»­ dá»¥ng Ä‘áº¥t cÅ©ng nhÆ° cho thuÃª thÆ°Æ¡ng máº¡i. CÃ´ báº¯t Ä‘áº§u sá»± nghiá»‡p cá»§a mÃ¬nh vá»›i má»™t cÃ´ng ty báº¥t Ä‘á»™ng sáº£n trÆ°á»›c khi hoáº¡t Ä‘á»™ng Ä‘á»™c láº­p vÃ o nÄƒm 2023.',
+                    'Yáº¿n Ä‘áº·c biá»‡t chÃº Ã½ Ä‘áº¿n nhá»¯ng ngÆ°ï¿½?i mua láº§n Ä‘áº§u, nhá»¯ng ngÆ°ï¿½?i thÆ°ï¿½?ng cáº§n nhiï¿½?u bá»‘i cáº£nh hÆ¡n má»™t nhÃ  Ä‘áº§u tÆ° dÃ y dáº¡n kinh nghiá»‡m. CÃ´ tin ráº±ng cháº¥t lÆ°á»£ng cá»§a má»™t giao dá»‹ch báº¥t Ä‘á»™ng sáº£n Ä‘Ã£ Ä‘Æ°á»£c xÃ¡c láº­p tá»« lÃ¢u trÆ°á»›c khi kÃ½ káº¿t - trong cÃ¡c cÃ¢u hï¿½?i Ä‘Æ°á»£c Ä‘áº·t ra, cÃ¡c tÃ i liá»‡u Ä‘Æ°á»£c xÃ¡c minh vÃ  cÃ¡c Ä‘iï¿½?u khoáº£n Ä‘Æ°á»£c Ä‘Ã m phÃ¡n cáº©n tháº­n.',
+                ],
+                'education' => [
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'degree' => 'Cá»­ nhÃ¢n Luáº­t', 'year' => 2016],
+                    ['institution' => 'ï¿½?áº¡i hï¿½?c Luáº­t ThÃ nh phá»‘ Há»“ ChÃ­ Minh', 'degree' => 'Tháº¡c sÄ© luáº­t', 'year' => 2019],
+                ],
+                'availability' => [
+                    ['day_offset' => 0, 'slots' => ['09:00', '11:00', '14:00']],
+                    ['day_offset' => 1, 'slots' => ['10:00', '15:00', '16:00']],
+                    ['day_offset' => 2, 'slots' => ['09:00', '11:00', '14:00', '17:00']],
+                    ['day_offset' => 3, 'slots' => ['10:00', '11:00']],
+                    ['day_offset' => 4, 'slots' => ['14:00', '15:00', '16:00']],
+                    ['day_offset' => 5, 'slots' => ['09:00', '10:00', '11:00']],
+                    ['day_offset' => 6, 'slots' => ['14:00', '16:00']],
+                ],
+                'reviews' => [
+                    ['author' => 'Trang', 'date' => '2026-04-08', 'stars' => 5, 'text' => 'ï¿½?Ã£ giÃºp tÃ´i mua cÄƒn há»™ Ä‘áº§u tiÃªn cá»§a mÃ¬nh mÃ  khÃ´ng cÃ³ báº¥t ngï¿½? nÃ o. CÃ´ áº¥y giáº£i thÃ­ch tá»«ng tÃ i liá»‡u vÃ  Ä‘á»£i cho Ä‘áº¿n khi tÃ´i hiá»ƒu trÆ°á»›c khi tiáº¿p tá»¥c.'],
+                    ['author' => 'ï¿½?á»©c', 'date' => '2026-02-15', 'stars' => 4, 'text' => 'ï¿½?Ã¡p á»©ng vÃ  cáº©n tháº­n. ï¿½?Ã£ giáº£i quyáº¿t váº¥n Ä‘ï¿½? vï¿½? tiÃªu Ä‘ï¿½? Ä‘Ã£ khiáº¿n viá»‡c mua hÃ ng cá»§a chÃºng tÃ´i bá»‹ Ä‘Ã¬nh trá»‡ trong nhiï¿½?u tuáº§n.'],
+                    ['author' => 'HÃ ', 'date' => '2025-11-05', 'stars' => 5, 'text' => 'Má»™t cáº·p máº¯t Ä‘Ã¡ng tin cáº­y vï¿½? má»™t há»£p Ä‘á»“ng thuÃª thÆ°Æ¡ng máº¡i lá»›n. ï¿½?Æ°á»£c Ä‘ï¿½? xuáº¥t mÃ  khÃ´ng cáº§n Ä‘áº·t trÆ°á»›c.'],
+                ],
+            ],
+        ];
+    }
+
+    public static function findBySlug(string $slug): ?array
+    {
+        foreach (self::all() as $lawyer) {
+            if ($lawyer['slug'] === $slug) {
+                return $lawyer;
+            }
+        }
+        return null;
+    }
+
+    public static function featured(int $count = 3): array
+    {
+        return array_slice(self::all(), 0, $count);
+    }
+}
+
+
+

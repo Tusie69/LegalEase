@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Data;
+
+class PastConsultations
+{
+    public static function all(): array
+    {
+        return [
+            [
+                'lawyer_slug'  => 'nguyen-minh-anh',
+                'date'         => '2026-04-25',
+                'time'         => '10:00',
+                'booking_code' => 'BK-20260425-A8C3F2',
+                'rated'        => false,
+            ],
+            [
+                'lawyer_slug'  => 'tran-van-hung',
+                'date'         => '2026-04-11',
+                'time'         => '14:00',
+                'booking_code' => 'BK-20260411-K5L9D7',
+                'rated'        => true,
+                'stars'        => 5,
+                'review_text'  => "Anh HÃ¹ng Ä‘Ã£ hÆ°á»›ng dáº«n chÃºng tÃ´i tá»«ng Ä‘iï¿½?u khoáº£n trong há»£p Ä‘á»“ng vá»›i nhÃ  cung cáº¥p vÃ  nÃªu ra hai Ä‘iï¿½?u khoáº£n mÃ  chÃºng tÃ´i chÆ°a tá»«ng nghÄ© tá»›i. BÃ¬nh tÄ©nh, cÃ³ phÆ°Æ¡ng phÃ¡p, khÃ´ng cÃ³ biá»‡t ngá»¯. ChÃºng tÃ´i sáº½ quay láº¡i vÃ o quÃ½ sau khi kÃ½ há»£p Ä‘á»“ng thuÃª.",
+                'reviewed_at'  => '2026-04-13',
+            ],
+            [
+                'lawyer_slug'  => 'le-thi-huong',
+                'date'         => '2026-03-28',
+                'time'         => '15:00',
+                'booking_code' => 'BK-20260328-M2N6P1',
+                'rated'        => true,
+                'stars'        => 4,
+                'review_text'  => "CÃ³ kiáº¿n â€‹â€‹thá»©c vÃ  kiÃªn nháº«n. ï¿½?Ã£ cÃ³ cÃ¢u tráº£ lï¿½?i chÃºng tÃ´i cáº§n vï¿½? viá»‡c chuyá»ƒn nhÆ°á»£ng quyï¿½?n sá»Ÿ há»¯u. Email tiáº¿p theo máº¥t thÃªm vÃ i ngÃ y, Ä‘Ã³ lÃ  trá»Ÿ ngáº¡i duy nháº¥t trong má»™t tráº£i nghiá»‡m vá»‘n dÄ© lÃ  suÃ´n sáº».",
+                'reviewed_at'  => '2026-03-30',
+            ],
+        ];
+    }
+
+    public static function findByCode(string $code): ?array
+    {
+        foreach (self::all() as $c) {
+            if ($c['booking_code'] === $code) {
+                return $c;
+            }
+        }
+
+        return null;
+    }
+
+    public static function withSessionReviews(): array
+    {
+        $sessionReviews = session('consultation_reviews', []);
+
+        return array_map(function ($c) use ($sessionReviews) {
+            if (isset($sessionReviews[$c['booking_code']])) {
+                $review = $sessionReviews[$c['booking_code']];
+                $c['rated']       = true;
+                $c['stars']       = $review['stars'];
+                $c['review_text'] = $review['review_text'] ?? null;
+                $c['reviewed_at'] = $review['reviewed_at'];
+            }
+            return $c;
+        }, self::all());
+    }
+
+    public static function findByCodeWithReview(string $code): ?array
+    {
+        foreach (self::withSessionReviews() as $c) {
+            if ($c['booking_code'] === $code) {
+                return $c;
+            }
+        }
+
+        return null;
+    }
+}
+
+
