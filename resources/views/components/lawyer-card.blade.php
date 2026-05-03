@@ -6,7 +6,7 @@
         <img src="{{ $lawyer['portrait_url'] }}"
              alt="{{ $lawyer['name'] }}"
              loading="lazy"
-             class="aspect-square w-full object-cover object-top grayscale">
+             class="aspect-square w-full object-cover object-top">
     </div>
 
     @php
@@ -50,8 +50,10 @@
             {{ $displayName }}
         </h3>
         @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-            <span title="Verified" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gold/15 text-gold">
-                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span title="Đã xác minh" class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-blue-100">
+                <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                </svg>
             </span>
         @endif
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminTemplateController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
@@ -133,21 +134,10 @@ Route::post('/book/payment', function () {
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
 
 Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
-Route::get('/admin-view-test', function () {
-    $stats = [
-        'total_lawyers' => 128,
-        'total_customers' => 542,
-        'total_appointments' => 913,
-        'revenue_vnd' => 125000000,
-        'pending_appointments' => 27,
-        'completed_appointments' => 801,
-        'cancelled_appointments' => 85,
-        'unread_notifications' => 14,
-        'paid_payments' => 766,
-    ];
-
-    return view('admin_view', compact('stats'));
-})->name('admin.view.test');
+Route::get('/admin-view-test', [AdminTemplateController::class, 'index'])->name('admin.view.test');
+Route::post('/admin-view-test/users', [AdminTemplateController::class, 'store'])->name('admin.users.store');
+Route::put('/admin-view-test/users/{user}', [AdminTemplateController::class, 'update'])->name('admin.users.update');
+Route::delete('/admin-view-test/users/{user}', [AdminTemplateController::class, 'destroy'])->name('admin.users.destroy');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');

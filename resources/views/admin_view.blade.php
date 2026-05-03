@@ -46,6 +46,112 @@
     <link rel="stylesheet" href="{{ asset('admin_view/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
+    <style>
+      .metric-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .metric-card .metric-icon {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .metric-card .sparkline {
+        margin-top: 8px;
+      }
+
+      .trend-up {
+        color: #1f9d57;
+      }
+
+      .trend-down {
+        color: #d14343;
+      }
+
+      .card-warn {
+        background: linear-gradient(180deg, #fffaf0 0%, #fff 100%);
+      }
+
+      .card-danger {
+        background: linear-gradient(180deg, #fff5f7 0%, #fff 100%);
+      }
+
+      .card-success {
+        background: linear-gradient(180deg, #f2fff7 0%, #fff 100%);
+      }
+
+      #layout-menu.layout-menu-horizontal {
+        box-shadow: 0 8px 18px rgba(67, 89, 113, 0.08);
+        border-bottom: 1px solid rgba(67, 89, 113, 0.12);
+      }
+
+      #layout-menu .menu-inner {
+        gap: 8px;
+      }
+
+      #layout-menu .menu-inner .menu-item .menu-link {
+        border: 1px solid rgba(67, 89, 113, 0.14);
+        border-radius: 999px;
+        padding: 0.58rem 1rem;
+        color: #4f5d70;
+        transition: all 0.2s ease;
+      }
+
+      #layout-menu .menu-inner .menu-item .menu-link .menu-icon {
+        color: #4f5d70;
+      }
+
+      #layout-menu .menu-inner .menu-item:not(.active) .menu-link:hover,
+      #layout-menu .menu-inner .menu-item.preview-hover .menu-link {
+        background: rgba(115, 103, 240, 0.09);
+        border-color: rgba(115, 103, 240, 0.28);
+        box-shadow: 0 6px 14px rgba(115, 103, 240, 0.14);
+        color: #3d4959;
+      }
+
+      #layout-menu .menu-inner .menu-item:not(.active) .menu-link:hover .menu-icon,
+      #layout-menu .menu-inner .menu-item.preview-hover .menu-link .menu-icon {
+        color: #3d4959;
+      }
+
+      #layout-menu .menu-inner .menu-item.active .menu-link {
+        border-color: transparent;
+      }
+
+      .crud-toolbar .form-control {
+        min-width: 140px;
+      }
+
+      .crud-toolbar .form-control.form-control-sm {
+        height: 34px;
+        font-size: 0.86rem;
+      }
+
+      .crud-toolbar .btn.btn-sm {
+        padding: 0.32rem 0.65rem;
+        font-size: 0.84rem;
+      }
+
+      .crud-toolbar .btn-primary.btn-sm {
+        padding: 0.38rem 0.8rem;
+      }
+
+      .crud-toolbar .btn-add-user {
+        height: 34px;
+        padding: 0.34rem 0.72rem !important;
+        font-size: 0.84rem !important;
+        align-self: flex-start;
+      }
+    </style>
 
     <!-- Helpers -->
     <script src="{{ asset('admin_view/assets/vendor/js/helpers.js') }}"></script>
@@ -242,7 +348,7 @@
                       <div>Lawyers</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item preview-hover">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-user-3-line"></i>
                       <div>Customers</div>
@@ -279,44 +385,262 @@
 <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
+              @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible mb-4" role="alert">
+                  <strong>Vui lòng kiểm tra lại thông tin:</strong>
+                  <ul class="mb-0 mt-2 ps-3">
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              @endif
               <div class="row gy-4">
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title mb-1">LegalEase Admin Dashboard</h5>
-                      <p class="mb-0 text-muted">Tong quan van hanh he thong tu du lieu thuc te.</p>
+                      <h5 class="card-title mb-1">Bảng điều khiển quản trị LegalEase</h5>
+                      <p class="mb-0 text-muted">Tổng quan vận hành hệ thống từ dữ liệu thực tế.</p>
                     </div>
                   </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong luat su</span><h3 class="mb-0">{{ number_format($stats['total_lawyers']) }}</h3></div></div>
+                  <div class="card metric-card h-100">
+                    <div class="card-body">
+                      <span class="text-muted">Tổng luật sư</span>
+                      <h3 class="mb-1">{{ number_format($stats['total_lawyers']) }}</h3>
+                      <p class="mb-0 small trend-up"><i class="ri-arrow-up-line"></i> +3.2% so với tháng trước</p>
+                      <div class="metric-icon bg-label-primary text-primary"><i class="ri-scales-3-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong khach hang</span><h3 class="mb-0">{{ number_format($stats['total_customers']) }}</h3></div></div>
+                  <div class="card metric-card h-100">
+                    <div class="card-body">
+                      <span class="text-muted">Tổng khách hàng</span>
+                      <h3 class="mb-1">{{ number_format($stats['total_customers']) }}</h3>
+                      <p class="mb-0 small trend-up"><i class="ri-arrow-up-line"></i> +8.4% so với tháng trước</p>
+                      <div class="metric-icon bg-label-info text-info"><i class="ri-user-3-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong lich hen</span><h3 class="mb-0">{{ number_format($stats['total_appointments']) }}</h3></div></div>
+                  <div class="card metric-card h-100">
+                    <div class="card-body">
+                      <span class="text-muted">Tổng lịch hẹn</span>
+                      <h3 class="mb-1">{{ number_format($stats['total_appointments']) }}</h3>
+                      <p class="mb-0 small trend-up"><i class="ri-arrow-up-line"></i> +4.1% so với tháng trước</p>
+                      <div class="metric-icon bg-label-secondary text-secondary"><i class="ri-calendar-check-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Doanh thu (VND)</span><h3 class="mb-0">{{ number_format($stats['revenue_vnd'], 0, '.', ',') }}</h3></div></div>
+                  <div class="card metric-card h-100 card-success">
+                    <div class="card-body">
+                      <span class="text-muted">Doanh thu (VND)</span>
+                      <h3 class="mb-1">{{ number_format($stats['revenue_vnd'], 0, '.', ',') }}</h3>
+                      <p class="mb-0 small trend-up"><i class="ri-arrow-up-line"></i> +5.0% so với tháng trước</p>
+                      <svg class="sparkline" width="100%" height="34" viewBox="0 0 220 34" preserveAspectRatio="none">
+                        <polyline fill="none" stroke="#28c76f" stroke-width="2.5"
+                          points="0,27 30,24 60,25 90,20 120,16 150,12 180,9 220,6"></polyline>
+                      </svg>
+                      <div class="metric-icon bg-label-success text-success"><i class="ri-money-dollar-circle-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen dang cho</span><h4 class="mb-0">{{ number_format($stats['pending_appointments']) }}</h4></div></div>
+                  <div class="card metric-card h-100 card-warn">
+                    <div class="card-body">
+                      <span class="text-muted">Lịch hẹn đang chờ</span>
+                      <h4 class="mb-1">{{ number_format($stats['pending_appointments']) }}</h4>
+                      <p class="mb-0 small text-warning"><i class="ri-error-warning-line"></i> Cần ưu tiên xác nhận</p>
+                      <div class="metric-icon bg-label-warning text-warning"><i class="ri-time-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen hoan tat</span><h4 class="mb-0">{{ number_format($stats['completed_appointments']) }}</h4></div></div>
+                  <div class="card metric-card h-100 card-success">
+                    <div class="card-body">
+                      <span class="text-muted">Lịch hẹn hoàn tất</span>
+                      <h4 class="mb-1">{{ number_format($stats['completed_appointments']) }}</h4>
+                      <p class="mb-0 small trend-up"><i class="ri-checkbox-circle-line"></i> Tăng ổn định theo tuần</p>
+                      <div class="metric-icon bg-label-success text-success"><i class="ri-check-double-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen da huy</span><h4 class="mb-0">{{ number_format($stats['cancelled_appointments']) }}</h4></div></div>
+                  <div class="card metric-card h-100 card-danger">
+                    <div class="card-body">
+                      <span class="text-muted">Lịch hẹn đã hủy</span>
+                      <h4 class="mb-1">{{ number_format($stats['cancelled_appointments']) }}</h4>
+                      <p class="mb-0 small trend-down"><i class="ri-arrow-down-line"></i> +1.1% so với tháng trước</p>
+                      <div class="metric-icon bg-label-danger text-danger"><i class="ri-close-circle-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Thong bao chua doc</span><h4 class="mb-0">{{ number_format($stats['unread_notifications']) }}</h4></div></div>
+                  <div class="card metric-card h-100">
+                    <div class="card-body">
+                      <span class="text-muted">Thông báo chưa đọc</span>
+                      <h4 class="mb-1">{{ number_format($stats['unread_notifications']) }}</h4>
+                      <p class="mb-0 small text-info"><i class="ri-notification-3-line"></i> Cần xử lý trong ngày</p>
+                      <div class="metric-icon bg-label-info text-info"><i class="ri-notification-3-line"></i></div>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body d-flex flex-column flex-md-row justify-content-between gap-3">
-                      <div><h6 class="mb-1">Thanh toan thanh cong</h6><p class="mb-0 text-muted">So giao dich da doi soat thanh cong.</p></div>
-                      <h3 class="mb-0">{{ number_format($stats['paid_payments']) }}</h3>
+                      <div>
+                        <h6 class="mb-1">Thanh toán thành công</h6>
+                        <p class="mb-0 text-muted">Số giao dịch đã đối soát thành công.</p>
+                      </div>
+                      <div class="text-md-end">
+                        <h3 class="mb-0">{{ number_format($stats['paid_payments']) }}</h3>
+                        <p class="mb-0 small trend-up"><i class="ri-arrow-up-line"></i> +6.7% so với tháng trước</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-8 col-12">
+                  <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <div>
+                        <h5 class="mb-0">Lịch hẹn sắp tới</h5>
+                        <small class="text-muted">Theo dõi nhanh các lịch hẹn gần nhất</small>
+                      </div>
+                    </div>
+                    <div class="card-body pt-2">
+                      <div class="table-responsive">
+                        <table class="table table-sm align-middle">
+                          <thead>
+                            <tr>
+                              <th>Mã lịch</th>
+                              <th>Khách hàng</th>
+                              <th>Luật sư</th>
+                              <th>Thời gian</th>
+                              <th>Trạng thái</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @forelse ($recentAppointments as $item)
+                              <tr>
+                                <td>{{ $item['code'] }}</td>
+                                <td>{{ $item['customer'] }}</td>
+                                <td>{{ $item['lawyer'] }}</td>
+                                <td>{{ $item['time'] }}</td>
+                                <td>
+                                  @if ($item['status'] === 'Hoàn tất')
+                                    <span class="badge bg-label-success">{{ $item['status'] }}</span>
+                                  @elseif ($item['status'] === 'Đã hủy')
+                                    <span class="badge bg-label-danger">{{ $item['status'] }}</span>
+                                  @else
+                                    <span class="badge bg-label-warning">{{ $item['status'] }}</span>
+                                  @endif
+                                </td>
+                              </tr>
+                            @empty
+                              <tr>
+                                <td colspan="5" class="text-center text-muted">Chưa có dữ liệu lịch hẹn.</td>
+                              </tr>
+                            @endforelse
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-4 col-12">
+                  <div class="card h-100">
+                    <div class="card-header">
+                      <h5 class="mb-0">Doanh thu theo tháng</h5>
+                      <small class="text-muted">Đơn vị: triệu VND</small>
+                    </div>
+                    <div class="card-body">
+                      <div id="monthlyRevenueChart" style="min-height: 280px;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 order-first" id="users-management">
+                  <div class="card">
+                    <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-3">
+                      <div>
+                        <h5 class="mb-0">Quản lý người dùng</h5>
+                        <small class="text-muted">Danh sách người dùng có lọc theo ID, tên và phân trang</small>
+                      </div>
+                      <div class="crud-toolbar d-flex flex-wrap gap-2">
+                        <form id="usersFilterForm" method="GET" action="{{ route('admin.view.test') }}#users-management" class="d-flex flex-wrap gap-2">
+                          <input type="number" name="id" value="{{ $filters['id'] ?? '' }}" class="form-control form-control-sm" placeholder="Lọc theo ID">
+                          <input type="text" name="name" value="{{ $filters['name'] ?? '' }}" class="form-control form-control-sm" placeholder="Lọc theo tên">
+                          <button type="submit" class="btn btn-sm btn-outline-primary">Lọc</button>
+                          <a href="{{ route('admin.view.test') }}#users-management" class="btn btn-sm btn-outline-secondary">Reset</a>
+                        </form>
+                        <button type="button" class="btn btn-sm btn-primary btn-add-user" data-bs-toggle="modal" data-bs-target="#createUserModal">
+                          <i class="ri-add-line me-1"></i> Thêm mới
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body" id="usersManagementBody">
+                      <div class="table-responsive">
+                        <table class="table table-sm align-middle">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Tên</th>
+                              <th>Email</th>
+                              <th>Ngày tạo</th>
+                              <th class="text-end">Thao tác</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @forelse ($users as $u)
+                              <tr>
+                                <td>{{ $u->id }}</td>
+                                <td>{{ $u->name }}</td>
+                                <td>{{ $u->email }}</td>
+                                <td>{{ optional($u->created_at)->format('d/m/Y H:i') }}</td>
+                                <td class="text-end">
+                                  <button
+                                    type="button"
+                                    class="btn btn-sm btn-outline-primary edit-user-btn"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editUserModal"
+                                    data-id="{{ $u->id }}"
+                                    data-name="{{ $u->name }}"
+                                    data-email="{{ $u->email }}">
+                                    Sửa
+                                  </button>
+                                  <form method="POST" action="{{ route('admin.users.destroy', $u) }}" class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa người dùng này?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+                                  </form>
+                                </td>
+                              </tr>
+                            @empty
+                              <tr>
+                                <td colspan="5" class="text-center text-muted">Không có dữ liệu người dùng.</td>
+                              </tr>
+                            @endforelse
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="mt-3">
+                        {{ $users->fragment('users-management')->links() }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -371,14 +695,211 @@
 
     <!-- Main JS -->
     <script src="{{ asset('admin_view/assets') }}/js/main.js"></script>
+    <script src="{{ asset('admin_view/assets') }}/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script>
+      (function () {
+        var el = document.querySelector('#monthlyRevenueChart');
+        if (!el || typeof ApexCharts === 'undefined') return;
+
+        var options = {
+          chart: {
+            type: 'line',
+            height: 280,
+            toolbar: { show: false },
+          },
+          series: [{
+            name: 'Doanh thu',
+            data: @json($monthlyRevenue ?? []),
+          }],
+          stroke: {
+            curve: 'smooth',
+            width: 3,
+          },
+          colors: ['#28c76f'],
+          xaxis: {
+            categories: @json($monthlyLabels ?? []),
+          },
+          grid: {
+            borderColor: '#eceff3',
+            strokeDashArray: 4,
+          },
+          dataLabels: { enabled: false },
+          markers: { size: 4 },
+        };
+
+        new ApexCharts(el, options).render();
+      })();
+
+      @if (session('success') || session('error'))
+      window.addEventListener('load', function () {
+        var toastEl = document.getElementById('crudToast');
+        if (!toastEl || typeof bootstrap === 'undefined') return;
+        var toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+        toast.show();
+      });
+      @endif
+
+      (function () {
+        var container = document.getElementById('users-management');
+        var body = document.getElementById('usersManagementBody');
+        var filterForm = document.getElementById('usersFilterForm');
+        if (!container || !body || !filterForm) return;
+
+        function bindEditButtons(root) {
+          root.querySelectorAll('.edit-user-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = btn.getAttribute('data-id');
+              var name = btn.getAttribute('data-name');
+              var email = btn.getAttribute('data-email');
+              var form = document.getElementById('editUserForm');
+              form.action = '{{ url('/admin-view-test/users') }}/' + id;
+              document.getElementById('edit_user_name').value = name;
+              document.getElementById('edit_user_email').value = email;
+              document.getElementById('edit_user_password').value = '';
+              document.getElementById('edit_user_password_confirmation').value = '';
+            });
+          });
+        }
+
+        function bindPaginationAjax() {
+          container.querySelectorAll('.pagination a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+              e.preventDefault();
+              loadUsers(link.href);
+            });
+          });
+        }
+
+        function bindResetAjax() {
+          var resetLink = filterForm.querySelector('a.btn-outline-secondary');
+          if (!resetLink) return;
+          resetLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            filterForm.reset();
+            loadUsers(resetLink.href);
+          });
+        }
+
+        function loadUsers(url) {
+          fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+            .then(function (res) { return res.text(); })
+            .then(function (html) {
+              var parser = new DOMParser();
+              var doc = parser.parseFromString(html, 'text/html');
+              var newBody = doc.getElementById('usersManagementBody');
+              var newForm = doc.getElementById('usersFilterForm');
+              if (!newBody || !newForm) return;
+              body.innerHTML = newBody.innerHTML;
+              filterForm.innerHTML = newForm.innerHTML;
+              bindPaginationAjax();
+              bindResetAjax();
+              bindEditButtons(container);
+            });
+        }
+
+        filterForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var formData = new FormData(filterForm);
+          var params = new URLSearchParams(formData);
+          loadUsers('{{ route('admin.view.test') }}?' + params.toString() + '#users-management');
+        });
+
+        bindPaginationAjax();
+        bindResetAjax();
+        bindEditButtons(container);
+      })();
+
+      @if ($errors->any())
+      window.addEventListener('load', function () {
+        if (typeof bootstrap === 'undefined') return;
+        var createModalEl = document.getElementById('createUserModal');
+        if (!createModalEl) return;
+        var modal = new bootstrap.Modal(createModalEl);
+        modal.show();
+      });
+      @endif
+    </script>
+
+    <div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <form method="POST" action="{{ route('admin.users.store') }}" class="modal-content">
+          @csrf
+          <div class="modal-header">
+            <h5 class="modal-title">Thêm người dùng mới</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Tên</label>
+              <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mật khẩu</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Xác nhận mật khẩu</label>
+              <input type="password" name="password_confirmation" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <form method="POST" id="editUserForm" action="#" class="modal-content">
+          @csrf
+          @method('PUT')
+          <div class="modal-header">
+            <h5 class="modal-title">Cập nhật người dùng</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Tên</label>
+              <input type="text" id="edit_user_name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" id="edit_user_email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mật khẩu mới (không bắt buộc)</label>
+              <input type="password" id="edit_user_password" name="password" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Xác nhận mật khẩu mới</label>
+              <input type="password" id="edit_user_password_confirmation" name="password_confirmation" class="form-control">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    @if (session('success') || session('error'))
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+      <div id="crudToast" class="toast align-items-center text-bg-{{ session('error') ? 'danger' : 'success' }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{ session('success') ?? session('error') }}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    @endif
   </body>
 </html>
-
-
-
-
-
-
-
-
-

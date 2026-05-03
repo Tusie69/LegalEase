@@ -116,7 +116,7 @@
                 <div class="overflow-hidden rounded-2xl">
                     <img src="{{ $lawyer['portrait_url'] }}"
                          alt="{{ $lawyer['name'] }}"
-                         class="aspect-[4/5] max-h-[560px] w-full object-cover object-top grayscale">
+                         class="aspect-[4/5] max-h-[560px] w-full object-cover object-top">
                 </div>
 
                 <div class="mt-10 flex items-center gap-3">

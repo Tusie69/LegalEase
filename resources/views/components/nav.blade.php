@@ -7,14 +7,14 @@
     ];
 @endphp
 
-<nav class="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-text/10 bg-bg/80 backdrop-blur-md">
+<nav class="fixed inset-x-0 top-0 z-50 h-[72px] border-b border-text/15 bg-bg/92 backdrop-blur-lg">
     <div class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-8">
         <a href="/" class="inline-flex items-center gap-3 font-display text-xl font-medium tracking-tight text-text">
             <img src="{{ asset('images/logo2.png') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
             <span>LegalEase</span>
         </a>
 
-        <div class="hidden items-center gap-8 md:flex">
+        <div class="hidden items-center gap-8 md:ml-auto md:mr-6 md:flex">
             @foreach ($links as $link)
                 @php $active = request()->path() === ltrim($link['url'], '/'); @endphp
                 <a href="{{ $link['url'] }}"

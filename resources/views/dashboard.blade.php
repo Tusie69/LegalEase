@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Bảng điều khiển · LegalEase'])
+﻿@extends('layouts.app', ['title' => 'Bảng điều khiển · LegalEase'])
 
 @php
     $user = auth()->user();
@@ -34,11 +34,11 @@
     {{-- Header --}}
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chào mừng trở lại</p>
     <h1 class="mt-3 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
-        Hi, {{ $firstName }}.
+        Hi, {{ $user->name }}.
     </h1>
     @unless ($hasUpcoming)
         <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
-            Pick a lawyer below to book a consultation.
+            Chọn một luật sư dưới đây để đặt lịch tham vấn.
         </p>
     @endunless
 
@@ -53,7 +53,7 @@
                     {{-- Lawyer --}}
                     <div class="flex items-center gap-4">
                         <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                             class="h-16 w-16 flex-none rounded-full object-cover object-top grayscale">
+                             class="h-16 w-16 flex-none rounded-full object-cover object-top">
                         <div class="min-w-0">
                             <p class="font-display text-[20px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                             <p class="text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>
@@ -62,7 +62,7 @@
 
                     {{-- When + Where --}}
                     <div class="md:flex md:h-32 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-8">
-                        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
+                        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian</p>
                         <p class="mt-2 font-display text-[18px] font-medium tracking-tight">
                             {{ \Carbon\Carbon::parse($completed['date'])->format('M j, Y') }}
                         </p>
@@ -84,58 +84,6 @@
         </div>
     @endif
 
-    {{-- Recent consultations --}}
-    <div class="mt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Tham vấn gần đây</h2>
-
-        <div class="mt-12 space-y-4">
-            @foreach ($pastConsultations as $past)
-                <a href="{{ route('consultations.show', $past['booking_code']) }}"
-                   class="group block rounded-2xl border border-text/10 bg-surface p-6 transition-colors hover:border-accent">
-                    <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
-                        {{-- Lawyer --}}
-                        <div class="flex items-center gap-4">
-                            <img src="{{ $past['lawyer']['portrait_url'] }}" alt=""
-                                 class="h-14 w-14 flex-none rounded-full object-cover object-top grayscale">
-                            <div class="min-w-0">
-                                <p class="font-display text-[18px] font-medium tracking-tight">{{ $past['lawyer']['name'] }}</p>
-                                <p class="text-[13px] text-muted">{{ $past['lawyer']['primary_specialty'] }}</p>
-                            </div>
-                        </div>
-
-                        {{-- Date + booking code --}}
-                        <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
-                            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Consultation</p>
-                            <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
-                                {{ \Carbon\Carbon::parse($past['date'])->format('M j, Y') }}
-                            </p>
-                            <p class="text-[12px] text-muted">{{ $past['booking_code'] }}</p>
-                        </div>
-
-                        {{-- Status --}}
-                        <div class="md:text-right">
-                            @if ($past['status'] === 'cancelled')
-                                <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">
-                                    <span class="block h-1.5 w-1.5 rounded-full bg-error"></span>
-                                    <span class="text-[12px] font-medium text-error">Cancelled</span>
-                                </div>
-                            @elseif ($past['rated'])
-                                <div class="md:inline-flex md:flex-col md:items-end">
-                                    <x-rating-stars :rating="$past['stars']" size="sm" />
-                                    <p class="mt-2 text-[12px] text-muted">Reviewed</p>
-                                </div>
-                            @else
-                                <p class="text-[14px] font-medium text-text transition-colors group-hover:text-accent">
-                                    Leave a review →
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    </div>
-
     {{-- Lawyers we recommend --}}
     <div class="mt-24">
         <div class="flex items-end justify-between">
@@ -148,6 +96,58 @@
                 <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
                     <x-lawyer-card :lawyer="$featured" class="h-full" />
                 </div>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- Recent consultations --}}
+    <div class="mt-24">
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Tham vấn gần đây</h2>
+
+        <div class="mt-12 space-y-4">
+            @foreach ($pastConsultations as $past)
+                <a href="{{ route('consultations.show', $past['booking_code']) }}"
+                   class="group block rounded-2xl border border-text/10 bg-surface p-6 transition-colors hover:border-accent">
+                    <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                        {{-- Lawyer --}}
+                        <div class="flex items-center gap-4">
+                            <img src="{{ $past['lawyer']['portrait_url'] }}" alt=""
+                                 class="h-14 w-14 flex-none rounded-full object-cover object-top">
+                            <div class="min-w-0">
+                                <p class="font-display text-[18px] font-medium tracking-tight">{{ $past['lawyer']['name'] }}</p>
+                                <p class="text-[13px] text-muted">{{ $past['lawyer']['primary_specialty'] }}</p>
+                            </div>
+                        </div>
+
+                        {{-- Date + booking code --}}
+                        <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
+                            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Buổi tư vấn</p>
+                            <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
+                                {{ \Carbon\Carbon::parse($past['date'])->format('M j, Y') }}
+                            </p>
+                            <p class="text-[12px] text-muted">{{ $past['booking_code'] }}</p>
+                        </div>
+
+                        {{-- Status --}}
+                        <div class="md:text-right">
+                            @if ($past['status'] === 'cancelled')
+                                <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">
+                                    <span class="block h-1.5 w-1.5 rounded-full bg-error"></span>
+                                    <span class="text-[12px] font-medium text-error">Đã hủy</span>
+                                </div>
+                            @elseif ($past['rated'])
+                                <div class="md:inline-flex md:flex-col md:items-end">
+                                    <x-rating-stars :rating="$past['stars']" size="sm" />
+                                    <p class="mt-2 text-[12px] text-muted">Đã đánh giá</p>
+                                </div>
+                            @else
+                                <p class="text-[14px] font-medium text-text transition-colors group-hover:text-accent">
+                                    Để lại đánh giá →
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>

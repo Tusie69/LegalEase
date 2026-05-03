@@ -34,7 +34,7 @@
                          class="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-br from-muted to-accent opacity-15 blur-3xl"></div>
                     <img src="https://images.unsplash.com/photo-1758518727600-2c5f48419eac?q=80"
                          alt=""
-                         class="relative aspect-[3/4] w-full rounded-2xl object-cover grayscale">
+                         class="relative aspect-[3/4] w-full rounded-2xl object-cover">
                 </div>
             </div>
         </div>
@@ -46,15 +46,15 @@
             <div class="grid w-full grid-cols-1 divide-y divide-text/10 md:grid-cols-3 md:divide-x md:divide-y-0">
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">500+</p>
-                    <p class="mt-2 text-[14px] text-muted">Luật sư đã được xác minh</p>
+                    <p class="mt-2 text-[15px] text-secondary">Luật sư đã được xác minh</p>
                 </div>
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">4.8</p>
-                    <p class="mt-2 text-[14px] text-muted">Đánh giá trung bình</p>
+                    <p class="mt-2 text-[15px] text-secondary">Đánh giá trung bình</p>
                 </div>
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">10,000+</p>
-                    <p class="mt-2 text-[14px] text-muted">Buổi tư vấn đã hoàn tất</p>
+                    <p class="mt-2 text-[15px] text-secondary">Buổi tư vấn đã hoàn tất</p>
                 </div>
             </div>
         </div>

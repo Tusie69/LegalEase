@@ -3,15 +3,36 @@
 @php
     $allLawyers = \App\Data\Lawyers::all();
 
-    $specialties = ['Family Law', 'Business Law', 'Real Estate', 'Criminal Defense', 'Labor Law', 'Civil Litigation'];
-    $locations = ['Hanoi', 'Ho Chi Minh City', 'Da Nang'];
-    $languages = ['Vietnamese', 'English'];
+    $specialties = ['Luật Hôn nhân & Gia đình', 'Luật Doanh nghiệp', 'Bất động sản', 'Bào chữa hình sự', 'Luật Lao động', 'Tố tụng dân sự'];
+    $locations = ['Hà Nội', 'TP.HCM', 'Đà Nẵng'];
+    $languages = ['Tiếng Việt', 'Tiếng Anh'];
 
     $lawyersForFilter = array_map(fn ($l) => [
-        'specialty_tags' => $l['specialty_tags'],
+        'specialty_tags' => array_map(function($tag) {
+            return match($tag) {
+                'Family Law' => 'Luật Hôn nhân & Gia đình',
+                'Business Law' => 'Luật Doanh nghiệp',
+                'Real Estate' => 'Bất động sản',
+                'Criminal Defense' => 'Bào chữa hình sự',
+                'Labor Law' => 'Luật Lao động',
+                'Civil Litigation' => 'Tố tụng dân sự',
+                default => $tag,
+            };
+        }, $l['specialty_tags']),
         'price_per_hour' => $l['price_per_hour'],
-        'languages' => $l['languages'],
-        'province' => $l['address']['province'] ?? null,
+        'languages' => array_map(function($lang) {
+            return match($lang) {
+                'Vietnamese' => 'Tiếng Việt',
+                'English' => 'Tiếng Anh',
+                default => $lang,
+            };
+        }, $l['languages']),
+        'province' => match ($l['address']['province'] ?? null) {
+            'Hanoi' => 'Hà Nội',
+            'Ho Chi Minh City' => 'TP.HCM',
+            'Da Nang' => 'Đà Nẵng',
+            default => $l['address']['province'] ?? null,
+        },
     ], $allLawyers);
 @endphp
 
@@ -19,21 +40,21 @@
     <section class="mx-auto max-w-[1280px] px-8 pb-24 pt-24"
              x-data="lawyerFilters({{ json_encode($lawyersForFilter) }})">
         <nav class="text-[14px] text-muted">
-            <a href="/" class="transition-colors hover:text-accent">Home</a>
+            <a href="/" class="transition-colors hover:text-accent">Trang chủ</a>
             <span class="px-1">/</span>
-            <span class="text-text">Lawyers</span>
+            <span class="text-text">Luật sư</span>
         </nav>
 
-        <h1 class="mt-6 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">Find your lawyer</h1>
+        <h1 class="mt-6 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">Tìm luật sư của bạn</h1>
         <p class="mt-3 text-[17px] text-secondary">Duyệt qua hơn 500 luật sư đã được xác minh trên khắp Việt Nam.</p>
 
         <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[240px_1fr]">
             <aside class="self-start md:sticky md:top-[88px]">
                 <div class="rounded-2xl border border-text/10 bg-surface p-6">
-                    <h3 class="font-display text-[20px] font-medium tracking-tight">Filters</h3>
+                    <h3 class="font-display text-[20px] font-medium tracking-tight">Bộ lọc</h3>
 
                     <div class="mt-6">
-                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Specialty</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chuyên môn</h4>
                         <div class="mt-3 space-y-2">
                             @foreach ($specialties as $spec)
                                 <label class="flex items-center gap-3 text-[14px] text-text">
@@ -45,7 +66,7 @@
                     </div>
 
                     <div class="mt-8">
-                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Location</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Địa điểm</h4>
                         <div class="mt-3 space-y-2">
                             @foreach ($locations as $loc)
                                 <label class="flex items-center gap-3 text-[14px] text-text">
@@ -58,14 +79,14 @@
 
                     <div class="mt-8">
                         <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Khoảng giá</h4>
-                        <input type="range" min="500000" max="5000000" step="100000" x-model.number="maxPrice" class="mt-4 w-full accent-accent">
+                        <input type="range" min="500000" max="5000000" step="100000" x-model.number="maxPrice" class="mt-4 w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200 accent-accent hover:bg-gray-300 transition-colors">
                         <p class="mt-2 text-[13px] text-muted">
-                            500,000 to <span x-text="Number(maxPrice).toLocaleString('en-US')"></span> VND
+                            500.000 đến <span x-text="Number(maxPrice).toLocaleString('vi-VN')"></span> VND
                         </p>
                     </div>
 
                     <div class="mt-8">
-                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Language</h4>
+                        <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Ngôn ngữ</h4>
                         <div class="mt-3 space-y-2">
                             @foreach ($languages as $lang)
                                 <label class="flex items-center gap-3 text-[14px] text-text">
@@ -78,7 +99,7 @@
 
                     <div class="mt-8 border-t border-text/10 pt-4" x-show="hasActiveFilters" x-cloak>
                         <button type="button" @click="reset()" class="text-[14px] text-muted transition-colors hover:text-accent hover:underline underline-offset-4">
-                            Reset filters
+                            Xóa bộ lọc
                         </button>
                     </div>
                 </div>
@@ -86,10 +107,10 @@
 
             <div>
                 <div x-show="visibleCount === 0" x-cloak class="flex flex-col items-center justify-center rounded-2xl border border-text/10 bg-surface px-8 py-20 text-center">
-                    <h3 class="font-display text-[28px] font-medium tracking-tight md:text-[32px]">No lawyers match your filters.</h3>
-                    <p class="mt-3 max-w-md text-[15px] leading-relaxed text-secondary">Try adjusting or clearing some filters to see more options.</p>
+                    <h3 class="font-display text-[28px] font-medium tracking-tight md:text-[32px]">Không có luật sư nào khớp với bộ lọc của bạn.</h3>
+                    <p class="mt-3 max-w-md text-[15px] leading-relaxed text-secondary">Thử điều chỉnh hoặc xóa một vài bộ lọc để xem thêm lựa chọn.</p>
                     <button type="button" @click="reset()" class="mt-8 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                        Reset filters
+                        Xóa bộ lọc
                         <span aria-hidden="true">→</span>
                     </button>
                 </div>
@@ -104,6 +125,45 @@
             </div>
         </div>
     </section>
+
+    <style>
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        input[type="range"] {
+            background: linear-gradient(to right, #3b82f6 0%, #3b82f6 var(--value), #e5e7eb var(--value), #e5e7eb 100%);
+        }
+    </style>
 
     <script>
         function lawyerFilters(allLawyers) {

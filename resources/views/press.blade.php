@@ -68,10 +68,10 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Press</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Báo chí</p>
 
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                What people are saying.
+                Mọi người đang nói gì.
             </h1>
         </div>
     </section>
@@ -97,7 +97,7 @@
                     </div>
                     <a href="{{ $item['url'] }}" target="_blank" rel="noopener"
                        class="inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary md:justify-self-end">
-                        Read
+                        Đọc
                         <span aria-hidden="true">→</span>
                     </a>
                 </article>
@@ -114,7 +114,7 @@
 
         <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-20">
             <div>
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Nhấn liên hệ</p>
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thông tin liên hệ</p>
                 <p class="mt-5 font-display text-[26px] font-medium tracking-tight md:text-[28px]">
                     {{ $contact['name'] }}
                 </p>
@@ -127,13 +127,13 @@
             </div>
 
             <div>
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Boilerplate</p>
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Giới thiệu</p>
                 <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-secondary">
                     <p>
-                        LegalEase is a verified marketplace for legal consultations in Vietnam. Founded in Hanoi in 2024, we connect individuals and businesses with 500+ vetted lawyers across 12 cities.
+                        LegalEase là nền tảng đã được xác minh cho các tư vấn pháp lý tại Việt Nam. Được thành lập tại Hà Nội vào năm 2024, chúng tôi kết nối cá nhân và doanh nghiệp với hơn 500 luật sư đã được kiểm duyệt tại 12 thành phố.
                     </p>
                     <p>
-                        Every lawyer's credentials are reviewed before they list. Hourly rates are public. No referral fees, no paid rankings.
+                    Mọi thông tin xác thực của luật sư đều được xem xét trước khi đăng ký. Mức giá theo giờ được công khai. Không phí giới thiệu, không xếp hạng trả phí.
                     </p>
                 </div>
             </div>
