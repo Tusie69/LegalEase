@@ -1,7 +1,7 @@
 @php
     $links = [
         ['label' => 'Trang chủ', 'url' => '/'],
-        ['label' => 'Luật sư', 'url' => '/lawyers'],
+        ['label' => 'Đặt Lịch', 'url' => '/lawyers'],
         ['label' => 'Dịch vụ pháp lý', 'url' => '/legal-services'],
         ['label' => 'Liên hệ', 'url' => '/contact'],
     ];

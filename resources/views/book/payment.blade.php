@@ -13,18 +13,18 @@
 <section class="mx-auto max-w-[720px] px-8 py-20">
     @if (!$booking || !$lawyer)
         <div class="rounded-2xl border border-text/10 bg-surface p-8">
-            <p class="text-[15px] text-muted">Không có đặt phòng nào đang diễn ra. Chọn một luật sư và thời gian đầu tiên.</p>
+            <p class="text-[15px] text-muted">Không có lịch hẹn nào đang diễn ra. Vui lòng chọn luật sư và thời gian hẹn.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                Browse lawyers
+                Duyệt luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>
     @else
         <h1 class="font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
-            Pay your deposit
+            Thanh toán tiền đặt cọc
         </h1>
         <p class="mt-3 text-[17px] text-secondary">
-            We collect 20% of the consultation fee now to secure your booking. The remaining 80% is paid directly to the lawyer at the appointment.
+            Chúng tôi thu 20% phí tư vấn để giữ lịch hẹn của bạn. 80% còn lại sẽ được thanh toán trực tiếp cho luật sư tại buổi hẹn.
         </p>
 
         {{-- Booking summary --}}
@@ -52,7 +52,7 @@
                     <span class="text-text">{{ number_format($deposit) }} VND</span>
                 </div>
                 <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Số dư đến hạn tại cuộc hẹn</span>
+                    <span class="text-muted">Khoản cần thanh toán cho Luật sư</span>
                     <span class="text-text">{{ number_format($fee - $deposit) }} VND</span>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <button type="button" @click="method = 'card'"
                         :class="method === 'card' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
                         class="rounded-xl border px-4 py-3 text-[13px] font-medium text-text transition-colors">
-                    Card
+                    Thẻ
                 </button>
                 <button type="button" @click="method = 'qr'"
                         :class="method === 'qr' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
@@ -88,7 +88,7 @@
                 <button type="button" @click="method = 'transfer'"
                         :class="method === 'transfer' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
                         class="rounded-xl border px-4 py-3 text-[13px] font-medium text-text transition-colors">
-                    Bank transfer
+                    Chuyển khoản
                 </button>
             </div>
 
@@ -108,7 +108,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label for="card_expiry" class="block text-[13px] font-medium text-muted">Expiry</label>
+                        <label for="card_expiry" class="block text-[13px] font-medium text-muted">Ngày hết hạn</label>
                         <input id="card_expiry" type="text" inputmode="numeric" maxlength="5"
                                placeholder="MM/YY"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
@@ -146,7 +146,7 @@
                     </svg>
                 </div>
                 <p class="mt-5 text-[13px] text-secondary">
-                    Scan with any VietQR-compatible bank app to pay {{ number_format($deposit) }} VND.
+                    Quét bằng ứng dụng ngân hàng hỗ trợ VietQR để thanh toán {{ number_format($deposit) }} VND.
                 </p>
                 <p class="mt-2 text-[12px] text-muted">Đặt phòng sẽ tự động xác nhận sau khi chúng tôi nhận được thanh toán.</p>
             </div>
@@ -156,7 +156,7 @@
                 <p class="text-[13px] text-muted">Chuyển khoản đặt cọc tới:</p>
                 <dl class="mt-4 space-y-3 text-[14px]">
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Bank</dt>
+                        <dt class="text-muted">Ngân hàng</dt>
                         <dd class="text-text">Vietcombank</dd>
                     </div>
                     <div class="flex items-baseline justify-between gap-4">
@@ -168,29 +168,29 @@
                         <dd class="font-display text-text">0011 0000 1234 5678</dd>
                     </div>
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Reference</dt>
+                        <dt class="text-muted">Nội dung chuyển khoản</dt>
                         <dd class="text-text">Mã đặt phòng của bạn (được gửi khi xác nhận)</dd>
                     </div>
                 </dl>
                 <p class="mt-5 text-[12px] text-muted">
-                    Most transfers clear within minutes. We'll email you once the deposit lands.
+                    Hầu hết giao dịch được ghi nhận trong vài phút. Chúng tôi sẽ gửi email khi tiền đặt cọc được nhận.
                 </p>
             </div>
 
             <div class="mt-8">
                 <x-button variant="primary" type="submit" class="w-full">
-                    Pay {{ number_format($deposit) }} VND
+                    Thanh toán {{ number_format($deposit) }} VND
                 </x-button>
             </div>
 
             <p class="mt-4 text-center text-[14px]">
                 <a href="{{ route('book.review') }}" class="text-muted transition-colors hover:text-accent">
-                    ← Back to review
+                    ← Quay lại bước xem lại
                 </a>
             </p>
 
             <p class="mt-6 text-center text-[12px] text-muted">
-                Payments are processed securely. We never store full card numbers.
+                Thanh toán được xử lý an toàn. Chúng tôi không lưu toàn bộ số thẻ.
             </p>
         </form>
     @endif

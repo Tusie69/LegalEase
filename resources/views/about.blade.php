@@ -10,11 +10,11 @@
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
             <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                Our story
+                Câu chuyện của chúng tôi
             </p>
 
             <h1 class="mx-auto mt-6 max-w-[900px] font-display text-[56px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[88px]">
-                Legal help, without the guesswork.
+                Tư vấn pháp lý rõ ràng, không còn phỏng đoán.
             </h1>
 
             <p class="mx-auto mt-8 max-w-[560px] text-[18px] leading-relaxed text-secondary">
@@ -35,10 +35,10 @@
             <div>
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">vấn đề</p>
                 <h3 class="mt-4 font-display text-[36px] font-medium leading-[1.1] tracking-[-0.01em] md:text-[44px]">
-                    Asking around isn't a strategy.
+                    Hỏi quanh không phải là một chiến lược.
                 </h3>
                 <p class="mt-6 max-w-[480px] text-[17px] leading-relaxed text-secondary">
-                    For most people in Vietnam, finding a lawyer means asking a friend and hoping for the best. Prices vary wildly. Credentials are hard to verify.
+                    Với nhiều người tại Việt Nam, tìm luật sư thường bắt đầu bằng việc hỏi người quen và hy vọng gặp đúng người. Chi phí rất khác nhau, còn thông tin hành nghề lại khó kiểm chứng.
                 </p>
             </div>
         </div>
@@ -56,10 +56,10 @@
             <div class="md:order-1">
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Những gì chúng tôi đã xây dựng</p>
                 <h3 class="mt-4 font-display text-[36px] font-medium leading-[1.1] tracking-[-0.01em] md:text-[44px]">
-                    Verified, transparent, ready.
+                    Đã xác minh, minh bạch và sẵn sàng.
                 </h3>
                 <p class="mt-6 max-w-[480px] text-[17px] leading-relaxed text-secondary">
-                    Every lawyer is reviewed by our team before they list. Hourly rates are public. Booking takes minutes.
+                    Mỗi luật sư đều được đội ngũ của chúng tôi xem xét trước khi xuất hiện trên nền tảng. Phí tư vấn được công khai và việc đặt lịch chỉ mất vài phút.
                 </p>
             </div>
         </div>
@@ -79,10 +79,10 @@
                     500+
                 </p>
                 <h3 class="mt-5 font-display text-[28px] font-medium tracking-tight md:text-[32px]">
-                    Verified lawyers across Vietnam.
+                    Luật sư đã xác minh trên khắp Việt Nam.
                 </h3>
                 <p class="mt-4 max-w-[420px] text-[16px] leading-relaxed text-secondary">
-                    Across 12 cities, with bar membership and credentials checked before they go live.
+                    Có mặt tại 12 thành phố, với thông tin đoàn luật sư và chứng chỉ hành nghề được kiểm tra trước khi hồ sơ được công bố.
                 </p>
             </div>
         </div>
@@ -95,7 +95,7 @@
                 <span class="text-muted">â€œ</span>Cảm giác như có một người bạn tình cờ trở thành luật sư.<span class="text-muted">â€</span>
             </blockquote>
             <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                A client, divorce case in Hanoi
+                Một khách hàng trong vụ ly hôn tại Hà Nội
             </p>
         </div>
     </section>
@@ -106,19 +106,19 @@
             [
                 'name' => 'Äá»— Thá»‹ Lan',
                 'role' => 'Đồng sáng lập, CEO',
-                'bio'  => "Eight years as a litigator at a top Hanoi firm. Left to build something simpler.",
+                'bio'  => "Tám năm làm luật sư tranh tụng tại một công ty luật hàng đầu ở Hà Nội, sau đó rời đi để xây dựng một cách tiếp cận đơn giản hơn.",
                 'portrait' => 'https://images.unsplash.com/photo-1714974528915-4c74c4c0bb27?q=80',
             ],
             [
                 'name' => 'Tráº§n Quá»‘c Viá»‡t',
                 'role' => 'Đồng sáng lập, Xác minh',
-                'bio'  => "Six years at the Vietnam Bar Federation handling licensing and ethics.",
+                'bio'  => "Sáu năm làm việc về cấp phép và đạo đức nghề nghiệp tại Liên đoàn Luật sư Việt Nam.",
                 'portrait' => 'https://images.unsplash.com/photo-1591702694482-ecc51ff9642e?q=80',
             ],
             [
                 'name' => 'Nguyễn Hà My',
                 'role' => 'Đồng sáng lập, Sản phẩm',
-                'bio'  => "Built consumer fintech products used by millions of Vietnamese.",
+                'bio'  => "Từng xây dựng các sản phẩm fintech tiêu dùng được hàng triệu người Việt sử dụng.",
                 'portrait' => 'https://images.unsplash.com/photo-1733348137479-2e726d326d9b?q=80',
             ],
         ];
@@ -127,7 +127,7 @@
     <section class="mx-auto max-w-[1280px] px-8 pt-32">
         <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">đội</p>
         <h2 class="mt-4 font-display text-[36px] font-medium tracking-[-0.01em] md:text-[44px]">
-            Three people, one shared frustration.
+            Ba con người, cùng một trăn trở.
         </h2>
 
         <div class="mt-12 grid gap-10 md:grid-cols-3">
@@ -151,7 +151,7 @@
     @php
         $values = [
             ['title' => 'Giá cả minh bạch',     'desc' => 'Giá theo giờ được đăng trước khi bạn đặt.'],
-            ['title' => "We don't pick favorites", 'desc' => 'Không có phí giới thiệu. Không có bảng xếp hạng trả phí.'],
+            ['title' => "Chúng tôi không thiên vị", 'desc' => 'Không có phí giới thiệu. Không có bảng xếp hạng trả phí.'],
             ['title' => 'Thông tin xác thực đã được xác minh',    'desc' => 'Mọi luật sư đều xem xét trước khi niêm yết.'],
             ['title' => 'Không có nghĩa vụ',           'desc' => 'Sau khi tư vấn, bước tiếp theo là của bạn.'],
         ];
@@ -160,7 +160,7 @@
     <section class="mx-auto max-w-[1280px] px-8 pt-32">
         <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Cách chúng tôi làm việc</p>
         <h2 class="mt-4 font-display text-[36px] font-medium tracking-[-0.01em] md:text-[44px]">
-            Four commitments.
+            Bốn cam kết.
         </h2>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2">
@@ -176,7 +176,7 @@
     {{-- CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Ready to find your lawyer?
+            Sẵn sàng tìm luật sư phù hợp?
         </h2>
         <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="/lawyers">Tìm kiếm luật sư â†’</x-button>

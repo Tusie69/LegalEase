@@ -24,16 +24,16 @@
             @if (session('reset_link_sent'))
                 <h1 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Kiểm tra email của bạn</h1>
                 <p class="mt-4 text-[15px] text-secondary">
-                    If an account exists for <span class="text-text">{{ session('reset_link_sent') }}</span>, chúng tôi đã gửi liên kết để đặt lại mật khẩu của bạn. Liên kết sẽ hết hạn sau 60 phút.
+                    Nếu tài khoản tồn tại với email <span class="text-text">{{ session('reset_link_sent') }}</span>, chúng tôi đã gửi liên kết để đặt lại mật khẩu của bạn. Liên kết sẽ hết hạn sau 60 phút.
                 </p>
                 <p class="mt-3 text-[14px] text-muted">
-                    Didn't get it? Check your spam folder, or
+                    Chưa nhận được? Hãy kiểm tra thư mục spam hoặc
                     <a href="{{ route('password.request') }}" class="text-text transition-colors hover:text-accent">thử lại</a>.
                 </p>
 
                 <div class="mt-10">
                     <a href="{{ route('login') }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-                        ← Back to login
+                        ← Quay lại đăng nhập
                     </a>
                 </div>
             @else
@@ -55,7 +55,7 @@
                         <input id="email" type="email" name="email" x-model="email" @blur="touched.email = true" required
                                placeholder="you@example.com"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        @unless ($errors->có('email'))
+                        @unless ($errors->has('email'))
                             <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-[13px] text-error"></p>
                         @endunless
                         @error('email') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -64,7 +64,7 @@
                     <x-button variant="primary" type="submit" class="w-full">Gửi liên kết đặt lại</x-button>
 
                     <p class="text-center text-[14px] text-muted">
-                        Remembered it?
+                        Bạn đã nhớ mật khẩu?
                         <a href="{{ route('login') }}" class="text-text transition-colors hover:text-accent">Đăng nhập</a>
                     </p>
                 </form>
@@ -89,8 +89,8 @@
             },
             get emailError() {
                 if (!this.touched.email || this.isEmailValid) return '';
-                if (this.email.length === 0) return 'Please enter your email address.';
-                return 'Please enter a valid email address.';
+                if (this.email.length === 0) return 'Vui lòng nhập địa chỉ email.';
+                return 'Vui lòng nhập địa chỉ email hợp lệ.';
             },
         };
     }

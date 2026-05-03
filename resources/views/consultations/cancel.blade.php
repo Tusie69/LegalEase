@@ -10,19 +10,19 @@
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
        class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to consultation
+        ← Quay lại buổi tư vấn
     </a>
 
     <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Hủy tư vấn</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Cancel your consultation?
+        Bạn muốn hủy buổi tư vấn?
     </h1>
     <p class="mt-4 text-[17px] text-secondary">
-        This can't be undone.
+        Thao tác này không thể hoàn tác.
         @if ($eligibleForRefund)
-            You'll receive a full refund of your deposit within 3 to 5 business days.
+            Bạn sẽ được hoàn lại toàn bộ tiền đặt cọc trong 3 đến 5 ngày làm việc.
         @else
-            Cancellations less than 24 hours before the appointment are not eligible for a refund.
+            Các lịch hủy trong vòng 24 giờ trước giờ hẹn sẽ không đủ điều kiện hoàn tiền.
         @endif
     </p>
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="mt-5 border-t border-text/10 pt-5">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian</p>
             <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
                 {{ $consultationStart->format('l, F j, Y') }} · {{ $consultationStart->format('g:i A') }}
             </p>
@@ -51,7 +51,7 @@
         <x-button variant="primary" type="submit">Có, hủy tư vấn</x-button>
         <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
            class="text-[14px] text-muted transition-colors hover:text-accent">
-            Keep my consultation
+            Giữ buổi tư vấn của tôi
         </a>
     </form>
 </section>

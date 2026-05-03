@@ -1,94 +1,94 @@
 @extends('layouts.app', ['title' => 'Điều khoản dịch vụ · LegalEase'])
 
 @php
-    $lastUpdated = 'May 1, 2026';
+    $lastUpdated = '1 tháng 5 năm 2026';
 
     $sections = [
         [
             'n'     => 1,
             'title' => 'Chấp nhận các điều khoản',
             'paras' => [
-                "By creating an account or using LegalEase, you agree to these Terms of Service. If you don't agree, please don't use the platform.",
-                "These terms apply to both clients seeking legal consultations and lawyers offering services through LegalEase. We may update these terms occasionally and will notify users of material changes through the platform or by email.",
+                "Bằng việc tạo tài khoản hoặc sử dụng LegalEase, bạn đồng ý với các Điều khoản dịch vụ này. Nếu không đồng ý, vui lòng không sử dụng nền tảng.",
+                "Các điều khoản này áp dụng cho cả khách hàng tìm kiếm tư vấn pháp lý và luật sư cung cấp dịch vụ qua LegalEase. Chúng tôi có thể cập nhật điều khoản theo thời gian và sẽ thông báo các thay đổi quan trọng qua nền tảng hoặc email.",
             ],
         ],
         [
             'n'     => 2,
             'title' => 'Đủ điều kiện',
             'paras' => [
-                "To use LegalEase as a client, you must be at least 18 years old and able to enter into binding contracts under Vietnamese law. To list as a lawyer, you must hold a current bar membership in Vietnam and pass our verification process.",
-                "We reserve the right to refuse service or terminate accounts that don't meet our eligibility requirements.",
+                "Để sử dụng LegalEase với tư cách khách hàng, bạn phải từ 18 tuổi trở lên và có khả năng giao kết hợp đồng theo pháp luật Việt Nam. Để đăng hồ sơ luật sư, bạn phải có tư cách thành viên đoàn luật sư còn hiệu lực tại Việt Nam và vượt qua quy trình xác minh của chúng tôi.",
+                "Chúng tôi có quyền từ chối cung cấp dịch vụ hoặc chấm dứt tài khoản không đáp ứng yêu cầu đủ điều kiện.",
             ],
         ],
         [
             'n'     => 3,
             'title' => 'Tài khoản và bảo mật',
             'paras' => [
-                "You're responsible for keeping your account credentials secure and for all activity under your account. Notify us immediately if you suspect unauthorized access.",
-                "You agree to provide accurate information during signup and to keep your profile up to date. Misrepresentation may result in suspension.",
+                "Bạn chịu trách nhiệm bảo mật thông tin đăng nhập và mọi hoạt động diễn ra dưới tài khoản của mình. Hãy thông báo ngay cho chúng tôi nếu nghi ngờ có truy cập trái phép.",
+                "Bạn đồng ý cung cấp thông tin chính xác khi đăng ký và duy trì hồ sơ cập nhật. Việc cung cấp thông tin sai lệch có thể dẫn đến tạm ngừng tài khoản.",
             ],
         ],
         [
             'n'     => 4,
             'title' => 'Đặt chỗ và đặt cọc',
             'paras' => [
-                "LegalEase facilitates the booking of legal consultations between clients and verified lawyers. When a booking is confirmed, the platform holds a deposit equal to 20% of the consultation fee. The remaining 80% is paid directly to the lawyer at the time of the appointment.",
-                "Deposits are non-refundable except in the cases set out in our cancellation policy.",
+                "LegalEase hỗ trợ đặt lịch tư vấn pháp lý giữa khách hàng và luật sư đã xác minh. Khi lịch hẹn được xác nhận, nền tảng giữ khoản đặt cọc bằng 20% phí tư vấn. 80% còn lại được thanh toán trực tiếp cho luật sư tại thời điểm hẹn.",
+                "Tiền đặt cọc không được hoàn lại, trừ các trường hợp được quy định trong chính sách hủy lịch.",
             ],
         ],
         [
             'n'     => 5,
             'title' => 'Hủy và hoàn tiền',
             'paras' => [
-                "Cancellations made more than 24 hours before the scheduled appointment are eligible for a full refund of the deposit. Cancellations within 24 hours forfeit the deposit unless the lawyer also cancels or fails to attend.",
-                "If a lawyer cancels at any time, the client receives a full refund. If a client doesn't attend, the lawyer retains a portion of the deposit per our policy.",
+                "Các lịch hủy trước giờ hẹn hơn 24 giờ đủ điều kiện được hoàn lại toàn bộ tiền đặt cọc. Lịch hủy trong vòng 24 giờ sẽ mất tiền đặt cọc, trừ khi luật sư cũng hủy hoặc không tham dự.",
+                "Nếu luật sư hủy vào bất kỳ thời điểm nào, khách hàng được hoàn tiền đầy đủ. Nếu khách hàng không tham dự, luật sư được giữ một phần tiền đặt cọc theo chính sách của chúng tôi.",
             ],
         ],
         [
             'n'     => 6,
             'title' => 'Trách nhiệm của luật sư',
             'paras' => [
-                "Lawyers listed on LegalEase must hold valid bar credentials, accurately represent their experience and specializations, and conduct consultations professionally.",
-                "Lawyers are independent practitioners. LegalEase does not employ lawyers and is not responsible for the legal advice they provide. Lawyers agree to honor confirmed bookings and update their availability promptly to prevent conflicts.",
+                "Luật sư trên LegalEase phải có chứng chỉ hành nghề hợp lệ, trình bày chính xác kinh nghiệm và lĩnh vực chuyên môn, đồng thời thực hiện tư vấn một cách chuyên nghiệp.",
+                "Luật sư là người hành nghề độc lập. LegalEase không tuyển dụng luật sư và không chịu trách nhiệm về lời khuyên pháp lý họ cung cấp. Luật sư đồng ý thực hiện các lịch hẹn đã xác nhận và cập nhật lịch trống kịp thời để tránh xung đột.",
             ],
         ],
         [
             'n'     => 7,
             'title' => 'Trách nhiệm của khách hàng',
             'paras' => [
-                "Clients are expected to attend booked consultations on time, treat lawyers professionally, and provide accurate information about their legal matter. The deposit policy is intended to protect both parties from no-shows.",
-                "Clients agree not to use the platform to harass lawyers or share confidential information outside appropriate channels.",
+                "Khách hàng cần tham dự buổi tư vấn đúng giờ, ứng xử chuyên nghiệp với luật sư và cung cấp thông tin chính xác về vấn đề pháp lý. Chính sách đặt cọc nhằm bảo vệ cả hai bên khỏi việc vắng mặt không báo trước.",
+                "Khách hàng đồng ý không sử dụng nền tảng để quấy rối luật sư hoặc chia sẻ thông tin bảo mật ngoài các kênh phù hợp.",
             ],
         ],
         [
             'n'     => 8,
             'title' => 'Đánh giá và xếp hạng',
             'paras' => [
-                "Clients may leave honest reviews after a completed consultation. Reviews must be based on direct experience and may not contain personal attacks, confidential information, or content that violates Vietnamese law.",
-                "We reserve the right to remove reviews that violate these guidelines. Lawyers may not request, incentivize, or retaliate against reviews.",
+                "Khách hàng có thể để lại đánh giá trung thực sau buổi tư vấn đã hoàn tất. Đánh giá phải dựa trên trải nghiệm trực tiếp và không được chứa công kích cá nhân, thông tin bảo mật hoặc nội dung vi phạm pháp luật Việt Nam.",
+                "Chúng tôi có quyền xóa các đánh giá vi phạm hướng dẫn này. Luật sư không được yêu cầu, khuyến khích bằng lợi ích hoặc trả đũa liên quan đến đánh giá.",
             ],
         ],
         [
             'n'     => 9,
             'title' => 'Sở hữu trí tuệ',
             'paras' => [
-                "All content provided by LegalEase, including platform design, brand assets, and editorial content, is owned by LegalEase or licensed to us. You may not copy, modify, or distribute our content without permission.",
-                "User-generated content (profiles, reviews) remains owned by the user, but you grant us a license to display and distribute it on the platform.",
+                "Tất cả nội dung do LegalEase cung cấp, bao gồm thiết kế nền tảng, tài sản thương hiệu và nội dung biên tập, thuộc sở hữu của LegalEase hoặc được cấp phép cho chúng tôi. Bạn không được sao chép, chỉnh sửa hoặc phân phối nội dung của chúng tôi khi chưa được phép.",
+                "Nội dung do người dùng tạo như hồ sơ và đánh giá vẫn thuộc sở hữu của người dùng, nhưng bạn cấp cho chúng tôi quyền hiển thị và phân phối nội dung đó trên nền tảng.",
             ],
         ],
         [
             'n'     => 10,
             'title' => 'Giới hạn trách nhiệm pháp lý',
             'paras' => [
-                "LegalEase is a marketplace platform. We do not provide legal advice and are not responsible for the outcomes of consultations conducted through the platform.",
-                "To the fullest extent permitted by law, our liability is limited to the platform fees paid in the previous 12 months. We do not warrant that the platform will be error-free or always available.",
+                "LegalEase là nền tảng kết nối. Chúng tôi không cung cấp tư vấn pháp lý và không chịu trách nhiệm về kết quả của các buổi tư vấn được thực hiện qua nền tảng.",
+                "Trong phạm vi tối đa pháp luật cho phép, trách nhiệm của chúng tôi được giới hạn ở khoản phí nền tảng đã thanh toán trong 12 tháng trước đó. Chúng tôi không bảo đảm nền tảng luôn không lỗi hoặc luôn sẵn sàng.",
             ],
         ],
         [
             'n'     => 11,
             'title' => 'Những thay đổi đối với các điều khoản này',
             'paras' => [
-                "We may update these Terms of Service from time to time. Material changes will be communicated through the platform. Continued use after a change constitutes acceptance of the updated terms.",
+                "Chúng tôi có thể cập nhật Điều khoản dịch vụ theo thời gian. Các thay đổi quan trọng sẽ được thông báo qua nền tảng. Việc tiếp tục sử dụng sau thay đổi đồng nghĩa với việc chấp nhận điều khoản đã cập nhật.",
             ],
         ],
         [
@@ -110,16 +110,16 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Last updated {{ $lastUpdated }}</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Cập nhật lần cuối {{ $lastUpdated }}</p>
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Terms of Service
+                Điều khoản dịch vụ
             </h1>
         </div>
     </section>
 
     {{-- Contents --}}
     <section class="mx-auto max-w-[760px] px-8 pt-24">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Contents</p>
+        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Mục lục</p>
         <ol class="mt-6 grid gap-2 text-[14px] sm:grid-cols-2">
             @foreach ($sections as $section)
                 <li>

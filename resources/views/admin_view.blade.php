@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Admin Dashboard | LegalEase</title>
+    <title>Bảng điều khiển quản trị | LegalEase</title>
 
     <meta name="description" content="" />
 
@@ -106,17 +106,17 @@
                   <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
-                        <span class="align-middle"><i class="ri-sun-line ri-22px me-3"></i>Light</span>
+                        <span class="align-middle"><i class="ri-sun-line ri-22px me-3"></i>Sáng</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
-                        <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Dark</span>
+                        <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Tối</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
-                        <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>System</span>
+                        <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>Hệ thống</span>
                       </a>
                     </li>
                   </ul>
@@ -147,7 +147,7 @@
                           </div>
                           <div class="flex-grow-1">
                             <h6 class="mb-0 small">John Doe</h6>
-                            <small class="text-muted">Admin</small>
+                            <small class="text-muted">Quản trị viên</small>
                           </div>
                         </div>
                       </a>
@@ -158,20 +158,20 @@
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);">
                         <i class="ri-user-3-line ri-22px me-2"></i>
-                        <span class="align-middle">My Profile</span>
+                        <span class="align-middle">Hồ sơ của tôi</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);">
                         <i class="ri-settings-4-line ri-22px me-2"></i>
-                        <span class="align-middle">Settings</span>
+                        <span class="align-middle">Cài đặt</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);">
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 ri-file-text-line ri-22px me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
+                          <span class="flex-grow-1 align-middle">Thanh toán</span>
                           <span
                             class="flex-shrink-0 badge badge-center rounded-pill bg-danger h-px-20 d-flex align-items-center justify-content-center"
                             >4</span
@@ -185,7 +185,7 @@
                     <li>
                       <a class="dropdown-item" href="javascript:void(0);">
                         <i class="ri-money-dollar-circle-line ri-22px me-2"></i>
-                        <span class="align-middle">Pricing</span>
+                        <span class="align-middle">Bảng giá</span>
                       </a>
                     </li>
                     <li>
@@ -197,7 +197,7 @@
                     <li>
                       <div class="d-grid px-4 pt-2 pb-1">
                         <a class="btn btn-danger d-flex" href="javascript:void(0);">
-                          <small class="align-middle">Logout</small>
+                          <small class="align-middle">Đăng xuất</small>
                           <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
                         </a>
                       </div>
@@ -233,43 +233,43 @@
                   <li class="menu-item active">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-home-4-line"></i>
-                      <div>Dashboard</div>
+                      <div>Bảng điều khiển</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-scales-3-line"></i>
-                      <div>Lawyers</div>
+                      <div>Luật sư</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-user-3-line"></i>
-                      <div>Customers</div>
+                      <div>Khách hàng</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-calendar-check-line"></i>
-                      <div>Appointments</div>
+                      <div>Lịch hẹn</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-bank-card-line"></i>
-                      <div>Payments</div>
+                      <div>Thanh toán</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-file-list-3-line"></i>
-                      <div>Content</div>
+                      <div>Nội dung</div>
                     </a>
                   </li>
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link">
                       <i class="menu-icon tf-icons ri-notification-3-line"></i>
-                      <div>Notifications</div>
+                      <div>Thông báo</div>
                     </a>
                   </li>
                 </ul>
@@ -283,39 +283,39 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title mb-1">LegalEase Admin Dashboard</h5>
-                      <p class="mb-0 text-muted">Tong quan van hanh he thong tu du lieu thuc te.</p>
+                      <h5 class="card-title mb-1">Bảng điều khiển quản trị LegalEase</h5>
+                      <p class="mb-0 text-muted">Tổng quan vận hành hệ thống từ dữ liệu thực tế.</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong luat su</span><h3 class="mb-0">{{ number_format($stats['total_lawyers']) }}</h3></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tổng luật sư</span><h3 class="mb-0">{{ number_format($stats['total_lawyers']) }}</h3></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong khach hang</span><h3 class="mb-0">{{ number_format($stats['total_customers']) }}</h3></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tổng khách hàng</span><h3 class="mb-0">{{ number_format($stats['total_customers']) }}</h3></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tong lich hen</span><h3 class="mb-0">{{ number_format($stats['total_appointments']) }}</h3></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Tổng lịch hẹn</span><h3 class="mb-0">{{ number_format($stats['total_appointments']) }}</h3></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
                   <div class="card h-100"><div class="card-body"><span class="text-muted">Doanh thu (VND)</span><h3 class="mb-0">{{ number_format($stats['revenue_vnd'], 0, '.', ',') }}</h3></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen dang cho</span><h4 class="mb-0">{{ number_format($stats['pending_appointments']) }}</h4></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lịch hẹn đang chờ</span><h4 class="mb-0">{{ number_format($stats['pending_appointments']) }}</h4></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen hoan tat</span><h4 class="mb-0">{{ number_format($stats['completed_appointments']) }}</h4></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lịch hẹn hoàn tất</span><h4 class="mb-0">{{ number_format($stats['completed_appointments']) }}</h4></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lich hen da huy</span><h4 class="mb-0">{{ number_format($stats['cancelled_appointments']) }}</h4></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Lịch hẹn đã hủy</span><h4 class="mb-0">{{ number_format($stats['cancelled_appointments']) }}</h4></div></div>
                 </div>
                 <div class="col-md-6 col-xl-3">
-                  <div class="card h-100"><div class="card-body"><span class="text-muted">Thong bao chua doc</span><h4 class="mb-0">{{ number_format($stats['unread_notifications']) }}</h4></div></div>
+                  <div class="card h-100"><div class="card-body"><span class="text-muted">Thông báo chưa đọc</span><h4 class="mb-0">{{ number_format($stats['unread_notifications']) }}</h4></div></div>
                 </div>
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body d-flex flex-column flex-md-row justify-content-between gap-3">
-                      <div><h6 class="mb-1">Thanh toan thanh cong</h6><p class="mb-0 text-muted">So giao dich da doi soat thanh cong.</p></div>
+                      <div><h6 class="mb-1">Thanh toán thành công</h6><p class="mb-0 text-muted">Số giao dịch đã đối soát thành công.</p></div>
                       <h3 class="mb-0">{{ number_format($stats['paid_payments']) }}</h3>
                     </div>
                   </div>
@@ -331,7 +331,7 @@
                   class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                   <div class="text-body mb-2 mb-md-0">
                     Made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
-                    <a href="javascript:void(0)" class="footer-link">LegalEase Team</a>
+                    <a href="javascript:void(0)" class="footer-link">Đội ngũ LegalEase</a>
                   </div>
 </div>
               </div>
@@ -373,7 +373,6 @@
     <script src="{{ asset('admin_view/assets') }}/js/main.js"></script>
   </body>
 </html>
-
 
 
 

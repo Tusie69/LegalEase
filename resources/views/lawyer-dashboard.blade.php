@@ -40,13 +40,13 @@
     {{-- Header --}}
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chào mừng trở lại</p>
     <h1 class="mt-3 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
-        Hi, {{ $firstName }}.
+        Xin chào, {{ $firstName }}.
     </h1>
     <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
         @if ($upcoming->isEmpty() && $awaitingOutcome->isEmpty())
-            No appointments on the books right now. Open up more time to receive new bookings.
+            Hiện chưa có lịch hẹn nào. Hãy mở thêm khung giờ để nhận đặt lịch mới.
         @else
-            Here's what's on your schedule.
+            Đây là lịch làm việc của bạn.
         @endif
     </p>
 
@@ -55,7 +55,7 @@
         <div class="mt-16">
             <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Đang chờ kết quả của bạn</h2>
             <p class="mt-3 max-w-[560px] text-[15px] text-secondary">
-                These appointments have passed. Report whether each one took place so the customer can leave a review.
+                Các lịch hẹn này đã qua. Hãy báo cáo từng lịch có diễn ra hay không để khách hàng có thể để lại đánh giá.
             </p>
 
             <div class="mt-12 space-y-4">
@@ -76,7 +76,7 @@
 
                             {{-- When --}}
                             <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
-                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Lịch hẹn</p>
                                 <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
                                 </p>
@@ -86,7 +86,7 @@
                             {{-- Action --}}
                             <div class="md:text-right">
                                 <p class="text-[14px] font-medium text-gold transition-colors group-hover:text-text">
-                                    Report outcome →
+                                    Báo cáo kết quả →
                                 </p>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
 
                             {{-- When --}}
                             <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
-                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Lịch hẹn</p>
                                 <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
                                 </p>
@@ -132,7 +132,7 @@
                             <div class="md:text-right">
                                 <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                                     <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
-                                    <span class="text-[12px] font-medium text-success">Confirmed</span>
+                                    <span class="text-[12px] font-medium text-success">Đã xác nhận</span>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
 
                             {{-- When --}}
                             <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
-                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+                                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Lịch hẹn</p>
                                 <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('M j, Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('g:i A') }}
                                 </p>
@@ -179,7 +179,7 @@
                                 @if ($appt['status'] === 'COMPLETED')
                                     <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                                         <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
-                                        <span class="text-[12px] font-medium text-success">Completed</span>
+                                        <span class="text-[12px] font-medium text-success">Đã hoàn tất</span>
                                     </div>
                                 @else
                                     <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">

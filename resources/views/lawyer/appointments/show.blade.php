@@ -11,12 +11,12 @@
 @section('content')
 <section class="mx-auto max-w-[800px] px-8 pt-24 pb-24">
     <a href="{{ route('lawyer.dashboard') }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to dashboard
+        ← Quay lại bảng điều khiển
     </a>
 
-    <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
+    <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Lịch hẹn</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Appointment with {{ $appointment['customer_name'] }}
+        Lịch hẹn với {{ $appointment['customer_name'] }}
     </h1>
     <p class="mt-4 text-[14px] text-muted">{{ $appointment['booking_code'] }}</p>
 
@@ -39,26 +39,26 @@
 
     {{-- When --}}
     <div class="mt-10">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
+        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian</p>
         <p class="mt-2 font-display text-[20px] font-medium tracking-tight">
             {{ $start->format('l, F j, Y') }}
         </p>
         <p class="text-[14px] text-secondary">
-            {{ $start->format('g:i A') }} · 60 minutes
+            {{ $start->format('g:i A') }} · 60 phút
         </p>
     </div>
 
     {{-- Status --}}
     <div class="mt-16 border-t border-text/10 pt-12">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Status</p>
+        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Trạng thái</p>
 
         @if ($isUpcoming)
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-4 py-1.5">
                 <span class="block h-2 w-2 rounded-full bg-success"></span>
-                <span class="text-[13px] font-medium text-success">Confirmed</span>
+                <span class="text-[13px] font-medium text-success">Đã xác nhận</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                The customer has paid the deposit. Once the consultation is finished, come back here to report the outcome.
+                Khách hàng đã thanh toán tiền đặt cọc. Sau khi buổi tư vấn kết thúc, hãy quay lại đây để báo cáo kết quả.
             </p>
         @elseif ($isAwaitingOutcome)
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5">
@@ -66,20 +66,20 @@
                 <span class="text-[13px] font-medium text-gold">Đang chờ kết quả</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                The appointment time has passed. Report whether it took place so we can release payment and unlock the customer's review.
+                Thời gian hẹn đã qua. Hãy báo cáo buổi hẹn có diễn ra hay không để chúng tôi xử lý thanh toán và mở phần đánh giá của khách hàng.
             </p>
             <div class="mt-8">
                 <x-button variant="primary" :href="route('lawyer.appointments.outcome', $appointment['booking_code'])">
-                    Report outcome
+                    Báo cáo kết quả
                 </x-button>
             </div>
         @elseif ($isCompleted)
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-4 py-1.5">
                 <span class="block h-2 w-2 rounded-full bg-success"></span>
-                <span class="text-[13px] font-medium text-success">Completed</span>
+                <span class="text-[13px] font-medium text-success">Đã hoàn tất</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                You reported this consultation as completed on {{ \Carbon\Carbon::parse($appointment['outcome_reported_at'])->format('M j, Y') }}.
+                Bạn đã báo cáo buổi tư vấn này hoàn tất vào {{ \Carbon\Carbon::parse($appointment['outcome_reported_at'])->format('M j, Y') }}.
             </p>
         @elseif ($isNoShow)
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-4 py-1.5">
@@ -87,7 +87,7 @@
                 <span class="text-[13px] font-medium text-error">Khách hàng vắng mặt</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                Reported on {{ \Carbon\Carbon::parse($appointment['outcome_reported_at'])->format('M j, Y') }}. The customer forfeited the deposit. Your compensation (25% of the deposit) is processed within 3 to 5 business days.
+                Đã báo cáo vào {{ \Carbon\Carbon::parse($appointment['outcome_reported_at'])->format('M j, Y') }}. Khách hàng mất tiền đặt cọc. Khoản bồi hoàn cho bạn (25% tiền đặt cọc) sẽ được xử lý trong 3 đến 5 ngày làm việc.
             </p>
         @endif
     </div>
@@ -99,7 +99,7 @@
             <div class="mt-3 flex flex-wrap items-center gap-3">
                 <x-rating-stars :rating="$appointment['customer_review']['stars']" size="md" />
                 <span class="text-[13px] text-muted">
-                    Submitted {{ \Carbon\Carbon::parse($appointment['customer_review']['reviewed_at'])->format('M j, Y') }}
+                    Đã gửi vào {{ \Carbon\Carbon::parse($appointment['customer_review']['reviewed_at'])->format('M j, Y') }}
                 </span>
             </div>
             @if (!empty($appointment['customer_review']['review_text']))
@@ -108,7 +108,7 @@
                 </blockquote>
             @endif
             <p class="mt-6 text-[13px] text-muted">
-                If this review violates our guidelines, you can
+                Nếu đánh giá này vi phạm hướng dẫn của chúng tôi, bạn có thể
                 <a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">gắn cờ để quản trị viên xem xét →</a>
             </p>
         </div>

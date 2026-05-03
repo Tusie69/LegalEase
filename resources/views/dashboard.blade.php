@@ -34,11 +34,11 @@
     {{-- Header --}}
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chào mừng trở lại</p>
     <h1 class="mt-3 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">
-        Hi, {{ $firstName }}.
+        Xin chào, {{ $firstName }}.
     </h1>
     @unless ($hasUpcoming)
         <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
-            Pick a lawyer below to book a consultation.
+            Chọn một luật sư bên dưới để đặt lịch tư vấn.
         </p>
     @endunless
 
@@ -62,7 +62,7 @@
 
                     {{-- When + Where --}}
                     <div class="md:flex md:h-32 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-8">
-                        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
+                        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian</p>
                         <p class="mt-2 font-display text-[18px] font-medium tracking-tight">
                             {{ \Carbon\Carbon::parse($completed['date'])->format('M j, Y') }}
                         </p>
@@ -105,7 +105,7 @@
 
                         {{-- Date + booking code --}}
                         <div class="md:flex md:h-24 md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
-                            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Consultation</p>
+                            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Buổi tư vấn</p>
                             <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
                                 {{ \Carbon\Carbon::parse($past['date'])->format('M j, Y') }}
                             </p>
@@ -117,16 +117,16 @@
                             @if ($past['status'] === 'cancelled')
                                 <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">
                                     <span class="block h-1.5 w-1.5 rounded-full bg-error"></span>
-                                    <span class="text-[12px] font-medium text-error">Cancelled</span>
+                                    <span class="text-[12px] font-medium text-error">Đã hủy</span>
                                 </div>
                             @elseif ($past['rated'])
                                 <div class="md:inline-flex md:flex-col md:items-end">
                                     <x-rating-stars :rating="$past['stars']" size="sm" />
-                                    <p class="mt-2 text-[12px] text-muted">Reviewed</p>
+                                    <p class="mt-2 text-[12px] text-muted">Đã đánh giá</p>
                                 </div>
                             @else
                                 <p class="text-[14px] font-medium text-text transition-colors group-hover:text-accent">
-                                    Leave a review →
+                                    Viết đánh giá →
                                 </p>
                             @endif
                         </div>

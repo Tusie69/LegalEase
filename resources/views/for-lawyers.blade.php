@@ -7,8 +7,8 @@
             'desc'  => 'Mọi khách hàng đều được xem xét trước khi họ có thể đặt chỗ. Không có thư rác, không lãng phí thời gian.',
         ],
         [
-            'title' => 'Đặt tỷ lệ của riêng bạn',
-            'desc'  => "Choose your hourly fee. We don't take a cut of your consultation fee.",
+            'title' => 'Tự đặt mức phí của bạn',
+            'desc'  => "Bạn tự chọn phí tư vấn theo giờ. Chúng tôi không thu phần trăm trên phí tư vấn của bạn.",
         ],
         [
             'title' => 'Tính khả dụng theo thời gian thực',
@@ -48,10 +48,10 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">For lawyers</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Dành cho luật sư</p>
 
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Build your practice on LegalEase.
+                Phát triển hoạt động hành nghề của bạn trên LegalEase.
             </h1>
         </div>
     </section>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">10,000+</p>
-                    <p class="mt-2 text-[14px] text-muted">Consultations completed</p>
+                    <p class="mt-2 text-[14px] text-muted">Buổi tư vấn đã hoàn tất</p>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                 <span class="text-muted">“</span>Sáu tháng sau, một nửa số khách hàng mới của tôi đến từ LegalEase. Việc xác minh đã cho tôi sự tin cậy mà tôi không thể mua được.<span class="text-muted">”</span>
             </blockquote>
             <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                Lê Văn Thanh, Civil Litigation, Ho Chi Minh City
+                Lê Văn Thanh, Tố tụng dân sự, Thành phố Hồ Chí Minh
             </p>
         </div>
     </section>
@@ -125,7 +125,7 @@
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Ready to grow your practice?
+            Sẵn sàng phát triển hoạt động hành nghề?
         </h2>
         <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="{{ route('lawyer.register') }}">Đăng ký tham gia →</x-button>

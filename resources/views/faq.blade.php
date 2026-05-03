@@ -7,10 +7,10 @@
             'items' => [
                 [
                     'q' => 'Làm thế nào để đặt lịch tư vấn?',
-                    'a' => "Browse lawyers by specialty, location, and price. Pick a lawyer, choose a time slot on their profile, then confirm your details. We'll hold a 20% deposit at booking.",
+                    'a' => "Duyệt luật sư theo lĩnh vực, địa điểm và chi phí. Chọn luật sư, chọn khung giờ trên hồ sơ của họ, sau đó xác nhận thông tin của bạn. Chúng tôi sẽ giữ 20% phí tư vấn làm tiền đặt cọc khi đặt lịch.",
                 ],
                 [
-                    'q' => "What's the deposit?",
+                    'q' => "Tiền đặt cọc là gì?",
                     'a' => 'Khi bạn xác nhận đặt phòng, chúng tôi giữ 20% phí tư vấn làm tiền đặt cọc. 80% còn lại được thanh toán trực tiếp cho luật sư tại thời điểm bổ nhiệm.',
                 ],
                 [
@@ -28,7 +28,7 @@
             'items' => [
                 [
                     'q' => 'Làm cách nào để hủy đặt chỗ?',
-                    'a' => "From your dashboard, open the booking and click cancel. We'll process the cancellation according to our refund policy.",
+                    'a' => "Từ bảng điều khiển, mở lịch hẹn và bấm hủy. Chúng tôi sẽ xử lý việc hủy lịch theo chính sách hoàn tiền.",
                 ],
                 [
                     'q' => 'Tôi có lấy lại được tiền đặt cọc không?',
@@ -36,10 +36,10 @@
                 ],
                 [
                     'q' => 'Nếu luật sư của tôi hủy bỏ thì sao?',
-                    'a' => "You'll receive a full refund of the deposit and we'll help you find an alternative lawyer if you'd like.",
+                    'a' => "Bạn sẽ được hoàn lại toàn bộ tiền đặt cọc và chúng tôi sẽ hỗ trợ tìm luật sư thay thế nếu bạn muốn.",
                 ],
                 [
-                    'q' => "What if I don't show up?",
+                    'q' => "Nếu tôi không đến buổi hẹn thì sao?",
                     'a' => 'Tiền đặt cọc bị mất. Nền tảng giữ lại 75% và luật sư nhận được 25% dưới dạng bồi thường cho thời gian dành riêng.',
                 ],
             ],
@@ -49,11 +49,11 @@
             'items' => [
                 [
                     'q' => 'Làm cách nào để đăng ký tham gia?',
-                    'a' => "Visit our For Lawyers page and submit an application. We'll review your bar credentials and respond within a few business days.",
+                    'a' => "Truy cập trang Dành cho luật sư và gửi hồ sơ đăng ký. Chúng tôi sẽ xem xét thông tin đoàn luật sư của bạn và phản hồi trong vài ngày làm việc.",
                 ],
                 [
                     'q' => 'Quá trình xác minh mất bao lâu?',
-                    'a' => "Usually 2 to 3 business days. Complex cases may take longer; we'll update you if we need more time.",
+                    'a' => "Thông thường mất 2 đến 3 ngày làm việc. Hồ sơ phức tạp có thể lâu hơn; chúng tôi sẽ cập nhật nếu cần thêm thời gian.",
                 ],
                 [
                     'q' => 'Khi nào tôi được trả tiền?',
@@ -61,7 +61,7 @@
                 ],
                 [
                     'q' => 'Tôi có thể đặt mức giá của riêng mình không?',
-                    'a' => "Yes. You set your hourly rate when you list and can update it any time, though changes don't affect existing bookings.",
+                    'a' => "Có. Bạn tự đặt mức phí theo giờ khi đăng hồ sơ và có thể cập nhật bất cứ lúc nào, nhưng thay đổi sẽ không áp dụng cho các lịch hẹn đã đặt.",
                 ],
             ],
         ],
@@ -70,7 +70,7 @@
             'items' => [
                 [
                     'q' => 'Luật sư được xác minh như thế nào?',
-                    'a' => "Every lawyer on the platform has had their bar membership and credentials reviewed by our team before being listed. We re-verify periodically.",
+                    'a' => "Mọi luật sư trên nền tảng đều được đội ngũ của chúng tôi kiểm tra tư cách đoàn luật sư và chứng chỉ hành nghề trước khi hồ sơ được công bố. Chúng tôi cũng xác minh lại định kỳ.",
                 ],
                 [
                     'q' => 'Việc tư vấn của tôi có được bảo mật không?',
@@ -94,9 +94,9 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">FAQ</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Câu hỏi thường gặp</p>
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Common questions.
+                Những câu hỏi thường gặp.
             </h1>
         </div>
     </section>
@@ -133,7 +133,7 @@
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Still have questions?
+            Bạn vẫn còn câu hỏi?
         </h2>
         <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>

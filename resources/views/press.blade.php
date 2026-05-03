@@ -29,19 +29,19 @@
         [
             'publication' => 'Công nghệ ở Châu Á',
             'date'        => 'Ngày 22 tháng 1 năm 2026',
-            'headline'    => "Vietnam's legal-tech wave finds its first consumer brand",
+            'headline'    => "Làn sóng công nghệ pháp lý Việt Nam có thương hiệu tiêu dùng đầu tiên",
             'url'         => '#',
         ],
         [
             'publication' => 'Thời báo Sài Gòn',
             'date'        => 'Ngày 18 tháng 12 năm 2025',
-            'headline'    => "Booking a lawyer used to mean asking around. Now there's an app.",
+            'headline'    => "Đặt lịch luật sư từng phải hỏi quanh. Giờ đã có ứng dụng.",
             'url'         => '#',
         ],
         [
             'publication' => 'e27',
             'date'        => 'Ngày 30 tháng 11 năm 2025',
-            'headline'    => "Inside LegalEase's seed round and the team behind it",
+            'headline'    => "Bên trong vòng gọi vốn hạt giống của LegalEase và đội ngũ phía sau",
             'url'         => '#',
         ],
         [
@@ -68,10 +68,10 @@
         <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
 
         <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Press</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Báo chí</p>
 
             <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                What people are saying.
+                Mọi người đang nói gì.
             </h1>
         </div>
     </section>
@@ -97,7 +97,7 @@
                     </div>
                     <a href="{{ $item['url'] }}" target="_blank" rel="noopener"
                        class="inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary md:justify-self-end">
-                        Read
+                        Đọc
                         <span aria-hidden="true">→</span>
                     </a>
                 </article>
@@ -127,13 +127,13 @@
             </div>
 
             <div>
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Boilerplate</p>
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Giới thiệu ngắn</p>
                 <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-secondary">
                     <p>
-                        LegalEase is a verified marketplace for legal consultations in Vietnam. Founded in Hanoi in 2024, we connect individuals and businesses with 500+ vetted lawyers across 12 cities.
+                        LegalEase là nền tảng đặt lịch tư vấn pháp lý đã xác minh tại Việt Nam. Thành lập tại Hà Nội năm 2024, chúng tôi kết nối cá nhân và doanh nghiệp với hơn 500 luật sư đã được kiểm duyệt tại 12 thành phố.
                     </p>
                     <p>
-                        Every lawyer's credentials are reviewed before they list. Hourly rates are public. No referral fees, no paid rankings.
+                        Chứng chỉ hành nghề của từng luật sư được xem xét trước khi hồ sơ được công bố. Phí theo giờ được công khai. Không phí giới thiệu, không bảng xếp hạng trả phí.
                     </p>
                 </div>
             </div>

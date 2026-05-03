@@ -4,10 +4,10 @@
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Tư vấn của bạn</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        How did it go?
+        Buổi tư vấn diễn ra thế nào?
     </h1>
     <p class="mt-4 text-[17px] text-secondary">
-        Honest feedback helps other clients pick the right lawyer.
+        Phản hồi trung thực giúp các khách hàng khác chọn đúng luật sư.
     </p>
 
     {{-- Lawyer summary --}}
@@ -30,7 +30,7 @@
         {{-- Stars --}}
         <div>
             <p class="text-[13px] font-medium text-muted">
-                How would you rate your experience?
+                Bạn đánh giá trải nghiệm này thế nào?
             </p>
             <div class="mt-4 flex items-center gap-2">
                 @for ($i = 1; $i <= 5; $i++)
@@ -38,7 +38,7 @@
                             @click="stars = {{ $i }}"
                             @mouseover="hover = {{ $i }}"
                             @mouseleave="hover = 0"
-                            aria-label="{{ $i }} star{{ $i === 1 ? '' : 's' }}"
+                            aria-label="{{ $i }} sao"
                             class="transition-transform duration-150 hover:scale-110 focus:outline-none">
                         <svg class="h-10 w-10 transition-colors duration-150"
                              :class="(hover || stars) >= {{ $i }} ? 'text-gold' : 'text-text/20'"
@@ -57,10 +57,10 @@
         {{-- Review text --}}
         <div>
             <label for="review_text" class="block text-[13px] font-medium text-muted">
-                Add a review <span class="text-muted/60">(không bắt buộc)</span>
+                Thêm đánh giá <span class="text-muted/60">(không bắt buộc)</span>
             </label>
             <textarea id="review_text" name="review_text" rows="6" maxlength="2000"
-                      placeholder="What stood out? Anything that could have been better?"
+                      placeholder="Điều gì nổi bật? Có điểm nào có thể tốt hơn?"
                       class="mt-3 block w-full resize-y rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] leading-relaxed text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">{{ old('review_text') }}</textarea>
             @error('review_text') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
         </div>
@@ -68,7 +68,7 @@
         <div class="flex items-center gap-6">
             <x-button variant="primary" type="submit">Gửi đánh giá</x-button>
             <a href="{{ route('consultations.show', $consultation['booking_code']) }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-                Maybe later
+                Để sau
             </a>
         </div>
     </form>

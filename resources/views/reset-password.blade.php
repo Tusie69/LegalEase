@@ -42,7 +42,7 @@
                     <input id="email" type="email" name="email" x-model="email" @blur="touched.email = true" required
                            placeholder="you@example.com"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                    @unless ($errors->có('email'))
+                    @unless ($errors->has('email'))
                         <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('email') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -50,7 +50,7 @@
 
                 <div x-data="{ show: false }">
                     <label for="password" class="block text-[13px] font-medium text-muted">
-                        New password
+                        Mật khẩu mới
                         <span x-show="!isPasswordValid && !touched.password" class="text-gold">*</span>
                         <svg x-show="passwordError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isPasswordValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -60,14 +60,14 @@
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
                                class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        <button type="button" @click="show = !show" aria-label="Toggle password"
+                        <button type="button" @click="show = !show" aria-label="Ẩn hoặc hiện mật khẩu"
                                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-accent">
                             <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                             <svg x-show="show" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l18 18M10.5 10.7A2 2 0 0012 14a2 2 0 001.3-.5M6.7 6.7C4.1 8.3 2 12 2 12s3.5 7 10 7a9.8 9.8 0 004.3-.9M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17 17 0 01-2.2 2.9"/></svg>
                         </button>
                     </div>
                     <p class="mt-2 text-[12px] text-muted">Ít nhất 8 ký tự, bao gồm một chữ cái và một số.</p>
-                    @unless ($errors->có('mật khẩu'))
+                    @unless ($errors->has('password'))
                         <p x-show="passwordError" x-cloak x-text="passwordError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('password') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -75,7 +75,7 @@
 
                 <div x-data="{ show: false }">
                     <label for="password_confirmation" class="block text-[13px] font-medium text-muted">
-                        Confirm new password
+                        Xác nhận mật khẩu mới
                         <span x-show="!isPasswordConfirmValid && !touched.passwordConfirm" class="text-gold">*</span>
                         <svg x-show="passwordConfirmError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isPasswordConfirmValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -85,7 +85,7 @@
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
                                class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        <button type="button" @click="show = !show" aria-label="Toggle password"
+                        <button type="button" @click="show = !show" aria-label="Ẩn hoặc hiện mật khẩu"
                                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-accent">
                             <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                             <svg x-show="show" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l18 18M10.5 10.7A2 2 0 0012 14a2 2 0 001.3-.5M6.7 6.7C4.1 8.3 2 12 2 12s3.5 7 10 7a9.8 9.8 0 004.3-.9M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17 17 0 01-2.2 2.9"/></svg>
@@ -133,21 +133,21 @@
 
             get emailError() {
                 if (!this.touched.email || this.isEmailValid) return '';
-                if (this.email.length === 0) return 'Please enter your email address.';
-                return 'Please enter a valid email address.';
+                if (this.email.length === 0) return 'Vui lòng nhập địa chỉ email.';
+                return 'Vui lòng nhập địa chỉ email hợp lệ.';
             },
             get passwordError() {
                 if (!this.touched.password || this.isPasswordValid) return '';
-                if (this.password.length === 0) return 'Please enter a password.';
-                if (this.password.length < 8) return 'Use at least 8 characters.';
-                if (!/[a-zA-Z]/.test(this.password)) return 'Include at least one letter.';
-                if (!/\d/.test(this.password)) return 'Include at least one number.';
+                if (this.password.length === 0) return 'Vui lòng nhập mật khẩu.';
+                if (this.password.length < 8) return 'Dùng ít nhất 8 ký tự.';
+                if (!/[a-zA-Z]/.test(this.password)) return 'Bao gồm ít nhất một chữ cái.';
+                if (!/\d/.test(this.password)) return 'Bao gồm ít nhất một chữ số.';
                 return '';
             },
             get passwordConfirmError() {
                 if (!this.touched.passwordConfirm || this.isPasswordConfirmValid) return '';
-                if (this.passwordConfirm.length === 0) return 'Please confirm your password.';
-                return "Passwords don't match.";
+                if (this.passwordConfirm.length === 0) return 'Vui lòng xác nhận mật khẩu.';
+                return "Mật khẩu không khớp.";
             },
         };
     }

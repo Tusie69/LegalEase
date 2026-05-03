@@ -21,7 +21,7 @@ class PastConsultations
                 'booking_code' => 'BK-20260411-K5L9D7',
                 'rated'        => true,
                 'stars'        => 5,
-                'review_text'  => "Mr. Hùng walked us through every clause of our supplier contract and flagged two terms we hadn't thought about. Calm, methodical, no jargon. We'll be back next quarter when we sign the lease.",
+                'review_text'  => "Luật sư Hùng giải thích từng điều khoản trong hợp đồng nhà cung cấp và chỉ ra hai điều khoản chúng tôi chưa nghĩ tới. Bình tĩnh, có phương pháp, không dùng thuật ngữ rối rắm. Chúng tôi sẽ quay lại vào quý tới khi ký hợp đồng thuê.",
                 'reviewed_at'  => '2026-04-13',
             ],
             [
@@ -31,7 +31,7 @@ class PastConsultations
                 'booking_code' => 'BK-20260328-M2N6P1',
                 'rated'        => true,
                 'stars'        => 4,
-                'review_text'  => "Knowledgeable and patient. Got the answers we needed about the title transfer. The follow-up email took a few extra days, which was the only friction in an otherwise smooth experience.",
+                'review_text'  => "Am hiểu và kiên nhẫn. Chúng tôi nhận được câu trả lời cần thiết về việc sang tên giấy tờ. Email theo dõi mất thêm vài ngày, đó là điểm vướng duy nhất trong một trải nghiệm nhìn chung rất suôn sẻ.",
                 'reviewed_at'  => '2026-03-30',
             ],
         ];

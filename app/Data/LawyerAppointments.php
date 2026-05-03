@@ -48,7 +48,7 @@ class LawyerAppointments
                 'outcome_reported_at' => '2026-04-23',
                 'customer_review'     => [
                     'stars'       => 5,
-                    'review_text' => 'Knowledgeable and clear. Helped me navigate a tricky contract negotiation, and I left feeling confident about the next steps.',
+                    'review_text' => 'Am hiểu và rõ ràng. Giúp tôi xử lý một cuộc đàm phán hợp đồng phức tạp, và tôi rời buổi tư vấn với sự tự tin về các bước tiếp theo.',
                     'reviewed_at' => '2026-04-25',
                 ],
             ],

@@ -37,7 +37,7 @@
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
                                class="block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent @error('password') border-red-600 focus:border-red-600 focus:ring-red-600 @enderror">
-                        <button type="button" @click="show = !show" aria-label="Toggle password"
+                        <button type="button" @click="show = !show" aria-label="Ẩn hoặc hiện mật khẩu"
                                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-accent">
                             <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                             <svg x-show="show" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l18 18M10.5 10.7A2 2 0 0012 14a2 2 0 001.3-.5M6.7 6.7C4.1 8.3 2 12 2 12s3.5 7 10 7a9.8 9.8 0 004.3-.9M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17 17 0 01-2.2 2.9"/></svg>

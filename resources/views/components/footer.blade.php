@@ -4,16 +4,16 @@
             <div>
                 <a href="/" class="font-display text-2xl font-medium tracking-tight text-text">LegalEase</a>
                 <p class="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
-                    Connecting Vietnam with trusted legal expertise, one consultation at a time.
+                    Kết nối người dùng tại Việt Nam với đội ngũ tư vấn pháp lý đáng tin cậy qua từng buổi tư vấn.
                 </p>
             </div>
 
             <div>
-                <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Company</h4>
+                <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Công ty</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
                     <li><a href="/about" class="text-text transition-colors hover:text-accent">Về chúng tôi</a></li>
-                    <li><a href="/careers" class="text-text transition-colors hover:text-accent">Careers</a></li>
-                    <li><a href="{{ route('press') }}" class="text-text transition-colors hover:text-accent">Press</a></li>
+                    <li><a href="/careers" class="text-text transition-colors hover:text-accent">Tuyển dụng</a></li>
+                    <li><a href="{{ route('press') }}" class="text-text transition-colors hover:text-accent">Báo chí</a></li>
                 </ul>
             </div>
 
@@ -21,16 +21,16 @@
                 <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Dành cho luật sư</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
                     <li><a href="{{ route('for-lawyers') }}" class="text-text transition-colors hover:text-accent">Tham gia nền tảng</a></li>
-                    <li><a href="{{ route('lawyer.resources') }}" class="text-text transition-colors hover:text-accent">Resources</a></li>
+                    <li><a href="{{ route('lawyer.resources') }}" class="text-text transition-colors hover:text-accent">Tài nguyên</a></li>
                     <li><a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">đăng nhập luật sư</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Support</h4>
+                <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Hỗ trợ</h4>
                 <ul class="mt-4 space-y-3 text-[14px]">
-                    <li><a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">Contact</a></li>
-                    <li><a href="{{ route('faq') }}" class="text-text transition-colors hover:text-accent">FAQ</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">Liên hệ</a></li>
+                    <li><a href="{{ route('faq') }}" class="text-text transition-colors hover:text-accent">Câu hỏi thường gặp</a></li>
                     <li><a href="{{ route('terms') }}" class="text-text transition-colors hover:text-accent">Điều khoản sử dụng</a></li>
                     <li><a href="{{ route('privacy') }}" class="text-text transition-colors hover:text-accent">Chính sách bảo mật</a></li>
                 </ul>

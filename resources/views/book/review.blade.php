@@ -10,7 +10,7 @@
 <section class="mx-auto max-w-[720px] px-8 py-20">
     @if (!$booking || !$lawyer || !$bookingDetails)
         <div class="rounded-2xl border border-text/10 bg-surface p-8">
-            <p class="text-[15px] text-muted">Hiện chưa có lượt đặt lịch nào. Hãy chọn luật sư và thời gian phù hợp.</p>
+            <p class="text-[15px] text-muted">Hiện chưa có lịch hẹn nào. Hãy chọn luật sư và thời gian phù hợp.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
                 Duyệt luật sư
                 <span aria-hidden="true">→</span>
@@ -74,7 +74,7 @@
                     </div>
                     <div>
                         <p class="text-muted">Liên hệ để xác nhận</p>
-                        <p class="mt-1 text-text">{{ ucfirst($bookingDetails['contact_preference']) }}</p>
+                        <p class="mt-1 text-text">{{ $bookingDetails['contact_preference'] === 'phone' ? 'Điện thoại' : 'Email' }}</p>
                     </div>
                 </div>
             </div>

@@ -50,7 +50,7 @@
             {{ $displayName }}
         </h3>
         @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-            <span title="Verified" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gold/15 text-gold">
+            <span title="Đã xác minh" class="inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gold/15 text-gold">
                 <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
         @endif
@@ -82,4 +82,3 @@
         </x-button>
     </div>
 </a>
-

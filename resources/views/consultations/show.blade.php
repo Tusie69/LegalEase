@@ -3,12 +3,12 @@
 @section('content')
 <section class="mx-auto max-w-[800px] px-8 pt-24 pb-24">
     <a href="{{ route('home') }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to dashboard
+        ← Trở về bảng điều khiển
     </a>
 
-    <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Consultation</p>
+    <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Buổi tư vấn</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Your consultation with {{ $lawyer['name'] }}
+        Lịch tư vấn với Luật sư {{ $lawyer['name'] }}
     </h1>
     <p class="mt-4 text-[14px] text-muted">{{ $consultation['booking_code'] }}</p>
 
@@ -29,16 +29,16 @@
     {{-- When + where --}}
     <div class="mt-10 grid gap-10 md:grid-cols-2">
         <div>
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian</p>
             <p class="mt-2 font-display text-[20px] font-medium tracking-tight">
                 {{ \Carbon\Carbon::parse($consultation['date'])->format('l, F j, Y') }}
             </p>
             <p class="text-[14px] text-secondary">
-                {{ \Carbon\Carbon::createFromFormat('H:i', $consultation['time'])->format('g:i A') }} · 60 minutes
+                {{ \Carbon\Carbon::createFromFormat('H:i', $consultation['time'])->format('g:i A') }} · 60 phút
             </p>
         </div>
         <div>
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Where</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Địa điểm</p>
             <p class="mt-2 text-[15px] text-text">{{ $lawyer['address']['street_address'] }}</p>
             <p class="text-[14px] text-muted">{{ $lawyer['address']['province'] }}</p>
         </div>
@@ -47,17 +47,17 @@
     @if ($consultation['status'] === 'cancelled')
         {{-- Cancelled --}}
         <div class="mt-16 border-t border-text/10 pt-12">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Status</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Trạng thái</p>
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-4 py-1.5">
                 <span class="block h-2 w-2 rounded-full bg-error"></span>
-                <span class="text-[13px] font-medium text-error">Cancelled</span>
+                <span class="text-[13px] font-medium text-error">Đã hủy</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                You cancelled this consultation on {{ \Carbon\Carbon::parse($consultation['cancelled_at'])->format('M j, Y') }}.
+                Bạn đã hủy buổi tư vấn này vào {{ \Carbon\Carbon::parse($consultation['cancelled_at'])->format('M j, Y') }}.
                 @if ($consultation['refund_eligible'])
-                    Your full deposit will be refunded within 3 to 5 business days.
+                    Tiền đặt cọc sẽ được hoàn trả trong 3 đến 5 ngày tới.
                 @else
-                    Cancellations less than 24 hours before the appointment are not eligible for a refund.
+                    Những trường hợp hủy lịch 24h trước thời điểm hẹn chính thức sẽ không được hoàn tiền.
                 @endif
             </p>
         </div>
@@ -66,34 +66,34 @@
         <div class="mt-12 border-t border-text/10 pt-12">
             <a href="{{ route('lawyers.show', $consultation['lawyer_slug']) }}"
                class="inline-flex items-center gap-2 text-[15px] font-medium text-text transition-colors hover:text-secondary">
-                Book {{ $lawyer['name'] }} again
+                Đặt lịch lại với {{ $lawyer['name'] }}
                 <span aria-hidden="true">→</span>
             </a>
         </div>
     @elseif ($consultation['status'] === 'upcoming')
         {{-- Status (upcoming) --}}
         <div class="mt-16 border-t border-text/10 pt-12">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Status</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Trạng thái</p>
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-4 py-1.5">
                 <span class="block h-2 w-2 rounded-full bg-success"></span>
-                <span class="text-[13px] font-medium text-success">Confirmed</span>
+                <span class="text-[13px] font-medium text-success">Đã xác nhận</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                Your consultation is booked. You'll receive a reminder 24 hours before. Cancellations more than 24 hours in advance are fully refunded.
+                Lịch tư vấn của bạn đã được đặt. Bạn sẽ nhận được lời nhắc trước 24 giờ. Các lịch hủy trước giờ hẹn hơn 24 giờ sẽ được hoàn tiền đầy đủ.
             </p>
         </div>
 
         {{-- Manage --}}
         <div class="mt-12 border-t border-text/10 pt-12">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Manage</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Quản lý</p>
             <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <a href="{{ route('consultations.cancel', $consultation['booking_code']) }}"
                    class="text-[14px] font-medium text-error transition-colors hover:text-error/80">
-                    Cancel consultation
+                    Hủy buổi tư vấn
                 </a>
                 <a href="{{ route('contact') }}"
                    class="text-[14px] text-muted transition-colors hover:text-accent">
-                    Get in touch with our team →
+                    Liên hệ với đội ngũ hỗ trợ →
                 </a>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <div class="mt-3 flex flex-wrap items-center gap-3">
                     <x-rating-stars :rating="$consultation['stars']" size="md" />
                     <span class="text-[13px] text-muted">
-                        Submitted {{ \Carbon\Carbon::parse($consultation['reviewed_at'])->format('M j, Y') }}
+                        Đã gửi vào {{ \Carbon\Carbon::parse($consultation['reviewed_at'])->format('M j, Y') }}
                     </span>
                 </div>
                 @if (!empty($consultation['review_text']))
@@ -116,14 +116,14 @@
             @else
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Nó thế nào?</p>
                 <h2 class="mt-3 font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">
-                    Let other clients know.
+                    Hãy chia sẻ cho các khách hàng khác.
                 </h2>
                 <p class="mt-3 max-w-[520px] text-[15px] text-secondary">
-                    Honest reviews help future clients pick the right lawyer.
+                    Đánh giá trung thực giúp khách hàng sau này chọn đúng luật sư.
                 </p>
                 <div class="mt-8">
                     <x-button variant="primary" :href="route('consultations.rate', $consultation['booking_code'])">
-                        Leave a review
+                        Viết đánh giá
                     </x-button>
                 </div>
             @endif
@@ -133,7 +133,7 @@
         <div class="mt-16 border-t border-text/10 pt-12">
             <a href="{{ route('lawyers.show', $consultation['lawyer_slug']) }}"
                class="inline-flex items-center gap-2 text-[15px] font-medium text-text transition-colors hover:text-secondary">
-                Book {{ $lawyer['name'] }} again
+                Đặt lịch lại với {{ $lawyer['name'] }}
                 <span aria-hidden="true">→</span>
             </a>
         </div>
