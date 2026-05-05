@@ -58,7 +58,7 @@
             </div>
         @else
             <a href="{{ route('login') }}"
-               class="inline-flex items-center rounded-full bg-[#0F2747] px-6 py-3 text-[14px] font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#12315a]">
+               class="inline-flex items-center rounded-full bg-accent px-6 py-3 text-[14px] font-semibold text-white shadow-sm transition-all duration-200 hover:brightness-95 hover:shadow-md">
                 Đăng nhập
             </a>
         @endauth

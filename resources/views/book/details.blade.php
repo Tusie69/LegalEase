@@ -11,7 +11,7 @@
         <div class="rounded-2xl border border-text/10 bg-surface p-8 max-w-[560px]">
             <p class="text-[15px] text-muted">Không tìm thấy bối cảnh đặt phòng. Chọn một luật sư và thời gian đầu tiên.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                Browse lawyers
+                Tìm luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>
@@ -98,7 +98,7 @@
                     <div class="mt-5 flex items-center gap-3">
                         <img src="{{ $lawyer['portrait_url'] }}" alt=""
                              loading="lazy"
-                             class="h-14 w-14 flex-none rounded-full object-cover object-top grayscale">
+                             class="h-14 w-14 flex-none rounded-full object-cover object-top">
                         <div class="min-w-0">
                             <p class="font-display text-[18px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                             <p class="truncate text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>

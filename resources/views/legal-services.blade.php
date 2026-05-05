@@ -7,25 +7,26 @@
 @endphp
 
 @section('content')
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-black/55"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-bg/95"></div>
+    {{-- Hero: photo top, navy bar bottom --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/80">
-                Chọn theo nhu cầu
-            </p>
-
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] text-white md:text-[80px]">
-                Bạn chưa biết bắt đầu từ đâu?
-            </h1>
-
-            <p class="mx-auto mt-8 max-w-[600px] text-[18px] leading-relaxed text-white/90">
-                Hầu hết mọi người không chắc mình cần loại luật sư nào cho tình huống cụ thể. Trang này sẽ giúp bạn định hướng rõ ràng.
-            </p>
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">
+                    Chọn theo nhu cầu
+                </p>
+                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
+                    Bạn chưa biết bắt đầu từ đâu?
+                </h1>
+                <p class="mx-auto mt-5 max-w-[600px] text-[17px] leading-relaxed text-white/80">
+                    Hầu hết mọi người không chắc mình cần loại luật sư nào cho tình huống cụ thể. Trang này sẽ giúp bạn định hướng rõ ràng.
+                </p>
+            </div>
         </div>
     </section>
 

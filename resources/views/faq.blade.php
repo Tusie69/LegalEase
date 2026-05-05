@@ -7,11 +7,11 @@
             'items' => [
                 [
                     'q' => 'Làm thế nào để đặt lịch tư vấn?',
-                    'a' => "Browse lawyers by specialty, location, and price. Pick a lawyer, choose a time slot on their profile, then confirm your details. We'll hold a 20% deposit at booking.",
+                    'a' => 'Duyệt danh sách luật sư theo chuyên môn, địa điểm và mức phí. Chọn một luật sư, chọn khung giờ trong hồ sơ của họ, rồi xác nhận thông tin của bạn. Chúng tôi sẽ giữ khoản đặt cọc 20% khi đặt chỗ.',
                 ],
                 [
-                    'q' => "What's the deposit?",
-                    'a' => 'Khi bạn xác nhận đặt phòng, chúng tôi giữ 20% phí tư vấn làm tiền đặt cọc. 80% còn lại được thanh toán trực tiếp cho luật sư tại thời điểm bổ nhiệm.',
+                    'q' => 'Khoản đặt cọc là gì?',
+                    'a' => 'Khi bạn xác nhận đặt chỗ, chúng tôi giữ 20% phí tư vấn làm khoản đặt cọc. 80% còn lại được thanh toán trực tiếp cho luật sư tại buổi tư vấn.',
                 ],
                 [
                     'q' => 'Khi nào tôi thanh toán phần còn lại?',
@@ -28,19 +28,19 @@
             'items' => [
                 [
                     'q' => 'Làm cách nào để hủy đặt chỗ?',
-                    'a' => "From your dashboard, open the booking and click cancel. We'll process the cancellation according to our refund policy.",
+                    'a' => 'Từ bảng điều khiển của bạn, mở lượt đặt chỗ và nhấn hủy. Chúng tôi sẽ xử lý theo chính sách hoàn tiền.',
                 ],
                 [
                     'q' => 'Tôi có lấy lại được tiền đặt cọc không?',
                     'a' => 'Hủy hơn 24 giờ trước cuộc hẹn và bạn sẽ được hoàn lại toàn bộ số tiền. Hủy trong vòng 24 giờ và tiền đặt cọc sẽ bị mất (với một số trường hợp ngoại lệ).',
                 ],
                 [
-                    'q' => 'Nếu luật sư của tôi hủy bỏ thì sao?',
-                    'a' => "You'll receive a full refund of the deposit and we'll help you find an alternative lawyer if you'd like.",
+                    'q' => 'Nếu luật sư của tôi hủy thì sao?',
+                    'a' => 'Bạn sẽ được hoàn lại toàn bộ khoản đặt cọc, và chúng tôi sẽ giúp bạn tìm một luật sư khác nếu bạn muốn.',
                 ],
                 [
-                    'q' => "What if I don't show up?",
-                    'a' => 'Tiền đặt cọc bị mất. Nền tảng giữ lại 75% và luật sư nhận được 25% dưới dạng bồi thường cho thời gian dành riêng.',
+                    'q' => 'Nếu tôi không tới buổi hẹn thì sao?',
+                    'a' => 'Khoản đặt cọc bị mất. Nền tảng giữ lại 75% và luật sư nhận 25% như khoản bồi thường cho thời gian đã dành.',
                 ],
             ],
         ],
@@ -49,19 +49,19 @@
             'items' => [
                 [
                     'q' => 'Làm cách nào để đăng ký tham gia?',
-                    'a' => "Visit our For Lawyers page and submit an application. We'll review your bar credentials and respond within a few business days.",
+                    'a' => 'Truy cập trang Dành cho luật sư và gửi hồ sơ ứng tuyển. Chúng tôi sẽ xem xét chứng chỉ thành viên đoàn luật sư của bạn và phản hồi trong vài ngày làm việc.',
                 ],
                 [
                     'q' => 'Quá trình xác minh mất bao lâu?',
-                    'a' => "Usually 2 to 3 business days. Complex cases may take longer; we'll update you if we need more time.",
+                    'a' => 'Thông thường 2 đến 3 ngày làm việc. Các trường hợp phức tạp có thể lâu hơn; chúng tôi sẽ thông báo nếu cần thêm thời gian.',
                 ],
                 [
                     'q' => 'Khi nào tôi được trả tiền?',
                     'a' => 'Phần lớn phí của bạn (80%) được khách hàng thanh toán trực tiếp tại cuộc hẹn. Tiền gửi nền tảng được thanh toán vào tài khoản của bạn hàng tuần.',
                 ],
                 [
-                    'q' => 'Tôi có thể đặt mức giá của riêng mình không?',
-                    'a' => "Yes. You set your hourly rate when you list and can update it any time, though changes don't affect existing bookings.",
+                    'q' => 'Tôi có thể tự đặt mức phí của mình không?',
+                    'a' => 'Có. Bạn tự đặt mức phí theo giờ khi đăng ký và có thể cập nhật bất kỳ lúc nào, các thay đổi không ảnh hưởng đến những lượt đặt chỗ đã có.',
                 ],
             ],
         ],
@@ -70,7 +70,7 @@
             'items' => [
                 [
                     'q' => 'Luật sư được xác minh như thế nào?',
-                    'a' => "Every lawyer on the platform has had their bar membership and credentials reviewed by our team before being listed. We re-verify periodically.",
+                    'a' => 'Mọi luật sư trên nền tảng đều được đội ngũ của chúng tôi kiểm tra tư cách thành viên đoàn luật sư và chứng chỉ trước khi được đăng. Chúng tôi xác minh lại theo định kỳ.',
                 ],
                 [
                     'q' => 'Việc tư vấn của tôi có được bảo mật không?',
@@ -86,18 +86,24 @@
 @endphp
 
 @section('content')
-    {{-- Hero --}}
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+    {{-- Hero: photo top, navy bar bottom --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">FAQ</p>
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Common questions.
-            </h1>
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">FAQ</p>
+                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
+                    Câu hỏi thường gặp.
+                </h1>
+                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
+                    Đặt chỗ, thanh toán, hủy, và sự tin cậy. Trả lời cho những câu hỏi phổ biến nhất.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -133,7 +139,7 @@
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Still have questions?
+            Bạn vẫn còn câu hỏi?
         </h2>
         <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>

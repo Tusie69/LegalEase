@@ -1,4 +1,4 @@
-﻿@props([
+@props([
     'rating' => 0,
     'reviewCount' => null,
     'size' => 'md',

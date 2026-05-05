@@ -4,12 +4,12 @@
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <a href="{{ route('lawyer.appointments.show', $appointment['booking_code']) }}"
        class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to appointment
+        ← Quay lại cuộc hẹn
     </a>
 
     <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Báo cáo kết quả</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        How did it go?
+        Buổi tư vấn thế nào?
     </h1>
     <p class="mt-4 text-[17px] text-secondary">
         Once you choose, we'll release payment, update the booking, and either unlock the customer's review or process the no-show.
@@ -48,7 +48,7 @@
                         <div class="min-w-0">
                             <p class="font-display text-[20px] font-medium tracking-tight">Cuộc hẹn đã hoàn tất</p>
                             <p class="mt-2 text-[14px] leading-relaxed text-secondary">
-                                The customer attended and the consultation took place. The platform retains the full deposit. The customer can now leave a review.
+                                Khách hàng đã đến và buổi tư vấn đã diễn ra. Nền tảng giữ toàn bộ khoản đặt cọc. Khách hàng có thể để lại đánh giá.
                             </p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                         <div class="min-w-0">
                             <p class="font-display text-[20px] font-medium tracking-tight">Khách hàng không xuất hiện</p>
                             <p class="mt-2 text-[14px] leading-relaxed text-secondary">
-                                The customer forfeits the deposit. You'll receive 25% of the deposit (5% of the consultation fee) as compensation for the reserved time.
+                                Khách hàng mất khoản đặt cọc. Bạn nhận 25% khoản đặt cọc (5% phí tư vấn) như khoản bồi thường cho thời gian đã dành.
                             </p>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
         <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
             <x-button variant="primary" type="submit" x-bind:disabled="!outcome"
                       x-bind:class="!outcome ? 'opacity-50 cursor-not-allowed' : ''">
-                Submit outcome
+                Gửi kết quả
             </x-button>
             <a href="{{ route('lawyer.appointments.show', $appointment['booking_code']) }}"
                class="text-[14px] text-muted transition-colors hover:text-accent">

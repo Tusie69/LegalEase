@@ -1,4 +1,4 @@
-﻿@props(['lawyer'])
+@props(['lawyer'])
 
 <a href="/lawyers/{{ $lawyer['slug'] }}"
    {{ $attributes->class('group flex flex-col overflow-hidden rounded-2xl border border-text/10 bg-surface p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent') }}>
@@ -50,8 +50,8 @@
             {{ $displayName }}
         </h3>
         @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-            <span title="Đã xác minh" class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-blue-100">
-                <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+            <span title="Đã xác minh" class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent/10">
+                <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                 </svg>
             </span>

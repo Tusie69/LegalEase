@@ -13,7 +13,7 @@
         <div class="rounded-2xl border border-text/10 bg-surface p-8">
             <p class="text-[15px] text-muted">Không tìm thấy đặt phòng. Duyệt luật sư để làm một cái mới.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                Browse lawyers
+                Tìm luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>
@@ -35,7 +35,7 @@
 
             <div class="flex items-center gap-4">
                 <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                     class="h-16 w-16 flex-none rounded-full object-cover object-top grayscale">
+                     class="h-16 w-16 flex-none rounded-full object-cover object-top">
                 <div class="min-w-0">
                     <p class="font-display text-[20px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                     <p class="text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>
@@ -76,7 +76,7 @@
         {{-- Actions --}}
         <div class="mt-12">
             <x-button variant="primary" href="{{ route('lawyers.index') }}" class="w-full">
-                Browse more lawyers
+                Xem thêm luật sư
             </x-button>
             <p class="mt-4 text-center text-[14px]">
                 <a href="/" class="text-muted transition-colors hover:text-accent">Trở về nhà</a>

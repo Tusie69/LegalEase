@@ -8,7 +8,7 @@
     $base = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-[14px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
 
     $styles = match ($variant) {
-        'primary' => 'border-[#0F2747] bg-[#0F2747] text-white shadow-sm hover:bg-[#12315a] hover:border-[#12315a] focus-visible:ring-[#0F2747]',
+        'primary' => 'border-accent bg-accent text-white shadow-sm hover:brightness-95 hover:shadow-md focus-visible:ring-accent',
         'secondary' => 'border-text/20 bg-surface text-text hover:border-accent hover:text-accent focus-visible:ring-accent',
         'ghost' => 'border-transparent bg-transparent text-text hover:border-text/20 hover:bg-surface focus-visible:ring-accent',
         default => 'border-text/20 bg-surface text-text',

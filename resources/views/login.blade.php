@@ -5,7 +5,7 @@
     <div class="relative h-[35vh] overflow-hidden md:sticky md:top-0 md:h-screen md:flex-1">
         <img src="https://images.unsplash.com/photo-1524508762098-fd966ffb6ef9?q=80"
              alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
+             class="absolute inset-0 h-full w-full object-cover">
     </div>
 
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">

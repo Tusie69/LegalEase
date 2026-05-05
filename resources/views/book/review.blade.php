@@ -1,4 +1,4 @@
-﻿@extends('layouts.app', ['title' => 'Xem lại đặt lịch của bạn · LegalEase'])
+@extends('layouts.app', ['title' => 'Xem lại đặt lịch của bạn · LegalEase'])
 
 @php
     $booking = session('booking');
@@ -29,7 +29,7 @@
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Luật sư</p>
                 <div class="mt-4 flex items-center gap-4">
                     <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                         class="h-16 w-16 flex-none rounded-full object-cover object-top grayscale">
+                         class="h-16 w-16 flex-none rounded-full object-cover object-top">
                     <div class="min-w-0">
                         <p class="font-display text-[22px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                         <p class="text-[13px] text-muted">

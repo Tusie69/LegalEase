@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @php
     $practiceAreas = \App\Data\PracticeAreas::all();

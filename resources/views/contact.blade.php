@@ -43,7 +43,7 @@
                     <div class="mt-3 overflow-hidden rounded-xl border border-text/10">
                         <iframe
                             src="https://www.openstreetmap.org/export/embed.html?bbox=105.8423%2C21.0205%2C105.8503%2C21.0285&amp;layer=mapnik&amp;marker=21.0245%2C105.8463"
-                            class="aspect-[4/3] w-full border-0 grayscale"
+                            class="aspect-[4/3] w-full border-0"
                             loading="lazy"
                             title="Map showing LegalEase office at 109 Trần Hưng Đạo, Hoàn Kiếm, Hanoi"></iframe>
                     </div>

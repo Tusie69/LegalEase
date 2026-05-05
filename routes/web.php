@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminTemplateController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -132,12 +130,6 @@ Route::post('/book/payment', function () {
 })->name('book.payment.store');
 
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
-
-Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
-Route::get('/admin-view-test', [AdminTemplateController::class, 'index'])->name('admin.view.test');
-Route::post('/admin-view-test/users', [AdminTemplateController::class, 'store'])->name('admin.users.store');
-Route::put('/admin-view-test/users/{user}', [AdminTemplateController::class, 'update'])->name('admin.users.update');
-Route::delete('/admin-view-test/users/{user}', [AdminTemplateController::class, 'destroy'])->name('admin.users.destroy');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -309,12 +301,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/lawyer-credentials', function () {
         return redirect()->route('lawyer.dashboard')->with('status', 'Đã gửi hồ sơ. Đội ngũ sẽ xem xét trong 2 đến 3 ngày làm việc.');
     })->name('lawyer.credentials.store');
-
-    Route::get('/appointments', [BookingController::class, 'index'])->name('appointments.index');
-    Route::get('/appointments/book/{lawyer}', [BookingController::class, 'showBookingForm'])->name('appointments.book');
-    Route::post('/appointments/book/{lawyer}', [BookingController::class, 'storeAppointment'])->name('appointments.store');
-    Route::get('/appointments/{appointment}/confirmation', [BookingController::class, 'confirmation'])->name('appointments.confirmation');
-    Route::post('/appointments/{appointment}/cancel', [BookingController::class, 'cancel'])->name('appointments.cancel');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

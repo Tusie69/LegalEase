@@ -2,71 +2,76 @@
 
 @php
     $values = [
-        ['title' => 'Định hướng theo sứ mệnh',  'desc' => "Work that reaches users this week."],
-        ['title' => 'lai ở Hà Nội', 'desc' => "Three days office, two days remote."],
-        ['title' => 'Tác động thực sự',     'desc' => "Small team. Your work ships fast."],
-        ['title' => 'Ngân sách học tập', 'desc' => "Annual stipend for what sharpens your craft."],
+        ['title' => 'Định hướng theo sứ mệnh',  'desc' => 'Công việc đến tay người dùng trong tuần này.'],
+        ['title' => 'Trụ sở tại Hà Nội', 'desc' => 'Ba ngày tại văn phòng, hai ngày làm việc từ xa.'],
+        ['title' => 'Tác động thực sự',     'desc' => 'Đội ngũ nhỏ. Công việc của bạn được ra mắt nhanh.'],
+        ['title' => 'Ngân sách học tập', 'desc' => 'Ngân sách hằng năm cho những gì giúp bạn nâng cao kỹ năng.'],
     ];
 
     $roles = [
         [
             'title'     => 'Kỹ sư phụ trợ cao cấp',
             'meta'      => 'Kỹ thuật · Hà Nội · Toàn thời gian',
-            'desc'      => "Laravel and MySQL. Scale the platform that powers 500+ lawyer profiles.",
+            'desc'      => 'Laravel và MySQL. Mở rộng nền tảng đang vận hành hơn 500 hồ sơ luật sư.',
             'salary'    => '50-80M',
             'image_url' => 'https://images.unsplash.com/photo-1631624222568-6619ce21a683?q=80',
         ],
         [
             'title'     => 'Nhà thiết kế sản phẩm',
             'meta'      => 'Sản phẩm · Hà Nội · Toàn thời gian',
-            'desc'      => "Lead the customer flow from search to consultation.",
+            'desc'      => 'Dẫn dắt hành trình của khách hàng từ tìm kiếm đến tư vấn.',
             'salary'    => '40-65M',
             'image_url' => 'https://images.unsplash.com/photo-1600697394936-59934aa5951f?q=80',
         ],
         [
             'title'     => 'Chuyên gia xác minh luật sư',
             'meta'      => 'Hoạt động · Hà Nội · Toàn thời gian',
-            'desc'      => "Vet every lawyer before they list. Background in law preferred.",
+            'desc'      => 'Thẩm định mọi luật sư trước khi đưa hồ sơ lên nền tảng. Ưu tiên ứng viên có nền tảng pháp lý.',
             'salary'    => '25-40M',
             'image_url' => 'https://images.unsplash.com/photo-1688828792704-4218151b5d97?q=80',
         ],
         [
             'title'     => 'Trưởng nhóm vận hành khách hàng',
             'meta'      => 'Hoạt động · Hà Nội hoặc Thành phố Hồ Chí Minh · Toàn thời gian',
-            'desc'      => "First responder for clients. Build the playbooks that scale support.",
+            'desc'      => 'Người tiếp nhận đầu tiên cho khách hàng. Xây dựng quy trình hỗ trợ có khả năng mở rộng.',
             'salary'    => '30-45M',
             'image_url' => 'https://images.unsplash.com/photo-1554774853-719586f82d77?q=80',
         ],
         [
             'title'     => 'Giám đốc tiếp thị',
             'meta'      => 'Tiếp thị · Hà Nội · Toàn thời gian',
-            'desc'      => "Brand, content, and growth across Vietnam.",
+            'desc'      => 'Thương hiệu, nội dung và tăng trưởng trên toàn Việt Nam.',
             'salary'    => '35-55M',
             'image_url' => 'https://images.unsplash.com/photo-1758873268131-a2636b120d81?q=80',
         ],
     ];
 
     $hiring = [
-        ['n' => '01', 'title' => 'Áp dụng',          'desc' => "No cover letter."],
-        ['n' => '02', 'title' => 'Hai cuộc phỏng vấn', 'desc' => "Hiring manager, then team."],
-        ['n' => '03', 'title' => 'Phán quyết',       'desc' => "Within ten days."],
+        ['n' => '01', 'title' => 'Ứng tuyển',           'desc' => 'Không cần thư xin việc.'],
+        ['n' => '02', 'title' => 'Hai vòng phỏng vấn',  'desc' => 'Quản lý tuyển dụng, sau đó là đội ngũ.'],
+        ['n' => '03', 'title' => 'Quyết định',          'desc' => 'Trong vòng mười ngày.'],
     ];
 @endphp
 
 @section('content')
-    {{-- Hero: full-bleed photo --}}
-    <section class="relative -mt-[72px] flex min-h-screen items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+    {{-- Hero: photo top, navy bar bottom --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chúng tôi đang tuyển dụng</p>
-
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Build the legal layer for Vietnam.
-            </h1>
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">Chúng tôi đang tuyển dụng</p>
+                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
+                    Xây dựng nền tảng pháp lý cho Việt Nam.
+                </h1>
+                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
+                    Một đội ngũ nhỏ ở Hà Nội đang xây dựng tầng pháp lý cho người dân Việt Nam.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -102,7 +107,7 @@
                         <img src="{{ $role['image_url'] }}"
                              alt=""
                              loading="lazy"
-                             class="h-full w-full object-cover object-top grayscale">
+                             class="h-full w-full object-cover object-top">
                     </div>
 
                     {{-- Title, meta, description --}}
@@ -124,7 +129,7 @@
                             {{ $role['salary'] }}
                         </p>
                         <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-muted">
-                            VND / month
+                            VND / tháng
                         </p>
                     </div>
                 </article>
@@ -158,7 +163,7 @@
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Ready to apply?
+            Sẵn sàng ứng tuyển?
         </h2>
         <div class="mt-8 flex justify-center">
             <x-button variant="primary" href="{{ route('contact') }}">Liên hệ →</x-button>

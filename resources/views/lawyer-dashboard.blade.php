@@ -26,7 +26,7 @@
 <div class="relative -mt-[72px] h-[280px] overflow-hidden">
     <img src="https://images.unsplash.com/photo-1714974528749-fc028e54feb9?q=80"
          alt=""
-         class="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.55]">
+         class="absolute inset-0 h-full w-full object-cover brightness-[0.55]">
     <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/20 to-bg"></div>
 </div>
 
@@ -44,7 +44,7 @@
     </h1>
     <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
         @if ($upcoming->isEmpty() && $awaitingOutcome->isEmpty())
-            No appointments on the books right now. Open up more time to receive new bookings.
+            Hiện chưa có cuộc hẹn nào. Mở thêm khung giờ để nhận đặt chỗ mới.
         @else
             Here's what's on your schedule.
         @endif

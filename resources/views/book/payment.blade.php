@@ -15,7 +15,7 @@
         <div class="rounded-2xl border border-text/10 bg-surface p-8">
             <p class="text-[15px] text-muted">Không có đặt phòng nào đang diễn ra. Chọn một luật sư và thời gian đầu tiên.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                Browse lawyers
+                Tìm luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>
@@ -24,14 +24,14 @@
             Pay your deposit
         </h1>
         <p class="mt-3 text-[17px] text-secondary">
-            We collect 20% of the consultation fee now to secure your booking. The remaining 80% is paid directly to the lawyer at the appointment.
+            Chúng tôi thu 20% phí tư vấn để giữ chỗ. 80% còn lại được thanh toán trực tiếp cho luật sư tại buổi tư vấn.
         </p>
 
         {{-- Booking summary --}}
         <div class="mt-12 rounded-2xl border border-text/10 bg-surface p-8">
             <div class="flex items-center gap-4">
                 <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                     class="h-14 w-14 flex-none rounded-full object-cover object-top grayscale">
+                     class="h-14 w-14 flex-none rounded-full object-cover object-top">
                 <div class="min-w-0">
                     <p class="font-display text-[18px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                     <p class="text-[13px] text-muted">
@@ -185,7 +185,7 @@
 
             <p class="mt-4 text-center text-[14px]">
                 <a href="{{ route('book.review') }}" class="text-muted transition-colors hover:text-accent">
-                    ← Back to review
+                    ← Quay lại trang xác nhận
                 </a>
             </p>
 

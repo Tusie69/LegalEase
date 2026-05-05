@@ -40,9 +40,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Thanh', 'date' => '2026-03-18', 'stars' => 5, 'text' => 'Ms. Anh walked me through my divorce step by step. Every email was answered within hours, and I never once felt lost in the process. I cannot recommend her enough.'],
-                    ['author' => 'Phương', 'date' => '2026-02-04', 'stars' => 5, 'text' => 'Honest, patient, and exceptionally well prepared. She treated my case as if it were the only one on her desk.'],
-                    ['author' => 'Huyền', 'date' => '2025-12-11', 'stars' => 4, 'text' => 'Professional and clear-eyed. The outcome was not what I had hoped for, but her guidance kept the process calm.'],
+                    ['author' => 'Thanh', 'date' => '2026-03-18', 'stars' => 5, 'text' => 'Chị Anh đồng hành cùng tôi qua từng bước của vụ ly hôn. Mọi email đều được trả lời trong vài giờ, tôi chưa bao giờ thấy lạc lối trong suốt quá trình. Xin hết lòng giới thiệu.'],
+                    ['author' => 'Phương', 'date' => '2026-02-04', 'stars' => 5, 'text' => 'Trung thực, kiên nhẫn và chuẩn bị rất kỹ. Chị ấy đối xử với hồ sơ của tôi như đó là vụ duy nhất trên bàn làm việc.'],
+                    ['author' => 'Huyền', 'date' => '2025-12-11', 'stars' => 4, 'text' => 'Chuyên nghiệp và sáng suốt. Kết quả không như tôi mong đợi, nhưng sự hướng dẫn của chị ấy giúp quá trình diễn ra êm ả.'],
                 ],
             ],
             [
@@ -78,9 +78,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['14:00', '16:00', '17:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Dũng', 'date' => '2026-04-02', 'stars' => 5, 'text' => 'Mr. Hùng helped us set up our company and negotiate our first major contract. Clear communication and no unnecessary billing.'],
-                    ['author' => 'Linh', 'date' => '2026-01-22', 'stars' => 5, 'text' => 'Our acquisition would not have closed without him. He spotted risks nobody else had, and kept the deal moving.'],
-                    ['author' => 'Nam', 'date' => '2025-11-30', 'stars' => 4, 'text' => 'Thorough and responsive. Fees were higher than I expected, but the value justified them.'],
+                    ['author' => 'Dũng', 'date' => '2026-04-02', 'stars' => 5, 'text' => 'Anh Hùng giúp chúng tôi thành lập công ty và đàm phán hợp đồng lớn đầu tiên. Trao đổi rõ ràng, không tính phí dư thừa.'],
+                    ['author' => 'Linh', 'date' => '2026-01-22', 'stars' => 5, 'text' => 'Thương vụ mua lại của chúng tôi không thể chốt được nếu thiếu anh. Anh phát hiện những rủi ro mà không ai khác thấy, và giữ cho giao dịch tiến triển.'],
+                    ['author' => 'Nam', 'date' => '2025-11-30', 'stars' => 4, 'text' => 'Tỉ mỉ và phản hồi nhanh. Phí cao hơn tôi dự kiến, nhưng giá trị nhận được hoàn toàn xứng đáng.'],
                 ],
             ],
             [
@@ -116,9 +116,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['11:00', '15:00', '17:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Bích', 'date' => '2026-04-10', 'stars' => 5, 'text' => 'Ms. Hương caught an unclear clause in my purchase contract that could have cost me dearly. She saved the deal and saved my money.'],
-                    ['author' => 'Quang', 'date' => '2026-02-18', 'stars' => 5, 'text' => 'Careful, thoughtful, and extremely thorough. The kind of lawyer you want on a property purchase.'],
-                    ['author' => 'Tuấn', 'date' => '2025-12-03', 'stars' => 5, 'text' => 'Made the commercial lease process feel simple. Explained every clause in plain language.'],
+                    ['author' => 'Bích', 'date' => '2026-04-10', 'stars' => 5, 'text' => 'Chị Hương phát hiện một điều khoản mập mờ trong hợp đồng mua bán có thể khiến tôi mất nhiều tiền. Chị đã cứu cả thương vụ lẫn túi tiền của tôi.'],
+                    ['author' => 'Quang', 'date' => '2026-02-18', 'stars' => 5, 'text' => 'Cẩn thận, chu đáo và cực kỳ tỉ mỉ. Đúng kiểu luật sư bạn muốn có khi mua bất động sản.'],
+                    ['author' => 'Tuấn', 'date' => '2025-12-03', 'stars' => 5, 'text' => 'Khiến quy trình thuê mặt bằng thương mại trở nên đơn giản. Giải thích từng điều khoản bằng ngôn ngữ dễ hiểu.'],
                 ],
             ],
             [
@@ -155,8 +155,8 @@ class Lawyers
                 ],
                 'reviews' => [
                     ['author' => 'Hùng', 'date' => '2026-03-25', 'stars' => 5, 'text' => 'Ông Bảo tận tâm và hiểu rõ hồ sơ của tôi đến từng chi tiết. Kết quả tốt hơn những gì tôi kỳ vọng.'],
-                    ['author' => 'Minh', 'date' => '2026-01-14', 'stars' => 4, 'text' => 'Serious and well prepared. Communication could be faster, but his legal work is top tier.'],
-                    ['author' => 'Hoa', 'date' => '2025-11-09', 'stars' => 5, 'text' => 'He stood by us through a very long case. Trustworthy and professional throughout.'],
+                    ['author' => 'Minh', 'date' => '2026-01-14', 'stars' => 4, 'text' => 'Nghiêm túc và chuẩn bị kỹ lưỡng. Trao đổi có thể nhanh hơn được, nhưng phần pháp lý của anh ấy thuộc hàng đầu.'],
+                    ['author' => 'Hoa', 'date' => '2025-11-09', 'stars' => 5, 'text' => 'Anh đồng hành cùng chúng tôi suốt một vụ việc kéo dài. Đáng tin cậy và chuyên nghiệp từ đầu đến cuối.'],
                 ],
             ],
             [
@@ -192,9 +192,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['10:00', '14:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Ngọc', 'date' => '2026-04-05', 'stars' => 5, 'text' => 'Ms. Trang helped me recover three months of unpaid wages and untangle my social insurance. She made the whole ordeal feel survivable.'],
-                    ['author' => 'Tùng', 'date' => '2026-02-27', 'stars' => 5, 'text' => 'Clear, practical, and on the side of her client. Negotiated a fair severance without anyone having to go to court.'],
-                    ['author' => 'Mai', 'date' => '2025-12-19', 'stars' => 4, 'text' => 'Good advice at a reasonable price. Would consult again.'],
+                    ['author' => 'Ngọc', 'date' => '2026-04-05', 'stars' => 5, 'text' => 'Chị Trang giúp tôi đòi lại ba tháng lương bị nợ và gỡ rối phần bảo hiểm xã hội. Chị làm cho cả chuyện rắc rối này trở nên chịu đựng được.'],
+                    ['author' => 'Tùng', 'date' => '2026-02-27', 'stars' => 5, 'text' => 'Rõ ràng, thực tế và luôn đứng về phía khách hàng. Đàm phán được khoản trợ cấp công bằng mà không ai phải ra tòa.'],
+                    ['author' => 'Mai', 'date' => '2025-12-19', 'stars' => 4, 'text' => 'Lời khuyên tốt với mức phí hợp lý. Sẽ tư vấn tiếp.'],
                 ],
             ],
             [
@@ -230,9 +230,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['09:00', '11:00', '14:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Quỳnh', 'date' => '2026-03-30', 'stars' => 5, 'text' => 'Won a contract dispute we thought was unwinnable. His preparation was on another level.'],
-                    ['author' => 'Đạt', 'date' => '2026-02-08', 'stars' => 5, 'text' => 'Patient, measured, and relentless when it mattered. Rare combination in a litigator.'],
-                    ['author' => 'Nga', 'date' => '2025-12-15', 'stars' => 5, 'text' => 'Helped us settle before trial for terms far better than we had expected. Highly recommended.'],
+                    ['author' => 'Quỳnh', 'date' => '2026-03-30', 'stars' => 5, 'text' => 'Thắng một vụ tranh chấp hợp đồng mà chúng tôi tưởng không có cửa. Sự chuẩn bị của anh ở một đẳng cấp khác.'],
+                    ['author' => 'Đạt', 'date' => '2026-02-08', 'stars' => 5, 'text' => 'Kiên nhẫn, chừng mực và quyết liệt khi cần. Một sự kết hợp hiếm có ở một luật sư tranh tụng.'],
+                    ['author' => 'Nga', 'date' => '2025-12-15', 'stars' => 5, 'text' => 'Giúp chúng tôi hòa giải trước phiên xử với các điều khoản tốt hơn nhiều so với kỳ vọng. Rất đáng giới thiệu.'],
                 ],
             ],
             [
@@ -268,9 +268,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['10:00', '11:00', '15:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Hằng', 'date' => '2026-04-12', 'stars' => 5, 'text' => 'Ms. Mai handled our custody case with a lot of care. My children felt heard, and so did I.'],
-                    ['author' => 'Phúc', 'date' => '2026-01-28', 'stars' => 4, 'text' => 'Honest advice, even when it was not what I wanted to hear. Helped me make a better decision.'],
-                    ['author' => 'Lan', 'date' => '2025-11-22', 'stars' => 5, 'text' => 'She guided us toward mediation and saved us from a painful court battle. Grateful.'],
+                    ['author' => 'Hằng', 'date' => '2026-04-12', 'stars' => 5, 'text' => 'Chị Mai xử lý vụ giành quyền nuôi con của chúng tôi với rất nhiều sự quan tâm. Các con tôi cảm thấy được lắng nghe, và tôi cũng vậy.'],
+                    ['author' => 'Phúc', 'date' => '2026-01-28', 'stars' => 4, 'text' => 'Lời khuyên trung thực, kể cả khi đó không phải là điều tôi muốn nghe. Giúp tôi đưa ra quyết định tốt hơn.'],
+                    ['author' => 'Lan', 'date' => '2025-11-22', 'stars' => 5, 'text' => 'Chị hướng chúng tôi đến hòa giải và cứu chúng tôi khỏi một cuộc chiến đau đớn ở tòa. Biết ơn.'],
                 ],
             ],
             [
@@ -306,9 +306,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['14:00', '15:00', '16:00', '17:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Sơn', 'date' => '2026-04-18', 'stars' => 5, 'text' => 'Mr. Tùng closed our Series B in record time and caught three issues our previous counsel had missed. Worth every dong.'],
-                    ['author' => 'Yến', 'date' => '2026-03-01', 'stars' => 5, 'text' => 'Two decades of experience shows in every meeting. Direct, efficient, and trustworthy.'],
-                    ['author' => 'Khánh', 'date' => '2025-12-28', 'stars' => 5, 'text' => 'Best commercial lawyer I have worked with, full stop. Makes complicated matters feel simple.'],
+                    ['author' => 'Sơn', 'date' => '2026-04-18', 'stars' => 5, 'text' => 'Anh Tùng chốt vòng gọi vốn Series B của chúng tôi trong thời gian kỷ lục và phát hiện ba vấn đề mà luật sư trước bỏ sót. Xứng đáng từng đồng.'],
+                    ['author' => 'Yến', 'date' => '2026-03-01', 'stars' => 5, 'text' => 'Hai thập kỷ kinh nghiệm thể hiện rõ trong từng buổi họp. Thẳng thắn, hiệu quả và đáng tin cậy.'],
+                    ['author' => 'Khánh', 'date' => '2025-12-28', 'stars' => 5, 'text' => 'Luật sư doanh nghiệp giỏi nhất tôi từng làm việc cùng, không có gì bàn cãi. Khiến những vấn đề phức tạp trở nên đơn giản.'],
                 ],
             ],
             [
@@ -344,9 +344,9 @@ class Lawyers
                     ['day_offset' => 6, 'slots' => ['14:00', '16:00']],
                 ],
                 'reviews' => [
-                    ['author' => 'Trang', 'date' => '2026-04-08', 'stars' => 5, 'text' => 'Helped me buy my first apartment without a single surprise. She explained every document and waited until I understood before moving on.'],
-                    ['author' => 'Đức', 'date' => '2026-02-15', 'stars' => 4, 'text' => 'Responsive and careful. Resolved a title issue that had stalled our purchase for weeks.'],
-                    ['author' => 'Hà', 'date' => '2025-11-05', 'stars' => 5, 'text' => 'A reliable pair of eyes on a large commercial lease. Recommended without reservation.'],
+                    ['author' => 'Trang', 'date' => '2026-04-08', 'stars' => 5, 'text' => 'Giúp tôi mua căn hộ đầu tiên mà không có bất kỳ bất ngờ nào. Chị giải thích từng tài liệu và chờ đến khi tôi hiểu rồi mới đi tiếp.'],
+                    ['author' => 'Đức', 'date' => '2026-02-15', 'stars' => 4, 'text' => 'Phản hồi nhanh và cẩn thận. Giải quyết một vấn đề về giấy tờ chủ quyền đã làm đình trệ giao dịch của chúng tôi cả mấy tuần.'],
+                    ['author' => 'Hà', 'date' => '2025-11-05', 'stars' => 5, 'text' => 'Một cặp mắt đáng tin cậy cho hợp đồng thuê thương mại lớn. Giới thiệu không chút do dự.'],
                 ],
             ],
         ];

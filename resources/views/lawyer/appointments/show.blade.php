@@ -11,7 +11,7 @@
 @section('content')
 <section class="mx-auto max-w-[800px] px-8 pt-24 pb-24">
     <a href="{{ route('lawyer.dashboard') }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to dashboard
+        ← Quay lại bảng điều khiển
     </a>
 
     <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Appointment</p>
@@ -58,7 +58,7 @@
                 <span class="text-[13px] font-medium text-success">Confirmed</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                The customer has paid the deposit. Once the consultation is finished, come back here to report the outcome.
+                Khách hàng đã thanh toán đặt cọc. Sau khi buổi tư vấn kết thúc, hãy quay lại đây để báo cáo kết quả.
             </p>
         @elseif ($isAwaitingOutcome)
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5">
@@ -66,7 +66,7 @@
                 <span class="text-[13px] font-medium text-gold">Đang chờ kết quả</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                The appointment time has passed. Report whether it took place so we can release payment and unlock the customer's review.
+                Đã qua giờ hẹn. Hãy báo cáo buổi tư vấn có diễn ra hay không để chúng tôi xử lý thanh toán và mở phần đánh giá của khách hàng.
             </p>
             <div class="mt-8">
                 <x-button variant="primary" :href="route('lawyer.appointments.outcome', $appointment['booking_code'])">

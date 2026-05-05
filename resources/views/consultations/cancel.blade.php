@@ -10,12 +10,12 @@
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
        class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to consultation
+        ← Quay lại buổi tư vấn
     </a>
 
     <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Hủy tư vấn</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Cancel your consultation?
+        Hủy buổi tư vấn của bạn?
     </h1>
     <p class="mt-4 text-[17px] text-secondary">
         This can't be undone.
@@ -30,7 +30,7 @@
     <div class="mt-10 rounded-2xl border border-text/10 bg-surface p-6">
         <div class="flex items-center gap-4">
             <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                 class="h-14 w-14 flex-none rounded-full object-cover object-top grayscale">
+                 class="h-14 w-14 flex-none rounded-full object-cover object-top">
             <div class="min-w-0">
                 <p class="font-display text-[18px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                 <p class="text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>

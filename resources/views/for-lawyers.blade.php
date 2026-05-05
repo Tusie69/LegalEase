@@ -8,7 +8,7 @@
         ],
         [
             'title' => 'Đặt tỷ lệ của riêng bạn',
-            'desc'  => "Choose your hourly fee. We don't take a cut of your consultation fee.",
+            'desc'  => 'Bạn tự đặt mức phí theo giờ. Chúng tôi không thu phần trăm từ phí tư vấn của bạn.',
         ],
         [
             'title' => 'Tính khả dụng theo thời gian thực',
@@ -16,7 +16,7 @@
         ],
         [
             'title' => 'Không có độc quyền',
-            'desc'  => 'Liệt kê với LegalEase cùng với hoạt động hiện tại của bạn. Không có cam kết về số lượng.',
+            'desc'  => 'Đăng ký với LegalEase cùng với hoạt động hiện tại của bạn. Không có cam kết về số lượng.',
         ],
     ];
 
@@ -33,26 +33,31 @@
         ],
         [
             'n'     => '03',
-            'title' => 'Liệt kê và kiếm tiền',
+            'title' => 'Đăng ký và kiếm tiền',
             'desc'  => 'Đặt phòng trống, phí và bắt đầu nhận đặt chỗ.',
         ],
     ];
 @endphp
 
 @section('content')
-    {{-- Hero: full-bleed photo --}}
-    <section class="relative -mt-[72px] flex min-h-screen items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1668239596261-62f94059533e?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+    {{-- Hero: photo top, navy bar bottom --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">For lawyers</p>
-
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Build your practice on LegalEase.
-            </h1>
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">Dành cho luật sư</p>
+                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
+                    Phát triển hồ sơ luật sư của bạn trên LegalEase.
+                </h1>
+                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
+                    Chỉ khách hàng đã được xác minh. Bạn đặt mức phí và lịch trình của riêng mình.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -70,7 +75,7 @@
                 </div>
                 <div class="flex flex-col items-center px-6 py-4 md:py-0">
                     <p class="font-display text-[36px] font-medium leading-none tracking-tight">10,000+</p>
-                    <p class="mt-2 text-[14px] text-muted">Consultations completed</p>
+                    <p class="mt-2 text-[14px] text-muted">Buổi tư vấn đã hoàn thành</p>
                 </div>
             </div>
         </div>
@@ -78,7 +83,7 @@
 
     {{-- Why list with us --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Tại sao liệt kê với chúng tôi</h2>
+        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Tại sao đăng ký với chúng tôi</h2>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($valueProps as $v)
@@ -97,7 +102,7 @@
                 <span class="text-muted">“</span>Sáu tháng sau, một nửa số khách hàng mới của tôi đến từ LegalEase. Việc xác minh đã cho tôi sự tin cậy mà tôi không thể mua được.<span class="text-muted">”</span>
             </blockquote>
             <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                Lê Văn Thanh, Civil Litigation, Ho Chi Minh City
+                Lê Văn Thanh, Tố tụng dân sự, TP. Hồ Chí Minh
             </p>
         </div>
     </section>
@@ -125,7 +130,7 @@
     {{-- Closing CTA --}}
     <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
         <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Ready to grow your practice?
+            Sẵn sàng phát triển hồ sơ luật sư?
         </h2>
         <div class="mt-10 flex justify-center">
             <x-button variant="primary" href="{{ route('lawyer.register') }}">Đăng ký tham gia →</x-button>

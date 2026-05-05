@@ -1,4 +1,4 @@
-﻿@extends('layouts.app', ['title' => 'Bảng điều khiển · LegalEase'])
+@extends('layouts.app', ['title' => 'Bảng điều khiển · LegalEase'])
 
 @php
     $user = auth()->user();

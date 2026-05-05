@@ -60,19 +60,24 @@
 @endphp
 
 @section('content')
-    {{-- Hero: full-bleed photo --}}
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=2000&h=1200&fit=crop&q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+    {{-- Hero: photo top, navy bar bottom --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=2000&h=1200&fit=crop&q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Báo chí</p>
-
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Mọi người đang nói gì.
-            </h1>
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">Báo chí</p>
+                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
+                    Mọi người đang nói gì.
+                </h1>
+                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
+                    Báo chí, podcast và phỏng vấn về cách chúng tôi xây dựng tầng pháp lý cho Việt Nam.
+                </p>
+            </div>
         </div>
     </section>
 

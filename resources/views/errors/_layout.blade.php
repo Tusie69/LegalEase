@@ -5,7 +5,7 @@
     {{-- Photo --}}
     <img src="{{ $photo }}"
          alt=""
-         class="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.55]">
+         class="absolute inset-0 h-full w-full object-cover brightness-[0.55]">
 
     {{-- Scrim --}}
     <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/20 to-bg"></div>

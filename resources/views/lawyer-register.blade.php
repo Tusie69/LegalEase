@@ -29,7 +29,7 @@
     <div class="relative h-[35vh] overflow-hidden md:sticky md:top-0 md:h-screen md:flex-1">
         <img src="https://images.unsplash.com/photo-1547179660-453ec5367aa3?q=80"
              alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
+             class="absolute inset-0 h-full w-full object-cover">
     </div>
 
     {{-- Form --}}
@@ -47,30 +47,28 @@
                 <div class="grid gap-5 md:grid-cols-2">
                     <div>
                         <label for="first_name" class="block text-[13px] font-medium text-muted">
-                            First name
-                            <span x-show="!isFirstNameValid && !touched.firstName" class="text-gold">*</span>
+                            Tên                            <span x-show="!isFirstNameValid && !touched.firstName" class="text-gold">*</span>
                             <svg x-show="firstNameError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             <svg x-show="isFirstNameValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </label>
                         <input id="first_name" type="text" name="first_name" x-model="firstName" @blur="touched.firstName = true" required minlength="2" maxlength="20"
                                placeholder="Lan"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        @unless ($errors->có('first_name'))
+                        @unless ($errors->has('first_name'))
                             <p x-show="firstNameError" x-cloak x-text="firstNameError" class="mt-2 text-[13px] text-error"></p>
                         @endunless
                         @error('first_name') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
                     </div>
                     <div>
                         <label for="last_name" class="block text-[13px] font-medium text-muted">
-                            Last name
-                            <span x-show="!isLastNameValid && !touched.lastName" class="text-gold">*</span>
+                            Họ                            <span x-show="!isLastNameValid && !touched.lastName" class="text-gold">*</span>
                             <svg x-show="lastNameError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             <svg x-show="isLastNameValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </label>
                         <input id="last_name" type="text" name="last_name" x-model="lastName" @blur="touched.lastName = true" required minlength="2" maxlength="20"
                                placeholder="Nguyễn"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        @unless ($errors->có('last_name'))
+                        @unless ($errors->has('last_name'))
                             <p x-show="lastNameError" x-cloak x-text="lastNameError" class="mt-2 text-[13px] text-error"></p>
                         @endunless
                         @error('last_name') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -87,7 +85,7 @@
                     <input id="email" type="email" name="email" x-model="email" @blur="touched.email = true" required
                            placeholder="you@example.com"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                    @unless ($errors->có('email'))
+                    @unless ($errors->has('email'))
                         <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('email') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -95,8 +93,7 @@
 
                 <div>
                     <label for="phone" class="block text-[13px] font-medium text-muted">
-                        Phone
-                        <span x-show="!isPhoneValid && !touched.phone" class="text-gold">*</span>
+                        Điện thoại                        <span x-show="!isPhoneValid && !touched.phone" class="text-gold">*</span>
                         <svg x-show="phoneError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isPhoneValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
@@ -105,7 +102,7 @@
                            pattern="[\d\+\s\-\(\)]{9,15}"
                            title="Digits, spaces, dashes, parentheses, and a leading + are allowed."
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                    @unless ($errors->có('điện thoại'))
+                    @unless ($errors->has('phone'))
                         <p x-show="phoneError" x-cloak x-text="phoneError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('phone') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -113,23 +110,22 @@
 
                 <div>
                     <label for="bar_association" class="block text-[13px] font-medium text-muted">
-                        Bar association
-                        <span x-show="!isBarAssocValid && !touched.barAssoc" class="text-gold">*</span>
+                        Đoàn luật sư                        <span x-show="!isBarAssocValid && !touched.barAssoc" class="text-gold">*</span>
                         <svg x-show="barAssocError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isBarAssocValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
                     <div class="relative mt-2">
                         <select id="bar_association" name="bar_association" x-model="barAssoc" @blur="touched.barAssoc = true" required
                                 class="block w-full appearance-none rounded-xl border border-text/10 bg-surface px-4 py-3 pr-11 text-[15px] text-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                            <option value="">Select</option>
-                            <option value="Hanoi Bar Association">Đoàn luật sư Hà Nội</option>
-                            <option value="Ho Chi Minh City Bar Association">Đoàn Luật sư Thành phố Hồ Chí Minh</option>
+                            <option value="">Chọn</option>
+                            <option value="Hanoi Bar Association">Đoàn Luật sư Hà Nội</option>
+                            <option value="Ho Chi Minh City Bar Association">Đoàn Luật sư TP.HCM</option>
                         </select>
                         <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
                             <x-icon name="chevron-down" :size="16" />
                         </span>
                     </div>
-                    @unless ($errors->có('bar_assocation'))
+                    @unless ($errors->has('bar_association'))
                         <p x-show="barAssocError" x-cloak x-text="barAssocError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('bar_association') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -137,15 +133,14 @@
 
                 <div>
                     <label for="bar_card_number" class="block text-[13px] font-medium text-muted">
-                        Bar card number
-                        <span x-show="!isBarCardValid && !touched.barCardNumber" class="text-gold">*</span>
+                        Số thẻ luật sư                        <span x-show="!isBarCardValid && !touched.barCardNumber" class="text-gold">*</span>
                         <svg x-show="barCardError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isBarCardValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
                     <input id="bar_card_number" type="text" name="bar_card_number" x-model="barCardNumber" @blur="touched.barCardNumber = true" required
                            placeholder="e.g. 12345/HN"
                            class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                    @unless ($errors->có('bar_card_number'))
+                    @unless ($errors->has('bar_card_number'))
                         <p x-show="barCardError" x-cloak x-text="barCardError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('bar_card_number') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -153,8 +148,7 @@
 
                 <div x-data="{ show: false }">
                     <label for="password" class="block text-[13px] font-medium text-muted">
-                        Password
-                        <span x-show="!isPasswordValid && !touched.password" class="text-gold">*</span>
+                        Mật khẩu                        <span x-show="!isPasswordValid && !touched.password" class="text-gold">*</span>
                         <svg x-show="passwordError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isPasswordValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
@@ -170,7 +164,7 @@
                         </button>
                     </div>
                     <p class="mt-2 text-[12px] text-muted">Ít nhất 8 ký tự, bao gồm một chữ cái và một số.</p>
-                    @unless ($errors->có('mật khẩu'))
+                    @unless ($errors->has('password'))
                         <p x-show="passwordError" x-cloak x-text="passwordError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('password') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -178,8 +172,7 @@
 
                 <div x-data="{ show: false }">
                     <label for="password_confirmation" class="block text-[13px] font-medium text-muted">
-                        Confirm password
-                        <span x-show="!isPasswordConfirmValid && !touched.passwordConfirm" class="text-gold">*</span>
+                        Xác nhận mật khẩu                        <span x-show="!isPasswordConfirmValid && !touched.passwordConfirm" class="text-gold">*</span>
                         <svg x-show="passwordConfirmError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isPasswordConfirmValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
@@ -201,16 +194,16 @@
                     <label class="flex items-start gap-2 text-[13px] text-muted">
                         <input type="checkbox" name="agreed_terms" value="1" x-model="termsAgreed" @change="touched.termsAgreed = true" required class="mt-0.5 h-4 w-4 rounded border-text/20 bg-surface text-accent focus:ring-accent">
                         <span>
-                            I agree to the
+                            Tôi đồng ý với
                             <a href="{{ route('terms') }}" class="text-text transition-colors hover:text-accent">Điều khoản dịch vụ</a>
-                            and
+                            và
                             <a href="{{ route('privacy') }}" class="text-text transition-colors hover:text-accent">Chính sách bảo mật</a>.
                             <span x-show="!isTermsValid && !touched.termsAgreed" class="text-gold">*</span>
                             <svg x-show="termsError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             <svg x-show="isTermsValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </span>
                     </label>
-                    @unless ($errors->đã ('đồng ý_terms'))
+                    @unless ($errors->has('agreed_terms'))
                         <p x-show="termsError" x-cloak x-text="termsError" class="mt-2 text-[13px] text-error"></p>
                     @endunless
                     @error('agreed_terms') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
@@ -219,8 +212,7 @@
                 <x-button variant="primary" type="submit" class="w-full">Gửi đơn đăng ký</x-button>
 
                 <p class="text-center text-[14px] text-muted">
-                    Already have a lawyer account?
-                    <a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">Đăng nhập</a>
+                    Đã có tài khoản luật sư?                    <a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">Đăng nhập</a>
                 </p>
             </form>
         </div>
@@ -258,11 +250,11 @@
 
             get isFirstNameValid() {
                 const trimmed = this.firstName.trim();
-                return trimmed.length >= 2 && đã cắt.length <= 20;
+                return trimmed.length >= 2 && trimmed.length <= 20;
             },
             get isLastNameValid() {
                 const trimmed = this.lastName.trim();
-                return trimmed.length >= 2 && đã cắt.length <= 20;
+                return trimmed.length >= 2 && trimmed.length <= 20;
             },
             get isEmailValid() {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
@@ -289,8 +281,8 @@
             nameError(value, label) {
                 const trimmed = value.trim();
                 if (trimmed.length === 0) return `Please enter your ${label}.`;
-                if (trimmed.length < 2) return 'Please use at least 2 characters.';
-                return 'Please use no more than 20 characters.';
+                if (trimmed.length < 2) return 'Vui lòng dùng ít nhất 2 ký tự.';
+                return 'Vui lòng dùng không quá 20 ký tự.';
             },
 
             get firstNameError() {
@@ -303,38 +295,38 @@
             },
             get emailError() {
                 if (!this.touched.email || this.isEmailValid) return '';
-                if (this.email.length === 0) return 'Please enter your email address.';
-                return 'Please enter a valid email address.';
+                if (this.email.length === 0) return 'Vui lòng nhập địa chỉ email.';
+                return 'Vui lòng nhập địa chỉ email hợp lệ.';
             },
             get phoneError() {
                 if (!this.touched.phone || this.isPhoneValid) return '';
-                if (this.phone.length === 0) return 'Please enter your phone number.';
-                return 'Use 9 to 15 digits, with optional + - ( ) and spaces.';
+                if (this.phone.length === 0) return 'Vui lòng nhập số điện thoại.';
+                return 'Dùng 9 đến 15 chữ số, có thể kèm + - ( ) và khoảng trắng.';
             },
             get barAssocError() {
                 if (!this.touched.barAssoc || this.isBarAssocValid) return '';
-                return 'Please select your bar association.';
+                return 'Vui lòng chọn đoàn luật sư của bạn.';
             },
             get barCardError() {
                 if (!this.touched.barCardNumber || this.isBarCardValid) return '';
-                return 'Please enter your bar card number.';
+                return 'Vui lòng nhập số thẻ luật sư của bạn.';
             },
             get passwordError() {
                 if (!this.touched.password || this.isPasswordValid) return '';
-                if (this.password.length === 0) return 'Please enter a password.';
-                if (this.password.length < 8) return 'Use at least 8 characters.';
-                if (!/[a-zA-Z]/.test(this.password)) return 'Include at least one letter.';
-                if (!/\d/.test(this.password)) return 'Include at least one number.';
+                if (this.password.length === 0) return 'Vui lòng nhập mật khẩu.';
+                if (this.password.length < 8) return 'Dùng ít nhất 8 ký tự.';
+                if (!/[a-zA-Z]/.test(this.password)) return 'Phải có ít nhất một chữ cái.';
+                if (!/\d/.test(this.password)) return 'Phải có ít nhất một chữ số.';
                 return '';
             },
             get passwordConfirmError() {
                 if (!this.touched.passwordConfirm || this.isPasswordConfirmValid) return '';
-                if (this.passwordConfirm.length === 0) return 'Please confirm your password.';
-                return "Passwords don't match.";
+                if (this.passwordConfirm.length === 0) return 'Vui lòng xác nhận mật khẩu.';
+                return "Mật khẩu không khớp.";
             },
             get termsError() {
                 if (!this.touched.termsAgreed || this.isTermsValid) return '';
-                return 'Please agree to the Terms and Privacy Policy.';
+                return 'Vui lòng đồng ý với Điều khoản và Chính sách quyền riêng tư.';
             },
         };
     }

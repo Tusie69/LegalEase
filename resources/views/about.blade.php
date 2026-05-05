@@ -1,25 +1,25 @@
-﻿@extends('layouts.app', ['title' => 'Giới thiệu · LegalEase'])
+@extends('layouts.app', ['title' => 'Giới thiệu · LegalEase'])
 
 @section('content')
-    {{-- Hero: full-bleed photo with overlay --}}
-    <section class="relative -mt-[72px] flex min-h-screen items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1610374792793-f016b77ca51a?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-b from-white/78 via-white/65 to-white/72"></div>
-        <div class="absolute inset-0 bg-black/15"></div>
+    {{-- Hero: photo top, navy bar bottom (film-poster title block) --}}
+    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
+        {{-- Photo fills the upper portion --}}
+        <div class="relative flex-1 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1610374792793-f016b77ca51a?q=80"
+                 alt=""
+                 class="absolute inset-0 h-full w-full object-cover">
+        </div>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <div class="mx-auto max-w-[960px] rounded-3xl border border-white/60 bg-white/80 px-8 py-10 shadow-2xl backdrop-blur-sm md:px-14 md:py-14">
-                <p class="text-[12px] font-semibold uppercase tracking-[0.12em] text-text/70">
+        {{-- Tinted bar with text --}}
+        <div class="bg-accent">
+            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
+                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">
                     Câu chuyện của chúng tôi
                 </p>
-
-                <h1 class="mx-auto mt-5 max-w-[900px] font-display text-[48px] font-semibold leading-[1.08] tracking-[-0.02em] text-text md:text-[74px]">
+                <h1 class="mx-auto mt-5 max-w-[900px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
                     Trợ giúp pháp lý rõ ràng, không còn mơ hồ.
                 </h1>
-
-                <p class="mx-auto mt-6 max-w-[620px] text-[18px] leading-relaxed text-text/85">
+                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
                     Chúng tôi kết nối người dùng tại Việt Nam với các luật sư đã được xác minh một cách nhanh chóng và minh bạch.
                 </p>
             </div>

@@ -79,7 +79,11 @@
 
                     <div class="mt-8">
                         <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Khoảng giá</h4>
-                        <input type="range" min="500000" max="5000000" step="100000" x-model.number="maxPrice" class="mt-4 w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200 accent-accent hover:bg-gray-300 transition-colors">
+                        <input type="range"
+                               min="500000" max="5000000" step="100000"
+                               x-model.number="maxPrice"
+                               :style="`--value: ${((maxPrice - 500000) / 4500000) * 100}%`"
+                               class="price-slider mt-4 w-full cursor-pointer">
                         <p class="mt-2 text-[13px] text-muted">
                             500.000 đến <span x-text="Number(maxPrice).toLocaleString('vi-VN')"></span> VND
                         </p>
@@ -127,41 +131,50 @@
     </section>
 
     <style>
-        input[type="range"]::-webkit-slider-thumb {
+        .price-slider {
+            -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #3b82f6;
+            height: 6px;
+            border-radius: 9999px;
+            background: linear-gradient(
+                to right,
+                var(--color-accent) 0%,
+                var(--color-accent) var(--value, 100%),
+                color-mix(in srgb, var(--color-text) 12%, transparent) var(--value, 100%),
+                color-mix(in srgb, var(--color-text) 12%, transparent) 100%
+            );
+        }
+
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--color-accent);
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
         }
-        
-        input[type="range"]::-webkit-slider-thumb:hover {
+
+        .price-slider::-webkit-slider-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
-        
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #3b82f6;
+
+        .price-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: var(--color-accent);
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
         }
-        
-        input[type="range"]::-moz-range-thumb:hover {
+
+        .price-slider::-moz-range-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        input[type="range"] {
-            background: linear-gradient(to right, #3b82f6 0%, #3b82f6 var(--value), #e5e7eb var(--value), #e5e7eb 100%);
         }
     </style>
 

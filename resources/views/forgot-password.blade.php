@@ -15,7 +15,7 @@
     <div class="relative h-[35vh] overflow-hidden md:sticky md:top-0 md:h-screen md:flex-1">
         <img src="https://images.unsplash.com/photo-1724832228136-6ddd51037827?q=80"
              alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
+             class="absolute inset-0 h-full w-full object-cover">
     </div>
 
     {{-- Form --}}
@@ -55,7 +55,7 @@
                         <input id="email" type="email" name="email" x-model="email" @blur="touched.email = true" required
                                placeholder="you@example.com"
                                class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
-                        @unless ($errors->có('email'))
+                        @unless ($errors->has('email'))
                             <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-[13px] text-error"></p>
                         @endunless
                         @error('email') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror

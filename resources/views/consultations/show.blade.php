@@ -3,12 +3,12 @@
 @section('content')
 <section class="mx-auto max-w-[800px] px-8 pt-24 pb-24">
     <a href="{{ route('home') }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to dashboard
+        ← Quay lại bảng điều khiển
     </a>
 
     <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Consultation</p>
     <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Your consultation with {{ $lawyer['name'] }}
+        Buổi tư vấn của bạn với {{ $lawyer['name'] }}
     </h1>
     <p class="mt-4 text-[14px] text-muted">{{ $consultation['booking_code'] }}</p>
 
@@ -16,7 +16,7 @@
     <div class="mt-12 rounded-2xl border border-text/10 bg-surface p-6">
         <div class="flex items-center gap-5">
             <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                 class="h-20 w-20 flex-none rounded-full object-cover object-top grayscale">
+                 class="h-20 w-20 flex-none rounded-full object-cover object-top">
             <div class="min-w-0">
                 <p class="font-display text-[22px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
                 <p class="text-[14px] text-muted">
@@ -55,7 +55,7 @@
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
                 You cancelled this consultation on {{ \Carbon\Carbon::parse($consultation['cancelled_at'])->format('M j, Y') }}.
                 @if ($consultation['refund_eligible'])
-                    Your full deposit will be refunded within 3 to 5 business days.
+                    Khoản đặt cọc của bạn sẽ được hoàn lại trong 3 đến 5 ngày làm việc.
                 @else
                     Cancellations less than 24 hours before the appointment are not eligible for a refund.
                 @endif
@@ -79,7 +79,7 @@
                 <span class="text-[13px] font-medium text-success">Confirmed</span>
             </div>
             <p class="mt-6 max-w-[520px] text-[15px] text-secondary">
-                Your consultation is booked. You'll receive a reminder 24 hours before. Cancellations more than 24 hours in advance are fully refunded.
+                Buổi tư vấn của bạn đã được đặt. Bạn sẽ nhận lời nhắc 24 giờ trước cuộc hẹn. Hủy trước hơn 24 giờ được hoàn tiền toàn bộ.
             </p>
         </div>
 
@@ -93,7 +93,7 @@
                 </a>
                 <a href="{{ route('contact') }}"
                    class="text-[14px] text-muted transition-colors hover:text-accent">
-                    Get in touch with our team →
+                    Liên hệ đội ngũ của chúng tôi →
                 </a>
             </div>
         </div>
@@ -116,8 +116,7 @@
             @else
                 <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Nó thế nào?</p>
                 <h2 class="mt-3 font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">
-                    Let other clients know.
-                </h2>
+                    Chia sẻ với khách hàng khác.                </h2>
                 <p class="mt-3 max-w-[520px] text-[15px] text-secondary">
                     Honest reviews help future clients pick the right lawyer.
                 </p>
