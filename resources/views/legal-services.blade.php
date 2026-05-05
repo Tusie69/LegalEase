@@ -7,6 +7,14 @@
 @endphp
 
 @section('content')
+    <style>
+        body > nav {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            border-bottom-color: rgba(15, 23, 42, 0.12) !important;
+        }
+    </style>
+
     <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?q=80"
              alt=""

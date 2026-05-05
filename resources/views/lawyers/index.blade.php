@@ -45,13 +45,13 @@
             <span class="text-text">Luật sư</span>
         </nav>
 
-        <h1 class="mt-6 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">Tìm luật sư của bạn</h1>
-        <p class="mt-3 text-[17px] text-secondary">Duyệt qua hơn 500 luật sư đã được xác minh trên khắp Việt Nam.</p>
+        <h1 class="mt-6 font-display text-[48px] font-medium tracking-[-0.02em] md:text-[56px]">Tìm luật sư đồng hành cùng bạn</h1>
+        <p class="mt-3 text-[17px] text-secondary">Kết nối với mạng lưới 500+ chuyên gia pháp lý đã qua kiểm duyệt hồ sơ trên toàn quốc.</p>
 
         <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[240px_1fr]">
             <aside class="self-start md:sticky md:top-[88px]">
                 <div class="rounded-2xl border border-text/10 bg-surface p-6">
-                    <h3 class="font-display text-[20px] font-medium tracking-tight">Bộ lọc</h3>
+                    <h3 class="font-display text-[20px] font-medium tracking-tight">Bạn đang cần tư vấn về lĩnh vực nào?</h3>
 
                     <div class="mt-6">
                         <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Chuyên môn</h4>
@@ -79,8 +79,16 @@
 
                     <div class="mt-8">
                         <h4 class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Khoảng giá</h4>
-                        <input type="range" min="500000" max="5000000" step="100000" x-model.number="maxPrice" class="mt-4 w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200 accent-accent hover:bg-gray-300 transition-colors">
-                        <p class="mt-2 text-[13px] text-muted">
+                        <div class="mt-4 rounded-xl bg-slate-50 px-3 py-3">
+                            <input type="range"
+                                   min="500000"
+                                   max="5000000"
+                                   step="100000"
+                                   x-model.number="maxPrice"
+                                   :style="`--value:${priceProgress}%`"
+                                   class="price-range h-1.5 w-full cursor-pointer appearance-none rounded-full">
+                        </div>
+                        <p class="mt-3 text-[13px] font-medium text-slate-700">
                             500.000 đến <span x-text="Number(maxPrice).toLocaleString('vi-VN')"></span> VND
                         </p>
                     </div>
@@ -127,41 +135,47 @@
     </section>
 
     <style>
-        input[type="range"]::-webkit-slider-thumb {
+        .price-range {
+            background: linear-gradient(to right, #2563eb 0%, #2563eb var(--value), #cbd5e1 var(--value), #cbd5e1 100%);
+        }
+
+        .price-range::-webkit-slider-thumb {
             appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #3b82f6;
+            width: 24px;
+            height: 24px;
+            background: #ffffff;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 3px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
             transition: all 0.2s ease;
         }
-        
-        input[type="range"]::-webkit-slider-thumb:hover {
+
+        .price-range::-webkit-slider-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
         }
-        
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #3b82f6;
+
+        .price-range::-moz-range-track {
+            height: 6px;
+            border-radius: 9999px;
+            background: #cbd5e1;
+        }
+
+        .price-range::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: #ffffff;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 3px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
             transition: all 0.2s ease;
         }
-        
-        input[type="range"]::-moz-range-thumb:hover {
+
+        .price-range::-moz-range-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        input[type="range"] {
-            background: linear-gradient(to right, #3b82f6 0%, #3b82f6 var(--value), #e5e7eb var(--value), #e5e7eb 100%);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
         }
     </style>
 
@@ -172,7 +186,12 @@
                 specialties: [],
                 locations: [],
                 languages: [],
+                minPrice: 500000,
                 maxPrice: 5000000,
+
+                get priceProgress() {
+                    return ((this.maxPrice - this.minPrice) / (5000000 - this.minPrice)) * 100;
+                },
 
                 get hasActiveFilters() {
                     return this.specialties.length > 0

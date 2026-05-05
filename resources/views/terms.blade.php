@@ -102,6 +102,14 @@
 @endphp
 
 @section('content')
+    <style>
+        body > nav {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            border-bottom-color: rgba(15, 23, 42, 0.12) !important;
+        }
+    </style>
+
     {{-- Hero --}}
     <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?q=80"

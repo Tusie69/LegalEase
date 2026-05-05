@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Hồ sơ luật sư · LegalEase'])
+﻿@extends('layouts.app', ['title' => 'Hồ sơ luật sư · LegalEase'])
 
 @php
     use Carbon\Carbon;
@@ -82,6 +82,7 @@
     }
 
     $today = Carbon::today('Asia/Ho_Chi_Minh');
+    $weekdayMap = [1 => 'T2', 2 => 'T3', 3 => 'T4', 4 => 'T5', 5 => 'T6', 6 => 'T7', 7 => 'CN'];
     $days = [];
     foreach ($lawyer['availability'] as $entry) {
         $date = $today->copy()->addDays($entry['day_offset']);
@@ -89,11 +90,11 @@
         foreach ($entry['slots'] as $t) {
             $slotList[] = [
                 'time'  => $t,
-                'label' => Carbon::createFromFormat('H:i', $t)->format('g:i A'),
+                'label' => Carbon::createFromFormat('H:i', $t)->format('H:i'),
             ];
         }
         $days[] = [
-            'abbrev'  => strtoupper($date->format('D')),
+            'abbrev'  => $weekdayMap[$date->dayOfWeekIso] ?? strtoupper($date->format('D')),
             'dayNum'  => $date->day,
             'dateStr' => $date->toDateString(),
             'slots'   => $slotList,
