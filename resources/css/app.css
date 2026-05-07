@@ -9,14 +9,10 @@
     --font-display: 'IBM Plex Serif', ui-serif, Georgia, serif;
     --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
 
-    --color-bg: #FCFCFD;
-    --color-surface: #F1F4F9;
-    --color-text: #1B2434;
-    --color-secondary: #44516B;
-    --color-muted: #7E8499;
-    --color-accent: #0F2747;
-    --color-avatar: #E1E5EE;
-    --color-gold: #D4A24C;
+    --color-bg: #F8F8F8;
+    --color-text: #021526;
+    --color-accent: #042340;
+    --color-gold: #C69B7A;
     --color-success: #16A34A;
     --color-error: #DC2626;
 }
@@ -54,5 +50,186 @@
 
     .animate-fade-up {
         animation: fade-up 600ms ease-out both;
+    }
+}
+
+@layer components {
+    /* ─── Headings ─────────────────────────────────────────────── */
+
+    /* home, About full-bleed hero */
+    .text-hero {
+        @apply font-display text-[40px] md:text-[48px] lg:text-[60px] font-medium leading-snug tracking-tighter;
+    }
+
+    /* dashboards, listings, contact, success landings */
+    .text-page-h1 {
+        @apply font-display text-[48px] md:text-[56px] font-medium leading-snug tracking-tight;
+    }
+
+    /* auth, booking, consultations, mid-task pages */
+    .text-flow-h1 {
+        @apply font-display text-[36px] md:text-[44px] font-medium leading-snug tracking-tight;
+    }
+
+    /* photo-top + navy-bar pattern (About, FAQ, Privacy, Terms, Press, Legal-services, Careers, For-lawyers, Lawyer-resources, errors) */
+    .text-bar-h1 {
+        @apply font-display text-[44px] md:text-[64px] font-medium leading-snug tracking-tight;
+    }
+
+    /* standalone section h2 */
+    .text-section-h2 {
+        @apply font-display text-[36px] md:text-[44px] font-medium leading-snug tracking-tight;
+    }
+
+    /* section h2 next to a chapter marker (Careers, Press) */
+    .text-chapter-h2 {
+        @apply font-display text-[28px] md:text-[32px] font-medium leading-snug tracking-tight;
+    }
+
+    /* closing CTA h2 */
+    .text-cta-h2 {
+        @apply font-display text-[40px] md:text-[52px] font-medium leading-snug tracking-tight;
+    }
+
+    /* italic blockquote pull */
+    .text-pull-quote {
+        @apply font-display text-[32px] md:text-[44px] font-medium italic leading-snug tracking-tight;
+    }
+
+    /* small card titles (values, practice areas, team names, hire steps) */
+    .text-card-h3 {
+        @apply font-display text-[24px] font-medium leading-snug tracking-tight;
+    }
+
+    /* role titles, coverage headlines */
+    .text-role-h3 {
+        @apply font-display text-[28px] md:text-[32px] font-medium leading-snug tracking-tight;
+    }
+
+    /* feature h3 — story/article cards, editorial spreads */
+    .text-feature-h3 {
+        @apply font-display text-[24px] md:text-[32px] lg:text-[36px] font-medium leading-snug tracking-tight;
+    }
+
+    /* lawyer name in larger summary cards */
+    .text-card-h4 {
+        @apply font-display text-[20px] font-medium leading-snug tracking-tight;
+    }
+
+    /* lawyer name in compact cards, dashboard list rows, booking-code labels */
+    .text-card-h5 {
+        @apply font-display text-[18px] font-medium leading-snug tracking-tight;
+    }
+
+    /* condensed key-value rows (date+time inside dashboard list rows, avatar initials) */
+    .text-card-h6 {
+        @apply font-display text-[16px] font-medium leading-snug tracking-tight;
+    }
+
+    /* ─── Body text ────────────────────────────────────────────── */
+
+    /* subtitle under hero or page header */
+    .text-body-intro {
+        @apply text-[20px] leading-relaxed;
+    }
+
+    /* About-page paragraphs */
+    .text-body-prose {
+        @apply text-[18px] leading-relaxed;
+    }
+
+    /* subtitle below text-flow-h1 (booking, consultations, dashboard greeting) */
+    .text-flow-intro {
+        @apply text-[18px] leading-relaxed;
+    }
+
+    /* default body */
+    .text-body {
+        @apply text-[16px] leading-relaxed;
+    }
+
+    /* tight card descriptions */
+    .text-body-dense {
+        @apply text-[14px] leading-relaxed;
+    }
+
+    /* ─── Labels & captions ────────────────────────────────────── */
+
+    /* uppercase tracked label */
+    .text-eyebrow {
+        @apply text-[12px] font-medium uppercase tracking-widest;
+    }
+
+    /* eyebrow inside chips and pills */
+    .text-eyebrow-tight {
+        @apply text-[12px] font-medium uppercase tracking-wide;
+    }
+
+    /* date, byline, small note */
+    .text-caption {
+        @apply text-[14px];
+    }
+
+    /* chapter-marker numbers (01, 02, 03) on Careers, Press */
+    .text-chapter-marker {
+        @apply font-display text-[28px] md:text-[32px] font-medium;
+    }
+
+    /* ─── Display numerics ─────────────────────────────────────── */
+
+    /* stat numbers (500+, 4.8) */
+    .display-stat {
+        @apply font-display text-[36px] font-medium leading-none tracking-tight;
+    }
+
+    /* ─── Status / inline action ───────────────────────────────── */
+
+    /* status pill text */
+    .text-status-pill {
+        @apply text-[12px] font-medium;
+    }
+
+    /* inline action link ("Xem chi tiết →") */
+    .text-link-action {
+        @apply text-[14px] font-medium;
+    }
+
+    /* ─── Spacing & containers ─────────────────────────────────── */
+
+    /* default page container */
+    .container-page {
+        @apply mx-auto max-w-[1280px] px-8;
+    }
+
+    /* legal pages, articles */
+    .container-narrow {
+        @apply mx-auto max-w-[760px] px-8;
+    }
+
+    /* closing CTA section padding */
+    .closing-cta {
+        @apply pt-24 pb-20 text-center md:pt-32 md:pb-24;
+    }
+
+    /* standard card */
+    .card-base {
+        @apply rounded-2xl border border-text/20 p-6;
+    }
+
+    /* larger card (dashboards, hero summary) */
+    .card-base-lg {
+        @apply rounded-2xl border border-text/20 p-8;
+    }
+
+    /* outlined category/practice tag (lawyer card specialty, story tag) */
+    .tag-pill {
+        @apply inline-flex items-center rounded-full border border-text/30 px-3 py-1 text-[12px] font-medium;
+    }
+
+    /* ─── Layout patterns ──────────────────────────────────────── */
+
+    /* pill + short suffix (specialty + location, date + status) */
+    .meta-row {
+        @apply flex flex-col items-start gap-3 sm:flex-row sm:items-center;
     }
 }

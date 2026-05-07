@@ -1,7 +1,5 @@
 @extends('layouts.app', ['title' => 'Chính sách quyền riêng tư · LegalEase'])
 
-{{-- Translation note: legal copy translated for readability. Have a Vietnamese legal translator review before publishing. --}}
-
 @php
     $lastUpdated = 'Ngày 1 tháng 5, 2026';
 
@@ -80,40 +78,27 @@
             'n'     => 10,
             'title' => 'Liên hệ',
             'paras' => [
-                'Các câu hỏi về chính sách này hoặc cách chúng tôi xử lý dữ liệu của bạn? Gửi email tới <a href="mailto:privacy@legalease.vn" class="text-text underline underline-offset-4 decoration-muted/60 transition-colors hover:decoration-accent">privacy@legalease.vn</a> hoặc qua <a href="' . route('contact') . '" class="text-text underline underline-offset-4 decoration-muted/60 transition-colors hover:decoration-accent">trang liên hệ</a>.',
+                'Các câu hỏi về chính sách này hoặc cách chúng tôi xử lý dữ liệu của bạn? Gửi email tới <a href="mailto:privacy@legalease.vn" class="text-text underline underline-offset-4 decoration-text/30 transition-colors hover:decoration-accent">privacy@legalease.vn</a> hoặc qua <a href="' . route('contact') . '" class="text-text underline underline-offset-4 decoration-text/30 transition-colors hover:decoration-accent">trang liên hệ</a>.',
             ],
         ],
     ];
 @endphp
 
 @section('content')
-    {{-- Hero: photo top, navy bar bottom --}}
-    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
-        <div class="relative flex-1 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1615985250204-b48c0936d4fc?q=80"
-                 alt=""
-                 class="absolute inset-0 h-full w-full object-cover">
-        </div>
+    <x-hero-bar
+        photo="https://images.unsplash.com/photo-1615985250204-b48c0936d4fc?q=80"
+        :eyebrow="'Cập nhật lần cuối: ' . $lastUpdated">
+        Chính sách quyền riêng tư
 
-        <div class="bg-accent">
-            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">
-                    Cập nhật lần cuối: {{ $lastUpdated }}
-                </p>
-                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
-                    Chính sách quyền riêng tư
-                </h1>
-                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
-                    Cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn.
-                </p>
-            </div>
-        </div>
-    </section>
+        <x-slot:subtitle>
+            Cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu của bạn.
+        </x-slot:subtitle>
+    </x-hero-bar>
 
     {{-- Contents --}}
-    <section class="mx-auto max-w-[760px] px-8 pt-24">
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Mục lục</p>
-        <ol class="mt-6 grid gap-2 text-[14px] sm:grid-cols-2">
+    <section class="container-narrow pt-24">
+        <p class="text-eyebrow">Mục lục</p>
+        <ol class="text-body-dense mt-6 grid gap-2 sm:grid-cols-2">
             @foreach ($sections as $section)
                 <li>
                     <a href="#section-{{ $section['n'] }}" class="text-text transition-colors hover:text-accent">
@@ -125,13 +110,13 @@
     </section>
 
     {{-- Sections --}}
-    <section class="mx-auto max-w-[760px] px-8 pt-24">
+    <section class="container-narrow pt-24 pb-24">
         @foreach ($sections as $section)
             <div id="section-{{ $section['n'] }}" class="{{ $loop->first ? '' : 'mt-16' }}">
-                <h2 class="font-display text-[28px] font-medium tracking-tight md:text-[32px]">
+                <h2 class="text-chapter-h2">
                     {{ $section['n'] }}. {{ $section['title'] }}
                 </h2>
-                <div class="mt-5 space-y-4 text-[16px] leading-relaxed text-secondary">
+                <div class="text-body-prose mt-5 space-y-4">
                     @foreach ($section['paras'] as $para)
                         <p>{!! $para !!}</p>
                     @endforeach
@@ -139,6 +124,4 @@
             </div>
         @endforeach
     </section>
-
-    <div class="pb-24"></div>
 @endsection

@@ -1,44 +1,51 @@
-<footer class="border-t border-text/10 bg-bg">
-    <div class="mx-auto max-w-[1280px] px-8 py-20">
+<footer class="border-t border-text/15 bg-bg">
+    <div class="container-page py-20 md:py-24">
+
+        @php
+            $footerSections = [
+                ['Công ty', [
+                    ['Về chúng tôi', '/about'],
+                    ['Tuyển dụng', '/careers'],
+                    ['Tin tức', route('press')],
+                ]],
+                ['Dành cho luật sư', [
+                    ['Tham gia nền tảng', route('for-lawyers')],
+                    ['Tài nguyên', route('lawyer.resources')],
+                    ['Đăng nhập luật sư', route('lawyer.login')],
+                ]],
+                ['Hỗ trợ', [
+                    ['Liên hệ', route('contact')],
+                    ['FAQ', route('faq')],
+                    ['Điều khoản sử dụng', route('terms')],
+                    ['Chính sách bảo mật', route('privacy')],
+                ]],
+            ];
+        @endphp
+
         <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
             <div>
-                <a href="/" class="font-display text-2xl font-medium tracking-tight text-text">LegalEase</a>
-                <p class="mt-4 max-w-sm text-[15px] leading-relaxed text-muted">
+                <a href="/" class="text-card-h3 text-text">LegalEase</a>
+                <p class="text-body mt-4 max-w-sm text-text/70">
                     Kết nối người dùng tại Việt Nam với đội ngũ luật sư uy tín, từng buổi tư vấn một.
                 </p>
             </div>
 
-            <div>
-                <h4 class="text-[12px] font-semibold uppercase tracking-[0.1em] text-text/80">Công ty</h4>
-                <ul class="mt-3 space-y-3 text-[14px]">
-                    <li><a href="/about" class="text-text transition-colors hover:text-accent">Về chúng tôi</a></li>
-                    <li><a href="/careers" class="text-text transition-colors hover:text-accent">Tuyển dụng</a></li>
-                    <li><a href="{{ route('press') }}" class="text-text transition-colors hover:text-accent">Báo chí</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-[12px] font-semibold uppercase tracking-[0.1em] text-text/80">Dành cho luật sư</h4>
-                <ul class="mt-3 space-y-3 text-[14px]">
-                    <li><a href="{{ route('for-lawyers') }}" class="text-text transition-colors hover:text-accent">Tham gia nền tảng</a></li>
-                    <li><a href="{{ route('lawyer.resources') }}" class="text-text transition-colors hover:text-accent">Tài nguyên</a></li>
-                    <li><a href="{{ route('lawyer.login') }}" class="text-text transition-colors hover:text-accent">Đăng nhập luật sư</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-[12px] font-semibold uppercase tracking-[0.1em] text-text/80">Hỗ trợ</h4>
-                <ul class="mt-3 space-y-3 text-[14px]">
-                    <li><a href="{{ route('contact') }}" class="text-text transition-colors hover:text-accent">Liên hệ</a></li>
-                    <li><a href="{{ route('faq') }}" class="text-text transition-colors hover:text-accent">FAQ</a></li>
-                    <li><a href="{{ route('terms') }}" class="text-text transition-colors hover:text-accent">Điều khoản sử dụng</a></li>
-                    <li><a href="{{ route('privacy') }}" class="text-text transition-colors hover:text-accent">Chính sách bảo mật</a></li>
-                </ul>
-            </div>
+            @foreach ($footerSections as [$title, $items])
+                <div>
+                    <p class="text-eyebrow text-text/60">{{ $title }}</p>
+                    <ul class="text-body-dense mt-3 space-y-3">
+                        @foreach ($items as [$label, $url])
+                            <li>
+                                <a href="{{ $url }}" class="text-text transition-colors hover:text-accent">{{ $label }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
         </div>
 
-        <div class="mt-16 flex flex-col items-start justify-between gap-4 border-t border-text/10 pt-8 md:flex-row md:items-center">
-            <p class="text-[13px] text-muted">© 2026 LegalEase. Mọi quyền được bảo lưu.</p>
+        <div class="mt-16 flex flex-col items-start justify-between gap-4 border-t border-text/15 pt-8 md:flex-row md:items-center">
+            <p class="text-caption text-text/60">© 2026 LegalEase. Mọi quyền được bảo lưu.</p>
 
             <div class="flex items-center gap-4">
                 <a href="#" aria-label="Facebook" class="text-[#1877F2] transition-opacity hover:opacity-75">

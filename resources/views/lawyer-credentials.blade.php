@@ -5,8 +5,8 @@
         [
             'id'    => 'bar_card',
             'name'  => 'bar_card',
-            'label' => 'Quét thẻ thanh',
-            'desc'  => 'Bản scan hoặc ảnh rõ ràng về thẻ thành viên quán bar hiện tại của bạn.',
+            'label' => 'Thẻ luật sư',
+            'desc'  => 'Bản scan hoặc ảnh rõ nét thẻ thành viên đoàn luật sư còn hiệu lực.',
         ],
         [
             'id'    => 'identity_document',
@@ -17,27 +17,26 @@
         [
             'id'    => 'education_certificate',
             'name'  => 'education_certificate',
-            'label' => 'Chứng chỉ giáo dục',
-            'desc'  => 'Bằng cấp trường luật của bạn hoặc bằng cấp tương đương.',
+            'label' => 'Bằng cấp',
+            'desc'  => 'Bằng cử nhân luật hoặc bằng cấp tương đương.',
         ],
     ];
 @endphp
 
 @section('content')
 {{-- Visual strip --}}
-<div class="relative -mt-[72px] h-[280px] overflow-hidden">
+<div class="relative -mt-18 h-[280px] overflow-hidden">
     <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80"
          alt=""
-         class="absolute inset-0 h-full w-full object-cover brightness-[0.55]">
-    <div class="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/20 to-bg"></div>
+         class="absolute inset-0 h-full w-full object-cover">
 </div>
 
 <section class="mx-auto max-w-[760px] px-8 pt-24 pb-24">
-    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Đăng ký luật sư</p>
-    <h1 class="mt-3 font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
+    <p class="text-eyebrow">Đăng ký luật sư</p>
+    <h1 class="text-flow-h1 mt-3">
         Gửi giấy tờ của bạn
     </h1>
-    <p class="mt-4 max-w-[560px] text-[17px] text-secondary">
+    <p class="text-flow-intro mt-4 max-w-[560px]">
         Chúng tôi cần ba giấy tờ để xác minh tư cách thành viên đoàn luật sư và danh tính của bạn. Quá trình xem xét diễn ra trong 2 đến 3 ngày làm việc. Thông tin của bạn được lưu trữ an toàn và chỉ đội ngũ xác minh của chúng tôi tiếp cận.
     </p>
 
@@ -45,14 +44,14 @@
         @csrf
 
         @foreach ($documents as $doc)
-            <div class="rounded-2xl border border-text/10 bg-surface p-6" x-data="{ filename: '' }">
+            <div class="card-base" x-data="{ filename: '' }">
                 <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div class="min-w-0">
-                        <label for="{{ $doc['id'] }}" class="block text-[15px] font-medium text-text">
+                        <label for="{{ $doc['id'] }}" class="block text-[16px] font-medium text-text">
                             {{ $doc['label'] }} <span class="text-gold">*</span>
                         </label>
-                        <p class="mt-1 text-[13px] text-muted">{{ $doc['desc'] }}</p>
-                        <p class="mt-2 truncate text-[13px] text-secondary" x-show="filename" x-cloak>
+                        <p class="mt-1 text-[14px]">{{ $doc['desc'] }}</p>
+                        <p class="mt-2 truncate text-[14px]" x-show="filename" x-cloak>
                             <span x-text="filename"></span>
                         </p>
                     </div>
@@ -62,12 +61,12 @@
                                class="hidden"
                                x-on:change="filename = $event.target.files[0]?.name || ''">
                         <label for="{{ $doc['id'] }}"
-                               class="inline-flex cursor-pointer items-center rounded-full border border-muted px-6 py-3 text-[14px] font-medium text-text transition-colors hover:border-accent hover:text-accent">
+                               class="inline-flex cursor-pointer items-center rounded-full border border-text/30 px-6 py-3 text-[14px] font-medium text-text transition-colors hover:border-accent hover:text-accent">
                             <span x-text="filename ? 'Đổi tệp' : 'Chọn tệp'">Chọn tệp</span>
                         </label>
                     </div>
                 </div>
-                <p class="mt-3 text-[12px] text-muted">PDF, JPG hoặc PNG. Tối đa 10 MB.</p>
+                <p class="mt-3 text-[12px]">PDF, JPG hoặc PNG. Tối đa 10 MB.</p>
             </div>
         @endforeach
 
@@ -76,7 +75,7 @@
         </div>
 
         <p class="text-center text-[14px]">
-            <a href="{{ route('lawyer.dashboard') }}" class="text-muted transition-colors hover:text-accent">
+            <a href="{{ route('lawyer.dashboard') }}" class="transition-colors hover:text-accent">
                 Quay lại bảng điều khiển
             </a>
         </p>

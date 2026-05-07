@@ -1,7 +1,7 @@
 @props(['lawyer'])
 
 <a href="/lawyers/{{ $lawyer['slug'] }}"
-   {{ $attributes->class('group flex flex-col overflow-hidden rounded-2xl border border-text/10 bg-surface p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent') }}>
+   {{ $attributes->class('group flex flex-col overflow-hidden rounded-2xl border border-text/20 bg-bg p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent') }}>
     <div class="overflow-hidden rounded-xl">
         <img src="{{ $lawyer['portrait_url'] }}"
              alt="{{ $lawyer['name'] }}"
@@ -45,12 +45,12 @@
         };
     @endphp
 
-    <div class="mt-5 flex items-center gap-2">
-        <h3 class="font-display text-2xl font-medium tracking-tight text-text">
+    <div class="mt-5 flex items-start gap-2">
+        <h3 class="min-w-0 font-display text-2xl font-medium leading-snug tracking-tight text-text">
             {{ $displayName }}
         </h3>
         @if (($lawyer['verification_status'] ?? null) === 'VERIFIED')
-            <span title="Đã xác minh" class="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent/10">
+            <span title="Đã xác minh" class="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent/10">
                 <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                 </svg>
@@ -58,19 +58,19 @@
         @endif
     </div>
 
-    <div class="mt-3 flex items-center justify-between gap-3">
-        <span class="inline-flex items-center rounded-full border border-muted/60 px-3 py-1 text-[12px] font-medium text-muted">
+    <div class="meta-row mt-3">
+        <span class="tag-pill">
             {{ $displaySpecialty }}
         </span>
         @if ($shortProvince)
-            <span class="inline-flex items-center gap-1 text-[13px] text-muted">
+            <span class="inline-flex items-center gap-1 text-[14px]">
                 <x-icon name="map-pin" :size="14" />
                 {{ $shortProvince }}
             </span>
         @endif
     </div>
 
-    <p class="mt-3 text-[14px] text-muted">
+    <p class="mt-3 text-[14px]">
         {{ $lawyer['years_of_experience'] }} năm kinh nghiệm · {{ number_format($lawyer['price_per_hour']) }} VND/giờ
     </p>
 

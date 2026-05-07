@@ -7,18 +7,18 @@
 
 @section('content')
     {{-- Hero --}}
-    <section class="relative mx-auto flex min-h-[85vh] max-w-[1280px] items-center px-8 py-20">
-        <div class="grid w-full items-center gap-12 md:grid-cols-5">
-            <div class="md:col-span-3">
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
+    <section class="container-page relative py-24 lg:py-32">
+        <div class="grid w-full items-center gap-12 lg:grid-cols-5">
+            <div class="lg:col-span-3">
+                <p class="text-eyebrow">
                     Tư vấn pháp lý uy tín
                 </p>
 
-                <h1 class="mt-6 font-display text-[64px] font-medium leading-[1.02] tracking-[-0.03em] md:text-[80px]">
+                <h1 class="text-hero mt-6">
                     Tìm đúng luật sư, cho thời điểm quan trọng nhất.
                 </h1>
 
-                <p class="mt-6 max-w-xl text-[18px] leading-relaxed text-secondary">
+                <p class="text-body-intro mt-6 max-w-xl">
                     Chi phí minh bạch. Chứng chỉ đã xác minh. Lịch trống theo thời gian thực. Kết nối với những chuyên gia pháp lý uy tín tại Việt Nam theo cách của bạn.
                 </p>
 
@@ -28,66 +28,66 @@
                 </div>
             </div>
 
-            <div class="md:col-span-2">
+            <div class="lg:col-span-2">
                 <div class="relative">
                     <div aria-hidden="true"
-                         class="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-br from-muted to-accent opacity-15 blur-3xl"></div>
+                         class="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-br from-text to-accent opacity-10 blur-3xl"></div>
                     <img src="https://images.unsplash.com/photo-1758518727600-2c5f48419eac?q=80"
                          alt=""
-                         class="relative aspect-[3/4] w-full rounded-2xl object-cover">
+                         class="relative aspect-[4/3] w-full rounded-2xl object-cover lg:aspect-[3/4]">
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Trust strip --}}
-    <section class="bg-surface">
-        <div class="mx-auto flex h-24 max-w-[1280px] items-center justify-center px-8">
-            <div class="grid w-full grid-cols-1 divide-y divide-text/10 md:grid-cols-3 md:divide-x md:divide-y-0">
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">500+</p>
-                    <p class="mt-2 text-[15px] text-secondary">Luật sư đã được xác minh</p>
+    <section class="border-y border-text/20">
+        <div class="container-page flex items-center justify-center md:h-24">
+            <div class="grid w-full grid-cols-1 divide-y divide-text/20 md:grid-cols-3 md:divide-x md:divide-y-0">
+                <div class="flex flex-col items-center px-6 py-6 md:py-0">
+                    <p class="display-stat">500+</p>
+                    <p class="text-body mt-2">Luật sư đã được xác minh</p>
                 </div>
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">4.8</p>
-                    <p class="mt-2 text-[15px] text-secondary">Đánh giá trung bình</p>
+                <div class="flex flex-col items-center px-6 py-6 md:py-0">
+                    <p class="display-stat">4.8</p>
+                    <p class="text-body mt-2">Đánh giá trung bình</p>
                 </div>
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">10,000+</p>
-                    <p class="mt-2 text-[15px] text-secondary">Buổi tư vấn đã hoàn tất</p>
+                <div class="flex flex-col items-center px-6 py-6 md:py-0">
+                    <p class="display-stat">10,000+</p>
+                    <p class="text-body mt-2">Buổi tư vấn đã hoàn tất</p>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Practice areas --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <div class="flex items-end justify-between">
-            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Các lĩnh vực chúng tôi đảm nhiệm</h2>
+    <section class="container-page pt-24">
+        <div class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+            <h2 class="text-section-h2">Các lĩnh vực chúng tôi đảm nhiệm</h2>
             <x-button variant="ghost" href="/legal-services">Xem tất cả lĩnh vực →</x-button>
         </div>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($practiceAreas as $area)
-                <div class="rounded-2xl border border-text/10 bg-surface p-8">
+                <div class="card-base-lg">
                     <x-icon :name="$area['icon']" :size="32" class="text-accent" />
-                    <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $area['name'] }}</h3>
-                    <p class="mt-2 text-[14px] text-muted">{{ $area['description'] }}</p>
+                    <h3 class="text-card-h3 mt-6">{{ $area['name'] }}</h3>
+                    <p class="text-body-dense mt-2">{{ $area['description'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
     {{-- Featured lawyers --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <div class="flex items-end justify-between">
-            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Luật sư tiêu biểu</h2>
+    <section class="container-page pt-24">
+        <div class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+            <h2 class="text-section-h2">Luật sư tiêu biểu</h2>
             <x-button variant="ghost" href="/lawyers">Xem tất cả luật sư →</x-button>
         </div>
 
         <div class="mt-12 flex flex-wrap gap-6">
             @foreach ($featuredLawyers as $lawyer)
-                <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                <div class="w-full lg:w-[calc(33.333%-1rem)]">
                     <x-lawyer-card :lawyer="$lawyer" class="h-full" />
                 </div>
             @endforeach
@@ -95,8 +95,8 @@
     </section>
 
     {{-- How it works --}}
-    <section id="how-it-works" class="mx-auto max-w-[1280px] px-8 py-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Cách hoạt động</h2>
+    <section id="how-it-works" class="container-page py-24">
+        <h2 class="text-section-h2">Cách hoạt động</h2>
 
         @php
             $steps = [
@@ -115,8 +115,8 @@
                     <div class="flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-[14px] font-medium text-accent">
                         {{ $step['n'] }}
                     </div>
-                    <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                    <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-secondary">{{ $step['text'] }}</p>
+                    <h3 class="text-card-h3 mt-6">{{ $step['title'] }}</h3>
+                    <p class="text-body mt-2 max-w-sm">{{ $step['text'] }}</p>
                 </div>
             @endforeach
         </div>

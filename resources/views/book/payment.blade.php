@@ -12,30 +12,30 @@
 @section('content')
 <section class="mx-auto max-w-[720px] px-8 py-20">
     @if (!$booking || !$lawyer)
-        <div class="rounded-2xl border border-text/10 bg-surface p-8">
-            <p class="text-[15px] text-muted">Không có đặt phòng nào đang diễn ra. Chọn một luật sư và thời gian đầu tiên.</p>
-            <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
+        <div class="card-base-lg">
+            <p class="text-[16px]">Không có đặt phòng nào đang diễn ra. Chọn một luật sư và thời gian đầu tiên.</p>
+            <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-text/70">
                 Tìm luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>
     @else
-        <h1 class="font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
-            Pay your deposit
+        <h1 class="text-flow-h1">
+            Thanh toán tiền đặt cọc
         </h1>
-        <p class="mt-3 text-[17px] text-secondary">
+        <p class="mt-3 text-body-prose">
             Chúng tôi thu 20% phí tư vấn để giữ chỗ. 80% còn lại được thanh toán trực tiếp cho luật sư tại buổi tư vấn.
         </p>
 
         {{-- Booking summary --}}
-        <div class="mt-12 rounded-2xl border border-text/10 bg-surface p-8">
+        <div class="mt-12 card-base-lg">
             <div class="flex items-center gap-4">
                 <img src="{{ $lawyer['portrait_url'] }}" alt=""
                      class="h-14 w-14 flex-none rounded-full object-cover object-top">
                 <div class="min-w-0">
-                    <p class="font-display text-[18px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
-                    <p class="text-[13px] text-muted">
-                        {{ Carbon::parse($booking['date'])->format('M j, Y') }} · {{ Carbon::createFromFormat('H:i', $booking['time'])->format('g:i A') }}
+                    <p class="text-card-h5">{{ $lawyer['name'] }}</p>
+                    <p class="text-[14px]">
+                        {{ Carbon::parse($booking['date'])->format('d/m/Y') }} · {{ Carbon::createFromFormat('H:i', $booking['time'])->format('H:i') }}
                     </p>
                 </div>
             </div>
@@ -44,15 +44,15 @@
 
             <div class="space-y-3 text-[14px]">
                 <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Phí tư vấn</span>
+                    <span>Phí tư vấn</span>
                     <span class="text-text">{{ number_format($fee) }} VND</span>
                 </div>
                 <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Đặt cọc (20%)</span>
+                    <span>Đặt cọc (20%)</span>
                     <span class="text-text">{{ number_format($deposit) }} VND</span>
                 </div>
                 <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Số dư đến hạn tại cuộc hẹn</span>
+                    <span>Số dư đến hạn tại cuộc hẹn</span>
                     <span class="text-text">{{ number_format($fee - $deposit) }} VND</span>
                 </div>
             </div>
@@ -60,8 +60,8 @@
             <div class="my-6 h-px bg-text/10"></div>
 
             <div class="flex items-baseline justify-between gap-4">
-                <span class="text-[15px] font-medium text-text">Thanh toán ngay hôm nay</span>
-                <span class="font-display text-[24px] font-medium tracking-tight text-accent">{{ number_format($deposit) }} VND</span>
+                <span class="text-[16px] font-medium text-text">Thanh toán ngay hôm nay</span>
+                <span class="text-card-h3 text-accent">{{ number_format($deposit) }} VND</span>
             </div>
         </div>
 
@@ -71,59 +71,59 @@
             @csrf
             <input type="hidden" name="method" :value="method">
 
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thanh toán bằng</p>
+            <p class="text-eyebrow">Thanh toán bằng</p>
 
             {{-- Method tabs --}}
             <div class="mt-3 grid grid-cols-3 gap-2">
                 <button type="button" @click="method = 'card'"
                         :class="method === 'card' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
-                        class="rounded-xl border px-4 py-3 text-[13px] font-medium text-text transition-colors">
-                    Card
+                        class="rounded-xl border px-4 py-3 text-[14px] font-medium text-text transition-colors">
+                    Thẻ
                 </button>
                 <button type="button" @click="method = 'qr'"
                         :class="method === 'qr' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
-                        class="rounded-xl border px-4 py-3 text-[13px] font-medium text-text transition-colors">
+                        class="rounded-xl border px-4 py-3 text-[14px] font-medium text-text transition-colors">
                     VietQR
                 </button>
                 <button type="button" @click="method = 'transfer'"
                         :class="method === 'transfer' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
-                        class="rounded-xl border px-4 py-3 text-[13px] font-medium text-text transition-colors">
-                    Bank transfer
+                        class="rounded-xl border px-4 py-3 text-[14px] font-medium text-text transition-colors">
+                    Chuyển khoản
                 </button>
             </div>
 
             {{-- Card form --}}
             <div x-show="method === 'card'" class="mt-6 space-y-4">
                 <div>
-                    <label for="card_number" class="block text-[13px] font-medium text-muted">Số thẻ</label>
+                    <label for="card_number" class="block text-[14px] font-medium">Số thẻ</label>
                     <input id="card_number" type="text" inputmode="numeric" maxlength="19"
                            placeholder="1234 5678 9012 3456"
-                           class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                           class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                 </div>
                 <div>
-                    <label for="card_name" class="block text-[13px] font-medium text-muted">Tên trên thẻ</label>
+                    <label for="card_name" class="block text-[14px] font-medium">Tên trên thẻ</label>
                     <input id="card_name" type="text"
                            placeholder="NGUYEN VAN A"
-                           class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                           class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label for="card_expiry" class="block text-[13px] font-medium text-muted">Expiry</label>
+                        <label for="card_expiry" class="block text-[14px] font-medium">Hết hạn</label>
                         <input id="card_expiry" type="text" inputmode="numeric" maxlength="5"
                                placeholder="MM/YY"
-                               class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                               class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     </div>
                     <div>
-                        <label for="card_cvv" class="block text-[13px] font-medium text-muted">CVV</label>
+                        <label for="card_cvv" class="block text-[14px] font-medium">CVV</label>
                         <input id="card_cvv" type="text" inputmode="numeric" maxlength="4"
                                placeholder="123"
-                               class="mt-2 block w-full rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                               class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     </div>
                 </div>
             </div>
 
             {{-- VietQR --}}
-            <div x-show="method === 'qr'" x-cloak class="mt-6 rounded-2xl border border-text/10 bg-surface p-6 text-center">
+            <div x-show="method === 'qr'" x-cloak class="mt-6 card-base text-center">
                 <div class="mx-auto flex h-48 w-48 items-center justify-center rounded-xl bg-text">
                     <svg class="h-32 w-32 text-bg" viewBox="0 0 100 100" fill="currentColor">
                         <rect x="0" y="0" width="30" height="30"/>
@@ -145,52 +145,52 @@
                         <rect x="80" y="80" width="20" height="20"/>
                     </svg>
                 </div>
-                <p class="mt-5 text-[13px] text-secondary">
-                    Scan with any VietQR-compatible bank app to pay {{ number_format($deposit) }} VND.
+                <p class="mt-5 text-[14px]">
+                    Quét bằng ứng dụng ngân hàng tương thích VietQR để thanh toán {{ number_format($deposit) }} VND.
                 </p>
-                <p class="mt-2 text-[12px] text-muted">Đặt phòng sẽ tự động xác nhận sau khi chúng tôi nhận được thanh toán.</p>
+                <p class="mt-2 text-[12px]">Lịch hẹn sẽ tự động xác nhận sau khi chúng tôi nhận được thanh toán.</p>
             </div>
 
             {{-- Bank transfer --}}
-            <div x-show="method === 'transfer'" x-cloak class="mt-6 rounded-2xl border border-text/10 bg-surface p-6">
-                <p class="text-[13px] text-muted">Chuyển khoản đặt cọc tới:</p>
+            <div x-show="method === 'transfer'" x-cloak class="mt-6 card-base">
+                <p class="text-[14px]">Chuyển khoản đặt cọc tới:</p>
                 <dl class="mt-4 space-y-3 text-[14px]">
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Bank</dt>
+                        <dt>Ngân hàng</dt>
                         <dd class="text-text">Vietcombank</dd>
                     </div>
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Tên tài khoản</dt>
-                        <dd class="text-text">PHÁP LUẬT CỘNG Tý</dd>
+                        <dt>Tên tài khoản</dt>
+                        <dd class="text-text">CONG TY LEGALEASE</dd>
                     </div>
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Số tài khoản</dt>
+                        <dt>Số tài khoản</dt>
                         <dd class="font-display text-text">0011 0000 1234 5678</dd>
                     </div>
                     <div class="flex items-baseline justify-between gap-4">
-                        <dt class="text-muted">Reference</dt>
-                        <dd class="text-text">Mã đặt phòng của bạn (được gửi khi xác nhận)</dd>
+                        <dt>Nội dung chuyển khoản</dt>
+                        <dd class="text-text">Mã đặt lịch của bạn (gửi khi xác nhận)</dd>
                     </div>
                 </dl>
-                <p class="mt-5 text-[12px] text-muted">
-                    Most transfers clear within minutes. We'll email you once the deposit lands.
+                <p class="mt-5 text-[12px]">
+                    Hầu hết chuyển khoản hoàn tất trong vài phút. Chúng tôi sẽ gửi email khi nhận được tiền đặt cọc.
                 </p>
             </div>
 
             <div class="mt-8">
                 <x-button variant="primary" type="submit" class="w-full">
-                    Pay {{ number_format($deposit) }} VND
+                    Thanh toán {{ number_format($deposit) }} VND
                 </x-button>
             </div>
 
             <p class="mt-4 text-center text-[14px]">
-                <a href="{{ route('book.review') }}" class="text-muted transition-colors hover:text-accent">
+                <a href="{{ route('book.review') }}" class="transition-colors hover:text-accent">
                     ← Quay lại trang xác nhận
                 </a>
             </p>
 
-            <p class="mt-6 text-center text-[12px] text-muted">
-                Payments are processed securely. We never store full card numbers.
+            <p class="mt-6 text-center text-[12px]">
+                Thanh toán được xử lý an toàn. Chúng tôi không lưu số thẻ đầy đủ.
             </p>
         </form>
     @endif

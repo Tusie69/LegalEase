@@ -6,8 +6,8 @@
 
 @php
     $filled = (int) round($rating);
-    $sizeClass = $size === 'sm' ? 'h-4 w-4' : 'h-[18px] w-[18px]';
-    $textClass = $size === 'sm' ? 'text-[13px]' : 'text-[14px]';
+    $sizeClass = $size === 'sm' ? 'h-4 w-4' : 'h-5 w-5';
+    $textClass = $size === 'sm' ? 'text-[14px]' : 'text-[14px]';
 @endphp
 
 <div {{ $attributes->class('inline-flex items-center gap-2') }}>
@@ -20,7 +20,7 @@
         @endfor
     </div>
     @if ($reviewCount !== null)
-        <span class="{{ $textClass }} text-muted">({{ number_format($reviewCount) }} đánh giá)</span>
+        <span class="{{ $textClass }}">({{ number_format($reviewCount) }} đánh giá)</span>
     @endif
 </div>
 

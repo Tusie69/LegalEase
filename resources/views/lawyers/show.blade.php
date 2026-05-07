@@ -115,7 +115,7 @@
             'address' => ['province' => 'Hà Nội', 'street_address' => '203 Hai Bà Trưng, Hoàn Kiếm'],
             'specialty_tags' => ['Luật Doanh nghiệp', 'Tố tụng dân sự'],
             'bio' => [
-                'Luật sư Bùi Thanh Tùng tư vấn cho các khách hàng doanh nghiệp về quản trị, M&A và giao dịch xuyên biên giới. Trải qua hơn hai thập kỷ hành nghề, anh đã làm việc với các công ty ở mọi giai đoạn — từ thủ tục thành lập đến những thương vụ mua lại quy mô lớn. Anh được đào tạo tại Đại học Luật Hà Nội và hoàn thành Thạc sĩ chuyên về luật thương mại.',
+                'Luật sư Bùi Thanh Tùng tư vấn cho các khách hàng doanh nghiệp về quản trị, M&A và giao dịch xuyên biên giới. Trải qua hơn hai thập kỷ hành nghề, anh đã làm việc với các công ty ở mọi giai đoạn, từ thủ tục thành lập đến những thương vụ mua lại quy mô lớn. Anh được đào tạo tại Đại học Luật Hà Nội và hoàn thành Thạc sĩ chuyên về luật thương mại.',
                 'Anh Tùng được biết đến với lời khuyên thẳng thắn, nói với khách hàng những điều họ cần nghe chứ không phải những điều họ muốn nghe. Anh phục vụ khách hàng trên khắp Việt Nam và thường xuyên làm việc với các bên ở Singapore, Nhật Bản và Hàn Quốc.',
             ],
             'education' => [
@@ -131,7 +131,7 @@
             'specialty_tags' => ['Bất động sản'],
             'bio' => [
                 'Luật sư Ngô Hải Yến xử lý các vấn đề bất động sản nhà ở và thương mại tại TP.HCM. Công việc của chị bao gồm giao dịch mua bán, rà soát giấy chứng nhận quyền sử dụng đất và cho thuê thương mại. Chị bắt đầu sự nghiệp tại một văn phòng chuyên về bất động sản trước khi mở văn phòng riêng vào năm 2023.',
-                'Chị Yến đặc biệt chú ý đến những người mua nhà lần đầu, vốn cần nhiều bối cảnh hơn so với nhà đầu tư có kinh nghiệm. Chị tin rằng chất lượng của một giao dịch bất động sản được quyết định từ rất lâu trước khi ký — ở những câu hỏi được đặt ra, những giấy tờ được kiểm tra và những điều khoản được đàm phán cẩn thận.',
+                'Chị Yến đặc biệt chú ý đến những người mua nhà lần đầu, vốn cần nhiều bối cảnh hơn so với nhà đầu tư có kinh nghiệm. Chị tin rằng chất lượng của một giao dịch bất động sản được quyết định từ rất lâu trước khi ký, ở những câu hỏi được đặt ra, những giấy tờ được kiểm tra và những điều khoản được đàm phán cẩn thận.',
             ],
             'education' => [
                 ['institution' => 'Đại học Luật TP.HCM', 'degree' => 'Cử nhân Luật', 'year' => 2016],
@@ -166,8 +166,9 @@
 @endphp
 
 @section('content')
-    <section class="mx-auto max-w-[1280px] px-8 py-20">
-        <nav class="text-[14px] text-muted">
+    <section class="container-page py-20">
+        {{-- Breadcrumb --}}
+        <nav class="text-[14px]">
             <a href="/" class="transition-colors hover:text-accent">Trang chủ</a>
             <span class="px-1">/</span>
             <a href="/lawyers" class="transition-colors hover:text-accent">Luật sư</a>
@@ -175,21 +176,21 @@
             <span class="text-text">{{ $lawyer['name'] }}</span>
         </nav>
 
-        <div class="mt-10 grid gap-16 md:grid-cols-3">
-            <div class="md:col-span-2">
+        <div class="mt-10 grid gap-16 lg:grid-cols-3">
+            <div class="min-w-0 lg:col-span-2">
+                {{-- Portrait --}}
                 <div class="overflow-hidden rounded-2xl">
                     <img src="{{ $lawyer['portrait_url'] }}"
                          alt="{{ $lawyer['name'] }}"
                          class="aspect-[4/5] max-h-[560px] w-full object-cover object-top">
                 </div>
 
-                <div class="mt-10 flex items-center gap-3">
-                    <h1 class="font-display text-[40px] font-medium tracking-[-0.02em] md:text-[48px]">
-                        {{ $lawyer['name'] }}
-                    </h1>
-                </div>
+                {{-- Identity --}}
+                <h1 class="mt-10 font-display text-[40px] font-medium leading-snug tracking-tight md:text-[48px]">
+                    {{ $lawyer['name'] }}
+                </h1>
 
-                <p class="mt-2 text-[15px] text-muted">
+                <p class="text-body mt-2">
                     Luật sư
                     @if (!empty($lawyer['bar_association'])) · {{ $lawyer['bar_association'] }} @endif
                     · {{ $lawyer['years_of_experience'] }} năm kinh nghiệm
@@ -201,79 +202,84 @@
 
                 <div class="mt-4 flex flex-wrap gap-2">
                     @foreach ($lawyer['specialty_tags'] as $tag)
-                        <span class="inline-flex items-center rounded-full border border-muted/60 px-3 py-1 text-[12px] font-medium text-muted">
+                        <span class="text-status-pill inline-flex items-center rounded-full border border-text/30 px-3 py-1">
                             {{ $tag }}
                         </span>
                     @endforeach
                 </div>
 
+                {{-- Bio --}}
                 <div class="mt-12">
-                    <h2 class="font-display text-[24px] font-medium tracking-tight">Giới thiệu</h2>
-                    <div class="mt-4 space-y-4 text-[16px] leading-relaxed text-secondary">
+                    <h2 class="text-card-h3">Giới thiệu</h2>
+                    <div class="text-body mt-4 space-y-4">
                         @foreach ($lawyer['bio'] as $paragraph)
                             <p>{{ $paragraph }}</p>
                         @endforeach
                     </div>
                 </div>
 
+                {{-- Education --}}
                 <div class="mt-12">
-                    <h2 class="font-display text-[24px] font-medium tracking-tight">Học vấn</h2>
+                    <h2 class="text-card-h3">Học vấn</h2>
                     <ul class="mt-4 space-y-3">
                         @foreach ($lawyer['education'] as $edu)
-                            <li class="flex items-baseline justify-between gap-6 border-b border-text/10 pb-3">
+                            <li class="flex items-baseline justify-between gap-6 border-b border-text/20 pb-3">
                                 <div>
-                                    <p class="text-[15px] text-text">{{ $edu['degree'] }}</p>
-                                    <p class="text-[14px] text-muted">{{ $edu['institution'] }}</p>
+                                    <p class="text-body text-text">{{ $edu['degree'] }}</p>
+                                    <p class="text-caption">{{ $edu['institution'] }}</p>
                                 </div>
-                                <span class="text-[14px] text-muted">{{ $edu['year'] }}</span>
+                                <span class="text-caption">{{ $edu['year'] }}</span>
                             </li>
                         @endforeach
                     </ul>
                 </div>
 
+                {{-- Languages --}}
                 <div class="mt-12">
-                    <h2 class="font-display text-[24px] font-medium tracking-tight">Ngôn ngữ</h2>
+                    <h2 class="text-card-h3">Ngôn ngữ</h2>
                     <div class="mt-4 flex flex-wrap gap-2">
                         @foreach ($lawyer['languages'] as $lang)
-                            <span class="inline-flex items-center rounded-full border border-muted/60 px-3 py-1 text-[13px] text-text">
+                            <span class="inline-flex items-center rounded-full border border-text/30 px-3 py-1 text-[14px] text-text">
                                 {{ $lang }}
                             </span>
                         @endforeach
                     </div>
                 </div>
 
+                {{-- Reviews --}}
                 <div class="mt-12">
-                    <h2 class="font-display text-[24px] font-medium tracking-tight">Đánh giá của khách hàng</h2>
+                    <h2 class="text-card-h3">Đánh giá của khách hàng</h2>
                     <div class="mt-6 space-y-4">
                         @foreach ($lawyer['reviews'] as $review)
                             @php
                                 $initial = mb_strtoupper(mb_substr($review['author'], 0, 1));
                                 $reviewDate = Carbon::parse($review['date'])->format('d/m/Y');
                             @endphp
-                            <article class="rounded-2xl border border-text/10 bg-surface p-6">
+                            <article class="card-base">
                                 <header class="flex items-start gap-4">
-                                    <div class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-avatar font-display text-[18px] font-medium text-text">
+                                    <div class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-text/10 font-display text-[18px] font-medium text-text">
                                         {{ $initial }}
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-baseline justify-between gap-4">
-                                            <p class="text-[15px] font-medium text-text">{{ $review['author'] }}</p>
-                                            <p class="text-[13px] text-muted">{{ $reviewDate }}</p>
+                                            <p class="text-[16px] font-medium text-text">{{ $review['author'] }}</p>
+                                            <p class="text-caption">{{ $reviewDate }}</p>
                                         </div>
                                         <div class="mt-1">
                                             <x-rating-stars :rating="$review['stars']" size="sm" />
                                         </div>
                                     </div>
                                 </header>
-                                <p class="mt-4 text-[15px] leading-relaxed text-text/90">{{ $review['text'] }}</p>
+                                <p class="text-body mt-4 text-text/90">{{ $review['text'] }}</p>
                             </article>
                         @endforeach
                     </div>
                 </div>
             </div>
 
-            <aside class="md:col-span-1">
-                <div class="md:sticky md:top-[88px]"
+            {{-- Booking sidebar --}}
+            <aside class="min-w-0 lg:col-span-1">
+                <div class="lg:sticky lg:top-22"
                      x-data='{
                         selected: 0,
                         days: @json($days),
@@ -286,20 +292,20 @@
                             window.location.href = "{{ route('book.start') }}?" + params.toString();
                         }
                     }'>
-                    <div class="flex min-h-[560px] flex-col rounded-2xl border border-text/10 bg-surface p-8">
-                        <h3 class="font-display text-[24px] font-medium tracking-tight">Đặt lịch tư vấn</h3>
+                    <div class="card-base-lg flex min-h-[560px] flex-col">
+                        <h3 class="text-card-h3">Đặt lịch tư vấn</h3>
 
                         <div class="mt-4">
                             <p class="font-display text-[32px] font-medium leading-none tracking-tight text-accent">
                                 {{ number_format($lawyer['price_per_hour']) }} VND
                             </p>
-                            <p class="mt-2 text-[13px] text-muted">mỗi lần tư vấn</p>
+                            <p class="text-caption mt-2">mỗi lần tư vấn</p>
                         </div>
 
                         @if (!empty($lawyer['address']['street_address']))
-                            <div class="mt-5 flex items-start gap-2 text-[13px]">
-                                <svg class="mt-[2px] h-4 w-4 flex-none text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <span class="text-secondary">
+                            <div class="mt-5 flex items-start gap-2 text-[14px]">
+                                <x-icon name="map-pin" :size="16" class="flex-none" />
+                                <span>
                                     {{ $lawyer['address']['street_address'] }}, {{ $lawyer['address']['province'] }}
                                 </span>
                             </div>
@@ -307,14 +313,15 @@
 
                         <div class="my-6 h-px bg-text/10"></div>
 
+                        {{-- Day picker --}}
                         <div class="flex gap-1.5 overflow-hidden pb-1">
                             @foreach ($days as $i => $day)
                                 <button type="button"
                                         @click="selected = {{ $i }}"
-                                        :class="selected === {{ $i }} ? 'bg-accent text-bg border-accent' : 'border-muted/60 text-text hover:border-accent'"
+                                        :class="selected === {{ $i }} ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
                                         class="flex min-w-0 flex-1 flex-col items-center rounded-xl border px-1 py-2 transition-colors">
-                                    <span class="text-[10px] font-medium uppercase tracking-[0.04em]"
-                                          :class="selected === {{ $i }} ? 'text-white/65' : 'text-muted'">
+                                    <span class="text-eyebrow-tight"
+                                          :class="selected === {{ $i }} ? 'text-bg/65' : 'text-text/55'">
                                         {{ $day['abbrev'] }}
                                     </span>
                                     <span class="mt-0.5 font-display text-[18px] font-medium leading-none">
@@ -324,20 +331,20 @@
                             @endforeach
                         </div>
 
+                        {{-- Time slots --}}
                         <div class="mt-6">
-                            <h4 class="text-[13px] font-medium uppercase tracking-[0.1em] text-muted">Thời gian có sẵn</h4>
+                            <h4 class="text-eyebrow">Thời gian có sẵn</h4>
                         </div>
 
-                        @foreach ($days as $i => $day)
-                            <div x-show="selected === {{ $i }}" x-cloak class="mt-4">
+                        @foreach ($days as $i => $day)                            <div x-show="selected === {{ $i }}" x-cloak class="mt-4">
                                 @if (count($day['slots']) === 0)
-                                    <p class="text-[13px] text-muted">Không có thời gian trống vào ngày này.</p>
+                                    <p class="text-[14px]">Không có thời gian trống vào ngày này.</p>
                                 @else
                                     <div class="grid grid-cols-2 gap-3">
                                         @foreach ($day['slots'] as $slot)
                                             <button type="button"
                                                     @click="pickSlot('{{ $day['dateStr'] }}', '{{ $slot['time'] }}', '{{ $slot['label'] }}')"
-                                                    class="rounded-xl border border-muted/60 px-3 py-3 text-center text-[13px] text-text transition-colors hover:border-accent hover:bg-accent/10">
+                                                    class="rounded-xl border border-text/30 px-3 py-3 text-center text-[14px] text-text transition-colors hover:border-accent hover:bg-accent/10">
                                                 {{ $slot['label'] }}
                                             </button>
                                         @endforeach

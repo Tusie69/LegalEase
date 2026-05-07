@@ -2,9 +2,9 @@
 
 @php
     $featured = [
-        'category'  => 'Phát triển thực hành của bạn',
+        'category'  => 'Phát triển hành nghề của bạn',
         'title'     => 'Các luật sư hàng đầu trên LegalEase lấp đầy tuần của họ như thế nào',
-        'lead'      => 'Hãy xem cách các luật sư được đặt nhiều nhất trên nền tảng sắp xếp tính khả dụng của họ, đặt ra mức giá và biến những cuộc tư vấn đầu tiên thành khách hàng lâu dài.',
+        'lead'      => 'Hãy xem cách các luật sư được đặt nhiều nhất trên nền tảng sắp xếp lịch trống, đặt mức phí, và biến buổi tư vấn đầu tiên thành khách hàng lâu dài.',
         'read_time' => '8 phút đọc',
         'image_url' => 'https://images.unsplash.com/photo-1758519291932-6263fc870e01?q=80',
     ];
@@ -13,26 +13,26 @@
         [
             'category'  => 'Bắt đầu',
             'title'     => 'Thiết lập hồ sơ của bạn trong 30 phút',
-            'desc'      => 'Hướng dẫn chi tiết về tiểu sử, hình ảnh, chuyên môn và cấu hình vị trí.',
+            'desc'      => 'Hướng dẫn chi tiết về tiểu sử, hình ảnh, chuyên môn và địa điểm.',
             'read_time' => '5 phút đọc',
             'image_url' => 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80',
         ],
         [
             'category'  => 'Bắt đầu',
-            'title'     => 'Chọn mức lương theo giờ đầu tiên của bạn',
-            'desc'      => 'Kinh nghiệm, chuyên môn và vị trí sẽ định hình mức phí bạn tính như thế nào.',
+            'title'     => 'Chọn mức phí theo giờ đầu tiên của bạn',
+            'desc'      => 'Kinh nghiệm, chuyên môn và vị trí sẽ định hình mức phí của bạn.',
             'read_time' => '4 phút đọc',
             'image_url' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop&q=80',
         ],
         [
-            'category'  => 'Phát triển thực hành của bạn',
-            'title'     => 'Ba cách để khuyến khích tham vấn lặp lại',
-            'desc'      => 'Luật sư giàu kinh nghiệm làm gì trong buổi gặp đầu tiên để tạo dựng niềm tin',
+            'category'  => 'Phát triển hành nghề của bạn',
+            'title'     => 'Ba cách để khách hàng quay lại tư vấn',
+            'desc'      => 'Luật sư giàu kinh nghiệm làm gì trong buổi gặp đầu tiên để tạo dựng niềm tin.',
             'read_time' => '6 phút đọc',
             'image_url' => 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80',
         ],
         [
-            'category'  => 'Phát triển thực hành của bạn',
+            'category'  => 'Phát triển hành nghề của bạn',
             'title'     => 'Viết tiểu sử tạo dựng niềm tin',
             'desc'      => 'Chi tiết cụ thể, ngôn ngữ đơn giản và những gì cần bỏ qua.',
             'read_time' => '3 phút đọc',
@@ -40,15 +40,15 @@
         ],
         [
             'category'  => 'Cập nhật nền tảng',
-            'title'     => 'Điều gì đã thay đổi trong quy trình xác minh của chúng tôi trong năm nay',
-            'desc'      => 'Đánh giá nhanh hơn, kiểm tra tài liệu mới và những gì người đánh giá tìm kiếm.',
+            'title'     => 'Quy trình xác minh đã thay đổi gì trong năm nay',
+            'desc'      => 'Đánh giá nhanh hơn, kiểm tra tài liệu mới và những gì đội thẩm định tìm kiếm.',
             'read_time' => '4 phút đọc',
             'image_url' => 'https://images.unsplash.com/photo-1624555130882-dcfa8ecb17ce?q=80',
         ],
         [
             'category'  => 'Thu nhập và thanh toán',
-            'title'     => 'Cách thức gửi tiền và thanh toán',
-            'desc'      => 'Nền tảng chứa đựng những gì, những gì sẽ đến với bạn và khi nào.',
+            'title'     => 'Cách giải ngân và thanh toán hoạt động',
+            'desc'      => 'Nền tảng giữ phần nào, bạn nhận phần nào, và khi nào.',
             'read_time' => '5 phút đọc',
             'image_url' => 'https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?q=80',
         ],
@@ -56,33 +56,22 @@
 @endphp
 
 @section('content')
-    {{-- Hero: photo top, navy bar bottom --}}
-    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
-        <div class="relative flex-1 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1755675672853-9108c92fbc14?q=80"
-                 alt=""
-                 class="absolute inset-0 h-full w-full object-cover">
-        </div>
+    <x-hero-bar
+        photo="https://images.unsplash.com/photo-1755675672853-9108c92fbc14?q=80"
+        eyebrow="Tài nguyên">
+        Vận hành tốt hơn cho hành nghề của bạn.
 
-        <div class="bg-accent">
-            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">Tài nguyên</p>
-                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
-                    Vận hành tốt hơn cho hồ sơ luật sư của bạn.
-                </h1>
-                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
-                    Hướng dẫn để thiết lập, định giá và phát triển hồ sơ của bạn trên LegalEase.
-                </p>
-            </div>
-        </div>
-    </section>
+        <x-slot:subtitle>
+            Hướng dẫn để thiết lập, định giá và phát triển hành nghề của bạn trên LegalEase.
+        </x-slot:subtitle>
+    </x-hero-bar>
 
     {{-- Featured article --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Nổi bật</h2>
+    <section class="container-page pt-24">
+        <h2 class="text-section-h2">Nổi bật</h2>
 
         <a href="#" class="mt-12 block group">
-            <article class="grid gap-8 md:grid-cols-2 md:items-center md:gap-12">
+            <article class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
                 <div class="overflow-hidden rounded-2xl">
                     <img src="{{ $featured['image_url'] }}"
                          alt=""
@@ -90,16 +79,16 @@
                          class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]">
                 </div>
                 <div>
-                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">{{ $featured['category'] }}</p>
-                    <h2 class="mt-4 font-display text-[32px] font-medium leading-[1.1] tracking-[-0.02em] md:text-[40px] group-hover:text-accent">
+                    <p class="text-eyebrow">{{ $featured['category'] }}</p>
+                    <h3 class="mt-4 font-display text-[32px] font-medium leading-snug tracking-tight md:text-[40px] transition-colors group-hover:text-accent">
                         {{ $featured['title'] }}
-                    </h2>
-                    <p class="mt-5 max-w-[520px] text-[16px] leading-relaxed text-secondary">
+                    </h3>
+                    <p class="text-body mt-5 max-w-[520px]">
                         {{ $featured['lead'] }}
                     </p>
-                    <p class="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-text">
+                    <p class="text-link-action mt-6 inline-flex items-center gap-2 text-text">
                         {{ $featured['read_time'] }}
-                        <span class="mx-1 text-muted/40">·</span>
+                        <span class="mx-1 text-text/40">·</span>
                         <span class="transition-colors group-hover:text-accent">Đọc →</span>
                     </p>
                 </div>
@@ -108,8 +97,8 @@
     </section>
 
     {{-- All resources --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Tất cả tài nguyên</h2>
+    <section class="container-page pt-24">
+        <h2 class="text-section-h2">Tất cả tài nguyên</h2>
 
         <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($articles as $article)
@@ -120,25 +109,25 @@
                              loading="lazy"
                              class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]">
                     </div>
-                    <p class="mt-5 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">{{ $article['category'] }}</p>
-                    <h3 class="mt-2 font-display text-[24px] font-medium leading-tight tracking-tight transition-colors group-hover:text-accent">
+                    <p class="text-eyebrow mt-5">{{ $article['category'] }}</p>
+                    <h3 class="text-card-h3 mt-2 leading-snug transition-colors group-hover:text-accent">
                         {{ $article['title'] }}
                     </h3>
-                    <p class="mt-2 text-[14px] leading-relaxed text-secondary">
+                    <p class="text-body-dense mt-2">
                         {{ $article['desc'] }}
                     </p>
-                    <p class="mt-4 text-[13px] text-muted">{{ $article['read_time'] }}</p>
+                    <p class="text-caption mt-4">{{ $article['read_time'] }}</p>
                 </a>
             @endforeach
         </div>
     </section>
 
     {{-- Closing CTA --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
-        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
+    <section class="container-page closing-cta">
+        <h2 class="text-cta-h2">
             Không tìm thấy điều bạn cần?
         </h2>
-        <p class="mx-auto mt-6 max-w-[520px] text-[17px] text-secondary">
+        <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
             Đội ngũ hỗ trợ của chúng tôi phản hồi trong vòng một ngày làm việc.
         </p>
         <div class="mt-10 flex justify-center">

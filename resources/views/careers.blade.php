@@ -54,56 +54,45 @@
 @endphp
 
 @section('content')
-    {{-- Hero: photo top, navy bar bottom --}}
-    <section class="relative -mt-[72px] flex min-h-screen flex-col overflow-hidden">
-        <div class="relative flex-1 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80"
-                 alt=""
-                 class="absolute inset-0 h-full w-full object-cover">
-        </div>
+    <x-hero-bar
+        photo="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80"
+        eyebrow="Chúng tôi đang tuyển dụng">
+        Xây dựng nền tảng pháp lý cho Việt Nam.
 
-        <div class="bg-accent">
-            <div class="mx-auto w-full max-w-[1280px] px-8 py-14 text-center md:py-20">
-                <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-white/65">Chúng tôi đang tuyển dụng</p>
-                <h1 class="mx-auto mt-5 max-w-[920px] font-display text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-white md:text-[64px]">
-                    Xây dựng nền tảng pháp lý cho Việt Nam.
-                </h1>
-                <p class="mx-auto mt-5 max-w-[560px] text-[17px] leading-relaxed text-white/80">
-                    Một đội ngũ nhỏ ở Hà Nội đang xây dựng tầng pháp lý cho người dân Việt Nam.
-                </p>
-            </div>
-        </div>
-    </section>
+        <x-slot:subtitle>
+            Một đội ngũ nhỏ ở Hà Nội đang xây dựng tầng pháp lý cho người dân Việt Nam.
+        </x-slot:subtitle>
+    </x-hero-bar>
 
     {{-- 01 / What it's like --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+    <section class="container-page pt-24">
         <div class="flex items-baseline gap-5">
-            <p class="font-display text-[28px] font-medium text-muted md:text-[32px]">01</p>
-            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Nó như thế nào</h2>
+            <p class="text-chapter-marker">01</p>
+            <h2 class="text-chapter-h2">Thông tin bạn cần biết</h2>
         </div>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($values as $v)
-                <div class="rounded-2xl border border-text/10 bg-surface p-6">
-                    <h3 class="font-display text-[24px] font-medium tracking-tight">{{ $v['title'] }}</h3>
-                    <p class="mt-2 text-[14px] leading-relaxed text-muted">{{ $v['desc'] }}</p>
+                <div class="card-base">
+                    <h3 class="text-card-h3">{{ $v['title'] }}</h3>
+                    <p class="text-body-dense mt-2">{{ $v['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
     {{-- 02 / Open positions --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+    <section class="container-page pt-24">
         <div class="flex items-baseline gap-5">
-            <p class="font-display text-[28px] font-medium text-muted md:text-[32px]">02</p>
-            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Open positions</h2>
+            <p class="text-chapter-marker">02</p>
+            <h2 class="text-chapter-h2">Vị trí tuyển dụng</h2>
         </div>
 
         <div class="mt-12">
             @foreach ($roles as $i => $role)
                 <article class="{{ $i > 0 ? 'pt-20' : '' }} grid grid-cols-1 gap-6 md:grid-cols-[100px_1fr_auto] md:gap-10">
                     {{-- Role image --}}
-                    <div class="aspect-square w-[100px] overflow-hidden rounded-2xl bg-surface">
+                    <div class="aspect-square w-[100px] overflow-hidden rounded-2xl bg-bg">
                         <img src="{{ $role['image_url'] }}"
                              alt=""
                              loading="lazy"
@@ -112,23 +101,23 @@
 
                     {{-- Title, meta, description --}}
                     <div>
-                        <h3 class="font-display text-[26px] font-medium leading-tight tracking-[-0.01em] md:text-[30px]">
+                        <h3 class="text-role-h3 leading-snug">
                             {{ $role['title'] }}
                         </h3>
-                        <p class="mt-2 text-[12px] uppercase tracking-[0.1em] text-muted">
+                        <p class="text-eyebrow mt-2">
                             {{ $role['meta'] }}
                         </p>
-                        <p class="mt-4 max-w-[560px] text-[15px] leading-relaxed text-secondary">
+                        <p class="text-body mt-4 max-w-[560px]">
                             {{ $role['desc'] }}
                         </p>
                     </div>
 
                     {{-- Salary --}}
                     <div class="md:text-right">
-                        <p class="font-display text-[28px] font-medium tracking-tight md:text-[32px]">
+                        <p class="text-chapter-h2">
                             {{ $role['salary'] }}
                         </p>
-                        <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-muted">
+                        <p class="text-eyebrow mt-1">
                             VND / tháng
                         </p>
                     </div>
@@ -138,10 +127,10 @@
     </section>
 
     {{-- 03 / How we hire --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
+    <section class="container-page pt-24">
         <div class="flex items-baseline gap-5">
-            <p class="font-display text-[28px] font-medium text-muted md:text-[32px]">03</p>
-            <h2 class="font-display text-[28px] font-medium tracking-[-0.01em] md:text-[32px]">Chúng tôi tuyển dụng như thế nào</h2>
+            <p class="text-chapter-marker">03</p>
+            <h2 class="text-chapter-h2">Chúng tôi tuyển dụng như thế nào?</h2>
         </div>
 
         <div class="relative mt-12 grid gap-12 md:grid-cols-3">
@@ -153,16 +142,16 @@
                     <div class="flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-[14px] font-medium text-accent">
                         {{ $step['n'] }}
                     </div>
-                    <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                    <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-secondary">{{ $step['desc'] }}</p>
+                    <h3 class="text-card-h3 mt-6">{{ $step['title'] }}</h3>
+                    <p class="text-body mt-2 max-w-sm">{{ $step['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
     {{-- Closing CTA --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
-        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
+    <section class="container-page closing-cta">
+        <h2 class="text-cta-h2">
             Sẵn sàng ứng tuyển?
         </h2>
         <div class="mt-8 flex justify-center">
