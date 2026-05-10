@@ -20,7 +20,6 @@
     </h1>
     <p class="mt-4 text-[14px]">{{ $appointment['booking_code'] }}</p>
 
-    {{-- Customer card --}}
     <div class="mt-12 card-base">
         <div class="flex items-center gap-5">
             <div class="flex h-20 w-20 flex-none items-center justify-center rounded-full bg-text/10">
@@ -37,7 +36,6 @@
         </div>
     </div>
 
-    {{-- When --}}
     <div class="mt-10">
         <p class="text-eyebrow">Thời gian</p>
         <p class="text-card-h4 mt-2">
@@ -48,7 +46,6 @@
         </p>
     </div>
 
-    {{-- Status --}}
     <div class="mt-16 border-t border-text/20 pt-12">
         <p class="text-eyebrow">Tình trạng</p>
 
@@ -92,7 +89,6 @@
         @endif
     </div>
 
-    {{-- Customer review (if any) --}}
     @if ($isCompleted && !empty($appointment['customer_review']))
         <div class="mt-12 border-t border-text/20 pt-12">
             <p class="text-eyebrow">Đánh giá của khách hàng</p>

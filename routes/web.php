@@ -41,7 +41,12 @@ Route::get('/about', fn () => view('about'))->name('about');
 Route::get('/contact', fn () => view('contact'))->name('contact');
 Route::get('/legal-services', fn () => view('legal-services'))->name('legal-services');
 Route::get('/careers', fn () => view('careers'))->name('careers');
-Route::get('/press', fn () => view('press'))->name('press');
+Route::get('/news', fn () => view('news'))->name('news');
+Route::get('/news/{slug}', function (string $slug) {
+    $article = \App\Data\News::find($slug);
+    abort_if($article === null, 404);
+    return view('news-show', ['article' => $article]);
+})->name('news.show');
 
 Route::get('/for-lawyers', fn () => view('for-lawyers'))->name('for-lawyers');
 Route::get('/lawyer-resources', fn () => view('lawyer-resources'))->name('lawyer.resources');

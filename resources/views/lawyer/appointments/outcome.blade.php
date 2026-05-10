@@ -15,7 +15,6 @@
         Sau khi bạn chọn, chúng tôi sẽ giải ngân, cập nhật lịch hẹn, và mở phần đánh giá của khách hàng hoặc xử lý trường hợp vắng mặt.
     </p>
 
-    {{-- Customer summary --}}
     <div class="mt-10 flex items-center gap-4 rounded-2xl border border-text/20 bg-bg p-5">
         <div class="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-text/10">
             <span class="text-card-h6 text-text">{{ $appointment['customer_initials'] }}</span>
@@ -34,7 +33,6 @@
         @csrf
 
         <div class="space-y-4">
-            {{-- Outcome A --}}
             <label class="block cursor-pointer">
                 <input type="radio" name="outcome" value="completed" x-model="outcome" class="sr-only">
                 <div class="rounded-2xl border bg-bg p-6 transition-colors"
@@ -55,7 +53,6 @@
                 </div>
             </label>
 
-            {{-- Outcome B --}}
             <label class="block cursor-pointer">
                 <input type="radio" name="outcome" value="no_show_customer" x-model="outcome" class="sr-only">
                 <div class="rounded-2xl border bg-bg p-6 transition-colors"

@@ -10,11 +10,12 @@
         Phản hồi trung thực giúp khách hàng khác chọn được luật sư phù hợp.
     </p>
 
-    {{-- Lawyer summary --}}
     <div class="mt-12 flex items-center gap-4 rounded-2xl border border-text/20 bg-bg p-5">
-        <img src="{{ $lawyer['portrait_url'] }}"
-             alt=""
-             class="h-16 w-16 flex-none rounded-full object-cover object-top">
+        <x-responsive-img :src="$lawyer['portrait_url']"
+                          alt=""
+                          sizes="64px"
+                          :widths="[200, 400]"
+                          class="h-16 w-16 flex-none rounded-full object-cover object-top" />
         <div class="min-w-0">
             <p class="text-card-h4">{{ $lawyer['name'] }}</p>
             <p class="text-[14px]">{{ $lawyer['primary_specialty'] }}</p>
@@ -27,7 +28,6 @@
           @submit="if (!stars) { $event.preventDefault(); }">
         @csrf
 
-        {{-- Stars --}}
         <div>
             <p class="text-[14px] font-medium">
                 Bạn đánh giá trải nghiệm của mình thế nào?
@@ -41,7 +41,7 @@
                             aria-label="{{ $i }} sao"
                             class="transition-transform duration-150 hover:scale-110 focus:outline-none">
                         <svg class="h-10 w-10 transition-colors duration-150"
-                             :class="(hover || stars) >= {{ $i }} ? 'text-gold' : 'text-text/20'"
+                             :class="(hover || stars) >= {{ $i }} ? 'text-gold-bright' : 'text-text/20'"
                              viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2l2.9 6.9L22 9.8l-5.5 4.8 1.7 7.4L12 18l-6.2 4 1.7-7.4L2 9.8l7.1-.9L12 2z"/>
                         </svg>
@@ -54,7 +54,6 @@
             @error('stars') <p class="mt-3 text-[14px] text-error">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Review text --}}
         <div>
             <label for="review_text" class="block text-[14px] font-medium">
                 Thêm nhận xét <span class="text-text/60">(không bắt buộc)</span>

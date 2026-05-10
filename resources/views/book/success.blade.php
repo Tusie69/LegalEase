@@ -26,7 +26,6 @@
             Chúng tôi đã gửi chi tiết tới email của bạn. {{ $lawyer['name'] }} đã được thông báo.
         </p>
 
-        {{-- Booking card --}}
         <div class="mt-12 card-base-lg">
             <p class="text-eyebrow">Mã đặt chỗ</p>
             <p class="mt-2 font-display text-[28px] font-medium tracking-tight">{{ $completed['booking_code'] }}</p>
@@ -34,8 +33,11 @@
             <div class="my-6 h-px bg-text/10"></div>
 
             <div class="flex items-center gap-4">
-                <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                     class="h-16 w-16 flex-none rounded-full object-cover object-top">
+                <x-responsive-img :src="$lawyer['portrait_url']"
+                                  alt=""
+                                  sizes="64px"
+                                  :widths="[200, 400]"
+                                  class="h-16 w-16 flex-none rounded-full object-cover object-top" />
                 <div class="min-w-0">
                     <p class="text-card-h4">{{ $lawyer['name'] }}</p>
                     <p class="text-[14px]">{{ $lawyer['primary_specialty'] }}</p>
@@ -63,7 +65,6 @@
             </div>
         </div>
 
-        {{-- What happens next --}}
         <div class="mt-12">
             <p class="text-eyebrow">Điều gì xảy ra tiếp theo</p>
             <ul class="mt-6 space-y-4 text-[16px] leading-relaxed">
@@ -73,7 +74,6 @@
             </ul>
         </div>
 
-        {{-- Actions --}}
         <div class="mt-12">
             <x-button variant="primary" href="{{ route('lawyers.index') }}" class="w-full">
                 Xem thêm luật sư

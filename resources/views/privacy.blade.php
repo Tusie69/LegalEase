@@ -85,9 +85,7 @@
 @endphp
 
 @section('content')
-    <x-hero-bar
-        photo="https://images.unsplash.com/photo-1615985250204-b48c0936d4fc?q=80"
-        :eyebrow="'Cập nhật lần cuối: ' . $lastUpdated">
+    <x-hero-bar :eyebrow="'Cập nhật lần cuối: ' . $lastUpdated">
         Chính sách quyền riêng tư
 
         <x-slot:subtitle>
@@ -95,7 +93,6 @@
         </x-slot:subtitle>
     </x-hero-bar>
 
-    {{-- Contents --}}
     <section class="container-narrow pt-24">
         <p class="text-eyebrow">Mục lục</p>
         <ol class="text-body-dense mt-6 grid gap-2 sm:grid-cols-2">
@@ -109,7 +106,6 @@
         </ol>
     </section>
 
-    {{-- Sections --}}
     <section class="container-narrow pt-24 pb-24">
         @foreach ($sections as $section)
             <div id="section-{{ $section['n'] }}" class="{{ $loop->first ? '' : 'mt-16' }}">

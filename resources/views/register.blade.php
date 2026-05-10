@@ -25,14 +25,15 @@
 
 @section('content')
 <section class="relative -mt-18 flex min-h-screen flex-col lg:landscape:flex-row">
-    {{-- Photo --}}
     <div class="relative h-[55vh] overflow-hidden lg:landscape:sticky lg:landscape:top-0 lg:landscape:h-screen lg:landscape:flex-1">
-        <img src="https://images.unsplash.com/photo-1698047682091-782b1e5c6536?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover">
+        <x-responsive-img src="https://images.unsplash.com/photo-1698047682091-782b1e5c6536"
+                          alt=""
+                          loading="eager"
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                          :widths="[600, 900, 1200, 1600]"
+                          class="absolute inset-0 h-full w-full object-cover" />
     </div>
 
-    {{-- Form --}}
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">
         <div class="w-full max-w-[440px]">
             <h1 class="text-flow-h1">Đăng ký</h1>

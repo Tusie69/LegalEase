@@ -26,12 +26,10 @@
         </div>
 
         <div class="mt-12 grid gap-10 md:grid-cols-[1fr_320px] md:gap-12">
-            {{-- Form --}}
             <div class="order-2 md:order-1">
                 <form method="POST" action="{{ route('book.details.store') }}" class="space-y-8" novalidate>
                     @csrf
 
-                    {{-- Meeting language --}}
                     <div>
                         <p class="text-[14px] font-medium">Ngôn ngữ cuộc họp</p>
                         <div class="mt-3 grid grid-cols-2 gap-3">
@@ -51,7 +49,6 @@
                         @error('meeting_language') <p class="mt-2 text-[14px] text-error">{{ $message }}</p> @enderror
                     </div>
 
-                    {{-- Contact preference --}}
                     <div>
                         <p class="text-[14px] font-medium">Liên hệ ưu tiên để xác nhận và nhắc nhở</p>
                         <div class="mt-3 grid grid-cols-2 gap-3">
@@ -71,7 +68,6 @@
                         @error('contact_preference') <p class="mt-2 text-[14px] text-error">{{ $message }}</p> @enderror
                     </div>
 
-                    {{-- Terms --}}
                     <label class="flex items-start gap-3 text-[14px]">
                         <input type="checkbox" name="agreed_terms" value="1"
                                @checked(old('agreed_terms'))
@@ -90,15 +86,16 @@
                 </form>
             </div>
 
-            {{-- Booking summary --}}
             <aside class="order-1 md:order-2 md:sticky md:top-[88px] md:self-start">
                 <div class="card-base">
                     <p class="text-eyebrow">Lịch hẹn của bạn</p>
 
                     <div class="mt-5 flex items-center gap-3">
-                        <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                             loading="lazy"
-                             class="h-14 w-14 flex-none rounded-full object-cover object-top">
+                        <x-responsive-img :src="$lawyer['portrait_url']"
+                                          alt=""
+                                          sizes="56px"
+                                          :widths="[200, 400]"
+                                          class="h-14 w-14 flex-none rounded-full object-cover object-top" />
                         <div class="min-w-0">
                             <p class="text-card-h5">{{ $lawyer['name'] }}</p>
                             <p class="truncate text-[14px]">{{ $lawyer['primary_specialty'] }}</p>

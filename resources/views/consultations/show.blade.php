@@ -12,11 +12,13 @@
     </h1>
     <p class="mt-4 text-[14px]">{{ $consultation['booking_code'] }}</p>
 
-    {{-- Lawyer card --}}
     <div class="mt-12 card-base">
         <div class="flex items-center gap-5">
-            <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                 class="h-20 w-20 flex-none rounded-full object-cover object-top">
+            <x-responsive-img :src="$lawyer['portrait_url']"
+                              alt=""
+                              sizes="80px"
+                              :widths="[200, 400]"
+                              class="h-20 w-20 flex-none rounded-full object-cover object-top" />
             <div class="min-w-0">
                 <p class="text-card-h3">{{ $lawyer['name'] }}</p>
                 <p class="text-[14px]">
@@ -26,7 +28,6 @@
         </div>
     </div>
 
-    {{-- When + where --}}
     <div class="mt-10 grid gap-10 md:grid-cols-2">
         <div>
             <p class="text-eyebrow">Thời gian</p>
@@ -45,7 +46,6 @@
     </div>
 
     @if ($consultation['status'] === 'cancelled')
-        {{-- Cancelled --}}
         <div class="mt-16 border-t border-text/20 pt-12">
             <p class="text-eyebrow">Tình trạng</p>
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-4 py-1.5">
@@ -62,7 +62,6 @@
             </p>
         </div>
 
-        {{-- Book again --}}
         <div class="mt-12 border-t border-text/20 pt-12">
             <a href="{{ route('lawyers.show', $consultation['lawyer_slug']) }}"
                class="inline-flex items-center gap-2 text-[16px] font-medium text-text transition-colors hover:text-text/70">
@@ -71,7 +70,6 @@
             </a>
         </div>
     @elseif ($consultation['status'] === 'upcoming')
-        {{-- Status (upcoming) --}}
         <div class="mt-16 border-t border-text/20 pt-12">
             <p class="text-eyebrow">Tình trạng</p>
             <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-4 py-1.5">
@@ -83,7 +81,6 @@
             </p>
         </div>
 
-        {{-- Manage --}}
         <div class="mt-12 border-t border-text/20 pt-12">
             <p class="text-eyebrow">Quản lý</p>
             <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -98,7 +95,6 @@
             </div>
         </div>
     @else
-        {{-- Review (past) --}}
         <div class="mt-16 border-t border-text/20 pt-12">
             @if ($consultation['rated'])
                 <p class="text-eyebrow">Đánh giá của bạn</p>
@@ -129,7 +125,6 @@
             @endif
         </div>
 
-        {{-- Book again --}}
         <div class="mt-16 border-t border-text/20 pt-12">
             <a href="{{ route('lawyers.show', $consultation['lawyer_slug']) }}"
                class="inline-flex items-center gap-2 text-[16px] font-medium text-text transition-colors hover:text-text/70">

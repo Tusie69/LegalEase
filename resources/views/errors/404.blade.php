@@ -1,7 +1,6 @@
 @extends('errors._layout', [
     'heading' => "Không tìm thấy trang này",
     'body'    => 'Liên kết có thể bị hỏng hoặc trang có thể đã được di chuyển.',
-    'photo'   => 'https://images.unsplash.com/photo-1433574466251-fe1be0d9b3d2?q=80',
 ])
 
 @section('actions')

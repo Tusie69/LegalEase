@@ -26,11 +26,13 @@
         @endif
     </p>
 
-    {{-- Lawyer + when summary --}}
     <div class="mt-10 card-base">
         <div class="flex items-center gap-4">
-            <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                 class="h-14 w-14 flex-none rounded-full object-cover object-top">
+            <x-responsive-img :src="$lawyer['portrait_url']"
+                              alt=""
+                              sizes="56px"
+                              :widths="[200, 400]"
+                              class="h-14 w-14 flex-none rounded-full object-cover object-top" />
             <div class="min-w-0">
                 <p class="text-card-h5">{{ $lawyer['name'] }}</p>
                 <p class="text-[14px]">{{ $lawyer['primary_specialty'] }}</p>

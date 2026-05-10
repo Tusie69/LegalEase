@@ -58,7 +58,6 @@
         </div>
     @endif
 
-    {{-- Header --}}
     <p class="text-eyebrow">{{ $todayLabel }}</p>
     <h1 class="text-page-h1 mt-3">
         Xin chào, {{ $firstName }}.
@@ -112,7 +111,6 @@
         </div>
     @endif
 
-    {{-- Awaiting outcome --}}
     @if ($awaitingOutcome->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Đang chờ kết quả</h2>
@@ -125,7 +123,6 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block rounded-2xl border border-gold/40 bg-bg p-6 transition-colors hover:border-gold">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
-                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
                                     <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
@@ -136,7 +133,6 @@
                                 </div>
                             </div>
 
-                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
@@ -145,7 +141,6 @@
                                 <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
                             </div>
 
-                            {{-- Action --}}
                             <p class="text-[14px] font-medium text-gold md:text-right">
                                 Báo cáo kết quả →
                             </p>
@@ -156,7 +151,6 @@
         </div>
     @endif
 
-    {{-- Upcoming --}}
     @if ($upcomingRest->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Lịch sắp tới</h2>
@@ -166,7 +160,6 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block card-base transition-colors hover:border-accent">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
-                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
                                     <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
@@ -177,8 +170,6 @@
                                 </div>
                             </div>
 
-                            {{-- When --}}
-                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
@@ -187,7 +178,6 @@
                                 <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
                             </div>
 
-                            {{-- Status --}}
                             <div class="md:text-right">
                                 <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                                     <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
@@ -201,7 +191,6 @@
         </div>
     @endif
 
-    {{-- Past --}}
     @if ($reported->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Cuộc hẹn trước đây</h2>
@@ -211,7 +200,6 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block card-base transition-colors hover:border-accent">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
-                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
                                     <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
@@ -222,7 +210,6 @@
                                 </div>
                             </div>
 
-                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
@@ -231,7 +218,6 @@
                                 <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
                             </div>
 
-                            {{-- Status --}}
                             <div class="md:text-right">
                                 @if ($appt['status'] === 'COMPLETED')
                                     <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">

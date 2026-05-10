@@ -8,14 +8,14 @@ class PastConsultations
     {
         return [
             [
-                'lawyer_slug'  => 'nguyen-minh-anh',
+                'lawyer_slug'  => 'sarah-mitchell',
                 'date'         => '2026-04-25',
                 'time'         => '10:00',
                 'booking_code' => 'BK-20260425-A8C3F2',
                 'rated'        => false,
             ],
             [
-                'lawyer_slug'  => 'tran-van-hung',
+                'lawyer_slug'  => 'james-anderson',
                 'date'         => '2026-04-11',
                 'time'         => '14:00',
                 'booking_code' => 'BK-20260411-K5L9D7',
@@ -25,7 +25,7 @@ class PastConsultations
                 'reviewed_at'  => '2026-04-13',
             ],
             [
-                'lawyer_slug'  => 'le-thi-huong',
+                'lawyer_slug'  => 'emily-carter',
                 'date'         => '2026-03-28',
                 'time'         => '15:00',
                 'booking_code' => 'BK-20260328-M2N6P1',

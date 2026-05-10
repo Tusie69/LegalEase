@@ -28,8 +28,11 @@
             <div>
                 <p class="text-eyebrow">Luật sư</p>
                 <div class="mt-4 flex items-center gap-4">
-                    <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                         class="h-16 w-16 flex-none rounded-full object-cover object-top">
+                    <x-responsive-img :src="$lawyer['portrait_url']"
+                                      alt=""
+                                      sizes="64px"
+                                      :widths="[200, 400]"
+                                      class="h-16 w-16 flex-none rounded-full object-cover object-top" />
                     <div class="min-w-0">
                         <p class="text-card-h3">{{ $lawyer['name'] }}</p>
                         <p class="text-[14px]">

@@ -25,14 +25,15 @@
 
 @section('content')
 <section class="relative -mt-18 flex min-h-screen flex-col lg:landscape:flex-row">
-    {{-- Photo --}}
     <div class="relative h-[55vh] overflow-hidden lg:landscape:sticky lg:landscape:top-0 lg:landscape:h-screen lg:landscape:flex-1">
-        <img src="https://images.unsplash.com/photo-1547179660-453ec5367aa3?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover">
+        <x-responsive-img src="https://images.unsplash.com/photo-1547179660-453ec5367aa3"
+                          alt=""
+                          loading="eager"
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                          :widths="[600, 900, 1200, 1600]"
+                          class="absolute inset-0 h-full w-full object-cover" />
     </div>
 
-    {{-- Form --}}
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">
         <div class="w-full max-w-[440px]">
             <p class="text-eyebrow">Dành cho luật sư</p>
@@ -109,22 +110,32 @@
                 </div>
 
                 <div>
-                    <label for="bar_association" class="block text-[14px] font-medium">
+                    <label for="bar_association_choice" class="block text-[14px] font-medium">
                         Đoàn luật sư <span x-show="!isBarAssocValid && !touched.barAssoc" class="text-gold">*</span>
                         <svg x-show="barAssocError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                         <svg x-show="isBarAssocValid" x-cloak class="inline-block h-3 w-3 align-middle text-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </label>
                     <div class="relative mt-2">
-                        <select id="bar_association" name="bar_association" x-model="barAssoc" @blur="touched.barAssoc = true" required
+                        <select id="bar_association_choice" x-model="barAssocChoice" @blur="touched.barAssoc = true" required
                                 class="block w-full appearance-none rounded-xl border border-text/20 bg-bg px-4 py-3 pr-11 text-[16px] text-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                             <option value="">Chọn</option>
                             <option value="Đoàn Luật sư Hà Nội">Đoàn Luật sư Hà Nội</option>
                             <option value="Đoàn Luật sư TP.HCM">Đoàn Luật sư TP.HCM</option>
+                            <option value="__other__">Khác</option>
                         </select>
                         <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center">
                             <x-icon name="chevron-down" :size="16" />
                         </span>
                     </div>
+                    <input x-show="barAssocChoice === '__other__'"
+                           x-cloak
+                           x-model="barAssocOther"
+                           @blur="touched.barAssoc = true"
+                           type="text"
+                           placeholder="Nhập tên đoàn luật sư của bạn"
+                           class="mt-3 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                    <input type="hidden" name="bar_association"
+                           :value="barAssocChoice === '__other__' ? barAssocOther : barAssocChoice">
                     @unless ($errors->has('bar_association'))
                         <p x-show="barAssocError" x-cloak x-text="barAssocError" class="mt-2 text-[14px] text-error"></p>
                     @endunless
@@ -221,12 +232,16 @@
 
 <script>
     function lawyerSignupValidation(initial) {
+        const knownBars = ['Đoàn Luật sư Hà Nội', 'Đoàn Luật sư TP.HCM'];
+        const initialBar = initial.barAssoc || '';
+        const isKnown = knownBars.includes(initialBar);
         return {
             firstName: initial.firstName || '',
             lastName: initial.lastName || '',
             email: initial.email || '',
             phone: initial.phone || '',
-            barAssoc: initial.barAssoc || '',
+            barAssocChoice: initialBar === '' ? '' : (isKnown ? initialBar : '__other__'),
+            barAssocOther: isKnown ? '' : initialBar,
             barCardNumber: initial.barCardNumber || '',
             password: '',
             passwordConfirm: '',
@@ -261,6 +276,9 @@
             },
             get isPhoneValid() {
                 return /^[\d\+\s\-\(\)]{9,15}$/.test(this.phone);
+            },
+            get barAssoc() {
+                return this.barAssocChoice === '__other__' ? this.barAssocOther : this.barAssocChoice;
             },
             get isBarAssocValid() {
                 return this.barAssoc.trim().length > 0;
@@ -305,6 +323,7 @@
             },
             get barAssocError() {
                 if (!this.touched.barAssoc || this.isBarAssocValid) return '';
+                if (this.barAssocChoice === '__other__') return 'Vui lòng nhập tên đoàn luật sư của bạn.';
                 return 'Vui lòng chọn đoàn luật sư của bạn.';
             },
             get barCardError() {

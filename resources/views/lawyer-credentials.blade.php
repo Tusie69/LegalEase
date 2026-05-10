@@ -24,11 +24,13 @@
 @endphp
 
 @section('content')
-{{-- Visual strip --}}
 <div class="relative -mt-18 h-[280px] overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80"
-         alt=""
-         class="absolute inset-0 h-full w-full object-cover">
+    <x-responsive-img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85"
+                      alt=""
+                      loading="eager"
+                      sizes="100vw"
+                      :widths="[600, 900, 1200, 1600]"
+                      class="absolute inset-0 h-full w-full object-cover" />
 </div>
 
 <section class="mx-auto max-w-[760px] px-8 pt-24 pb-24">

@@ -2,7 +2,7 @@
     $links = [
         ['label' => 'Trang chủ', 'url' => '/'],
         ['label' => 'Luật sư', 'url' => '/lawyers'],
-        ['label' => 'Tin tức', 'url' => '/press'],
+        ['label' => 'Tin tức', 'url' => '/news'],
         ['label' => 'Dịch vụ pháp lý', 'url' => '/legal-services'],
         ['label' => 'Liên hệ', 'url' => '/contact'],
     ];
@@ -10,14 +10,14 @@
 
 <nav x-data="{ menuOpen: false }"
      @keydown.escape.window="menuOpen = false">
-    <div class="fixed inset-x-0 top-0 z-50 h-18 border-b border-text/15 bg-bg/92 backdrop-blur-lg">
+    <div class="fixed inset-x-0 top-0 z-50 h-18 border-b border-text/15 bg-bg">
         <div class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-8">
             <a href="/" class="inline-flex items-center gap-3 font-display text-xl font-medium tracking-tight text-text">
-                <img src="{{ asset('images/logo2.png') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
+                <img src="{{ asset('images/logo.svg') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
                 <span>LegalEase</span>
             </a>
 
-            <div class="hidden items-center gap-8 md:ml-auto md:mr-6 md:flex">
+            <div class="hidden items-center gap-8 lg:ml-auto lg:mr-6 lg:flex">
                 @foreach ($links as $link)
                     @php $active = request()->path() === ltrim($link['url'], '/'); @endphp
                     <a href="{{ $link['url'] }}"
@@ -30,8 +30,7 @@
                 @endforeach
             </div>
 
-            {{-- Desktop auth area --}}
-            <div class="hidden items-center gap-3 md:flex">
+            <div class="hidden items-center gap-3 lg:flex">
                 @auth
                     @php $firstName = explode(' ', trim(auth()->user()->name))[0]; @endphp
                     <div x-data="{ dropdownOpen: false }"
@@ -63,25 +62,22 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}"
-                       class="inline-flex items-center rounded-full border border-accent bg-accent px-6 py-3 text-[14px] font-semibold text-bg transition-colors duration-200 hover:border-text hover:bg-text">
+                    <x-button variant="primary" :href="route('login')">
                         Đăng nhập
-                    </a>
+                    </x-button>
                 @endauth
             </div>
 
-            {{-- Mobile menu toggle (below md) --}}
             <button type="button"
                     @click="menuOpen = true"
                     :aria-expanded="menuOpen"
                     aria-label="Mở điều hướng"
-                    class="inline-flex h-10 w-10 items-center justify-center text-text transition-colors hover:text-accent md:hidden">
+                    class="inline-flex h-10 w-10 items-center justify-center text-text transition-colors hover:text-accent lg:hidden">
                 <x-icon name="menu" :size="24" />
             </button>
         </div>
     </div>
 
-    {{-- Mobile full-screen menu (below md) --}}
     <div x-show="menuOpen"
          x-cloak
          x-transition:enter="transition-opacity duration-200 ease-out"
@@ -90,11 +86,11 @@
          x-transition:leave="transition-opacity duration-150 ease-in"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
-         class="fixed inset-0 z-[60] flex flex-col bg-bg md:hidden">
+         class="fixed inset-0 z-[60] flex flex-col bg-bg lg:hidden">
 
         <div class="flex h-18 flex-none items-center justify-between border-b border-text/15 px-8">
             <a href="/" class="inline-flex items-center gap-3 font-display text-xl font-medium tracking-tight text-text" @click="menuOpen = false">
-                <img src="{{ asset('images/logo2.png') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
+                <img src="{{ asset('images/logo.svg') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
                 <span>LegalEase</span>
             </a>
             <button type="button"
@@ -116,7 +112,6 @@
             @endforeach
         </div>
 
-        {{-- Auth area pinned to bottom of overlay --}}
         <div class="flex-none border-t border-text/15 px-8 py-8">
             @auth
                 <div class="space-y-4">
@@ -134,11 +129,9 @@
                     </form>
                 </div>
             @else
-                <a href="{{ route('login') }}"
-                   @click="menuOpen = false"
-                   class="inline-flex w-full items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-[14px] font-semibold text-bg transition-colors duration-200 hover:border-text hover:bg-text">
+                <x-button variant="primary" :href="route('login')" @click="menuOpen = false" class="w-full">
                     Đăng nhập
-                </a>
+                </x-button>
             @endauth
         </div>
     </div>

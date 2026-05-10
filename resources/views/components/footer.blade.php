@@ -6,7 +6,7 @@
                 ['Công ty', [
                     ['Về chúng tôi', '/about'],
                     ['Tuyển dụng', '/careers'],
-                    ['Tin tức', route('press')],
+                    ['Tin tức', route('news')],
                 ]],
                 ['Dành cho luật sư', [
                     ['Tham gia nền tảng', route('for-lawyers')],

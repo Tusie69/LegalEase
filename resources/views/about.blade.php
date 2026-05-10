@@ -11,14 +11,14 @@
         </x-slot:subtitle>
     </x-hero-bar>
 
-    {{-- Problem block --}}
     <section class="container-page pt-24 md:pt-32">
         <div class="grid items-center gap-12 md:grid-cols-2">
             <div class="overflow-hidden rounded-2xl">
-                <img src="https://images.unsplash.com/photo-1726649339367-c2577a28881b?q=80"
-                     alt=""
-                     loading="lazy"
-                     class="aspect-square w-full object-cover">
+                <x-responsive-img src="https://images.pexels.com/photos/33472306/pexels-photo-33472306.jpeg"
+                                  alt=""
+                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                  :widths="[400, 600, 900, 1200]"
+                                  class="aspect-square w-full object-cover" />
             </div>
             <div>
                 <p class="text-eyebrow">Vấn đề</p>
@@ -32,14 +32,14 @@
         </div>
     </section>
 
-    {{-- Solution block --}}
     <section class="container-page pt-24 md:pt-32">
         <div class="grid items-center gap-12 md:grid-cols-2">
             <div class="md:order-2 overflow-hidden rounded-2xl">
-                <img src="https://images.unsplash.com/photo-1758518726775-70e538b0d46e?q=80"
-                     alt=""
-                     loading="lazy"
-                     class="aspect-square w-full object-cover">
+                <x-responsive-img src="https://images.unsplash.com/photo-1758518726775-70e538b0d46e"
+                                  alt=""
+                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                  :widths="[400, 600, 900, 1200]"
+                                  class="aspect-square w-full object-cover" />
             </div>
             <div class="md:order-1">
                 <p class="text-eyebrow">Giải pháp chúng tôi xây dựng</p>
@@ -53,14 +53,14 @@
         </div>
     </section>
 
-    {{-- Stat moment --}}
     <section class="container-page pt-24 md:pt-32">
         <div class="grid items-center gap-12 md:grid-cols-2">
             <div class="overflow-hidden rounded-2xl">
-                <img src="https://images.unsplash.com/photo-1758518731722-320023fb8e66?q=80"
-                     alt=""
-                     loading="lazy"
-                     class="aspect-square w-full object-cover">
+                <x-responsive-img src="https://images.pexels.com/photos/7693114/pexels-photo-7693114.jpeg"
+                                  alt=""
+                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                  :widths="[400, 600, 900, 1200]"
+                                  class="aspect-square w-full object-cover" />
             </div>
             <div>
                 <p class="font-display text-[56px] font-medium leading-none tracking-tighter md:text-[72px]">
@@ -76,11 +76,10 @@
         </div>
     </section>
 
-    {{-- Success stories --}}
     @php
         $successStories = [
             [
-                'image' => 'https://images.unsplash.com/photo-1714974528692-31aff2c54a62?q=80',
+                'image' => 'https://images.pexels.com/photos/4623175/pexels-photo-4623175.jpeg',
                 'lead'  => 'Bảo vệ sáng tạo',
                 'title' => 'Thắng vụ tranh chấp sở hữu trí tuệ',
                 'desc'  => 'Đại diện một startup công nghệ trong vụ tranh chấp sở hữu trí tuệ phức tạp, giữ vững quyền sử dụng công nghệ cốt lõi và mở đường cho vòng gọi vốn tiếp theo.',
@@ -88,7 +87,7 @@
                 'href'  => '#',
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1608128305108-93fa27018a68?q=80',
+                'image' => 'https://images.pexels.com/photos/8124194/pexels-photo-8124194.jpeg',
                 'lead'  => 'Bị buộc tội oan',
                 'title' => 'Hủy bỏ cáo buộc hình sự',
                 'desc'  => 'Đảm bảo việc bãi bỏ cáo buộc hình sự do thiếu chứng cứ, bảo vệ thân chủ khỏi bản án sai và giữ gìn quyền lợi hợp pháp.',
@@ -96,7 +95,7 @@
                 'href'  => '#',
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80',
+                'image' => 'https://images.pexels.com/photos/8469986/pexels-photo-8469986.jpeg',
                 'lead'  => 'Lương được hoàn',
                 'title' => 'Mười hai công nhân được trả nợ',
                 'desc'  => 'Sau sáu tuần thương lượng với chủ doanh nghiệp, toàn bộ ba tháng tiền lương tồn đọng được hoàn lại từng người, không cần ra tòa.',
@@ -104,7 +103,7 @@
                 'href'  => '#',
             ],
             [
-                'image' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200',
+                'image' => 'https://images.pexels.com/photos/7642217/pexels-photo-7642217.jpeg',
                 'lead'  => 'Gia đình giữ nguyên',
                 'title' => 'Quyền nuôi con bằng hòa giải',
                 'desc'  => 'Một thỏa thuận hai bên cùng ký, không cần đến tòa, giữ cuộc sống của hai con nguyên vẹn nhất có thể trong giai đoạn chuyển tiếp.',
@@ -121,7 +120,6 @@
                  prev() { if (this.idx > 0) this.idx--; },
                  next() { if (this.idx < this.count - 1) this.idx++; },
              }">
-        {{-- Header + nav --}}
         <div class="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-8">
             <div class="max-w-[640px]">
                 <h2 class="text-section-h2">Câu chuyện thành công</h2>
@@ -155,21 +153,20 @@
             </div>
         </div>
 
-        {{-- Carousel viewport --}}
         <div class="mt-12 overflow-hidden">
             <div class="flex transition-transform duration-500 ease-out"
                  :style="`transform: translateX(-${idx * 100}%)`">
                 @foreach ($successStories as $story)
                     <article class="w-full flex-none">
                         <a href="{{ $story['href'] }}" class="group grid gap-6 md:grid-cols-2 md:gap-12 lg:gap-16">
-                            {{-- Image --}}
                             <div class="aspect-square overflow-hidden rounded-2xl">
-                                <img src="{{ $story['image'] }}" alt=""
-                                     loading="lazy"
-                                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]">
+                                <x-responsive-img :src="$story['image']"
+                                                  alt=""
+                                                  sizes="(min-width: 768px) 50vw, 100vw"
+                                                  :widths="[400, 600, 900, 1200]"
+                                                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                             </div>
 
-                            {{-- Text --}}
                             <div class="flex flex-col md:justify-center">
                                 <h3 class="text-feature-h3 text-text">
                                     <span class="italic">{{ $story['lead'] }}:</span>
@@ -196,37 +193,24 @@
 
     </section>
 
-    {{-- Testimonial --}}
-    <section class="container-page pt-24 md:pt-32">
-        <div class="border-y border-text/20 py-20 md:py-24">
-            <blockquote class="text-pull-quote mx-auto max-w-[900px] text-center">
-                <span>“</span>Cảm giác như có một người bạn tình cờ là luật sư đồng hành cùng mình.<span>”</span>
-            </blockquote>
-            <p class="text-eyebrow mt-8 text-center">
-                Một khách hàng, vụ việc ly hôn tại Hà Nội
-            </p>
-        </div>
-    </section>
-
-    {{-- Team --}}
     @php
         $team = [
             [
-                'name' => 'Đỗ Thị Lan',
+                'name' => 'Emma Brooks',
                 'role' => 'Đồng sáng lập, CEO',
-                'bio'  => '8 năm kinh nghiệm tranh tụng tại một hãng luật lớn ở Hà Nội. Rời công việc cũ để xây dựng trải nghiệm pháp lý đơn giản hơn cho người dùng.',
+                'bio'  => '8 năm kinh nghiệm tranh tụng tại một hãng luật quốc tế ở London. Rời công việc cũ để xây dựng trải nghiệm pháp lý đơn giản hơn cho người dùng tại Việt Nam.',
                 'portrait' => 'https://images.unsplash.com/photo-1714974528915-4c74c4c0bb27?q=80',
             ],
             [
-                'name' => 'Trần Quốc Việt',
+                'name' => 'Michael Hartley',
                 'role' => 'Đồng sáng lập, Xác minh',
-                'bio'  => 'Từng có 6 năm làm việc trong mảng cấp phép và chuẩn mực hành nghề luật sư, phụ trách quy trình xác minh hồ sơ tại nền tảng.',
-                'portrait' => 'https://images.unsplash.com/photo-1591702694482-ecc51ff9642e?q=80',
+                'bio'  => 'Từng có 6 năm làm việc trong mảng tuân thủ và chuẩn mực hành nghề luật sư tại các hãng luật ở New York, phụ trách quy trình xác minh hồ sơ tại nền tảng.',
+                'portrait' => 'https://images.unsplash.com/photo-1720805752653-10ddccea4c94?q=80',
             ],
             [
-                'name' => 'Nguyễn Hà My',
+                'name' => 'Sophia Lin',
                 'role' => 'Đồng sáng lập, Sản phẩm',
-                'bio'  => 'Xây dựng nhiều sản phẩm số cho người dùng đại chúng, tập trung vào trải nghiệm đặt lịch, thanh toán và minh bạch thông tin.',
+                'bio'  => 'Xây dựng nhiều sản phẩm số cho người dùng đại chúng tại Singapore và Hà Nội, tập trung vào trải nghiệm đặt lịch, thanh toán và minh bạch thông tin.',
                 'portrait' => 'https://images.unsplash.com/photo-1733348137479-2e726d326d9b?q=80',
             ],
         ];
@@ -242,10 +226,11 @@
             @foreach ($team as $member)
                 <div>
                     <div class="overflow-hidden rounded-2xl bg-bg">
-                        <img src="{{ $member['portrait'] }}"
-                             alt="{{ $member['name'] }}"
-                             loading="lazy"
-                             class="aspect-[4/5] w-full object-cover object-top">
+                        <x-responsive-img :src="$member['portrait']"
+                                          :alt="$member['name']"
+                                          sizes="(min-width: 768px) 33vw, 100vw"
+                                          :widths="[400, 600, 800]"
+                                          class="aspect-[4/5] w-full object-cover object-top" />
                     </div>
                     <h3 class="text-card-h3 mt-5">{{ $member['name'] }}</h3>
                     <p class="text-eyebrow mt-1">{{ $member['role'] }}</p>
@@ -255,7 +240,6 @@
         </div>
     </section>
 
-    {{-- Values --}}
     @php
         $values = [
             ['title' => 'Giá cả minh bạch', 'desc' => 'Giá theo giờ được hiển thị rõ trước khi bạn đặt lịch.'],
@@ -271,23 +255,24 @@
             Bốn cam kết cốt lõi.
         </h2>
 
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
             @foreach ($values as $v)
-                <div class="card-base-lg">
+                <div>
                     <h3 class="text-card-h3 leading-snug">{{ $v['title'] }}</h3>
-                    <p class="text-body mt-3">{{ $v['desc'] }}</p>
+                    <p class="text-body mt-3 max-w-[440px]">{{ $v['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
-    {{-- CTA --}}
-    <section class="container-page closing-cta">
-        <h2 class="text-cta-h2">
-            Sẵn sàng tìm luật sư phù hợp với bạn?
-        </h2>
-        <div class="mt-10 flex justify-center">
-            <x-button variant="primary" href="/lawyers">Tìm kiếm luật sư →</x-button>
+    <section class="bg-gold/5 mt-24 md:mt-32">
+        <div class="container-page closing-cta">
+            <h2 class="text-cta-h2">
+                Sẵn sàng tìm luật sư phù hợp với bạn?
+            </h2>
+            <div class="mt-10 flex justify-center">
+                <x-button variant="primary" href="/lawyers">Tìm kiếm luật sư →</x-button>
+            </div>
         </div>
     </section>
 @endsection

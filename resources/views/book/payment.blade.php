@@ -27,11 +27,13 @@
             Chúng tôi thu 20% phí tư vấn để giữ chỗ. 80% còn lại được thanh toán trực tiếp cho luật sư tại buổi tư vấn.
         </p>
 
-        {{-- Booking summary --}}
         <div class="mt-12 card-base-lg">
             <div class="flex items-center gap-4">
-                <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                     class="h-14 w-14 flex-none rounded-full object-cover object-top">
+                <x-responsive-img :src="$lawyer['portrait_url']"
+                                  alt=""
+                                  sizes="56px"
+                                  :widths="[200, 400]"
+                                  class="h-14 w-14 flex-none rounded-full object-cover object-top" />
                 <div class="min-w-0">
                     <p class="text-card-h5">{{ $lawyer['name'] }}</p>
                     <p class="text-[14px]">
@@ -65,7 +67,6 @@
             </div>
         </div>
 
-        {{-- Payment form --}}
         <form method="POST" action="{{ route('book.payment.store') }}" class="mt-10" novalidate
               x-data="{ method: 'card' }">
             @csrf
@@ -73,7 +74,6 @@
 
             <p class="text-eyebrow">Thanh toán bằng</p>
 
-            {{-- Method tabs --}}
             <div class="mt-3 grid grid-cols-3 gap-2">
                 <button type="button" @click="method = 'card'"
                         :class="method === 'card' ? 'border-accent bg-accent/5' : 'border-text/10 hover:border-text/30'"
@@ -92,7 +92,6 @@
                 </button>
             </div>
 
-            {{-- Card form --}}
             <div x-show="method === 'card'" class="mt-6 space-y-4">
                 <div>
                     <label for="card_number" class="block text-[14px] font-medium">Số thẻ</label>
@@ -122,7 +121,6 @@
                 </div>
             </div>
 
-            {{-- VietQR --}}
             <div x-show="method === 'qr'" x-cloak class="mt-6 card-base text-center">
                 <div class="mx-auto flex h-48 w-48 items-center justify-center rounded-xl bg-text">
                     <svg class="h-32 w-32 text-bg" viewBox="0 0 100 100" fill="currentColor">
@@ -151,7 +149,6 @@
                 <p class="mt-2 text-[12px]">Lịch hẹn sẽ tự động xác nhận sau khi chúng tôi nhận được thanh toán.</p>
             </div>
 
-            {{-- Bank transfer --}}
             <div x-show="method === 'transfer'" x-cloak class="mt-6 card-base">
                 <p class="text-[14px]">Chuyển khoản đặt cọc tới:</p>
                 <dl class="mt-4 space-y-3 text-[14px]">

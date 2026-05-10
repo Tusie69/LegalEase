@@ -1,7 +1,6 @@
 @extends('layouts.app', ['title' => 'Liên hệ · LegalEase'])
 
 @section('content')
-    {{-- Header --}}
     <section class="container-page pt-24 pb-24">
         <div class="max-w-[720px]">
             <p class="text-eyebrow">Liên hệ</p>
@@ -17,7 +16,6 @@
 
         <div class="mt-16 grid gap-16 lg:grid-cols-[5fr_7fr]">
             <div class="space-y-10">
-                {{-- Email --}}
                 <div>
                     <p class="text-eyebrow">Email</p>
                     <ul class="text-body mt-3 space-y-1 text-text">
@@ -26,7 +24,6 @@
                     </ul>
                 </div>
 
-                {{-- Phone --}}
                 <div>
                     <p class="text-eyebrow">Điện thoại</p>
                     <ul class="text-body mt-3 space-y-1 text-text">
@@ -35,7 +32,6 @@
                     </ul>
                 </div>
 
-                {{-- Office --}}
                 <div>
                     <p class="text-eyebrow">Văn phòng</p>
                     <div class="mt-3 overflow-hidden rounded-xl border border-text/20">
@@ -60,7 +56,6 @@
                 </div>
             </div>
 
-            {{-- Form --}}
             <div>
                 <form x-data='{
                         name: "",
@@ -138,7 +133,6 @@
             </div>
         </div>
 
-        {{-- Reassurance --}}
         <p class="mt-16 text-center text-[14px]">
             Mọi tin nhắn đều được đọc bởi người thật. Chúng tôi cố gắng phản hồi trong vòng một ngày làm việc.
         </p>
