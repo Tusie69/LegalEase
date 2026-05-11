@@ -42,8 +42,7 @@
         user-drag: none;
     }
 
-    /* Hide the browser-native clear button on search inputs so our custom
-       Alpine-driven ✕ button is the only one visible. */
+    /* hide native search clear - custom Alpine ✕ button replaces it */
     input[type="search"]::-webkit-search-cancel-button,
     input[type="search"]::-webkit-search-decoration {
         -webkit-appearance: none;
@@ -52,8 +51,7 @@
 }
 
 @layer utilities {
-    /* Hide horizontal scrollbar while keeping scroll behavior. Used on
-       chip rows that horizontally scroll on small screens. */
+    /* horizontal chip rows - hide scrollbar but keep scroll */
     .scrollbar-none {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -64,7 +62,7 @@
 }
 
 @layer components {
-
+    /* ─── Headings ─── */
     .text-hero {
         @apply font-display text-[40px] md:text-[48px] lg:text-[60px] font-medium leading-snug tracking-tighter;
     }
@@ -117,7 +115,7 @@
         @apply font-display text-[16px] font-medium leading-snug tracking-tight;
     }
 
-
+    /* ─── Body text ─── */
     .text-body-intro {
         @apply text-[20px] leading-relaxed;
     }
@@ -138,7 +136,7 @@
         @apply text-[14px] leading-relaxed;
     }
 
-
+    /* ─── Labels & captions ─── */
     .text-eyebrow {
         @apply text-[12px] font-medium uppercase tracking-widest;
     }
@@ -155,12 +153,25 @@
         @apply text-[14px];
     }
 
+    /* ─── Form chrome ─── */
+    .text-form-label {
+        @apply text-[14px] font-medium;
+    }
 
+    .text-form-hint {
+        @apply text-[12px];
+    }
+
+    /* ─── Display numerics ─── */
     .display-stat {
         @apply font-display text-[36px] font-medium leading-none tracking-tight;
     }
 
+    .display-stat-feature {
+        @apply font-display text-[36px] md:text-[56px] lg:text-[72px] font-medium leading-none tracking-tighter;
+    }
 
+    /* ─── Status / inline action ─── */
     .text-status-pill {
         @apply text-[12px] font-medium;
     }
@@ -169,7 +180,7 @@
         @apply text-[14px] font-medium;
     }
 
-
+    /* ─── Spacing & containers ─── */
     .container-page {
         @apply mx-auto max-w-[1280px] px-8;
     }
@@ -194,7 +205,7 @@
         @apply inline-flex items-center rounded-full border border-text/30 px-3 py-1 text-[12px] font-medium;
     }
 
-
+    /* ─── Layout patterns ─── */
     .meta-row {
         @apply flex flex-col items-start gap-3 sm:flex-row sm:items-center;
     }

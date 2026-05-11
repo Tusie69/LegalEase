@@ -93,12 +93,13 @@
         </x-slot:subtitle>
     </x-hero-bar>
 
+    {{-- Contents --}}
     <section class="container-narrow pt-24">
         <p class="text-eyebrow">Mục lục</p>
         <ol class="text-body-dense mt-6 grid gap-2 sm:grid-cols-2">
             @foreach ($sections as $section)
                 <li>
-                    <a href="#section-{{ $section['n'] }}" class="text-text transition-colors hover:text-accent">
+                    <a href="#section-{{ $section['n'] }}" class="text-text transition-colors hover:text-text/60">
                         {{ $section['n'] }}. {{ $section['title'] }}
                     </a>
                 </li>
@@ -106,6 +107,7 @@
         </ol>
     </section>
 
+    {{-- Sections --}}
     <section class="container-narrow pt-24 pb-24">
         @foreach ($sections as $section)
             <div id="section-{{ $section['n'] }}" class="{{ $loop->first ? '' : 'mt-16' }}">

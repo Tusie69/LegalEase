@@ -30,7 +30,7 @@
                    x-model="search"
                    placeholder="Tìm kiếm câu hỏi…"
                    aria-label="Tìm kiếm câu hỏi"
-                   class="block w-full rounded-xl border border-text/20 bg-bg py-3 pl-11 pr-4 text-[16px] text-text placeholder:text-text/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                   class="block w-full rounded-xl border border-text/20 bg-bg py-3 pl-11 pr-4 text-body text-text placeholder:text-text/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
             <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-text/50">
                 <x-icon name="search" :size="18" />
             </span>
@@ -38,7 +38,7 @@
                     x-show="search.length > 0"
                     @click="search = ''"
                     aria-label="Xóa tìm kiếm"
-                    class="absolute inset-y-0 right-3 flex items-center text-text/60 transition-colors hover:text-accent">
+                    class="absolute inset-y-0 right-3 flex items-center text-text/60 transition-colors hover:text-text">
                 <x-icon name="x" :size="16" />
             </button>
         </div>
@@ -47,14 +47,14 @@
             <button type="button"
                     @click="selectedCategory = null"
                     :class="selectedCategory === null ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                    class="rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                    class="rounded-full border px-4 py-2 text-form-label transition-colors">
                 Tất cả
             </button>
             @foreach ($categories as $cat)
                 <button type="button"
                         @click="selectedCategory = '{{ $cat }}'"
                         :class="selectedCategory === '{{ $cat }}' ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                        class="rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                        class="rounded-full border px-4 py-2 text-form-label transition-colors">
                     {{ $chipLabels[$cat] ?? $cat }}
                 </button>
             @endforeach
@@ -78,10 +78,10 @@
                      class="border-b border-text/20">
                     <button type="button" @click="open = !open"
                             :aria-expanded="open"
-                            class="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-colors hover:text-accent">
+                            class="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-colors hover:text-text/60">
                         <span class="min-w-0 flex-1">
                             <span class="text-eyebrow text-text/60">{{ $item['category'] }}</span>
-                            <span class="mt-2 block font-display text-[18px] font-medium leading-snug tracking-tight md:text-[20px]">{{ $item['q'] }}</span>
+                            <span class="mt-2 block text-card-h5 md:text-card-h4">{{ $item['q'] }}</span>
                         </span>
                         <svg x-show="!open" class="h-5 w-5 flex-none mt-1"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -104,28 +104,29 @@
             <button type="button"
                     @click="if (page > 1) page--"
                     :disabled="page === 1"
-                    :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-accent'"
-                    class="px-3 py-2 text-[14px] transition-colors">
+                    :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
                 ← Trước
             </button>
             <template x-for="p in totalPages" :key="p">
                 <button type="button"
                         @click="page = p"
                         :class="page === p ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                        class="flex h-10 w-10 items-center justify-center rounded-full border text-[14px] font-medium transition-colors"
+                        class="flex h-10 w-10 items-center justify-center rounded-full border text-form-label transition-colors"
                         x-text="p"></button>
             </template>
             <button type="button"
                     @click="if (page < totalPages) page++"
                     :disabled="page === totalPages"
-                    :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-accent'"
-                    class="px-3 py-2 text-[14px] transition-colors">
+                    :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
                 Sau →
             </button>
         </div>
     </section>
 
-    <section class="bg-gold/5">
+    {{-- Closing CTA --}}
+    <section class="bg-gold/5 mt-24 md:mt-32">
         <div class="container-page closing-cta">
             <h2 class="text-cta-h2">Bạn vẫn còn câu hỏi?</h2>
             <div class="mt-10 flex justify-center">

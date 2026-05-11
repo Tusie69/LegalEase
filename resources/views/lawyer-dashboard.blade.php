@@ -54,12 +54,12 @@
 <section class="mx-auto max-w-[1280px] px-8 pt-24 pb-32">
     @if (session('status'))
         <div class="mb-12 rounded-2xl border border-success/40 bg-bg px-6 py-4">
-            <p class="text-[14px] text-success">{{ session('status') }}</p>
+            <p class="text-caption text-success">{{ session('status') }}</p>
         </div>
     @endif
 
-    <p class="text-eyebrow">{{ $todayLabel }}</p>
-    <h1 class="text-page-h1 mt-3">
+    {{-- Header --}}
+    <h1 class="text-page-h1">
         Xin chào, {{ $firstName }}.
     </h1>
     <p class="text-flow-intro mt-4 max-w-[640px]">
@@ -88,22 +88,26 @@
                         </div>
                         <div class="min-w-0">
                             <p class="text-card-h4">{{ $next['customer_name'] }}</p>
-                            <p class="text-[14px]">{{ $next['customer_phone'] }}</p>
+                            <p class="text-caption">{{ $next['customer_phone'] }}</p>
                         </div>
                     </div>
 
+                    <div class="h-px bg-text/10 md:hidden"></div>
+
                     <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-8">
                         <p class="text-eyebrow">Thời gian</p>
-                        <p class="mt-1 font-display text-[28px] font-medium leading-tight tracking-tight md:text-[36px]">
+                        <p class="text-chapter-h2 mt-1">
                             {{ $nextStart->format('H:i') }}
                         </p>
-                        <p class="text-[14px]">{{ $nextDayLabel }} · {{ $nextStart->format('d/m/Y') }}</p>
+                        <p class="text-caption">{{ $nextDayLabel }} · {{ $nextStart->format('d/m/Y') }}</p>
                     </div>
+
+                    <div class="h-px bg-text/10 md:hidden"></div>
 
                     <div class="md:text-right">
                         <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                             <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
-                            <span class="text-[12px] font-medium text-success">Đã xác nhận</span>
+                            <span class="text-status-pill text-success">Đã xác nhận</span>
                         </div>
                     </div>
                 </div>
@@ -111,10 +115,11 @@
         </div>
     @endif
 
+    {{-- Awaiting outcome --}}
     @if ($awaitingOutcome->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Đang chờ kết quả</h2>
-            <p class="mt-3 max-w-[560px] text-[16px]">
+            <p class="mt-3 max-w-[560px] text-body">
                 Các cuộc hẹn này đã diễn ra. Báo cáo từng cuộc hẹn có thực hiện hay không để khách hàng có thể để lại đánh giá.
             </p>
 
@@ -123,25 +128,32 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block rounded-2xl border border-gold/40 bg-bg p-6 transition-colors hover:border-gold">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
-                                    <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                    <span class="text-form-label text-text">{{ $appt['customer_initials'] }}</span>
                                 </div>
                                 <div class="min-w-0">
                                     <p class="text-card-h5">{{ $appt['customer_name'] }}</p>
-                                    <p class="text-[14px]">{{ $appt['customer_phone'] }}</p>
+                                    <p class="text-caption">{{ $appt['customer_phone'] }}</p>
                                 </div>
                             </div>
 
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('d/m/Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('H:i') }}
                                 </p>
-                                <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
+                                <p class="text-form-hint">{{ $appt['booking_code'] }}</p>
                             </div>
 
-                            <p class="text-[14px] font-medium text-gold md:text-right">
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- Action --}}
+                            <p class="text-form-label text-gold md:text-right">
                                 Báo cáo kết quả →
                             </p>
                         </div>
@@ -151,6 +163,7 @@
         </div>
     @endif
 
+    {{-- Upcoming --}}
     @if ($upcomingRest->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Lịch sắp tới</h2>
@@ -160,28 +173,35 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block card-base transition-colors hover:border-accent">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
-                                    <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                    <span class="text-form-label text-text">{{ $appt['customer_initials'] }}</span>
                                 </div>
                                 <div class="min-w-0">
                                     <p class="text-card-h5">{{ $appt['customer_name'] }}</p>
-                                    <p class="text-[14px]">{{ $appt['customer_phone'] }}</p>
+                                    <p class="text-caption">{{ $appt['customer_phone'] }}</p>
                                 </div>
                             </div>
 
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('d/m/Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('H:i') }}
                                 </p>
-                                <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
+                                <p class="text-form-hint">{{ $appt['booking_code'] }}</p>
                             </div>
 
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- Status --}}
                             <div class="md:text-right">
                                 <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                                     <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
-                                    <span class="text-[12px] font-medium text-success">Đã xác nhận</span>
+                                    <span class="text-status-pill text-success">Đã xác nhận</span>
                                 </div>
                             </div>
                         </div>
@@ -191,6 +211,7 @@
         </div>
     @endif
 
+    {{-- Past --}}
     @if ($reported->isNotEmpty())
         <div class="mt-24">
             <h2 class="text-section-h2">Cuộc hẹn trước đây</h2>
@@ -200,34 +221,41 @@
                     <a href="{{ route('lawyer.appointments.show', $appt['booking_code']) }}"
                        class="group block card-base transition-colors hover:border-accent">
                         <div class="grid gap-6 md:grid-cols-[260px_1fr_auto] md:items-center">
+                            {{-- Customer --}}
                             <div class="flex items-center gap-4">
                                 <div class="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-text/10">
-                                    <span class="text-[14px] font-medium text-text">{{ $appt['customer_initials'] }}</span>
+                                    <span class="text-form-label text-text">{{ $appt['customer_initials'] }}</span>
                                 </div>
                                 <div class="min-w-0">
                                     <p class="text-card-h5">{{ $appt['customer_name'] }}</p>
-                                    <p class="text-[14px]">{{ $appt['customer_phone'] }}</p>
+                                    <p class="text-caption">{{ $appt['customer_phone'] }}</p>
                                 </div>
                             </div>
 
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- When --}}
                             <div class="md:flex md:flex-col md:justify-center md:border-l md:border-text/10 md:pl-6">
                                 <p class="text-eyebrow">Cuộc hẹn</p>
                                 <p class="mt-1 text-card-h6">
                                     {{ \Carbon\Carbon::parse($appt['date'])->format('d/m/Y') }} · {{ \Carbon\Carbon::createFromFormat('H:i', $appt['time'])->format('H:i') }}
                                 </p>
-                                <p class="text-[12px]">{{ $appt['booking_code'] }}</p>
+                                <p class="text-form-hint">{{ $appt['booking_code'] }}</p>
                             </div>
 
+                            <div class="h-px bg-text/10 md:hidden"></div>
+
+                            {{-- Status --}}
                             <div class="md:text-right">
                                 @if ($appt['status'] === 'COMPLETED')
                                     <div class="inline-flex items-center gap-2 rounded-full border border-success/40 bg-success/10 px-3 py-1">
                                         <span class="block h-1.5 w-1.5 rounded-full bg-success"></span>
-                                        <span class="text-[12px] font-medium text-success">Hoàn tất</span>
+                                        <span class="text-status-pill text-success">Hoàn tất</span>
                                     </div>
                                 @else
                                     <div class="inline-flex items-center gap-2 rounded-full border border-error/40 bg-error/10 px-3 py-1">
                                         <span class="block h-1.5 w-1.5 rounded-full bg-error"></span>
-                                        <span class="text-[12px] font-medium text-error">Khách hàng vắng mặt</span>
+                                        <span class="text-status-pill text-error">Khách hàng vắng mặt</span>
                                     </div>
                                 @endif
                             </div>

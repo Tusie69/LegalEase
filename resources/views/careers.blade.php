@@ -59,25 +59,28 @@
         </x-slot:subtitle>
     </x-hero-bar>
 
+    {{-- What it's like --}}
     <section class="container-page pt-24">
         <h2 class="text-section-h2">Thông tin bạn cần biết</h2>
 
         <div class="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
             @foreach ($values as $v)
-                <div>
+                <div class="border-t border-text/15 pt-6">
                     <h3 class="text-card-h3">{{ $v['title'] }}</h3>
-                    <p class="text-body-dense mt-2">{{ $v['desc'] }}</p>
+                    <p class="text-body-dense mt-3">{{ $v['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
+    {{-- Open positions --}}
     <section class="container-page pt-24">
         <h2 class="text-section-h2">Vị trí tuyển dụng</h2>
 
-        <div class="mt-12">
-            @foreach ($roles as $i => $role)
-                <article class="{{ $i > 0 ? 'pt-20' : '' }} grid grid-cols-1 gap-6 md:grid-cols-[1fr_auto] md:gap-10">
+        <div class="mt-12 divide-y divide-text/15">
+            @foreach ($roles as $role)
+                <article class="grid grid-cols-1 gap-6 py-10 first:pt-0 last:pb-0 md:grid-cols-[1fr_auto] md:gap-10">
+                    {{-- Title, meta, description --}}
                     <div>
                         <h3 class="text-role-h3 leading-snug">
                             {{ $role['title'] }}
@@ -90,6 +93,7 @@
                         </p>
                     </div>
 
+                    {{-- Salary --}}
                     <div class="md:text-right">
                         <p class="text-chapter-h2">
                             {{ $role['salary'] }}
@@ -103,31 +107,35 @@
         </div>
     </section>
 
+    {{-- How we hire --}}
     <section class="container-page pt-24">
         <h2 class="text-section-h2">Chúng tôi tuyển dụng như thế nào?</h2>
 
-        <div class="relative mt-12 grid gap-12 md:grid-cols-3">
+        <div class="relative mt-12 grid divide-y divide-text/15 md:grid-cols-3 md:gap-12 md:divide-y-0">
+            {{-- Ground line --}}
             <div aria-hidden="true"
-                 class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gold/30 md:block"></div>
+                 class="pointer-events-none absolute left-0 right-0 hidden h-px bg-text/15 md:block md:top-20 lg:top-24"></div>
 
             @foreach ($hiring as $step)
-                <div class="relative">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold bg-bg text-[14px] font-medium text-gold">
-                        {{ $step['n'] }}
-                    </div>
-                    <h3 class="text-card-h3 mt-6">{{ $step['title'] }}</h3>
-                    <p class="text-body mt-2 max-w-sm">{{ $step['desc'] }}</p>
+                <div class="py-10 first:pt-0 last:pb-0 md:py-0">
+                    <p class="display-stat-feature text-accent">{{ $step['n'] }}</p>
+                    <h3 class="text-card-h3 mt-8">{{ $step['title'] }}</h3>
+                    <p class="text-body mt-4 max-w-sm">{{ $step['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
+    {{-- Closing CTA --}}
     <section class="bg-gold/5 mt-24 md:mt-32">
         <div class="container-page closing-cta">
             <h2 class="text-cta-h2">
                 Sẵn sàng ứng tuyển?
             </h2>
-            <div class="mt-8 flex justify-center">
+            <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
+                Không cần thư xin việc. Hai vòng phỏng vấn ngắn gọn, quyết định trong vòng mười ngày.
+            </p>
+            <div class="mt-10 flex justify-center">
                 <x-button variant="primary" href="{{ route('contact') }}">Liên hệ →</x-button>
             </div>
         </div>

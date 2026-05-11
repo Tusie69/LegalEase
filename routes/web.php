@@ -4,13 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return view('dashboard');
-    }
-
-    return view('home');
-})->name('home');
+Route::get('/', fn () => view('home'))->name('home');
 
 Route::get('/lawyers', function () {
     return view('lawyers.index');
@@ -152,6 +146,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
+    Route::get('/account', fn () => view('account'))->name('account');
+    Route::get('/consultations', fn () => view('consultations.index'))->name('consultations.index');
 
     Route::get('/consultations/{code}', function (string $code) {
         $consultation = \App\Data\PastConsultations::findByCodeWithReview($code);
@@ -259,6 +255,8 @@ Route::middleware('auth')->group(function () {
     })->name('consultations.rate.store');
 
     Route::get('/lawyer-dashboard', fn () => view('lawyer-dashboard'))->name('lawyer.dashboard');
+
+    Route::get('/lawyer/profile', fn () => view('lawyer.profile'))->name('lawyer.profile');
 
     Route::get('/lawyer/appointments/{code}', function (string $code) {
         $appointment = \App\Data\LawyerAppointments::findByCodeWithOutcome($code);

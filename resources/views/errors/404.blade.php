@@ -5,7 +5,7 @@
 
 @section('actions')
     <a href="{{ route('home') }}"
-       class="inline-flex items-center justify-center rounded-full border border-bg bg-bg px-6 py-3 text-[14px] font-semibold text-accent transition-colors hover:border-accent">
+       class="inline-flex items-center justify-center rounded-full border border-bg bg-bg px-6 py-3 text-caption font-semibold text-accent transition-colors hover:border-accent">
         Trở về trang chủ
     </a>
 @endsection

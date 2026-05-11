@@ -42,7 +42,7 @@
                                 </div>
                                 <div>
                                     <p class="text-eyebrow">{{ $featured['category'] }}</p>
-                                    <h3 class="mt-4 font-display text-[32px] font-medium leading-snug tracking-tight md:text-[40px] transition-colors group-hover:text-accent">
+                                    <h3 class="text-flow-h1 mt-4 transition-colors group-hover:text-accent">
                                         {{ $featured['title'] }}
                                     </h3>
                                     <p class="text-body mt-5 max-w-[520px]">
@@ -84,14 +84,14 @@
             <button type="button"
                     @click="selectedCategory = null; page = 1"
                     :class="selectedCategory === null ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                    class="shrink-0 rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                    class="shrink-0 rounded-full border px-4 py-2 text-form-label transition-colors">
                 Tất cả
             </button>
             @foreach ($categories as $cat)
                 <button type="button"
                         @click="selectedCategory = '{{ $cat }}'; page = 1"
                         :class="selectedCategory === '{{ $cat }}' ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                        class="shrink-0 rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                        class="shrink-0 rounded-full border px-4 py-2 text-form-label transition-colors">
                     {{ $cat }}
                 </button>
             @endforeach
@@ -102,7 +102,7 @@
                        x-model="search"
                        placeholder="Tìm kiếm bài viết…"
                        aria-label="Tìm kiếm bài viết"
-                       class="block w-full rounded-xl border border-text/20 bg-bg py-3 pl-11 pr-4 text-[16px] text-text placeholder:text-text/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                       class="block w-full rounded-xl border border-text/20 bg-bg py-3 pl-11 pr-4 text-body text-text placeholder:text-text/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                 <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-text/50">
                     <x-icon name="search" :size="18" />
                 </span>
@@ -110,7 +110,7 @@
                         x-show="search.length > 0"
                         @click="search = ''"
                         aria-label="Xóa tìm kiếm"
-                        class="absolute inset-y-0 right-3 flex items-center text-text/60 transition-colors hover:text-accent">
+                        class="absolute inset-y-0 right-3 flex items-center text-text/60 transition-colors hover:text-text">
                     <x-icon name="x" :size="16" />
                 </button>
             </div>
@@ -159,22 +159,22 @@
             <button type="button"
                     @click="if (page > 1) page--"
                     :disabled="page === 1"
-                    :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-accent'"
-                    class="px-3 py-2 text-[14px] transition-colors">
+                    :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
                 ← Trước
             </button>
             <template x-for="p in totalPages" :key="p">
                 <button type="button"
                         @click="page = p"
                         :class="page === p ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                        class="flex h-10 w-10 items-center justify-center rounded-full border text-[14px] font-medium transition-colors"
+                        class="flex h-10 w-10 items-center justify-center rounded-full border text-form-label transition-colors"
                         x-text="p"></button>
             </template>
             <button type="button"
                     @click="if (page < totalPages) page++"
                     :disabled="page === totalPages"
-                    :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-accent'"
-                    class="px-3 py-2 text-[14px] transition-colors">
+                    :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
                 Sau →
             </button>
         </div>

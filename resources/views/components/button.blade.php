@@ -5,7 +5,7 @@
 ])
 
 @php
-    $base = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-[14px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+    $base = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-caption font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
 
     $styles = match ($variant) {
         'primary' => 'border-accent bg-accent text-bg hover:text-gold focus-visible:ring-accent',

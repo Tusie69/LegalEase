@@ -9,12 +9,11 @@
 @section('content')
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
-       class="text-[14px] transition-colors hover:text-accent">
+       class="text-caption transition-colors hover:text-text/60">
         ← Quay lại buổi tư vấn
     </a>
 
-    <p class="mt-10 text-eyebrow">Hủy tư vấn</p>
-    <h1 class="text-flow-h1 mt-3">
+    <h1 class="text-flow-h1 mt-10">
         Hủy buổi tư vấn của bạn?
     </h1>
     <p class="text-flow-intro mt-4">
@@ -26,6 +25,7 @@
         @endif
     </p>
 
+    {{-- Lawyer + when summary --}}
     <div class="mt-10 card-base">
         <div class="flex items-center gap-4">
             <x-responsive-img :src="$lawyer['portrait_url']"
@@ -35,7 +35,7 @@
                               class="h-14 w-14 flex-none rounded-full object-cover object-top" />
             <div class="min-w-0">
                 <p class="text-card-h5">{{ $lawyer['name'] }}</p>
-                <p class="text-[14px]">{{ $lawyer['primary_specialty'] }}</p>
+                <p class="text-caption">{{ $lawyer['primary_specialty'] }}</p>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
         @csrf
         <x-button variant="primary" type="submit">Có, hủy tư vấn</x-button>
         <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
-           class="text-[14px] transition-colors hover:text-accent">
+           class="text-caption transition-colors hover:text-text/60">
             Giữ buổi tư vấn
         </a>
     </form>

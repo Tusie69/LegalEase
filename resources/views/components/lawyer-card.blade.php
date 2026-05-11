@@ -23,24 +23,19 @@
         @endif
     </div>
 
-    <div class="meta-row mt-3">
-        <span class="tag-pill">
-            {{ $lawyer['primary_specialty'] }}
-        </span>
-        @if (!empty($lawyer['address']['province']))
-            <span class="inline-flex items-center gap-1 text-[14px]">
-                <x-icon name="map-pin" :size="14" />
-                {{ $lawyer['address']['province'] }}
-            </span>
-        @endif
-    </div>
+    <span class="tag-pill mt-3 self-start">
+        {{ $lawyer['primary_specialty'] }}
+    </span>
 
-    <p class="mt-3 text-[14px]">
+    <p class="mt-3 text-caption text-text/70">
+        @if (!empty($lawyer['address']['province']))
+            {{ $lawyer['address']['province'] }} ·
+        @endif
         {{ $lawyer['years_of_experience'] }} năm kinh nghiệm · {{ number_format($lawyer['price_per_hour']) }} VND/giờ
     </p>
 
     <div class="mt-3">
-        <x-rating-stars :rating="$lawyer['rating']" :review-count="$lawyer['review_count']" />
+        <x-rating-stars :rating="$lawyer['rating']" :review-count="$lawyer['review_count']" compact />
     </div>
 
     <div class="mt-5">

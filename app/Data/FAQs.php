@@ -75,7 +75,7 @@ class FAQs
             [
                 'category' => 'Dành cho luật sư',
                 'q' => 'Khi nào tôi được trả tiền?',
-                'a' => 'Phần lớn phí của bạn (80%) được khách hàng thanh toán trực tiếp tại cuộc hẹn. Khoản đặt cọc do nền tảng giữ sẽ được chuyển vào tài khoản của bạn hàng tuần.',
+                'a' => 'Bạn nhận 100% phí tư vấn. Khách hàng có thể thanh toán trực tiếp tại buổi hẹn, hoặc thanh toán trước qua nền tảng và chúng tôi chuyển vào tài khoản của bạn.',
             ],
             [
                 'category' => 'Dành cho luật sư',

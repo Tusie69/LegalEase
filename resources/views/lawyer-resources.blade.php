@@ -74,6 +74,7 @@
         </x-slot:subtitle>
     </x-hero-bar>
 
+    {{-- Featured article --}}
     <section class="container-page pt-24">
         <h2 class="text-section-h2">Nổi bật</h2>
 
@@ -88,7 +89,7 @@
                 </div>
                 <div>
                     <p class="text-eyebrow">{{ $featured['category'] }}</p>
-                    <h3 class="mt-4 font-display text-[32px] font-medium leading-snug tracking-tight md:text-[40px] transition-colors group-hover:text-accent">
+                    <h3 class="text-flow-h1 mt-4 transition-colors group-hover:text-accent">
                         {{ $featured['title'] }}
                     </h3>
                     <p class="text-body mt-5 max-w-[520px]">
@@ -104,6 +105,7 @@
         </a>
     </section>
 
+    {{-- All resources --}}
     <section class="container-page pt-24 pb-24"
              x-data="resourcesFilters({{ json_encode($articles) }})">
         <h2 class="text-section-h2">Tất cả tài nguyên</h2>
@@ -112,14 +114,14 @@
             <button type="button"
                     @click="selectedCategory = null"
                     :class="selectedCategory === null ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                    class="shrink-0 rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                    class="shrink-0 rounded-full border px-4 py-2 text-form-label transition-colors">
                 Tất cả
             </button>
             @foreach ($categories as $cat)
                 <button type="button"
                         @click="selectedCategory = '{{ $cat }}'"
                         :class="selectedCategory === '{{ $cat }}' ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
-                        class="shrink-0 rounded-full border px-4 py-2 text-[14px] font-medium transition-colors">
+                        class="shrink-0 rounded-full border px-4 py-2 text-form-label transition-colors">
                     {{ $chipLabels[$cat] ?? $cat }}
                 </button>
             @endforeach
@@ -159,7 +161,8 @@
         </div>
     </section>
 
-    <section class="bg-gold/5">
+    {{-- Closing CTA --}}
+    <section class="bg-gold/5 mt-24 md:mt-32">
         <div class="container-page closing-cta">
             <h2 class="text-cta-h2">
                 Không tìm thấy điều bạn cần?

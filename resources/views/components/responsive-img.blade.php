@@ -19,10 +19,7 @@
     $defaultSrc = $src;
 
     if ($cdn === 'unsplash') {
-        // Note: we deliberately don't use auto=format. Imgix's AVIF output
-        // is much smaller per-byte than JPEG but software-decoded on Chrome
-        // desktop, which causes a noticeable lag on pages with many images
-        // (e.g. lawyer cards). JPEG decodes hardware-accelerated → instant.
+        // no auto=format - AVIF software-decode lags JPEG hardware-decode
         $params = 'fit=crop&q=80';
         $srcset = collect($widths)
             ->map(fn ($w) => "{$base}?{$params}&w={$w} {$w}w")

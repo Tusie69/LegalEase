@@ -6,6 +6,7 @@
 @endphp
 
 @section('content')
+    {{-- Hero --}}
     <section class="relative -mt-18 flex min-h-screen flex-col overflow-hidden bg-text">
         <x-responsive-img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
                           alt=""
@@ -39,6 +40,7 @@
         </div>
     </section>
 
+    {{-- Trust strip --}}
     <section class="bg-accent">
         <div class="container-page flex items-center justify-center md:h-24">
             <div class="grid w-full grid-cols-1 divide-y divide-gold/40 md:grid-cols-3 md:divide-x md:divide-y-0">
@@ -58,6 +60,7 @@
         </div>
     </section>
 
+    {{-- Practice areas --}}
     <section class="container-page pt-24">
         <div class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
             <h2 class="text-section-h2">Các lĩnh vực chúng tôi đảm nhiệm</h2>
@@ -81,6 +84,7 @@
         </div>
     </section>
 
+    {{-- Featured lawyers --}}
     <section class="container-page pt-24">
         <div class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
             <h2 class="text-section-h2">Luật sư tiêu biểu</h2>
@@ -96,6 +100,7 @@
         </div>
     </section>
 
+    {{-- How it works --}}
     <section id="how-it-works" class="container-page pt-24">
         <h2 class="text-section-h2">Cách hoạt động</h2>
 
@@ -107,17 +112,16 @@
             ];
         @endphp
 
-        <div class="relative mt-12 grid gap-12 md:grid-cols-3">
+        <div class="relative mt-12 grid divide-y divide-text/15 md:grid-cols-3 md:gap-12 md:divide-y-0">
+            {{-- Ground line --}}
             <div aria-hidden="true"
-                 class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gold/30 md:block"></div>
+                 class="pointer-events-none absolute left-0 right-0 hidden h-px bg-text/15 md:block md:top-20 lg:top-24"></div>
 
             @foreach ($steps as $step)
-                <div class="relative">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold bg-bg text-[14px] font-medium text-gold">
-                        {{ $step['n'] }}
-                    </div>
-                    <h3 class="text-card-h3 mt-6">{{ $step['title'] }}</h3>
-                    <p class="text-body mt-2 max-w-sm">{{ $step['text'] }}</p>
+                <div class="py-10 first:pt-0 last:pb-0 md:py-0">
+                    <p class="display-stat-feature text-accent">{{ $step['n'] }}</p>
+                    <h3 class="text-card-h3 mt-8">{{ $step['title'] }}</h3>
+                    <p class="text-body mt-4 max-w-sm">{{ $step['text'] }}</p>
                 </div>
             @endforeach
         </div>
@@ -151,10 +155,9 @@
             </div>
 
             <div>
-                @foreach ($faqPreview as $i => $item)
-                    <div class="py-8 first:pt-0">
-                        <p class="text-eyebrow text-gold">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</p>
-                        <h3 class="text-card-h4 mt-2">{{ $item['q'] }}</h3>
+                @foreach ($faqPreview as $item)
+                    <div class="border-t border-text/15 py-8 last:pb-0">
+                        <h3 class="text-card-h4">{{ $item['q'] }}</h3>
                         <p class="text-body mt-4 max-w-[640px]">{{ $item['a'] }}</p>
                     </div>
                 @endforeach

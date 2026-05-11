@@ -13,6 +13,7 @@
 
 @section('content')
 <section class="relative -mt-18 flex min-h-screen flex-col lg:landscape:flex-row">
+    {{-- Photo --}}
     <div class="relative h-[55vh] overflow-hidden lg:landscape:sticky lg:landscape:top-0 lg:landscape:h-screen lg:landscape:flex-1">
         <x-responsive-img src="https://images.unsplash.com/photo-1518770660439-4636190af475"
                           alt=""
@@ -22,6 +23,7 @@
                           class="absolute inset-0 h-full w-full object-cover" />
     </div>
 
+    {{-- Form --}}
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">
         <div class="w-full max-w-[440px]">
             <h1 class="text-flow-h1">Đặt mật khẩu mới</h1>
@@ -34,7 +36,7 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <div>
-                    <label for="email" class="block text-[14px] font-medium">
+                    <label for="email" class="block text-form-label">
                         Email
                         <span x-show="!isEmailValid && !touched.email" class="text-gold">*</span>
                         <svg x-show="emailError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -42,15 +44,15 @@
                     </label>
                     <input id="email" type="email" name="email" x-model="email" @blur="touched.email = true" required
                            placeholder="you@example.com"
-                           class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                           class="mt-2 block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 text-body text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     @unless ($errors->has('email'))
-                        <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-[14px] text-error"></p>
+                        <p x-show="emailError" x-cloak x-text="emailError" class="mt-2 text-caption text-error"></p>
                     @endunless
-                    @error('email') <p class="mt-2 text-[14px] text-error">{{ $message }}</p> @enderror
+                    @error('email') <p class="mt-2 text-caption text-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div x-data="{ show: false }">
-                    <label for="password" class="block text-[14px] font-medium">
+                    <label for="password" class="block text-form-label">
                         Mật khẩu mới
                         <span x-show="!isPasswordValid && !touched.password" class="text-gold">*</span>
                         <svg x-show="passwordError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -60,22 +62,22 @@
                         <input id="password" name="password" x-model="password" @blur="touched.password = true" required
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
-                               class="block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 pr-11 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                               class="block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 pr-11 text-body text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                         <button type="button" @click="show = !show" aria-label="Toggle password"
-                                class="absolute inset-y-0 right-0 flex items-center pr-3 hover:text-accent">
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 hover:text-text/60">
                             <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                             <svg x-show="show" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l18 18M10.5 10.7A2 2 0 0012 14a2 2 0 001.3-.5M6.7 6.7C4.1 8.3 2 12 2 12s3.5 7 10 7a9.8 9.8 0 004.3-.9M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17 17 0 01-2.2 2.9"/></svg>
                         </button>
                     </div>
-                    <p class="mt-2 text-[12px]">Ít nhất 8 ký tự, bao gồm một chữ cái và một số.</p>
+                    <p class="mt-2 text-form-hint">Ít nhất 8 ký tự, bao gồm một chữ cái và một số.</p>
                     @unless ($errors->has('password'))
-                        <p x-show="passwordError" x-cloak x-text="passwordError" class="mt-2 text-[14px] text-error"></p>
+                        <p x-show="passwordError" x-cloak x-text="passwordError" class="mt-2 text-caption text-error"></p>
                     @endunless
-                    @error('password') <p class="mt-2 text-[14px] text-error">{{ $message }}</p> @enderror
+                    @error('password') <p class="mt-2 text-caption text-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div x-data="{ show: false }">
-                    <label for="password_confirmation" class="block text-[14px] font-medium">
+                    <label for="password_confirmation" class="block text-form-label">
                         Xác nhận mật khẩu mới
                         <span x-show="!isPasswordConfirmValid && !touched.passwordConfirm" class="text-gold">*</span>
                         <svg x-show="passwordConfirmError" x-cloak class="inline-block h-3 w-3 align-middle text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -85,19 +87,19 @@
                         <input id="password_confirmation" name="password_confirmation" x-model="passwordConfirm" @blur="touched.passwordConfirm = true" required
                                :type="show ? 'text' : 'password'"
                                placeholder="••••••••••••"
-                               class="block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 pr-11 text-[16px] text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+                               class="block w-full rounded-xl border border-text/20 bg-bg px-4 py-3 pr-11 text-body text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                         <button type="button" @click="show = !show" aria-label="Toggle password"
-                                class="absolute inset-y-0 right-0 flex items-center pr-3 hover:text-accent">
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 hover:text-text/60">
                             <svg x-show="!show" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                             <svg x-show="show" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l18 18M10.5 10.7A2 2 0 0012 14a2 2 0 001.3-.5M6.7 6.7C4.1 8.3 2 12 2 12s3.5 7 10 7a9.8 9.8 0 004.3-.9M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17 17 0 01-2.2 2.9"/></svg>
                         </button>
                     </div>
-                    <p x-show="passwordConfirmError" x-cloak x-text="passwordConfirmError" class="mt-2 text-[14px] text-error"></p>
+                    <p x-show="passwordConfirmError" x-cloak x-text="passwordConfirmError" class="mt-2 text-caption text-error"></p>
                 </div>
 
                 <x-button variant="primary" type="submit" class="w-full">Lưu mật khẩu mới</x-button>
 
-                <p class="text-center text-[14px]">
+                <p class="text-center text-caption">
                     <a href="{{ route('login') }}" class="text-text underline underline-offset-4 decoration-text/30 transition-colors hover:decoration-accent">Quay lại để đăng nhập</a>
                 </p>
             </form>

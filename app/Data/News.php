@@ -123,7 +123,7 @@ class News
                 'slug' => 'hop-dong-thue-nha-dieu-khoan-can-luu-y',
                 'category' => 'Bất động sản',
                 'title' => 'Hợp đồng thuê nhà: Điều khoản cần lưu ý cho cả hai bên',
-                'lead' => 'Tiền cọc, thời hạn, sửa chữa và chấm dứt sớm — những điểm thường gây tranh chấp giữa chủ nhà và người thuê.',
+                'lead' => 'Tiền cọc, thời hạn, sửa chữa và chấm dứt sớm: những điểm thường gây tranh chấp giữa chủ nhà và người thuê.',
                 'image_url' => 'https://images.pexels.com/photos/8901680/pexels-photo-8901680.jpeg',
                 'date' => '2026-02-18',
                 'author_name' => 'Emily Carter',

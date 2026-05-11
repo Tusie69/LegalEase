@@ -7,10 +7,10 @@
 
 @section('content')
     <section class="container-narrow pt-20 pb-12">
-        <nav class="text-[14px]">
-            <a href="/" class="transition-colors hover:text-accent">Trang chủ</a>
+        <nav class="text-caption">
+            <a href="/" class="transition-colors hover:text-text/60">Trang chủ</a>
             <span class="px-1">/</span>
-            <a href="{{ route('news') }}" class="transition-colors hover:text-accent">Tin tức</a>
+            <a href="{{ route('news') }}" class="transition-colors hover:text-text/60">Tin tức</a>
             <span class="px-1">/</span>
             <span class="text-text">{{ $article['title'] }}</span>
         </nav>
@@ -25,9 +25,9 @@
             {{ $article['lead'] }}
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
+        <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-caption">
             <a href="{{ route('lawyers.show', $article['author_slug']) }}"
-               class="font-medium text-text transition-colors hover:text-accent">
+               class="font-medium text-text transition-colors hover:text-text/60">
                 {{ $article['author_name'] }}
             </a>
             <span class="text-text/40">·</span>
@@ -37,14 +37,14 @@
         </div>
     </section>
 
-    <section class="container-page">
+    <section class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div class="overflow-hidden rounded-2xl">
             <x-responsive-img :src="$article['image_url']"
                               alt=""
                               loading="eager"
-                              sizes="(min-width: 1280px) 1216px, 100vw"
-                              :widths="[600, 900, 1200, 1600]"
-                              class="aspect-[21/9] max-h-[380px] w-full object-cover" />
+                              sizes="(min-width: 1440px) 1376px, (min-width: 1024px) calc(100vw - 64px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+                              :widths="[600, 900, 1200, 1600, 2000]"
+                              class="aspect-[21/9] w-full object-cover" />
         </div>
     </section>
 
@@ -71,7 +71,7 @@
                     <p class="text-eyebrow text-text/70">Tác giả</p>
                     <p class="text-card-h4 mt-2">{{ $article['author_name'] }}</p>
                     @if ($author)
-                        <p class="text-[14px] text-text/70 mt-1">
+                        <p class="text-caption text-text/70 mt-1">
                             Chuyên môn · {{ $author['primary_specialty'] }}
                         </p>
                         @if (!empty($author['bio'][0]))
@@ -80,7 +80,7 @@
                             </p>
                         @endif
                     @else
-                        <p class="text-[14px] text-text/70 mt-1">
+                        <p class="text-caption text-text/70 mt-1">
                             Chuyên môn · {{ $article['category'] }}
                         </p>
                     @endif
@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <p class="mt-10 text-[12px] uppercase tracking-wide text-text/50">
+            <p class="mt-10 text-form-hint uppercase tracking-wide text-text/50">
                 Nguồn · LegalEase Editorial · Đăng ngày {{ Carbon::parse($article['date'])->translatedFormat('d/m/Y') }}
             </p>
         </div>

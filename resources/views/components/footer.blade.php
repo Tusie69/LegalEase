@@ -24,7 +24,7 @@
 
         <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
             <div>
-                <a href="/" class="text-card-h3 text-text">LegalEase</a>
+                <a href="/" class="text-card-h3 text-text transition-colors hover:text-text/60">LegalEase</a>
                 <p class="text-body mt-4 max-w-sm text-text/70">
                     Kết nối người dùng tại Việt Nam với đội ngũ luật sư uy tín, từng buổi tư vấn một.
                 </p>
@@ -36,7 +36,7 @@
                     <ul class="text-body-dense mt-3 space-y-3">
                         @foreach ($items as [$label, $url])
                             <li>
-                                <a href="{{ $url }}" class="text-text transition-colors hover:text-accent">{{ $label }}</a>
+                                <a href="{{ $url }}" class="text-text transition-colors hover:text-text/60">{{ $label }}</a>
                             </li>
                         @endforeach
                     </ul>

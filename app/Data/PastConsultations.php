@@ -21,7 +21,7 @@ class PastConsultations
                 'booking_code' => 'BK-20260411-K5L9D7',
                 'rated'        => true,
                 'stars'        => 5,
-                'review_text'  => 'Anh Hùng đã giải thích từng điều khoản trong hợp đồng cung cấp của chúng tôi và phát hiện hai điều khoản mà chúng tôi không để ý. Bình tĩnh, có phương pháp, không thuật ngữ rườm rà. Chúng tôi sẽ quay lại quý sau khi ký hợp đồng thuê.',
+                'review_text'  => 'Anh James đã giải thích từng điều khoản trong hợp đồng cung cấp của chúng tôi và phát hiện hai điều khoản mà chúng tôi không để ý. Bình tĩnh, có phương pháp, không thuật ngữ rườm rà. Chúng tôi sẽ quay lại quý sau khi ký hợp đồng thuê.',
                 'reviewed_at'  => '2026-04-13',
             ],
             [
