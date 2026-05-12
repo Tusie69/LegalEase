@@ -5,13 +5,15 @@
 ])
 
 @php
-    $base = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-[14px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+    $base = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-caption font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
 
     $styles = match ($variant) {
-        'primary' => 'border-[#0F2747] bg-[#0F2747] text-white shadow-sm hover:bg-[#12315a] hover:border-[#12315a] focus-visible:ring-[#0F2747]',
-        'secondary' => 'border-text/20 bg-surface text-text hover:border-accent hover:text-accent focus-visible:ring-accent',
-        'ghost' => 'border-transparent bg-transparent text-text hover:border-text/20 hover:bg-surface focus-visible:ring-accent',
-        default => 'border-text/20 bg-surface text-text',
+        'primary' => 'border-accent bg-accent text-bg hover:text-gold focus-visible:ring-accent',
+        'secondary' => 'border-text/20 bg-bg text-text hover:border-accent hover:text-accent focus-visible:ring-accent',
+        'ghost' => 'border-transparent bg-transparent text-text hover:border-text/20 hover:bg-text/5 focus-visible:ring-accent',
+        'gold' => 'border-gold bg-gold text-accent hover:bg-bg hover:border-bg focus-visible:ring-gold',
+        'on-dark-ghost' => 'border-bg/40 bg-transparent text-bg hover:bg-bg hover:border-bg hover:text-accent focus-visible:ring-bg',
+        default => 'border-text/20 bg-bg text-text',
     };
 
     $classes = trim($base . ' ' . $styles);

@@ -1,18 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminTemplateController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    if (auth()->check()) {
-        return view('dashboard');
-    }
-
-    return view('home');
-})->name('home');
+Route::get('/', fn () => view('home'))->name('home');
 
 Route::get('/lawyers', function () {
     return view('lawyers.index');
@@ -43,7 +35,12 @@ Route::get('/about', fn () => view('about'))->name('about');
 Route::get('/contact', fn () => view('contact'))->name('contact');
 Route::get('/legal-services', fn () => view('legal-services'))->name('legal-services');
 Route::get('/careers', fn () => view('careers'))->name('careers');
-Route::get('/press', fn () => view('press'))->name('press');
+Route::get('/news', fn () => view('news'))->name('news');
+Route::get('/news/{slug}', function (string $slug) {
+    $article = \App\Data\News::find($slug);
+    abort_if($article === null, 404);
+    return view('news-show', ['article' => $article]);
+})->name('news.show');
 
 Route::get('/for-lawyers', fn () => view('for-lawyers'))->name('for-lawyers');
 Route::get('/lawyer-resources', fn () => view('lawyer-resources'))->name('lawyer.resources');
@@ -133,12 +130,6 @@ Route::post('/book/payment', function () {
 
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
 
-Route::view('/zocdoc-clone', 'zocdoc-clone')->name('zocdoc.clone');
-Route::get('/admin-view-test', [AdminTemplateController::class, 'index'])->name('admin.view.test');
-Route::post('/admin-view-test/users', [AdminTemplateController::class, 'store'])->name('admin.users.store');
-Route::put('/admin-view-test/users/{user}', [AdminTemplateController::class, 'update'])->name('admin.users.update');
-Route::delete('/admin-view-test/users/{user}', [AdminTemplateController::class, 'destroy'])->name('admin.users.destroy');
-
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.store');
@@ -155,6 +146,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
+    Route::get('/account', fn () => view('account'))->name('account');
+    Route::get('/consultations', fn () => view('consultations.index'))->name('consultations.index');
 
     Route::get('/consultations/{code}', function (string $code) {
         $consultation = \App\Data\PastConsultations::findByCodeWithReview($code);
@@ -263,6 +256,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lawyer-dashboard', fn () => view('lawyer-dashboard'))->name('lawyer.dashboard');
 
+    Route::get('/lawyer/profile', fn () => view('lawyer.profile'))->name('lawyer.profile');
+
     Route::get('/lawyer/appointments/{code}', function (string $code) {
         $appointment = \App\Data\LawyerAppointments::findByCodeWithOutcome($code);
         abort_if($appointment === null, 404);
@@ -309,12 +304,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/lawyer-credentials', function () {
         return redirect()->route('lawyer.dashboard')->with('status', 'Đã gửi hồ sơ. Đội ngũ sẽ xem xét trong 2 đến 3 ngày làm việc.');
     })->name('lawyer.credentials.store');
-
-    Route::get('/appointments', [BookingController::class, 'index'])->name('appointments.index');
-    Route::get('/appointments/book/{lawyer}', [BookingController::class, 'showBookingForm'])->name('appointments.book');
-    Route::post('/appointments/book/{lawyer}', [BookingController::class, 'storeAppointment'])->name('appointments.store');
-    Route::get('/appointments/{appointment}/confirmation', [BookingController::class, 'confirmation'])->name('appointments.confirmation');
-    Route::post('/appointments/{appointment}/cancel', [BookingController::class, 'cancel'])->name('appointments.cancel');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

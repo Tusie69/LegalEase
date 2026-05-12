@@ -9,38 +9,40 @@
 @section('content')
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
     <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
-       class="text-[14px] text-muted transition-colors hover:text-accent">
-        ← Back to consultation
+       class="text-caption transition-colors hover:text-text/60">
+        ← Quay lại buổi tư vấn
     </a>
 
-    <p class="mt-10 text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Hủy tư vấn</p>
-    <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        Cancel your consultation?
+    <h1 class="text-flow-h1 mt-10">
+        Hủy buổi tư vấn của bạn?
     </h1>
-    <p class="mt-4 text-[17px] text-secondary">
-        This can't be undone.
+    <p class="text-flow-intro mt-4">
+        Hành động này không thể hoàn tác.
         @if ($eligibleForRefund)
-            You'll receive a full refund of your deposit within 3 to 5 business days.
+            Bạn sẽ được hoàn lại toàn bộ tiền đặt cọc trong 3 đến 5 ngày làm việc.
         @else
-            Cancellations less than 24 hours before the appointment are not eligible for a refund.
+            Hủy trong vòng 24 giờ trước cuộc hẹn không được hoàn tiền.
         @endif
     </p>
 
     {{-- Lawyer + when summary --}}
-    <div class="mt-10 rounded-2xl border border-text/10 bg-surface p-6">
+    <div class="mt-10 card-base">
         <div class="flex items-center gap-4">
-            <img src="{{ $lawyer['portrait_url'] }}" alt=""
-                 class="h-14 w-14 flex-none rounded-full object-cover object-top grayscale">
+            <x-responsive-img :src="$lawyer['portrait_url']"
+                              alt=""
+                              sizes="56px"
+                              :widths="[200, 400]"
+                              class="h-14 w-14 flex-none rounded-full object-cover object-top" />
             <div class="min-w-0">
-                <p class="font-display text-[18px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
-                <p class="text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>
+                <p class="text-card-h5">{{ $lawyer['name'] }}</p>
+                <p class="text-caption">{{ $lawyer['primary_specialty'] }}</p>
             </div>
         </div>
 
-        <div class="mt-5 border-t border-text/10 pt-5">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">When</p>
-            <p class="mt-1 font-display text-[16px] font-medium tracking-tight">
-                {{ $consultationStart->format('l, F j, Y') }} · {{ $consultationStart->format('g:i A') }}
+        <div class="mt-5 border-t border-text/20 pt-5">
+            <p class="text-eyebrow">Thời gian</p>
+            <p class="text-card-h6 mt-1">
+                {{ \Illuminate\Support\Str::title($consultationStart->translatedFormat('l, d/m/Y')) }} · {{ $consultationStart->format('H:i') }}
             </p>
         </div>
     </div>
@@ -50,8 +52,8 @@
         @csrf
         <x-button variant="primary" type="submit">Có, hủy tư vấn</x-button>
         <a href="{{ route('consultations.show', $consultation['booking_code']) }}"
-           class="text-[14px] text-muted transition-colors hover:text-accent">
-            Keep my consultation
+           class="text-caption transition-colors hover:text-text/60">
+            Giữ buổi tư vấn
         </a>
     </form>
 </section>

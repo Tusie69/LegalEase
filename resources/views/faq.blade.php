@@ -1,150 +1,192 @@
 @extends('layouts.app', ['title' => 'Câu hỏi thường gặp · LegalEase'])
 
 @php
-    $sections = [
-        [
-            'title' => 'Đặt chỗ và thanh toán',
-            'items' => [
-                [
-                    'q' => 'Làm thế nào để đặt lịch tư vấn?',
-                    'a' => "Browse lawyers by specialty, location, and price. Pick a lawyer, choose a time slot on their profile, then confirm your details. We'll hold a 20% deposit at booking.",
-                ],
-                [
-                    'q' => "What's the deposit?",
-                    'a' => 'Khi bạn xác nhận đặt phòng, chúng tôi giữ 20% phí tư vấn làm tiền đặt cọc. 80% còn lại được thanh toán trực tiếp cho luật sư tại thời điểm bổ nhiệm.',
-                ],
-                [
-                    'q' => 'Khi nào tôi thanh toán phần còn lại?',
-                    'a' => 'Tại cuộc hẹn. Nền tảng chỉ giữ tiền gửi; số dư được giải quyết trực tiếp giữa bạn và luật sư.',
-                ],
-                [
-                    'q' => 'Những phương thức thanh toán nào bạn chấp nhận?',
-                    'a' => 'Các loại thẻ tín dụng và thẻ ghi nợ phổ biến, cộng với các phương thức thanh toán địa phương của Việt Nam bao gồm chuyển khoản ngân hàng và ví điện tử phổ biến.',
-                ],
-            ],
-        ],
-        [
-            'title' => 'Hủy và hoàn tiền',
-            'items' => [
-                [
-                    'q' => 'Làm cách nào để hủy đặt chỗ?',
-                    'a' => "From your dashboard, open the booking and click cancel. We'll process the cancellation according to our refund policy.",
-                ],
-                [
-                    'q' => 'Tôi có lấy lại được tiền đặt cọc không?',
-                    'a' => 'Hủy hơn 24 giờ trước cuộc hẹn và bạn sẽ được hoàn lại toàn bộ số tiền. Hủy trong vòng 24 giờ và tiền đặt cọc sẽ bị mất (với một số trường hợp ngoại lệ).',
-                ],
-                [
-                    'q' => 'Nếu luật sư của tôi hủy bỏ thì sao?',
-                    'a' => "You'll receive a full refund of the deposit and we'll help you find an alternative lawyer if you'd like.",
-                ],
-                [
-                    'q' => "What if I don't show up?",
-                    'a' => 'Tiền đặt cọc bị mất. Nền tảng giữ lại 75% và luật sư nhận được 25% dưới dạng bồi thường cho thời gian dành riêng.',
-                ],
-            ],
-        ],
-        [
-            'title' => 'Dành cho luật sư',
-            'items' => [
-                [
-                    'q' => 'Làm cách nào để đăng ký tham gia?',
-                    'a' => "Visit our For Lawyers page and submit an application. We'll review your bar credentials and respond within a few business days.",
-                ],
-                [
-                    'q' => 'Quá trình xác minh mất bao lâu?',
-                    'a' => "Usually 2 to 3 business days. Complex cases may take longer; we'll update you if we need more time.",
-                ],
-                [
-                    'q' => 'Khi nào tôi được trả tiền?',
-                    'a' => 'Phần lớn phí của bạn (80%) được khách hàng thanh toán trực tiếp tại cuộc hẹn. Tiền gửi nền tảng được thanh toán vào tài khoản của bạn hàng tuần.',
-                ],
-                [
-                    'q' => 'Tôi có thể đặt mức giá của riêng mình không?',
-                    'a' => "Yes. You set your hourly rate when you list and can update it any time, though changes don't affect existing bookings.",
-                ],
-            ],
-        ],
-        [
-            'title' => 'Sự tin cậy và an toàn',
-            'items' => [
-                [
-                    'q' => 'Luật sư được xác minh như thế nào?',
-                    'a' => "Every lawyer on the platform has had their bar membership and credentials reviewed by our team before being listed. We re-verify periodically.",
-                ],
-                [
-                    'q' => 'Việc tư vấn của tôi có được bảo mật không?',
-                    'a' => 'Đúng. Việc tư vấn là giữa bạn và luật sư của bạn, được bảo vệ bởi đặc quyền của luật sư-khách hàng theo luật pháp Việt Nam.',
-                ],
-                [
-                    'q' => 'Đánh giá hoạt động như thế nào?',
-                    'a' => 'Sau khi tư vấn xong, khách hàng có thể để lại đánh giá bằng văn bản và xếp hạng từ 1 đến 5 sao. Đánh giá phải trung thực và dựa trên kinh nghiệm trực tiếp. Luật sư có thể gắn cờ các đánh giá không phù hợp để nhóm của chúng tôi xem xét.',
-                ],
-            ],
-        ],
+    $items = \App\Data\FAQs::all();
+    $categories = \App\Data\FAQs::categories();
+
+    $chipLabels = [
+        'Đặt chỗ và thanh toán' => 'Đặt chỗ',
+        'Hủy và hoàn tiền' => 'Hủy & hoàn tiền',
+        'Dành cho luật sư' => 'Luật sư',
+        'Sự tin cậy và an toàn' => 'Tin cậy & an toàn',
     ];
 @endphp
 
 @section('content')
-    <style>
-        body > nav {
-            background: #ffffff !important;
-            backdrop-filter: none !important;
-            border-bottom-color: rgba(15, 23, 42, 0.12) !important;
-        }
-    </style>
+    <x-hero-bar
+        photo="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80"
+        eyebrow="FAQ">
+        Câu hỏi thường gặp.
 
-    {{-- Hero --}}
-    <section class="relative -mt-[72px] flex min-h-[64vh] items-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80"
-             alt=""
-             class="absolute inset-0 h-full w-full object-cover grayscale">
-        <div class="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/55 to-bg"></div>
+        <x-slot:subtitle>
+            Đặt chỗ, thanh toán, hủy, và sự tin cậy. Trả lời cho những câu hỏi phổ biến nhất.
+        </x-slot:subtitle>
+    </x-hero-bar>
 
-        <div class="relative mx-auto max-w-[1280px] px-8 pt-24 text-center">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">FAQ</p>
-            <h1 class="mx-auto mt-6 max-w-[920px] font-display text-[52px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[80px]">
-                Common questions.
-            </h1>
+    <section class="container-narrow pt-24 pb-24"
+             x-data="faqFilters({{ json_encode(array_values($items)) }})">
+        <div class="relative">
+            <input type="search"
+                   x-model="search"
+                   placeholder="Tìm kiếm câu hỏi…"
+                   aria-label="Tìm kiếm câu hỏi"
+                   class="block w-full rounded-xl border border-text/20 bg-bg py-3 pl-11 pr-4 text-body text-text placeholder:text-text/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
+            <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-text/50">
+                <x-icon name="search" :size="18" />
+            </span>
+            <button type="button"
+                    x-show="search.length > 0"
+                    @click="search = ''"
+                    aria-label="Xóa tìm kiếm"
+                    class="absolute inset-y-0 right-3 flex items-center text-text/60 transition-colors hover:text-text">
+                <x-icon name="x" :size="16" />
+            </button>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+            <button type="button"
+                    @click="selectedCategory = null"
+                    :class="selectedCategory === null ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
+                    class="rounded-full border px-4 py-2 text-form-label transition-colors">
+                Tất cả
+            </button>
+            @foreach ($categories as $cat)
+                <button type="button"
+                        @click="selectedCategory = '{{ $cat }}'"
+                        :class="selectedCategory === '{{ $cat }}' ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
+                        class="rounded-full border px-4 py-2 text-form-label transition-colors">
+                    {{ $chipLabels[$cat] ?? $cat }}
+                </button>
+            @endforeach
+        </div>
+
+        <div x-show="visibleCount === 0" x-cloak class="mt-12 flex flex-col items-center justify-center rounded-2xl border border-text/20 px-8 py-20 text-center">
+            <h3 class="text-chapter-h2">Không tìm thấy kết quả</h3>
+            <p class="text-body mt-3 max-w-md">Thử từ khóa khác hoặc chọn danh mục khác.</p>
+            <button type="button"
+                    @click="search = ''; selectedCategory = null"
+                    class="text-link-action mt-8 inline-flex items-center gap-2 text-text transition-colors hover:text-gold">
+                Xóa bộ lọc
+                <span aria-hidden="true">→</span>
+            </button>
+        </div>
+
+        <div x-show="visibleCount > 0" class="mt-12 border-t border-text/20">
+            @foreach ($items as $i => $item)
+                <div x-show="isVisible({{ $i }})" x-cloak
+                     x-data="{ open: false }"
+                     class="border-b border-text/20">
+                    <button type="button" @click="open = !open"
+                            :aria-expanded="open"
+                            class="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-colors hover:text-text/60">
+                        <span class="min-w-0 flex-1">
+                            <span class="text-eyebrow text-text/60">{{ $item['category'] }}</span>
+                            <span class="mt-2 block text-card-h5 md:text-card-h4">{{ $item['q'] }}</span>
+                        </span>
+                        <svg x-show="!open" class="h-5 w-5 flex-none mt-1"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        <svg x-show="open" x-cloak class="h-5 w-5 flex-none mt-1"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" x-cloak class="pb-6">
+                        <p class="text-body max-w-[640px]">{{ $item['a'] }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div x-show="visibleCount > 0 && totalPages > 1" x-cloak class="mt-12 flex flex-wrap items-center justify-center gap-2">
+            <button type="button"
+                    @click="if (page > 1) page--"
+                    :disabled="page === 1"
+                    :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
+                ← Trước
+            </button>
+            <template x-for="p in totalPages" :key="p">
+                <button type="button"
+                        @click="page = p"
+                        :class="page === p ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
+                        class="flex h-10 w-10 items-center justify-center rounded-full border text-form-label transition-colors"
+                        x-text="p"></button>
+            </template>
+            <button type="button"
+                    @click="if (page < totalPages) page++"
+                    :disabled="page === totalPages"
+                    :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                    class="px-3 py-2 text-caption transition-colors">
+                Sau →
+            </button>
         </div>
     </section>
-
-    {{-- Sections --}}
-    @foreach ($sections as $i => $section)
-        <section class="mx-auto max-w-[760px] px-8 pt-24">
-            <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">{{ $section['title'] }}</h2>
-            <div class="mt-12 border-t border-text/10">
-                @foreach ($section['items'] as $item)
-                    <div x-data="{ open: false }" class="border-b border-text/10">
-                        <button type="button" @click="open = !open"
-                                class="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-colors hover:text-accent">
-                            <span class="font-display text-[18px] font-medium tracking-tight md:text-[20px]">{{ $item['q'] }}</span>
-                            <svg x-show="!open" class="h-5 w-5 flex-none text-muted"
-                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                                <line x1="12" y1="5" x2="12" y2="19"/>
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                            </svg>
-                            <svg x-show="open" x-cloak class="h-5 w-5 flex-none text-muted"
-                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                            </svg>
-                        </button>
-                        <div x-show="open" x-cloak class="pb-6">
-                            <p class="max-w-[640px] text-[15px] leading-relaxed text-secondary">{{ $item['a'] }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </section>
-    @endforeach
 
     {{-- Closing CTA --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-32 pb-24 text-center">
-        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Still have questions?
-        </h2>
-        <div class="mt-10 flex justify-center">
-            <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>
+    <section class="bg-gold/5 mt-24 md:mt-32">
+        <div class="container-page closing-cta">
+            <h2 class="text-cta-h2">Bạn vẫn còn câu hỏi?</h2>
+            <div class="mt-10 flex justify-center">
+                <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>
+            </div>
         </div>
     </section>
+
+    <script>
+        function faqFilters(items) {
+            return {
+                items,
+                selectedCategory: null,
+                search: '',
+                page: 1,
+                perPage: 6,
+
+                init() {
+                    this.$watch('selectedCategory', () => { this.page = 1; });
+                    this.$watch('search', () => { this.page = 1; });
+                },
+
+                normalize(s) {
+                    return (s || '')
+                        .toLowerCase()
+                        .normalize('NFD')
+                        .replace(/[̀-ͯ]/g, '')
+                        .replace(/đ/g, 'd');
+                },
+
+                get filteredIndices() {
+                    const needle = this.normalize(this.search.trim());
+                    const indices = [];
+                    this.items.forEach((it, i) => {
+                        if (this.selectedCategory !== null && it.category !== this.selectedCategory) return;
+                        if (needle) {
+                            const haystack = this.normalize(it.q + ' ' + it.a + ' ' + it.category);
+                            if (!haystack.includes(needle)) return;
+                        }
+                        indices.push(i);
+                    });
+                    return indices;
+                },
+
+                get visibleCount() {
+                    return this.filteredIndices.length;
+                },
+
+                get totalPages() {
+                    return Math.max(1, Math.ceil(this.visibleCount / this.perPage));
+                },
+
+                isVisible(index) {
+                    const filtered = this.filteredIndices;
+                    const pos = filtered.indexOf(index);
+                    if (pos === -1) return false;
+                    const start = (this.page - 1) * this.perPage;
+                    return pos >= start && pos < start + this.perPage;
+                },
+            };
+        }
+    </script>
 @endsection

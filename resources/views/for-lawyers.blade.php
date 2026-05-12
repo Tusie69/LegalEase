@@ -1,154 +1,197 @@
-﻿@extends('layouts.app', ['title' => 'Dành cho Luật sư · LegalEase'])
+@extends('layouts.app', ['title' => 'Dành cho luật sư · LegalEase'])
 
 @php
     $valueProps = [
         [
             'title' => 'Chỉ khách hàng đã được xác minh',
-            'desc'  => 'Mọi khách hàng đều được xem xét trước khi có thể đặt lịch. Không có thư rác, không lãng phí thời gian.',
+            'desc'  => 'Mọi khách hàng đều được xem xét trước khi họ có thể đặt chỗ. Không có thư rác, không lãng phí thời gian.',
         ],
         [
-            'title' => 'Tự đặt mức phí của bạn',
-            'desc'  => 'Bạn chủ động mức phí theo giờ. Chúng tôi không khấu trừ vào phí tư vấn của bạn.',
+            'title' => 'Tự đặt mức phí',
+            'desc'  => 'Bạn tự đặt mức phí theo giờ. Chúng tôi không thu phần trăm từ phí tư vấn của bạn.',
         ],
         [
             'title' => 'Lịch trống theo thời gian thực',
-            'desc'  => 'Quản lý lịch làm việc từ một nơi. Khách hàng chỉ thấy những khung giờ bạn công khai.',
+            'desc'  => 'Quản lý lịch trống từ một nơi. Khách hàng chỉ thấy khung giờ bạn mở.',
         ],
         [
             'title' => 'Không ràng buộc độc quyền',
-            'desc'  => 'Bạn có thể tham gia LegalEase song song với hoạt động hiện tại. Không cam kết số lượng hồ sơ.',
+            'desc'  => 'Tham gia LegalEase song song với hoạt động hiện tại. Không yêu cầu số lượng tối thiểu.',
         ],
     ];
 
     $steps = [
         [
             'n'     => '01',
-            'title' => 'Nộp hồ sơ',
-            'desc'  => 'Gửi thông tin xác thực hành nghề và hồ sơ cơ bản của bạn.',
+            'title' => 'Ứng tuyển',
+            'desc'  => 'Gửi thông tin xác thực và thông tin cơ bản của bạn.',
         ],
         [
             'n'     => '02',
             'title' => 'Xác minh',
-            'desc'  => 'Đội ngũ của chúng tôi xem xét và phản hồi trong vài ngày làm việc.',
+            'desc'  => 'Nhóm của chúng tôi xem xét và phê duyệt trong vòng vài ngày làm việc.',
         ],
         [
             'n'     => '03',
-            'title' => 'Bắt đầu nhận lịch',
-            'desc'  => 'Thiết lập lịch trống, mức phí và bắt đầu nhận lịch tư vấn.',
+            'title' => 'Đăng ký và kiếm tiền',
+            'desc'  => 'Mở khung giờ, đặt phí và bắt đầu nhận đặt chỗ.',
+        ],
+    ];
+
+    $transparency = [
+        [
+            'q' => 'Tôi có thể tự đặt mức phí của mình không?',
+            'a' => 'Có. Bạn tự đặt mức phí theo giờ khi đăng ký và có thể cập nhật bất kỳ lúc nào, các thay đổi không ảnh hưởng đến những lượt đặt chỗ đã có.',
+        ],
+        [
+            'q' => 'Khi nào tôi được trả tiền?',
+            'a' => 'Bạn nhận 100% phí tư vấn. Khách hàng có thể thanh toán trực tiếp tại buổi hẹn, hoặc thanh toán trước qua nền tảng và chúng tôi chuyển vào tài khoản của bạn.',
+        ],
+        [
+            'q' => 'Quá trình xác minh mất bao lâu?',
+            'a' => 'Thông thường 2 đến 3 ngày làm việc. Các trường hợp phức tạp có thể lâu hơn; chúng tôi sẽ thông báo nếu cần thêm thời gian.',
         ],
     ];
 @endphp
 
 @section('content')
-    {{-- Hero: split layout for contrast/readability --}}
-    <section class="relative -mt-[72px] overflow-hidden border-b border-text/10 bg-[#f6f7f9]">
-        <div class="mx-auto grid min-h-screen max-w-[1280px] grid-cols-1 px-8 pt-24 md:grid-cols-2 md:gap-10 md:pt-28">
-            <div class="flex items-center py-16 md:py-20">
-                <div class="max-w-[560px]">
-                    <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-600">Dành cho luật sư</p>
+    <x-hero-bar
+        photo="https://images.pexels.com/photos/18981853/pexels-photo-18981853.jpeg"
+        eyebrow="Dành cho luật sư">
+        Phát triển hành nghề của bạn cùng LegalEase.
 
-                    <h1 class="mt-5 font-display text-[44px] font-medium leading-[1.06] tracking-[-0.02em] text-slate-900 md:text-[68px]">
-                        Xây dựng thương hiệu hành nghề cùng LegalEase.
-                    </h1>
+        <x-slot:subtitle>
+            Chỉ khách hàng đã được xác minh. Bạn đặt mức phí và lịch trình của riêng mình.
+        </x-slot:subtitle>
+    </x-hero-bar>
 
-                    <p class="mt-6 max-w-[520px] text-[17px] leading-relaxed text-slate-600">
-                        Tiếp cận khách hàng phù hợp, quản lý lịch tư vấn tập trung và phát triển uy tín nghề nghiệp một cách bền vững.
+    {{-- Vertical-offset gallery --}}
+    <section class="container-page pt-24">
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+            {{-- Text --}}
+            <div>
+                <p class="text-eyebrow">Tại sao đăng ký</p>
+                <h2 class="text-section-h2 mt-4">
+                    Phát triển trên một nền tảng được tuyển chọn.
+                </h2>
+                <div class="text-body-prose mt-6 space-y-4">
+                    <p>
+                        Khách hàng đã được xác minh trước khi đặt chỗ. Không có thư rác, không lãng phí thời gian.
                     </p>
+                    <p>
+                        Bạn tự đặt mức phí và mở khung giờ. Chúng tôi không thu phần trăm từ phí tư vấn của bạn, và không yêu cầu số lượng tối thiểu để tham gia.
+                    </p>
+                </div>
+                <a href="#cach-thuc" class="text-link-action mt-6 inline-flex items-center gap-2 text-text transition-colors hover:text-gold">
+                    Xem cách thức hoạt động
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
 
-                    <div class="mt-10 flex flex-col gap-3 sm:flex-row">
-                        <x-button variant="primary" href="{{ route('lawyer.register') }}">Đăng ký ngay</x-button>
-                        <a href="#vi-sao" class="inline-flex items-center justify-center rounded-xl border border-text/15 px-6 py-3 text-[15px] font-medium text-text transition-colors hover:bg-slate-100 hover:border-text/25">
-                            Tìm hiểu thêm
-                        </a>
+            {{-- Offset photo pair (hidden on mobile) --}}
+            <div class="hidden items-start gap-4 md:grid md:grid-cols-2 lg:gap-6">
+                <div class="overflow-hidden rounded-2xl">
+                    <x-responsive-img src="https://images.pexels.com/photos/8085945/pexels-photo-8085945.jpeg"
+                                      alt=""
+                                      sizes="25vw"
+                                      :widths="[400, 600, 800]"
+                                      class="aspect-[3/4] w-full object-cover" />
+                </div>
+                <div class="overflow-hidden rounded-2xl lg:mt-20">
+                    <x-responsive-img src="https://images.pexels.com/photos/8847209/pexels-photo-8847209.jpeg"
+                                      alt=""
+                                      sizes="25vw"
+                                      :widths="[400, 600, 800]"
+                                      class="aspect-[3/4] w-full object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Mixed-media block --}}
+    <section class="container-page pt-24">
+        <div class="grid gap-6 lg:grid-cols-2 lg:gap-6">
+            {{-- Navy emphasis card --}}
+            <div class="flex flex-col justify-between rounded-2xl bg-accent p-10 text-bg lg:p-12">
+                <div>
+                    <p class="text-eyebrow text-gold">Cộng đồng</p>
+                    <h2 class="text-section-h2 mt-6 text-bg">
+                        Một mạng lưới được lựa chọn kỹ lưỡng.
+                    </h2>
+                    <p class="text-body-prose mt-6 text-bg/85">
+                        Mỗi luật sư trên LegalEase đều đã được xác minh hồ sơ hành nghề. Khi bạn tham gia, bạn đứng cạnh những đồng nghiệp được khách hàng tin tưởng.
+                    </p>
+                </div>
+            </div>
+
+            {{-- Right stack: photo + metrics --}}
+            <div class="flex flex-col gap-6">
+                <div class="overflow-hidden rounded-2xl">
+                    <x-responsive-img src="https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg"
+                                      alt=""
+                                      sizes="(min-width: 1024px) 50vw, 100vw"
+                                      :widths="[600, 900, 1200]"
+                                      class="aspect-[16/9] w-full object-cover" />
+                </div>
+                <div class="grid gap-6 sm:grid-cols-2">
+                    <div class="rounded-2xl border border-text/15 p-8">
+                        <p class="display-stat-feature text-accent whitespace-nowrap">100%</p>
+                        <p class="text-caption mt-4">Bạn nhận toàn bộ phí tư vấn.</p>
+                    </div>
+                    <div class="rounded-2xl border border-text/15 p-8">
+                        <p class="display-stat-feature text-accent whitespace-nowrap">2-3</p>
+                        <p class="text-caption mt-4">Ngày phê duyệt hồ sơ.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="relative hidden min-h-[560px] md:block">
-                <div class="absolute inset-0 overflow-hidden rounded-3xl">
-                    <img src="https://images.unsplash.com/photo-1668239596261-62f94059533e?q=80&w=2671&auto=format&fit=crop"
-                         alt="Tượng nữ thần công lý"
-                         class="h-full w-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/55 via-slate-900/20 to-slate-900/45"></div>
-                    <div class="absolute inset-0 backdrop-blur-[1px]"></div>
-                </div>
-            </div>
         </div>
     </section>
 
-    {{-- Trust strip --}}
-    <section class="bg-surface">
-        <div class="mx-auto flex h-24 max-w-[1280px] items-center justify-center px-8">
-            <div class="grid w-full grid-cols-1 divide-y divide-text/10 md:grid-cols-3 md:divide-x md:divide-y-0">
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">500+</p>
-                    <p class="mt-2 text-[14px] text-muted">Luật sư trên nền tảng</p>
-                </div>
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">12</p>
-                    <p class="mt-2 text-[14px] text-muted">Thành phố trên khắp Việt Nam</p>
-                </div>
-                <div class="flex flex-col items-center px-6 py-4 md:py-0">
-                    <p class="font-display text-[36px] font-medium leading-none tracking-tight">10,000+</p>
-                    <p class="mt-2 text-[14px] text-muted">Lượt tư vấn đã hoàn tất</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{-- Operational transparency --}}
+    <section class="container-page pt-24">
+        <h2 class="text-section-h2">Minh bạch vận hành</h2>
 
-    {{-- Why list with us --}}
-    <section id="vi-sao" class="mx-auto max-w-[1280px] px-8 pt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Vì sao nên tham gia cùng chúng tôi</h2>
-
-        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            @foreach ($valueProps as $v)
-                <div class="rounded-2xl border border-text/10 bg-surface p-6">
-                    <h3 class="font-display text-[24px] font-medium tracking-tight">{{ $v['title'] }}</h3>
-                    <p class="mt-2 text-[14px] leading-relaxed text-muted">{{ $v['desc'] }}</p>
+        <div class="mt-12 grid divide-y divide-text/15 md:grid-cols-3 md:divide-y-0 md:divide-x">
+            @foreach ($transparency as $item)
+                <div class="py-10 first:pt-0 last:pb-0 md:px-10 md:py-0 md:first:pl-0 md:last:pr-0">
+                    <h3 class="text-card-h4">{{ $item['q'] }}</h3>
+                    <p class="text-body mt-4">{{ $item['a'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
-    {{-- Lawyer testimonial --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <div class="border-y border-text/10 py-20 md:py-24">
-            <blockquote class="mx-auto max-w-[900px] text-center font-display text-[32px] font-medium italic leading-[1.2] tracking-[-0.01em] md:text-[44px]">
-                <span class="text-muted">“</span>Sáu tháng sau, một nửa số khách hàng mới của tôi đến từ LegalEase. Quy trình xác minh tạo ra độ tin cậy mà tôi không thể mua bằng quảng cáo.<span class="text-muted">”</span>
-            </blockquote>
-            <p class="mt-8 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
-                Lê Văn Thanh, Tố tụng dân sự, TP.HCM
-            </p>
-        </div>
-    </section>
-
     {{-- How it works --}}
-    <section class="mx-auto max-w-[1280px] px-8 pt-24">
-        <h2 class="font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">Quy trình tham gia</h2>
+    <section id="cach-thuc" class="container-page pt-24">
+        <h2 class="text-section-h2">Cách thức hoạt động</h2>
 
-        <div class="relative mt-12 grid gap-12 md:grid-cols-3">
+        <div class="relative mt-12 grid divide-y divide-text/15 md:grid-cols-3 md:gap-12 md:divide-y-0">
+            {{-- Ground line --}}
             <div aria-hidden="true"
-                 class="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-text/10 md:block"></div>
+                 class="pointer-events-none absolute left-0 right-0 hidden h-px bg-text/15 md:block md:top-20 lg:top-24"></div>
 
             @foreach ($steps as $step)
-                <div class="relative">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-[14px] font-medium text-accent">
-                        {{ $step['n'] }}
-                    </div>
-                    <h3 class="mt-6 font-display text-[24px] font-medium tracking-tight">{{ $step['title'] }}</h3>
-                    <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-secondary">{{ $step['desc'] }}</p>
+                <div class="py-10 first:pt-0 last:pb-0 md:py-0">
+                    <p class="display-stat-feature text-accent">{{ $step['n'] }}</p>
+                    <h3 class="text-card-h3 mt-8">{{ $step['title'] }}</h3>
+                    <p class="text-body mt-4 max-w-sm">{{ $step['desc'] }}</p>
                 </div>
             @endforeach
         </div>
     </section>
 
     {{-- Closing CTA --}}
-    <section class="mx-auto max-w-[1280px] px-8 pb-24 pt-32 text-center">
-        <h2 class="font-display text-[40px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[52px]">
-            Sẵn sàng mở rộng hoạt động hành nghề?
-        </h2>
-        <div class="mt-10 flex justify-center">
-            <x-button variant="primary" href="{{ route('lawyer.register') }}">Đăng ký tham gia →</x-button>
+    <section class="bg-gold/5 mt-24 md:mt-32">
+        <div class="container-page closing-cta">
+            <h2 class="text-cta-h2">
+                Sẵn sàng phát triển hành nghề?
+            </h2>
+            <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
+                Đăng ký mất vài phút. Đội ngũ chúng tôi sẽ xem xét và phê duyệt trong vòng vài ngày làm việc.
+            </p>
+            <div class="mt-10 flex justify-center">
+                <x-button variant="primary" href="{{ route('lawyer.register') }}">Đăng ký tham gia →</x-button>
+            </div>
         </div>
     </section>
 @endsection

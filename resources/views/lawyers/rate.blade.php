@@ -2,22 +2,46 @@
 
 @section('content')
 <section class="mx-auto max-w-[640px] px-8 pt-24 pb-24">
-    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Tư vấn của bạn</p>
-    <h1 class="mt-3 font-display text-[36px] font-medium tracking-[-0.02em] md:text-[44px]">
-        How did it go?
+    <h1 class="text-flow-h1">
+        Buổi tư vấn thế nào?
     </h1>
-    <p class="mt-4 text-[17px] text-secondary">
-        Honest feedback helps other clients pick the right lawyer.
+    <p class="text-flow-intro mt-4">
+        Phản hồi trung thực giúp khách hàng khác chọn được luật sư phù hợp.
     </p>
 
-    {{-- Lawyer summary --}}
-    <div class="mt-12 flex items-center gap-4 rounded-2xl border border-text/10 bg-surface p-5">
-        <img src="{{ $lawyer['portrait_url'] }}"
-             alt=""
-             class="h-16 w-16 flex-none rounded-full object-cover object-top grayscale">
-        <div class="min-w-0">
-            <p class="font-display text-[20px] font-medium tracking-tight">{{ $lawyer['name'] }}</p>
-            <p class="text-[13px] text-muted">{{ $lawyer['primary_specialty'] }}</p>
+    {{-- Dossier (archival, matches past consultation detail) --}}
+    <div class="mt-12 card-base">
+        <div class="flex items-center gap-5">
+            <x-responsive-img :src="$lawyer['portrait_url']"
+                              alt=""
+                              sizes="80px"
+                              :widths="[200, 400]"
+                              class="h-20 w-20 flex-none rounded-full object-cover object-top" />
+            <div class="min-w-0">
+                <p class="text-card-h3">{{ $lawyer['name'] }}</p>
+                <p class="text-caption">
+                    {{ $lawyer['primary_specialty'] }}@if (!empty($lawyer['bar_association'])) · {{ $lawyer['bar_association'] }}@endif
+                </p>
+            </div>
+        </div>
+
+        <div class="my-8 h-px bg-text/10"></div>
+
+        <div class="grid gap-8 md:grid-cols-2">
+            <div>
+                <p class="text-eyebrow">Thời gian</p>
+                <p class="text-card-h4 mt-2">
+                    {{ \Illuminate\Support\Str::title(\Carbon\Carbon::parse($consultation['date'])->translatedFormat('l, d/m/Y')) }}
+                </p>
+                <p class="text-caption">
+                    {{ \Carbon\Carbon::createFromFormat('H:i', $consultation['time'])->format('H:i') }} · 60 phút
+                </p>
+            </div>
+            <div>
+                <p class="text-eyebrow">Địa điểm</p>
+                <p class="mt-2 text-body text-text">{{ $lawyer['address']['street_address'] }}</p>
+                <p class="text-caption">{{ $lawyer['address']['province'] }}</p>
+            </div>
         </div>
     </div>
 
@@ -29,8 +53,8 @@
 
         {{-- Stars --}}
         <div>
-            <p class="text-[13px] font-medium text-muted">
-                How would you rate your experience?
+            <p class="text-form-label">
+                Bạn đánh giá trải nghiệm của mình thế nào?
             </p>
             <div class="mt-4 flex items-center gap-2">
                 @for ($i = 1; $i <= 5; $i++)
@@ -38,10 +62,10 @@
                             @click="stars = {{ $i }}"
                             @mouseover="hover = {{ $i }}"
                             @mouseleave="hover = 0"
-                            aria-label="{{ $i }} star{{ $i === 1 ? '' : 's' }}"
+                            aria-label="{{ $i }} sao"
                             class="transition-transform duration-150 hover:scale-110 focus:outline-none">
                         <svg class="h-10 w-10 transition-colors duration-150"
-                             :class="(hover || stars) >= {{ $i }} ? 'text-gold' : 'text-text/20'"
+                             :class="(hover || stars) >= {{ $i }} ? 'text-gold-bright' : 'text-text/20'"
                              viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2l2.9 6.9L22 9.8l-5.5 4.8 1.7 7.4L12 18l-6.2 4 1.7-7.4L2 9.8l7.1-.9L12 2z"/>
                         </svg>
@@ -50,25 +74,25 @@
             </div>
             <input type="hidden" name="stars" :value="stars">
             <p x-show="!stars && {{ $errors->has('stars') ? 'true' : 'false' }}" x-cloak
-               class="mt-3 text-[13px] text-error">Vui lòng chọn một đánh giá.</p>
-            @error('stars') <p class="mt-3 text-[13px] text-error">{{ $message }}</p> @enderror
+               class="mt-3 text-caption text-error">Vui lòng chọn một đánh giá.</p>
+            @error('stars') <p class="mt-3 text-caption text-error">{{ $message }}</p> @enderror
         </div>
 
         {{-- Review text --}}
         <div>
-            <label for="review_text" class="block text-[13px] font-medium text-muted">
-                Add a review <span class="text-muted/60">(không bắt buộc)</span>
+            <label for="review_text" class="block text-form-label">
+                Thêm nhận xét <span class="text-text/60">(không bắt buộc)</span>
             </label>
             <textarea id="review_text" name="review_text" rows="6" maxlength="2000"
-                      placeholder="What stood out? Anything that could have been better?"
-                      class="mt-3 block w-full resize-y rounded-xl border border-text/10 bg-surface px-4 py-3 text-[15px] leading-relaxed text-text placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">{{ old('review_text') }}</textarea>
-            @error('review_text') <p class="mt-2 text-[13px] text-error">{{ $message }}</p> @enderror
+                      placeholder="Điều gì nổi bật? Có gì có thể tốt hơn?"
+                      class="mt-3 block w-full resize-y rounded-xl border border-text/20 bg-bg px-4 py-3 text-body text-text placeholder:text-text/60 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">{{ old('review_text') }}</textarea>
+            @error('review_text') <p class="mt-2 text-caption text-error">{{ $message }}</p> @enderror
         </div>
 
         <div class="flex items-center gap-6">
             <x-button variant="primary" type="submit">Gửi đánh giá</x-button>
-            <a href="{{ route('consultations.show', $consultation['booking_code']) }}" class="text-[14px] text-muted transition-colors hover:text-accent">
-                Maybe later
+            <a href="{{ route('consultations.show', $consultation['booking_code']) }}" class="text-caption transition-colors hover:text-text/60">
+                Để sau
             </a>
         </div>
     </form>

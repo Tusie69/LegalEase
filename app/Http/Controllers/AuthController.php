@@ -128,11 +128,6 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function dashboard()
-    {
-        return view('dashboard');
-    }
-
     public function showForgotPasswordForm()
     {
         return view('forgot-password');

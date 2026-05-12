@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -42,9 +42,6 @@
                 </a>
                 <a href="{{ route('dashboard') }}" class="flex items-center rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100">
                     Trang đặt lịch
-                </a>
-                <a href="{{ route('appointments.index') }}" class="flex items-center rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100">
-                    Lịch hẹn
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="pt-2">
                     @csrf
