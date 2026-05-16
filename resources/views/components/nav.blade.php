@@ -41,55 +41,101 @@
                             mb_substr($tokens[0] ?? '?', 0, 1) . mb_substr($tokens[count($tokens) - 1] ?? '', 0, 1)
                         );
                         $isLawyer = (int) auth()->user()->role_id === 2;
+                        $menuItems = $isLawyer
+                            ? [
+                                ['label' => 'Bảng điều khiển', 'route' => 'lawyer.dashboard', 'icon' => 'grid', 'active' => request()->routeIs('lawyer.dashboard')],
+                                ['label' => 'Hồ sơ', 'route' => 'lawyer.profile', 'icon' => 'user', 'active' => request()->routeIs('lawyer.profile')],
+                            ]
+                            : [
+                                ['label' => 'Tư vấn của tôi', 'route' => 'consultations.index', 'icon' => 'briefcase', 'active' => request()->routeIs('consultations.*')],
+                                ['label' => 'Tài khoản', 'route' => 'account', 'icon' => 'settings', 'active' => request()->routeIs('account')],
+                            ];
                     @endphp
                     <div x-data="{ dropdownOpen: false }"
                          @click.window="if (!$el.contains($event.target)) dropdownOpen = false"
                          class="relative">
                         <button type="button" @click="dropdownOpen = !dropdownOpen"
-                                class="inline-flex items-center gap-2 rounded-full border border-text/30 py-1.5 pl-1.5 pr-4 text-form-label text-text transition-colors duration-200 hover:border-accent hover:text-accent">
-                            <span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-accent/10 text-form-hint font-semibold text-accent">{{ $initials }}</span>
+                                class="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white py-1.5 pl-1.5 pr-4 text-form-label text-slate-700 transition-colors duration-200 hover:border-slate-400 hover:text-slate-900">
+                            <span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-sky-100 text-form-hint font-semibold text-sky-700">{{ $initials }}</span>
                             <span>{{ $firstName }}</span>
                             <svg class="h-4 w-4 transition-transform duration-200" :class="dropdownOpen ? 'rotate-180' : ''"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <polyline points="6 9 12 15 18 9"/>
                             </svg>
                         </button>
-                        <div x-show="dropdownOpen" x-transition x-cloak style="display:none;"
-                             class="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl border border-text/15 bg-bg py-2">
-                            <div class="px-4 py-2">
-                                <p class="font-display text-body font-medium text-text">{{ auth()->user()->name }}</p>
-                                <p class="truncate text-form-hint">{{ auth()->user()->email }}</p>
+                        <div x-show="dropdownOpen"
+                             x-transition:enter="transition ease-out duration-150"
+                             x-transition:enter-start="opacity-0 -translate-y-1 scale-95"
+                             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                             x-transition:leave="transition ease-in duration-100"
+                             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                             x-transition:leave-end="opacity-0 -translate-y-1 scale-95"
+                             x-cloak style="display:none;"
+                             class="absolute right-0 mt-3 w-80 origin-top-right rounded-3xl border border-slate-200 bg-white p-3 text-slate-700 shadow-[0_16px_48px_rgba(15,23,42,0.18)]">
+                            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-base font-semibold text-slate-900">{{ auth()->user()->name }}</p>
+                                        <p class="truncate text-sm text-slate-500">{{ auth()->user()->email }}</p>
+                                    </div>
+                                    <span class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gradient-to-br from-sky-400 via-cyan-400 to-blue-500 text-sm font-semibold text-white ring-2 ring-cyan-100">
+                                        {{ $initials }}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="my-1 h-px bg-text/10"></div>
-                            @if ($isLawyer)
-                                <a href="{{ route('lawyer.dashboard') }}"
-                                   @click="dropdownOpen = false"
-                                   class="block w-full px-4 py-2 text-left text-caption text-text transition-colors hover:bg-text/5 hover:text-accent">
-                                    Bảng điều khiển
-                                </a>
-                                <a href="{{ route('lawyer.profile') }}"
-                                   @click="dropdownOpen = false"
-                                   class="block w-full px-4 py-2 text-left text-caption text-text transition-colors hover:bg-text/5 hover:text-accent">
-                                    Hồ sơ
-                                </a>
-                            @else
-                                <a href="{{ route('consultations.index') }}"
-                                   @click="dropdownOpen = false"
-                                   class="block w-full px-4 py-2 text-left text-caption text-text transition-colors hover:bg-text/5 hover:text-accent">
-                                    Tư vấn của tôi
-                                </a>
-                                <a href="{{ route('account') }}"
-                                   @click="dropdownOpen = false"
-                                   class="block w-full px-4 py-2 text-left text-caption text-text transition-colors hover:bg-text/5 hover:text-accent">
-                                    Tài khoản
-                                </a>
-                            @endif
+
+                            <div class="mt-2 space-y-1">
+                                @foreach ($menuItems as $item)
+                                    <a href="{{ route($item['route']) }}"
+                                       @click="dropdownOpen = false"
+                                       class="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-[15px] transition {{ $item['active'] ? 'bg-slate-100 text-slate-900' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
+                                        <span class="flex items-center gap-3">
+                                            <span class="inline-flex h-5 w-5 items-center justify-center text-slate-500">
+                                                @if ($item['icon'] === 'grid')
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-5 w-5">
+                                                        <rect x="3" y="3" width="7" height="7" rx="1.6"></rect>
+                                                        <rect x="14" y="3" width="7" height="7" rx="1.6"></rect>
+                                                        <rect x="3" y="14" width="7" height="7" rx="1.6"></rect>
+                                                        <rect x="14" y="14" width="7" height="7" rx="1.6"></rect>
+                                                    </svg>
+                                                @elseif ($item['icon'] === 'briefcase')
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-5 w-5">
+                                                        <path d="M9 7V6a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v1"></path>
+                                                        <rect x="3" y="7" width="18" height="13" rx="2.5"></rect>
+                                                        <path d="M3 12h18"></path>
+                                                    </svg>
+                                                @elseif ($item['icon'] === 'settings')
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-5 w-5">
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                        <path d="M19.4 15a1.75 1.75 0 0 0 .35 1.93l.03.03a2 2 0 1 1-2.83 2.83l-.03-.03A1.75 1.75 0 0 0 15 19.4a1.75 1.75 0 0 0-1 .16 1.75 1.75 0 0 0-.9 1.55V21a2 2 0 1 1-4 0v-.05a1.75 1.75 0 0 0-.9-1.55 1.75 1.75 0 0 0-1-.16 1.75 1.75 0 0 0-1.93.35l-.03.03a2 2 0 1 1-2.83-2.83l.03-.03A1.75 1.75 0 0 0 4.6 15a1.75 1.75 0 0 0-.16-1 1.75 1.75 0 0 0-1.55-.9H2.84a2 2 0 1 1 0-4h.05a1.75 1.75 0 0 0 1.55-.9 1.75 1.75 0 0 0 .16-1 1.75 1.75 0 0 0-.35-1.93l-.03-.03A2 2 0 1 1 7.05 2.4l.03.03A1.75 1.75 0 0 0 9 4.6a1.75 1.75 0 0 0 1-.16 1.75 1.75 0 0 0 .9-1.55V2.84a2 2 0 1 1 4 0v.05a1.75 1.75 0 0 0 .9 1.55 1.75 1.75 0 0 0 1 .16 1.75 1.75 0 0 0 1.93-.35l.03-.03a2 2 0 1 1 2.83 2.83l-.03.03A1.75 1.75 0 0 0 19.4 9c.08.32.13.66.13 1s-.05.68-.13 1Z"></path>
+                                                    </svg>
+                                                @else
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-5 w-5">
+                                                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                                                        <path d="M4 20a8 8 0 0 1 16 0"></path>
+                                                    </svg>
+                                                @endif
+                                            </span>
+                                            <span>{{ $item['label'] }}</span>
+                                        </span>
+                                    </a>
+                                @endforeach
+                            </div>
+
+                            <div class="my-2 h-px bg-slate-200"></div>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
                                         @click="dropdownOpen = false"
-                                        class="block w-full px-4 py-2 text-left text-caption text-text transition-colors hover:bg-text/5 hover:text-accent">
-                                    Đăng xuất
+                                        class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                                    <span class="inline-flex h-5 w-5 items-center justify-center text-slate-500">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" class="h-5 w-5">
+                                            <path d="M9 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3"></path>
+                                            <path d="M16 17l5-5-5-5"></path>
+                                            <path d="M21 12H9"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Đăng xuất</span>
                                 </button>
                             </form>
                         </div>
