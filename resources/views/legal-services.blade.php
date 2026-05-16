@@ -11,7 +11,7 @@
         Bạn chưa biết bắt đầu từ đâu?
 
         <x-slot:subtitle>
-            Hầu hết mọi người không chắc mình cần loại luật sư nào cho tình huống cụ thể. Trang này sẽ giúp bạn định hướng rõ ràng.
+            Hầu hết mọi người không chắc mình cần luật sư nào cho tình huống cụ thể. Trang này sẽ giúp bạn định hướng rõ ràng.
         </x-slot:subtitle>
     </x-hero-bar>
 
@@ -23,18 +23,9 @@
         </div>
     </section>
 
-    <section class="bg-gold/5 mt-24 md:mt-32">
-        <div class="container-page closing-cta">
-            <p class="text-eyebrow">Vẫn chưa thấy tình huống của bạn?</p>
-            <h2 class="text-cta-h2 mt-6">
-                Nói chuyện với chúng tôi.
-            </h2>
-            <p class="text-body-prose mx-auto mt-6 max-w-[480px]">
-                Chỉ cần mô tả ngắn, chúng tôi sẽ giúp bạn xác định loại luật sư cần tìm.
-            </p>
-            <div class="mt-10 flex justify-center">
-                <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>
-            </div>
-        </div>
-    </section>
+    <x-closing-cta
+        heading="Nói chuyện với chúng tôi."
+        subtitle="Chỉ cần mô tả ngắn, chúng tôi sẽ giúp bạn xác định luật sư cần tìm."
+        button="Liên hệ hỗ trợ →"
+        :href="route('contact')" />
 @endsection

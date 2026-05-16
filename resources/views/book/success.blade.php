@@ -11,7 +11,7 @@
 <section class="mx-auto max-w-[720px] px-8 py-20">
     @if (!$completed || !$lawyer)
         <div class="card-base-lg">
-            <p class="text-body">Không tìm thấy đặt phòng. Duyệt luật sư để làm một cái mới.</p>
+            <p class="text-body">Không tìm thấy đặt phòng. Tìm luật sư để làm một cái mới.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-form-label text-text transition-colors hover:text-text/70">
                 Tìm luật sư
                 <span aria-hidden="true">→</span>

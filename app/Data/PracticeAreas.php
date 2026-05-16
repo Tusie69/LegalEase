@@ -33,7 +33,7 @@ class PracticeAreas
                 'slug' => 'real-estate',
                 'name' => 'Bất động sản',
                 'image_url' => 'https://images.unsplash.com/photo-1758957530781-4ff54e09bee2?q=80',
-                'description' => 'Giao dịch nhà đất, pháp lý sổ, hợp đồng thuê.',
+                'description' => 'Giao dịch nhà đất, pháp lý sổ đỏ, hợp đồng thuê.',
                 'scenarios' => [
                     ['icon' => 'home',      'text' => 'Bạn cần kiểm tra pháp lý trước khi mua hoặc bán nhà đất.'],
                     ['icon' => 'file-text', 'text' => 'Bạn chuẩn bị ký hợp đồng thuê thương mại và cần rà soát điều khoản.'],

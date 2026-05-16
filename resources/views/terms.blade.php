@@ -49,7 +49,7 @@
             'title' => 'Trách nhiệm của luật sư',
             'paras' => [
                 'Luật sư đăng ký trên LegalEase phải có giấy tờ thành viên đoàn luật sư hợp lệ, mô tả chính xác kinh nghiệm và lĩnh vực chuyên môn, và tiến hành tư vấn một cách chuyên nghiệp.',
-                'Luật sư là người hành nghề độc lập. LegalEase không tuyển dụng luật sư và không chịu trách nhiệm về tư vấn pháp lý mà họ cung cấp. Luật sư đồng ý tuân thủ các lượt đặt chỗ đã xác nhận và cập nhật lịch trống kịp thời để tránh xung đột lịch.',
+                'Luật sư là người hành nghề độc lập. LegalEase không tuyển dụng luật sư và không chịu trách nhiệm về tư vấn pháp lý mà họ cung cấp. Luật sư đồng ý tuân thủ các lịch hẹn đã xác nhận và cập nhật lịch trống kịp thời để tránh xung đột lịch.',
             ],
         ],
         [
@@ -86,7 +86,7 @@
         ],
         [
             'n'     => 11,
-            'title' => 'Những thay đổi đối với các điều khoản này',
+            'title' => 'Thay đổi điều khoản',
             'paras' => [
                 'Chúng tôi có thể cập nhật Điều khoản dịch vụ này theo thời gian. Các thay đổi quan trọng sẽ được thông báo qua nền tảng. Việc tiếp tục sử dụng sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các điều khoản đã được cập nhật.',
             ],

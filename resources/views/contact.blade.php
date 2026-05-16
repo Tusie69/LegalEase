@@ -1,24 +1,37 @@
-@extends('layouts.app', ['title' => 'Liên hệ · LegalEase'])
+@extends('layouts.app', ['title' => 'Liên hệ · LegalEase', 'navOverlay' => true])
 
 @php
     $googleFormAction = 'https://docs.google.com/forms/d/e/1FAIpQLSfcyLPuKwSRDy66N2YknsI59_zAKKXaUbQ32y5blk-ITNIo0Q/formResponse';
 @endphp
 
 @section('content')
-    {{-- Header --}}
-    <section class="container-page pt-24">
-        <div class="max-w-[720px]">
-            <h1 class="text-page-h1">
-                Chúng tôi luôn ở đây khi bạn cần.
-            </h1>
+    {{-- Navy hero band: full-bleed, bleeds under transparent nav. Matches the lawyer page treatment for brand consistency. --}}
+    <div class="-mt-18 bg-accent text-bg">
+        <div class="container-page pt-32 pb-12">
+            <nav class="text-caption">
+                <a href="/" class="text-bg/70 transition-colors hover:text-bg">Trang chủ</a>
+                <span class="px-1 text-bg/50">/</span>
+                <span class="text-bg">Liên hệ</span>
+            </nav>
 
-            <p class="text-body-intro mt-6 max-w-[600px]">
-                Dù bạn có câu hỏi về nền tảng, yêu cầu hợp tác hay phản hồi cần chúng tôi lắng nghe, chúng tôi đọc mọi tin nhắn.
-            </p>
+            <div class="mt-6 max-w-[720px]">
+                <h1 class="text-page-h1 text-bg">
+                    Có chuyện gì, cứ nhắn chúng tôi.
+                </h1>
+
+                <p class="text-body-intro mt-6 max-w-[600px] text-bg/80">
+                    Câu hỏi, đề xuất hợp tác hay góp ý, chúng tôi đọc mọi tin nhắn, từ người thật.
+                </p>
+            </div>
         </div>
+        {{-- Gold hairline divider for editorial finish --}}
+        <div aria-hidden="true" class="h-px bg-gold/30"></div>
+    </div>
 
+    {{-- Content below: light bg. pt matches the mt-24 between form and contact cards so the form has symmetric breathing room. --}}
+    <section class="container-page pt-24 pb-24">
         {{-- Photo + form: unified split block --}}
-        <div class="mt-16 overflow-hidden rounded-2xl border border-text/15">
+        <div class="overflow-hidden rounded-2xl border border-text/15">
             <div class="grid lg:grid-cols-2">
                 {{-- Photo --}}
                 <div class="aspect-[4/5] overflow-hidden lg:aspect-auto lg:min-h-[640px]">
@@ -97,7 +110,7 @@
                         </div>
 
                         <x-button variant="primary" type="submit" class="w-full">
-                            Gửi tin nhắn →
+                            Gửi cho chúng tôi →
                         </x-button>
 
                         <p x-show="submitted" x-cloak class="text-caption text-success">
@@ -182,8 +195,8 @@
         </div>
 
         {{-- Reassurance --}}
-        <p class="mt-16 pb-24 text-center text-caption">
-            Mọi tin nhắn đều được đọc bởi người thật. Chúng tôi cố gắng phản hồi trong vòng một ngày làm việc.
+        <p class="mt-16 text-center text-caption">
+            Mọi tin nhắn đều được người thật đọc. Chúng tôi cố gắng phản hồi trong vòng một ngày làm việc.
         </p>
     </section>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Luật sư · LegalEase'])
+@extends('layouts.app', ['title' => 'Luật sư · LegalEase', 'navOverlay' => true])
 
 @php
     use Carbon\Carbon;
@@ -24,6 +24,8 @@
             };
         }, $l['specialty_tags']),
         'price_per_hour' => $l['price_per_hour'],
+        'rating' => $l['rating'] ?? 0,
+        'years_of_experience' => $l['years_of_experience'] ?? 0,
         'languages' => array_map(function($lang) {
             return match($lang) {
                 'Vietnamese' => 'Tiếng Việt',
@@ -42,23 +44,25 @@
 @endphp
 
 @section('content')
-    <section class="container-page pb-24 pt-24"
-             x-data="lawyerFilters({{ json_encode($lawyersForFilter) }}, {{ json_encode($specialties) }}, {{ json_encode($locations) }}, {{ json_encode($languages) }}, {{ $today->year }}, {{ $today->month - 1 }}, {{ $today->day }})">
+    <section x-data="lawyerFilters({{ json_encode($lawyersForFilter) }}, {{ json_encode($specialties) }}, {{ json_encode($locations) }}, {{ json_encode($languages) }}, {{ $today->year }}, {{ $today->month - 1 }}, {{ $today->day }})">
+    {{-- Navy hero band: full-bleed, bleeds under transparent nav. Contains breadcrumb + h1 + subtitle + filter pills. --}}
+    <div class="-mt-18 bg-accent text-bg">
+        <div class="container-page pt-32 pb-12">
         {{-- Breadcrumb --}}
         <nav class="text-caption">
-            <a href="/" class="transition-colors hover:text-text/60">Trang chủ</a>
-            <span class="px-1">/</span>
-            <span class="text-text">Luật sư</span>
+            <a href="/" class="text-bg/70 transition-colors hover:text-bg">Trang chủ</a>
+            <span class="px-1 text-bg/50">/</span>
+            <span class="text-bg">Luật sư</span>
         </nav>
 
-        <h1 class="text-page-h1 mt-6">Tìm luật sư của bạn</h1>
-        <p class="text-body-prose mt-3">Duyệt qua hơn 500 luật sư đã được xác minh trên khắp Việt Nam.</p>
+        <h1 class="text-page-h1 mt-6 text-bg">Tìm luật sư của riêng bạn</h1>
+        <p class="text-body-prose mt-3 text-bg/80">Hơn 500 luật sư đã xác minh, sẵn sàng trên khắp Việt Nam.</p>
 
         {{-- Mobile filter trigger (<md) --}}
         <div class="mt-10 flex items-center justify-between md:hidden">
             <button type="button"
                     @click="openSheet()"
-                    :class="hasActiveFilters ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text'"
+                    :class="hasActiveFilters ? 'border-bg bg-bg text-accent' : 'border-bg/40 text-bg'"
                     class="filter-pill">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="4" y1="6" x2="20" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/>
@@ -70,26 +74,26 @@
                     @click="reset()"
                     x-show="hasActiveFilters"
                     x-cloak
-                    class="text-caption text-text/60 transition-colors hover:text-text">
+                    class="text-caption text-bg/70 transition-colors hover:text-bg">
                 Xóa bộ lọc
             </button>
         </div>
 
-        {{-- Filter pills (md+) --}}
-        <div class="mt-10 hidden flex-wrap items-center gap-3 border-b border-text/15 pb-6 md:flex">
-            {{-- Specialty pill --}}
+        {{-- Filter strip (md+): horizontal icon-stack tabs --}}
+        <div class="mt-10 hidden items-stretch border-y border-bg/15 md:flex">
+            {{-- Specialty --}}
             <div class="relative" @click.outside="if (openFilter === 'specialty') openFilter = null">
                 <button type="button"
                         @click="toggleFilter('specialty')"
                         :aria-expanded="openFilter === 'specialty'"
-                        :class="specialties.length ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text hover:border-accent'"
-                        class="filter-pill">
-                    <span>Chuyên môn</span>
-                    <span x-show="specialties.length" x-cloak class="filter-pill-count" x-text="specialties.length"></span>
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="openFilter === 'specialty' ? 'rotate-180' : ''"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                        :class="specialties.length || openFilter === 'specialty' ? 'opacity-100' : 'opacity-55 hover:opacity-100'"
+                        class="relative flex h-full flex-col items-center gap-1.5 px-6 py-4 text-bg transition-opacity">
+                    <x-icon name="scale" :size="22" />
+                    <span class="text-caption font-medium">Chuyên môn</span>
+                    <span class="text-form-hint text-bg/70" x-text="specialtyLabel"></span>
+                    <span x-show="specialties.length || openFilter === 'specialty'" x-cloak
+                          aria-hidden="true"
+                          class="absolute inset-x-5 -bottom-px h-0.5 bg-bg"></span>
                 </button>
                 <div x-show="openFilter === 'specialty'" x-cloak class="filter-popover">
                     <input type="search"
@@ -111,19 +115,19 @@
                 </div>
             </div>
 
-            {{-- Location pill --}}
+            {{-- Location --}}
             <div class="relative" @click.outside="if (openFilter === 'location') openFilter = null">
                 <button type="button"
                         @click="toggleFilter('location')"
                         :aria-expanded="openFilter === 'location'"
-                        :class="locations.length ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text hover:border-accent'"
-                        class="filter-pill">
-                    <span>Địa điểm</span>
-                    <span x-show="locations.length" x-cloak class="filter-pill-count" x-text="locations.length"></span>
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="openFilter === 'location' ? 'rotate-180' : ''"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                        :class="locations.length || openFilter === 'location' ? 'opacity-100' : 'opacity-55 hover:opacity-100'"
+                        class="relative flex h-full flex-col items-center gap-1.5 px-6 py-4 text-bg transition-opacity">
+                    <x-icon name="map-pin" :size="22" />
+                    <span class="text-caption font-medium">Địa điểm</span>
+                    <span class="text-form-hint text-bg/70" x-text="locationLabel"></span>
+                    <span x-show="locations.length || openFilter === 'location'" x-cloak
+                          aria-hidden="true"
+                          class="absolute inset-x-5 -bottom-px h-0.5 bg-bg"></span>
                 </button>
                 <div x-show="openFilter === 'location'" x-cloak class="filter-popover">
                     <input type="search"
@@ -145,19 +149,19 @@
                 </div>
             </div>
 
-            {{-- Time pill --}}
+            {{-- Time --}}
             <div class="relative" @click.outside="if (openFilter === 'time') openFilter = null">
                 <button type="button"
                         @click="toggleFilter('time')"
                         :aria-expanded="openFilter === 'time'"
-                        :class="timeFilterCount ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text hover:border-accent'"
-                        class="filter-pill">
-                    <span>Thời gian</span>
-                    <span x-show="timeFilterCount" x-cloak class="filter-pill-count" x-text="timeFilterCount"></span>
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="openFilter === 'time' ? 'rotate-180' : ''"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                        :class="timeFilterCount || openFilter === 'time' ? 'opacity-100' : 'opacity-55 hover:opacity-100'"
+                        class="relative flex h-full flex-col items-center gap-1.5 px-6 py-4 text-bg transition-opacity">
+                    <x-icon name="calendar" :size="22" />
+                    <span class="text-caption font-medium">Thời gian</span>
+                    <span class="text-form-hint text-bg/70" x-text="timeLabel"></span>
+                    <span x-show="timeFilterCount || openFilter === 'time'" x-cloak
+                          aria-hidden="true"
+                          class="absolute inset-x-5 -bottom-px h-0.5 bg-bg"></span>
                 </button>
                 <div x-show="openFilter === 'time'" x-cloak class="filter-popover w-[320px]">
                     <div class="flex gap-2">
@@ -226,19 +230,19 @@
                 </div>
             </div>
 
-            {{-- Price pill --}}
+            {{-- Price --}}
             <div class="relative" @click.outside="if (openFilter === 'price') openFilter = null">
                 <button type="button"
                         @click="toggleFilter('price')"
                         :aria-expanded="openFilter === 'price'"
-                        :class="maxPrice < 5000000 ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text hover:border-accent'"
-                        class="filter-pill">
-                    <span>Khoảng giá</span>
-                    <span x-show="maxPrice < 5000000" x-cloak class="filter-pill-count">·</span>
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="openFilter === 'price' ? 'rotate-180' : ''"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                        :class="maxPrice < 5000000 || openFilter === 'price' ? 'opacity-100' : 'opacity-55 hover:opacity-100'"
+                        class="relative flex h-full flex-col items-center gap-1.5 px-6 py-4 text-bg transition-opacity">
+                    <x-icon name="wallet" :size="22" />
+                    <span class="text-caption font-medium">Khoảng giá</span>
+                    <span class="text-form-hint text-bg/70" x-text="priceLabel"></span>
+                    <span x-show="maxPrice < 5000000 || openFilter === 'price'" x-cloak
+                          aria-hidden="true"
+                          class="absolute inset-x-5 -bottom-px h-0.5 bg-bg"></span>
                 </button>
                 <div x-show="openFilter === 'price'" x-cloak class="filter-popover w-[280px]">
                     <p class="text-eyebrow text-text/60">Tối đa</p>
@@ -253,19 +257,19 @@
                 </div>
             </div>
 
-            {{-- Language pill --}}
+            {{-- Language --}}
             <div class="relative" @click.outside="if (openFilter === 'language') openFilter = null">
                 <button type="button"
                         @click="toggleFilter('language')"
                         :aria-expanded="openFilter === 'language'"
-                        :class="languages.length ? 'border-accent bg-accent text-bg' : 'border-text/30 text-text hover:border-accent'"
-                        class="filter-pill">
-                    <span>Ngôn ngữ</span>
-                    <span x-show="languages.length" x-cloak class="filter-pill-count" x-text="languages.length"></span>
-                    <svg class="h-3.5 w-3.5 transition-transform" :class="openFilter === 'language' ? 'rotate-180' : ''"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                        :class="languages.length || openFilter === 'language' ? 'opacity-100' : 'opacity-55 hover:opacity-100'"
+                        class="relative flex h-full flex-col items-center gap-1.5 px-6 py-4 text-bg transition-opacity">
+                    <x-icon name="globe" :size="22" />
+                    <span class="text-caption font-medium">Ngôn ngữ</span>
+                    <span class="text-form-hint text-bg/70" x-text="languageLabel"></span>
+                    <span x-show="languages.length || openFilter === 'language'" x-cloak
+                          aria-hidden="true"
+                          class="absolute inset-x-5 -bottom-px h-0.5 bg-bg"></span>
                 </button>
                 <div x-show="openFilter === 'language'" x-cloak class="filter-popover">
                     <div class="space-y-2">
@@ -279,15 +283,11 @@
                 </div>
             </div>
 
-            {{-- Reset --}}
-            <button type="button"
-                    @click="reset()"
-                    x-show="hasActiveFilters"
-                    x-cloak
-                    class="text-caption text-text/60 transition-colors hover:text-text ml-auto">
-                Xóa bộ lọc
-            </button>
         </div>
+        </div>{{-- /container-page --}}
+        {{-- Gold hairline divider at band's bottom for editorial finish --}}
+        <div aria-hidden="true" class="h-px bg-gold/30"></div>
+    </div>{{-- /navy band --}}
 
         {{-- Mobile filter sheet --}}
         <div x-show="sheetOpen"
@@ -479,8 +479,94 @@
             </div>
         </div>
 
-        {{-- Results --}}
-        <div class="mt-10">
+        {{-- Results: switches to light bg-bg below the navy band --}}
+        <div class="container-page pt-12 pb-24">
+                {{-- Results bar: count + sort + clear-all --}}
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <p class="text-body text-text">
+                        <span class="font-medium" x-text="visibleCount.toLocaleString('vi-VN')"></span>
+                        <span class="text-text/70">luật sư phù hợp</span>
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <label class="flex items-center gap-2 text-caption text-text/70">
+                            <span>Sắp xếp:</span>
+                            <div class="relative">
+                                <select x-model="sortBy"
+                                        class="appearance-none border-0 border-b border-text/30 bg-transparent py-1 pr-6 text-caption font-medium text-text focus:border-accent focus:outline-none">
+                                    <option value="rating">Đánh giá cao nhất</option>
+                                    <option value="experience">Nhiều năm kinh nghiệm nhất</option>
+                                    <option value="price-asc">Giá thấp đến cao</option>
+                                    <option value="price-desc">Giá cao đến thấp</option>
+                                </select>
+                                <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center text-text/60">
+                                    <x-icon name="chevron-down" :size="14" />
+                                </span>
+                            </div>
+                        </label>
+                        <button type="button"
+                                @click="reset()"
+                                x-show="hasActiveFilters"
+                                x-cloak
+                                class="text-link-action inline-flex items-center gap-1 text-caption text-text/70 transition-colors hover:text-text">
+                            Xóa tất cả
+                        </button>
+                    </div>
+                </div>
+
+                {{-- Active filter chips: each removes its own selection --}}
+                <div x-show="hasActiveFilters" x-cloak class="mt-6 flex flex-wrap gap-2">
+                    <template x-for="s in specialties" :key="'spec-' + s">
+                        <button type="button"
+                                @click="specialties = specialties.filter(v => v !== s)"
+                                class="active-chip">
+                            <span x-text="s"></span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                    <template x-for="l in locations" :key="'loc-' + l">
+                        <button type="button"
+                                @click="locations = locations.filter(v => v !== l)"
+                                class="active-chip">
+                            <span x-text="l"></span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                    <template x-for="l in languages" :key="'lang-' + l">
+                        <button type="button"
+                                @click="languages = languages.filter(v => v !== l)"
+                                class="active-chip">
+                            <span x-text="l"></span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                    <template x-if="selectedDay !== null">
+                        <button type="button"
+                                @click="selectedDay = null; selectedTime = null"
+                                class="active-chip">
+                            <span x-text="selectedDayLabel"></span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                    <template x-if="selectedTime !== null">
+                        <button type="button"
+                                @click="selectedTime = null"
+                                class="active-chip">
+                            <span x-text="selectedTime"></span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                    <template x-if="maxPrice < 5000000">
+                        <button type="button"
+                                @click="maxPrice = 5000000"
+                                class="active-chip">
+                            <span>≤ <span x-text="Number(maxPrice).toLocaleString('vi-VN')"></span> VND</span>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </template>
+                </div>
+
+                <div class="mt-8">
+
                 {{-- Empty state --}}
                 <div x-show="visibleCount === 0" x-cloak class="flex flex-col items-center justify-center rounded-2xl border border-text/20 px-8 py-20 text-center">
                     <h3 class="text-chapter-h2">Không có luật sư nào khớp với bộ lọc của bạn.</h3>
@@ -493,10 +579,39 @@
 
             <div x-show="visibleCount > 0" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($allLawyers as $i => $lawyer)
-                    <div x-show="matches(lawyersForFilter[{{ $i }}])" x-cloak>
+                    <div :class="{ 'hidden': !visibleMap[{{ $i }}] }"
+                         :style="`order: ${orderMap[{{ $i }}] ?? 0}`"
+                         class="hidden"
+                         x-cloak>
                         <x-lawyer-card :lawyer="$lawyer" />
                     </div>
                 @endforeach
+            </div>
+
+            {{-- Pagination: only renders when there's more than one page of filtered results --}}
+            <div x-show="visibleCount > 0 && totalPages > 1" x-cloak class="mt-12 flex flex-wrap items-center justify-center gap-2">
+                <button type="button"
+                        @click="if (page > 1) { page--; window.scrollTo({ top: 0, behavior: 'smooth' }); }"
+                        :disabled="page === 1"
+                        :class="page === 1 ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                        class="px-3 py-2 text-caption transition-colors">
+                    ← Trước
+                </button>
+                <template x-for="p in totalPages" :key="p">
+                    <button type="button"
+                            @click="page = p; window.scrollTo({ top: 0, behavior: 'smooth' });"
+                            :class="page === p ? 'bg-accent text-bg border-accent' : 'border-text/30 text-text hover:border-accent'"
+                            class="flex h-10 w-10 items-center justify-center rounded-full border text-form-label transition-colors"
+                            x-text="p"></button>
+                </template>
+                <button type="button"
+                        @click="if (page < totalPages) { page++; window.scrollTo({ top: 0, behavior: 'smooth' }); }"
+                        :disabled="page === totalPages"
+                        :class="page === totalPages ? 'text-text/30 cursor-not-allowed' : 'text-text hover:text-text/60'"
+                        class="px-3 py-2 text-caption transition-colors">
+                    Sau →
+                </button>
+            </div>
             </div>
         </div>
     </section>
@@ -638,6 +753,31 @@
             outline-offset: 2px;
         }
 
+        .active-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+            color: var(--color-accent);
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .active-chip:hover {
+            background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+        }
+
+        .active-chip > span[aria-hidden] {
+            font-size: 16px;
+            line-height: 1;
+            opacity: 0.6;
+        }
+
         .price-slider {
             -webkit-appearance: none;
             appearance: none;
@@ -702,6 +842,12 @@
                 maxPrice: 5000000,
                 openFilter: null,
                 sheetOpen: false,
+                page: 1,
+                perPage: 9,
+                sortBy: 'rating',
+                filteredIndices: [],
+                visibleMap: {},
+                orderMap: {},
 
                 toggleFilter(name) {
                     this.openFilter = this.openFilter === name ? null : name;
@@ -715,6 +861,44 @@
                     this.$watch('sheetOpen', value => {
                         document.body.style.overflow = value ? 'hidden' : '';
                     });
+                    ['specialties', 'locations', 'selectedDay', 'selectedTime', 'languages', 'maxPrice', 'sortBy'].forEach(key => {
+                        this.$watch(key, () => {
+                            this.page = 1;
+                            this.recomputeFiltered();
+                        });
+                    });
+                    this.$watch('page', () => this.recomputeMaps());
+                    this.recomputeFiltered();
+                },
+
+                recomputeFiltered() {
+                    const indices = [];
+                    this.lawyersForFilter.forEach((lawyer, i) => {
+                        if (this.matches(lawyer)) indices.push(i);
+                    });
+                    const key = this.sortBy;
+                    const lf = this.lawyersForFilter;
+                    indices.sort((a, b) => {
+                        if (key === 'experience') return (lf[b].years_of_experience || 0) - (lf[a].years_of_experience || 0);
+                        if (key === 'price-asc') return lf[a].price_per_hour - lf[b].price_per_hour;
+                        if (key === 'price-desc') return lf[b].price_per_hour - lf[a].price_per_hour;
+                        return (lf[b].rating || 0) - (lf[a].rating || 0);
+                    });
+                    this.filteredIndices = indices;
+                    this.recomputeMaps();
+                },
+
+                recomputeMaps() {
+                    const vis = {};
+                    const ord = {};
+                    const start = (this.page - 1) * this.perPage;
+                    const end = start + this.perPage;
+                    this.filteredIndices.forEach((lawyerIdx, pos) => {
+                        ord[lawyerIdx] = pos;
+                        vis[lawyerIdx] = pos >= start && pos < end;
+                    });
+                    this.visibleMap = vis;
+                    this.orderMap = ord;
                 },
 
                 todayYear,
@@ -751,6 +935,33 @@
                     if (!available.includes(this.viewMonth)) {
                         this.viewMonth = available[0];
                     }
+                },
+
+                get specialtyLabel() {
+                    if (this.specialties.length === 0) return 'Tất cả lĩnh vực';
+                    if (this.specialties.length === 1) return this.specialties[0];
+                    return this.specialties.length + ' đã chọn';
+                },
+                get locationLabel() {
+                    if (this.locations.length === 0) return 'Cả nước';
+                    if (this.locations.length === 1) return this.locations[0];
+                    return this.locations.length + ' đã chọn';
+                },
+                get timeLabel() {
+                    if (this.selectedDay === null) return 'Bất kỳ';
+                    const d = new Date(this.todayYear, this.todayMonth, this.todayDay + this.selectedDay);
+                    const wd = ['CN','T2','T3','T4','T5','T6','T7'];
+                    const date = `${wd[d.getDay()]}, ${d.getDate()}/${d.getMonth() + 1}`;
+                    return this.selectedTime ? `${date} · ${this.selectedTime}` : date;
+                },
+                get priceLabel() {
+                    if (this.maxPrice >= 5000000) return 'Bất kỳ';
+                    return '≤ ' + Number(this.maxPrice).toLocaleString('vi-VN');
+                },
+                get languageLabel() {
+                    if (this.languages.length === 0) return 'Tất cả';
+                    if (this.languages.length === 1) return this.languages[0];
+                    return this.languages.length + ' đã chọn';
                 },
 
                 get filteredSpecialties() {
@@ -847,8 +1058,19 @@
                         + (this.maxPrice < 5000000 ? 1 : 0);
                 },
 
+                get selectedDayLabel() {
+                    if (this.selectedDay === null) return '';
+                    const d = new Date(this.todayYear, this.todayMonth, this.todayDay + this.selectedDay);
+                    const weekdays = ['CN','T2','T3','T4','T5','T6','T7'];
+                    return `${weekdays[d.getDay()]}, ${d.getDate()}/${d.getMonth() + 1}`;
+                },
+
                 get visibleCount() {
-                    return this.lawyersForFilter.filter(lawyer => this.matches(lawyer)).length;
+                    return this.filteredIndices.length;
+                },
+
+                get totalPages() {
+                    return Math.max(1, Math.ceil(this.visibleCount / this.perPage));
                 },
 
                 get availableTimesForDay() {
@@ -883,6 +1105,8 @@
                     this.maxPrice = 5000000;
                     this.specialtySearch = '';
                     this.locationSearch = '';
+                    this.sortBy = 'rating';
+                    this.page = 1;
                 },
             };
         }

@@ -1,3 +1,5 @@
+@props(['overlay' => false])
+
 @php
     $links = [
         ['label' => 'Trang chủ', 'url' => '/'],
@@ -8,11 +10,14 @@
     ];
 @endphp
 
-<nav x-data="{ menuOpen: false }"
+<nav x-data="navScroll({{ $overlay ? 'true' : 'false' }})"
      @keydown.escape.window="menuOpen = false">
-    <div class="fixed inset-x-0 top-0 z-50 h-18 border-b border-text/15 bg-bg">
+    {{-- group/nav + data-state drive the transparent ↔ solid swap via group-data variants on every interactive child --}}
+    <div :data-state="state()"
+         data-state="{{ $overlay ? 'transparent' : 'solid' }}"
+         class="group/nav fixed inset-x-0 top-0 z-50 h-18 border-b bg-bg border-text/15 ease-soft transition-colors duration-300 data-[state=transparent]:bg-transparent data-[state=transparent]:border-transparent">
         <div class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-8">
-            <a href="/" class="inline-flex items-center gap-3 font-display text-xl font-medium tracking-tight text-text">
+            <a href="/" class="inline-flex items-center gap-3 font-display text-xl font-medium tracking-tight text-text ease-soft transition-colors duration-300 group-data-[state=transparent]/nav:text-bg">
                 <img src="{{ asset('images/logo.svg') }}" alt="LegalEase logo" class="h-10 w-10 shrink-0 object-contain">
                 <span>LegalEase</span>
             </a>
@@ -21,10 +26,10 @@
                 @foreach ($links as $link)
                     @php $active = request()->path() === ltrim($link['url'], '/'); @endphp
                     <a href="{{ $link['url'] }}"
-                       class="relative text-body font-medium text-text transition-colors hover:text-text/60">
+                       class="relative text-body font-medium text-text hover:text-text/60 ease-soft transition-colors duration-300 group-data-[state=transparent]/nav:text-bg group-data-[state=transparent]/nav:hover:text-bg/70">
                         {{ $link['label'] }}
                         @if ($active)
-                            <span aria-hidden="true" class="pointer-events-none absolute inset-x-0 -bottom-2 h-px bg-accent"></span>
+                            <span aria-hidden="true" class="pointer-events-none absolute inset-x-0 -bottom-2 h-px bg-accent group-data-[state=transparent]/nav:bg-bg"></span>
                         @endif
                     </a>
                 @endforeach
@@ -42,12 +47,13 @@
                         );
                         $isLawyer = (int) auth()->user()->role_id === 2;
                     @endphp
+
                     <div x-data="{ dropdownOpen: false }"
                          @click.window="if (!$el.contains($event.target)) dropdownOpen = false"
                          class="relative">
                         <button type="button" @click="dropdownOpen = !dropdownOpen"
-                                class="inline-flex items-center gap-2 rounded-full border border-text/30 py-1.5 pl-1.5 pr-4 text-form-label text-text transition-colors duration-200 hover:border-accent hover:text-accent">
-                            <span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-accent/10 text-form-hint font-semibold text-accent">{{ $initials }}</span>
+                                class="inline-flex items-center gap-2 rounded-full border border-text/30 py-1.5 pl-1.5 pr-4 text-form-label text-text hover:border-accent hover:text-accent ease-soft transition-colors duration-300 group-data-[state=transparent]/nav:border-bg/40 group-data-[state=transparent]/nav:text-bg group-data-[state=transparent]/nav:hover:border-bg group-data-[state=transparent]/nav:hover:text-bg">
+                            <span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-accent/10 text-form-hint font-semibold text-accent ease-soft transition-colors duration-300 group-data-[state=transparent]/nav:bg-bg/15 group-data-[state=transparent]/nav:text-bg">{{ $initials }}</span>
                             <span>{{ $firstName }}</span>
                             <svg class="h-4 w-4 transition-transform duration-200" :class="dropdownOpen ? 'rotate-180' : ''"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -95,7 +101,9 @@
                         </div>
                     </div>
                 @else
-                    <x-button variant="primary" :href="route('login')">
+                    {{-- Login is the primary nav CTA; new users reach the signup chooser via the "Đăng ký" link inside /login --}}
+                    <x-button variant="primary" :href="route('login.choice')"
+                              class="ease-soft duration-300 group-data-[state=transparent]/nav:border-bg/40 group-data-[state=transparent]/nav:bg-transparent group-data-[state=transparent]/nav:text-bg group-data-[state=transparent]/nav:hover:border-bg group-data-[state=transparent]/nav:hover:bg-bg group-data-[state=transparent]/nav:hover:text-accent">
                         Đăng nhập
                     </x-button>
                 @endauth
@@ -106,7 +114,7 @@
                     @click="menuOpen = true"
                     :aria-expanded="menuOpen"
                     aria-label="Mở điều hướng"
-                    class="inline-flex h-10 w-10 items-center justify-center text-text transition-colors hover:text-text/60 lg:hidden">
+                    class="inline-flex h-10 w-10 items-center justify-center text-text hover:text-text/60 ease-soft transition-colors duration-300 lg:hidden group-data-[state=transparent]/nav:text-bg group-data-[state=transparent]/nav:hover:text-bg/70">
                 <x-icon name="menu" :size="24" />
             </button>
         </div>
@@ -199,10 +207,29 @@
                     </form>
                 </div>
             @else
-                <x-button variant="primary" :href="route('login')" @click="menuOpen = false" class="w-full">
+                <x-button variant="primary" :href="route('login.choice')" @click="menuOpen = false" class="w-full">
                     Đăng nhập
                 </x-button>
             @endauth
         </div>
     </div>
 </nav>
+
+<script>
+    function navScroll(overlay) {
+        return {
+            menuOpen: false,
+            hasOverlay: overlay,
+            scrolled: false,
+            init() {
+                if (!this.hasOverlay) { this.scrolled = true; return; }
+                const update = () => { this.scrolled = window.scrollY > 20; };
+                update();
+                window.addEventListener('scroll', update, { passive: true });
+            },
+            state() {
+                return (this.hasOverlay && !this.scrolled) ? 'transparent' : 'solid';
+            },
+        };
+    }
+</script>

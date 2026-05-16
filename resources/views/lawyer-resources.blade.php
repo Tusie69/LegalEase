@@ -3,8 +3,8 @@
 @php
     $featured = [
         'category'  => 'Phát triển hành nghề của bạn',
-        'title'     => 'Các luật sư hàng đầu trên LegalEase lấp đầy tuần của họ như thế nào',
-        'lead'      => 'Hãy xem cách các luật sư được đặt nhiều nhất trên nền tảng sắp xếp lịch trống, đặt mức phí, và biến buổi tư vấn đầu tiên thành khách hàng lâu dài.',
+        'title'     => 'Bí quyết kín lịch cả tuần của các luật sư hàng đầu trên LegalEase',
+        'lead'      => 'Hãy xem cách các luật sư được đặt nhiều nhất trên nền tảng sắp xếp lịch trống, đặt mức phí, và biến buổi tư vấn đầu tiên thành mối quan hệ lâu dài.',
         'read_time' => '8 phút đọc',
         'image_url' => 'https://images.unsplash.com/photo-1758519291932-6263fc870e01?q=80',
     ];
@@ -162,19 +162,11 @@
     </section>
 
     {{-- Closing CTA --}}
-    <section class="bg-gold/5 mt-24 md:mt-32">
-        <div class="container-page closing-cta">
-            <h2 class="text-cta-h2">
-                Không tìm thấy điều bạn cần?
-            </h2>
-            <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
-                Đội ngũ hỗ trợ của chúng tôi phản hồi trong vòng một ngày làm việc.
-            </p>
-            <div class="mt-10 flex justify-center">
-                <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>
-            </div>
-        </div>
-    </section>
+    <x-closing-cta
+        heading="Không tìm thấy điều bạn cần?"
+        subtitle="Đội ngũ hỗ trợ của chúng tôi phản hồi trong vòng một ngày làm việc."
+        button="Liên hệ hỗ trợ →"
+        :href="route('contact')" />
 
     <script>
         function resourcesFilters(articles) {

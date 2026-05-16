@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,12 +41,66 @@ Route::get('/news/{slug}', function (string $slug) {
     return view('news-show', ['article' => $article]);
 })->name('news.show');
 
+// =====================
+// Match intake (Zocdoc-style 4-question flow → filtered lawyer suggestions).
+// Each answer is stored in session('match'), then results page filters Lawyers::all().
+// =====================
+Route::get('/match', fn () => view('match.specialty'))->name('match.specialty');
+
+Route::post('/match', function (\Illuminate\Http\Request $request) {
+    $data = $request->validate(['specialty' => 'required|string|max:120']);
+    session(['match' => array_merge(session('match', []), ['specialty' => $data['specialty']])]);
+    return redirect()->route('match.location');
+})->name('match.specialty.store');
+
+Route::get('/match/location', function () {
+    if (!session('match.specialty')) return redirect()->route('match.specialty');
+    return view('match.location');
+})->name('match.location');
+
+Route::post('/match/location', function (\Illuminate\Http\Request $request) {
+    $data = $request->validate(['location' => 'required|string|max:120']);
+    session(['match' => array_merge(session('match', []), ['location' => $data['location']])]);
+    return redirect()->route('match.language');
+})->name('match.location.store');
+
+Route::get('/match/language', function () {
+    if (!session('match.specialty') || !session('match.location')) return redirect()->route('match.specialty');
+    return view('match.language');
+})->name('match.language');
+
+Route::post('/match/language', function (\Illuminate\Http\Request $request) {
+    $data = $request->validate(['language' => 'required|string|max:120']);
+    $languages = array_values(array_filter(array_map('trim', explode(',', $data['language']))));
+    session(['match' => array_merge(session('match', []), ['language' => $languages])]);
+    return redirect()->route('match.priority');
+})->name('match.language.store');
+
+Route::get('/match/priority', function () {
+    if (!session('match.specialty') || !session('match.location') || !session('match.language')) return redirect()->route('match.specialty');
+    return view('match.priority');
+})->name('match.priority');
+
+Route::post('/match/priority', function (\Illuminate\Http\Request $request) {
+    $data = $request->validate(['priority' => 'required|in:experience,rating,price,availability']);
+    session(['match' => array_merge(session('match', []), ['priority' => $data['priority']])]);
+    return redirect()->route('match.results');
+})->name('match.priority.store');
+
+Route::get('/match/results', function () {
+    if (!session('match.specialty')) return redirect()->route('match.specialty');
+    return view('match.results');
+})->name('match.results');
+
 Route::get('/for-lawyers', fn () => view('for-lawyers'))->name('for-lawyers');
 Route::get('/lawyer-resources', fn () => view('lawyer-resources'))->name('lawyer.resources');
 
 Route::get('/terms', fn () => view('terms'))->name('terms');
 Route::get('/privacy', fn () => view('privacy'))->name('privacy');
 Route::get('/faq', fn () => view('faq'))->name('faq');
+// Login chooser: asks role first, then routes to customer or lawyer login form
+Route::get('/login/choice', fn () => view('login-choice'))->name('login.choice');
+
 Route::get('/lawyer-login', fn () => view('lawyer-login'))->name('lawyer.login');
 Route::post('/lawyer-login', [AuthController::class, 'lawyerLogin'])->name('lawyer.login.store');
 Route::get('/lawyer-register', fn () => view('lawyer-register'))->name('lawyer.register');
@@ -115,11 +168,13 @@ Route::post('/book/payment', function () {
     }
 
     $bookingCode = 'BK-' . now()->format('Ymd') . '-' . \Illuminate\Support\Str::upper(\Illuminate\Support\Str::random(6));
+    $booking = session('booking');
+    $details = session('booking_details');
 
     session([
         'completed_booking' => array_merge(
-            session('booking'),
-            session('booking_details'),
+            $booking,
+            $details,
             ['booking_code' => $bookingCode],
         ),
     ]);
@@ -144,7 +199,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
     Route::get('/account', fn () => view('account'))->name('account');
     Route::get('/consultations', fn () => view('consultations.index'))->name('consultations.index');

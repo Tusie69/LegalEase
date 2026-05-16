@@ -17,7 +17,7 @@
         @if (!empty($area['scenarios']))
             <hr class="mt-8 border-t border-gold" />
             <p class="text-eyebrow-hero mt-8 text-gold">
-                Bạn có thể cần mục này nếu
+                Bạn nên chọn dịch vụ này khi
             </p>
             <ul class="text-body mt-4 space-y-4 text-bg">
                 @foreach ($area['scenarios'] as $scenario)
@@ -31,7 +31,7 @@
 
         <div class="mt-auto pt-8">
             <x-button variant="gold" href="/lawyers" class="w-full">
-                Xem luật sư phù hợp →
+                Tìm luật sư cho việc của bạn →
             </x-button>
         </div>
     </div>

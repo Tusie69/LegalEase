@@ -164,19 +164,36 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
-            $table->text('content');
-            $table->string('image_url', 255)->nullable();
+            $table->string('slug', 255)->unique();
+            $table->longText('content');
             $table->string('status', 20)->default('PUBLISHED');
             $table->timestamps();
 
             $table->index(['status', 'created_at'], 'idx_news_status_created');
         });
 
+        Schema::create('news_images', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('news_id')->constrained('news')->cascadeOnDelete();
+            $table->string('image_url', 255);
+            $table->boolean('is_cover')->default(false);
+            $table->timestamps();
+
+            $table->index(['news_id', 'is_cover'], 'idx_news_images_cover');
+        });
+
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->string('category', 100);
             $table->string('question', 255);
             $table->text('answer');
+            $table->string('status', 20)->default('PUBLISHED');
+            $table->unsignedInteger('display_order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['status', 'display_order'], 'idx_faqs_status_order');
+            $table->index(['category', 'display_order'], 'idx_faqs_category_order');
         });
 
         Schema::create('notifications', function (Blueprint $table) {
@@ -219,6 +236,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('notifications');
         Schema::dropIfExists('faqs');
+        Schema::dropIfExists('news_images');
         Schema::dropIfExists('news');
         Schema::dropIfExists('ratings');
         Schema::dropIfExists('payments');

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Luật sư đăng nhập · LegalEase'])
+@extends('layouts.app', ['title' => 'Đăng nhập dành cho luật sư · LegalEase'])
 
 @section('content')
 <section class="relative -mt-18 flex min-h-screen flex-col lg:landscape:flex-row">
@@ -48,7 +48,7 @@
                 <div class="flex items-center justify-between">
                     <label class="inline-flex items-center gap-2 text-caption">
                         <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-text/20 bg-bg text-accent focus:ring-accent">
-                        <span>Nhớ tôi</span>
+                        <span>Ghi nhớ đăng nhập</span>
                     </label>
                     <a href="{{ route('password.request') }}" class="text-caption underline underline-offset-4 decoration-text/30 transition-colors hover:decoration-accent">Quên mật khẩu?</a>
                 </div>

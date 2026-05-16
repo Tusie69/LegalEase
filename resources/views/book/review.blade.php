@@ -12,7 +12,7 @@
         <div class="card-base-lg">
             <p class="text-body">Hiện chưa có lượt đặt lịch nào. Hãy chọn luật sư và thời gian phù hợp.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-form-label text-text transition-colors hover:text-text/70">
-                Duyệt luật sư
+                Tìm luật sư
                 <span aria-hidden="true">→</span>
             </a>
         </div>

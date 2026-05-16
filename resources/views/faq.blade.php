@@ -8,18 +8,18 @@
         'Đặt chỗ và thanh toán' => 'Đặt chỗ',
         'Hủy và hoàn tiền' => 'Hủy & hoàn tiền',
         'Dành cho luật sư' => 'Luật sư',
-        'Sự tin cậy và an toàn' => 'Tin cậy & an toàn',
+        'Sự tin cậy và an toàn' => 'Uy tín & an toàn',
     ];
 @endphp
 
 @section('content')
     <x-hero-bar
         photo="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80"
-        eyebrow="FAQ">
+        eyebrow="Hỗ trợ">
         Câu hỏi thường gặp.
 
         <x-slot:subtitle>
-            Đặt chỗ, thanh toán, hủy, và sự tin cậy. Trả lời cho những câu hỏi phổ biến nhất.
+            Mọi điều bạn cần biết về đặt lịch, thanh toán, hủy và sự an tâm.
         </x-slot:subtitle>
     </x-hero-bar>
 
@@ -83,18 +83,21 @@
                             <span class="text-eyebrow text-text/60">{{ $item['category'] }}</span>
                             <span class="mt-2 block text-card-h5 md:text-card-h4">{{ $item['q'] }}</span>
                         </span>
-                        <svg x-show="!open" class="h-5 w-5 flex-none mt-1"
-                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                            <line x1="12" y1="5" x2="12" y2="19"/>
+                        {{-- Plus → minus morph: vertical bar rotates 270° around its center to overlap the horizontal bar --}}
+                        <svg class="h-5 w-5 flex-none mt-1" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                             <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                        <svg x-show="open" x-cloak class="h-5 w-5 flex-none mt-1"
-                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <line x1="12" y1="5" x2="12" y2="19"
+                                  class="origin-center transition-transform duration-500 ease-soft"
+                                  :class="open ? 'rotate-[270deg]' : ''" />
                         </svg>
                     </button>
-                    <div x-show="open" x-cloak class="pb-6">
-                        <p class="text-body max-w-[640px]">{{ $item['a'] }}</p>
+                    {{-- Collapsible panel: animate grid-template-rows from 0fr to 1fr (content-aware height, CSS-only) --}}
+                    <div class="grid transition-[grid-template-rows,opacity] duration-300 ease-soft"
+                         :class="open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <p class="text-body max-w-[640px] pb-6">{{ $item['a'] }}</p>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -126,14 +129,11 @@
     </section>
 
     {{-- Closing CTA --}}
-    <section class="bg-gold/5 mt-24 md:mt-32">
-        <div class="container-page closing-cta">
-            <h2 class="text-cta-h2">Bạn vẫn còn câu hỏi?</h2>
-            <div class="mt-10 flex justify-center">
-                <x-button variant="primary" href="{{ route('contact') }}">Liên hệ hỗ trợ →</x-button>
-            </div>
-        </div>
-    </section>
+    <x-closing-cta
+        heading="Chưa có câu trả lời bạn cần?"
+        subtitle="Đội ngũ thật của chúng tôi sẽ trả lời trong vòng một ngày làm việc."
+        button="Liên hệ hỗ trợ →"
+        :href="route('contact')" />
 
     <script>
         function faqFilters(items) {

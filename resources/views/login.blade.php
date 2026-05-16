@@ -16,7 +16,7 @@
     <div class="flex flex-1 items-center justify-center px-6 py-16 md:py-20">
         <div class="w-full max-w-[440px]">
             <h1 class="text-flow-h1">Đăng nhập</h1>
-            <p class="text-body mt-2">Chào mừng trở lại. Đăng nhập để truy cập tài khoản của bạn.</p>
+            <p class="text-body mt-2">Chào mừng trở lại.</p>
 
             @if (session('status'))
                 <p class="mt-4 rounded-xl border border-success/40 bg-success/10 px-4 py-3 text-caption text-success">
@@ -54,7 +54,7 @@
                 <div class="flex items-center justify-between">
                     <label class="inline-flex items-center gap-2 text-caption">
                         <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded border-text/20 bg-bg text-accent focus:ring-accent">
-                        <span>Nhớ tôi</span>
+                        <span>Ghi nhớ đăng nhập</span>
                     </label>
                     <a href="{{ route('password.request') }}" class="text-caption underline underline-offset-4 decoration-text/30 transition-colors hover:decoration-accent">Quên mật khẩu?</a>
                 </div>

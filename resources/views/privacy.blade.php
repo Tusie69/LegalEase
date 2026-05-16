@@ -64,12 +64,12 @@
             'n'     => 8,
             'title' => 'Quyền riêng tư của trẻ em',
             'paras' => [
-                'LegalEase không hướng đến trẻ em dưới 18 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em. Nếu bạn cho rằng chúng tôi đã thu thập thông tin từ một trẻ vị thành niên, vui lòng liên hệ và chúng tôi sẽ xóa nhanh chóng.',
+                'LegalEase không hướng đến trẻ em dưới 18 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em. Nếu bạn cho rằng chúng tôi đã thu thập thông tin từ một trẻ vị thành niên, vui lòng liên hệ và chúng tôi sẽ nhanh chóng xóa.',
             ],
         ],
         [
             'n'     => 9,
-            'title' => 'Những thay đổi đối với chính sách này',
+            'title' => 'Thay đổi chính sách',
             'paras' => [
                 'Chúng tôi có thể cập nhật Chính sách quyền riêng tư này theo thời gian. Các thay đổi quan trọng sẽ được thông báo qua nền tảng. Ngày "Cập nhật lần cuối" ở đầu trang phản ánh phiên bản mới nhất.',
             ],

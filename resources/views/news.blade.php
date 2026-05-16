@@ -12,10 +12,10 @@
     <x-hero-bar
         photo="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=2000&h=1200&fit=crop&q=80"
         eyebrow="Tin tức">
-        Cập nhật pháp lý cho cuộc sống hằng ngày.
+        Pháp luật, kể bằng ngôn ngữ của bạn.
 
         <x-slot:subtitle>
-            Phân tích, hướng dẫn và bài viết chuyên sâu từ các luật sư đã được xác minh.
+            Phân tích, hướng dẫn và góc nhìn chuyên sâu, viết bởi luật sư, không phải máy.
         </x-slot:subtitle>
     </x-hero-bar>
 
@@ -32,7 +32,7 @@
                     <div :class="currentSlide === {{ $i }} ? 'opacity-100' : 'opacity-0 pointer-events-none'"
                          class="col-start-1 row-start-1 transition-opacity duration-500">
                         <a href="{{ route('news.show', $featured['slug']) }}" class="block group">
-                            <article class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+                            <article class="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
                                 <div class="overflow-hidden rounded-2xl">
                                     <x-responsive-img :src="$featured['image_url']"
                                                       alt=""
@@ -42,20 +42,16 @@
                                 </div>
                                 <div>
                                     <p class="text-eyebrow">{{ $featured['category'] }}</p>
-                                    <h3 class="text-flow-h1 mt-4 transition-colors group-hover:text-accent">
+                                    <h3 class="text-flow-h1 mt-4 line-clamp-3 transition-colors group-hover:text-accent">
                                         {{ $featured['title'] }}
                                     </h3>
-                                    <p class="text-body mt-5 max-w-[520px]">
+                                    <p class="text-body mt-5 line-clamp-3 max-w-[520px]">
                                         {{ $featured['lead'] }}
                                     </p>
                                     <p class="text-link-action mt-6 inline-flex flex-wrap items-center gap-x-2 text-text">
                                         <span>{{ $featured['author_name'] }}</span>
                                         <span class="text-text/40">·</span>
                                         <span>{{ Carbon::parse($featured['date'])->translatedFormat('d/m/Y') }}</span>
-                                        <span class="text-text/40">·</span>
-                                        <span>{{ $featured['read_time'] }}</span>
-                                        <span class="text-text/40">·</span>
-                                        <span class="transition-colors group-hover:text-accent">Đọc →</span>
                                     </p>
                                 </div>
                             </article>
@@ -76,7 +72,7 @@
         </section>
     @endif
 
-    <section class="container-page pt-24 pb-24">
+    <section class="container-page pt-24">
         <h2 class="text-section-h2">Tất cả bài viết</h2>
 
         <div class="mt-8 flex flex-col-reverse gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
@@ -181,17 +177,11 @@
     </section>
     </div>
 
-    <section class="bg-gold/5 mt-24 md:mt-32">
-        <div class="container-page closing-cta">
-            <h2 class="text-cta-h2">Cần tư vấn cho trường hợp cụ thể?</h2>
-            <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
-                Đặt lịch tư vấn riêng với luật sư có chuyên môn phù hợp.
-            </p>
-            <div class="mt-10 flex justify-center">
-                <x-button variant="primary" href="/lawyers">Tìm luật sư →</x-button>
-            </div>
-        </div>
-    </section>
+    <x-closing-cta
+        heading="Cần tư vấn cho trường hợp cụ thể?"
+        subtitle="Đặt lịch tư vấn riêng với luật sư có chuyên môn phù hợp."
+        button="Tìm luật sư →"
+        href="/lawyers" />
 
     <script>
         function featuredCarousel(count) {

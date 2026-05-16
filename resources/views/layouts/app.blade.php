@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'LegalEase' }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,12 +13,17 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-bg text-text font-sans antialiased">
-    <x-nav />
+    @unless (request('embed'))
+        <x-nav :overlay="$navOverlay ?? false" />
+    @endunless
 
-    <main class="pt-18">
+    <main class="{{ request('embed') ? '' : 'pt-18' }}">
         @yield('content')
     </main>
 
-    <x-footer />
+    @unless (request('embed'))
+        <x-footer />
+    @endunless
+
 </body>
 </html>

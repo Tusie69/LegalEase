@@ -9,7 +9,7 @@
 @php
     $base = strtok($src, '?');
     $cdn = null;
-    if (str_contains($src, 'images.unsplash.com')) {
+    if (str_contains($src, 'images.unsplash.com') || str_contains($src, 'plus.unsplash.com')) {
         $cdn = 'unsplash';
     } elseif (str_contains($src, 'images.pexels.com')) {
         $cdn = 'pexels';

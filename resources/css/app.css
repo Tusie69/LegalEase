@@ -59,6 +59,34 @@
     .scrollbar-none::-webkit-scrollbar {
         display: none;
     }
+
+    /* trim line-box leading to cap-line, language-agnostic - aligns heading cap-line to adjacent elements */
+    .text-trim-cap {
+        text-box: trim-start cap alphabetic;
+    }
+
+    /* editorial easing curve - used for FAQ accordion, how-it-works rail, and other refined transitions */
+    .ease-soft {
+        transition-timing-function: cubic-bezier(0.625, 0.05, 0, 1);
+    }
+
+    /* outlined display numeral - large stroked serif numbers for editorial section markers */
+    .numeral-stroke {
+        font-family: var(--font-display);
+        font-size: clamp(96px, 13vw, 160px);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        color: transparent;
+        -webkit-text-stroke: 1.2px var(--color-text);
+    }
+
+    /* decorative pull-quote glyph - very large serif opening mark */
+    .text-quote-glyph {
+        font-family: var(--font-display);
+        font-size: clamp(72px, 8vw, 96px);
+        line-height: 1;
+        color: var(--color-gold);
+    }
 }
 
 @layer components {
@@ -68,7 +96,7 @@
     }
 
     .text-page-h1 {
-        @apply font-display text-[48px] md:text-[56px] font-medium leading-snug tracking-tight;
+        @apply font-display text-[32px] md:text-[56px] font-medium leading-tight tracking-tight;
     }
 
     .text-flow-h1 {

@@ -3,8 +3,8 @@
 @section('content')
     <x-hero-bar
         photo="https://images.unsplash.com/photo-1610374792793-f016b77ca51a?q=80"
-        eyebrow="Câu chuyện của chúng tôi">
-        Trợ giúp pháp lý rõ ràng, không còn mơ hồ.
+        eyebrow="Vì sao chúng tôi bắt đầu">
+        Pháp lý không còn là chuyện khó hiểu.
 
         <x-slot:subtitle>
             Chúng tôi kết nối người dùng tại Việt Nam với các luật sư đã được xác minh một cách nhanh chóng và minh bạch.
@@ -100,16 +100,16 @@
             ],
             [
                 'image' => 'https://images.pexels.com/photos/8469986/pexels-photo-8469986.jpeg',
-                'lead'  => 'Lương được hoàn',
-                'title' => 'Mười hai công nhân được trả nợ',
+                'lead'  => 'Đòi lại lương',
+                'title' => 'Mười hai công nhân được trả nợ lương',
                 'desc'  => 'Sau sáu tuần thương lượng với chủ doanh nghiệp, toàn bộ ba tháng tiền lương tồn đọng được hoàn lại từng người, không cần ra tòa.',
                 'tag'   => 'Lao động',
                 'href'  => '#',
             ],
             [
                 'image' => 'https://images.pexels.com/photos/7642217/pexels-photo-7642217.jpeg',
-                'lead'  => 'Gia đình giữ nguyên',
-                'title' => 'Quyền nuôi con bằng hòa giải',
+                'lead'  => 'Giữ gìn gia đình',
+                'title' => 'Giành quyền nuôi con qua hòa giải',
                 'desc'  => 'Một thỏa thuận hai bên cùng ký, không cần đến tòa, giữ cuộc sống của hai con nguyên vẹn nhất có thể trong giai đoạn chuyển tiếp.',
                 'tag'   => 'Hôn nhân & Gia đình',
                 'href'  => '#',
@@ -202,7 +202,7 @@
     <section class="container-page pt-24 md:pt-32">
         <p class="text-eyebrow">Đội ngũ</p>
         <h2 class="text-section-h2 mt-5">
-            Ba con người, một nỗi trăn trở chung.
+            Ba người sáng lập, một điều muốn thay đổi.
         </h2>
 
         <div class="mt-12 grid gap-10 md:grid-cols-3">
@@ -226,43 +226,73 @@
     {{-- Values --}}
     @php
         $values = [
-            ['title' => 'Giá cả minh bạch', 'desc' => 'Giá theo giờ được hiển thị rõ trước khi bạn đặt lịch.'],
-            ['title' => 'Không thiên vị trả phí', 'desc' => 'Không có phí giới thiệu, không có bảng xếp hạng ưu tiên trả tiền.'],
-            ['title' => 'Thông tin đã xác minh', 'desc' => 'Mỗi luật sư đều trải qua quy trình xác minh trước khi niêm yết.'],
-            ['title' => 'Không ràng buộc', 'desc' => 'Sau buổi tư vấn, bạn hoàn toàn chủ động quyết định bước tiếp theo.'],
+            [
+                'short' => 'Minh bạch',
+                'title' => 'Giá cả minh bạch',
+                'desc'  => 'Giá theo giờ được hiển thị rõ trước khi bạn đặt lịch. Không phụ phí ẩn, không bất ngờ sau buổi tư vấn.',
+                'chip'  => '850.000 VND / giờ, hiển thị trước',
+                'image' => 'https://images.pexels.com/photos/7718798/pexels-photo-7718798.jpeg',
+            ],
+            [
+                'short' => 'Công bằng',
+                'title' => 'Không thiên vị trả phí',
+                'desc'  => 'Không có phí giới thiệu, không có bảng xếp hạng ưu tiên trả tiền. Bạn thấy luật sư phù hợp nhất, không phải người trả nhiều nhất.',
+                'chip'  => 'Xếp hạng theo đánh giá, không theo ngân sách',
+                'image' => 'https://images.pexels.com/photos/5520330/pexels-photo-5520330.jpeg',
+            ],
+            [
+                'short' => 'Tin cậy',
+                'title' => 'Thông tin đã xác minh',
+                'desc'  => 'Mỗi luật sư đều trải qua quy trình xác minh chứng chỉ hành nghề, lịch sử kỷ luật và danh tính trước khi xuất hiện trên LegalEase.',
+                'chip'  => 'Xác minh trực tiếp trước khi niêm yết',
+                'image' => 'https://images.pexels.com/photos/17262454/pexels-photo-17262454.jpeg',
+            ],
+            [
+                'short' => 'Chủ động',
+                'title' => 'Không ràng buộc',
+                'desc'  => 'Sau buổi tư vấn, bạn hoàn toàn chủ động quyết định bước tiếp theo. Không cam kết dài hạn, không phí hủy.',
+                'chip'  => 'Không hợp đồng trói buộc',
+                'image' => 'https://images.pexels.com/photos/7677826/pexels-photo-7677826.jpeg',
+            ],
         ];
     @endphp
 
     <section class="container-page pt-24 md:pt-32">
         <p class="text-eyebrow">Cách chúng tôi làm việc</p>
         <h2 class="text-section-h2 mt-5">
-            Bốn cam kết cốt lõi.
+            Bốn điều chúng tôi không bao giờ thoả hiệp.
         </h2>
+        <p class="text-body-prose mt-6 max-w-[56ch] text-text/70">
+            Mỗi quyết định thiết kế trên LegalEase đều quay về bốn nguyên tắc này, để bạn luôn rõ ràng, công bằng và hoàn toàn chủ động.
+        </p>
 
-        <div class="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
-            @foreach ($values as $v)
-                <div class="border-t border-text/15 pt-6">
-                    <h3 class="text-card-h3">{{ $v['title'] }}</h3>
-                    <p class="text-body-dense mt-3">{{ $v['desc'] }}</p>
-                </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+            @foreach ($values as $i => $v)
+                <article class="group flex flex-col gap-4 transition-transform duration-200 hover:-translate-y-0.5">
+                    <div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-text/5">
+                        <img src="{{ $v['image'] }}" alt="" loading="lazy"
+                             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+                        <span class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-text/15 bg-bg/95 px-4 py-2 text-caption font-medium text-text backdrop-blur">
+                            <span aria-hidden="true" class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+                            {{ $v['chip'] }}
+                        </span>
+                    </div>
+                    <div class="flex flex-1 flex-col gap-3 rounded-2xl border border-text/20 p-7 transition-colors group-hover:border-accent">
+                        <p class="text-eyebrow text-text/60">{{ sprintf('%02d', $i + 1) }}. {{ $v['short'] }}</p>
+                        <h3 class="text-card-h3">{{ $v['title'] }}</h3>
+                        <p class="text-body-dense text-text/70">{{ $v['desc'] }}</p>
+                    </div>
+                </article>
             @endforeach
         </div>
     </section>
 
     {{-- CTA --}}
-    <section class="bg-gold/5 mt-24 md:mt-32">
-        <div class="container-page closing-cta">
-            <h2 class="text-cta-h2">
-                Sẵn sàng tìm luật sư phù hợp với bạn?
-            </h2>
-            <p class="text-body-prose mx-auto mt-6 max-w-[520px]">
-                Duyệt hồ sơ luật sư đã được xác minh với mức phí minh bạch. Bạn quyết định bước tiếp theo, không có ràng buộc.
-            </p>
-            <div class="mt-10 flex justify-center">
-                <x-button variant="primary" href="/lawyers">Tìm kiếm luật sư →</x-button>
-            </div>
-        </div>
-    </section>
+    <x-closing-cta
+        heading="Bắt đầu với đúng luật sư của bạn."
+        subtitle="Tìm hồ sơ luật sư đã được xác minh với mức phí minh bạch. Bạn quyết định bước tiếp theo, không có ràng buộc."
+        button="Tìm kiếm luật sư →"
+        href="/lawyers" />
 
     <script>
         function successStoriesCarousel(count) {

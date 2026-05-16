@@ -21,7 +21,7 @@ class FAQs
             [
                 'category' => 'Đặt chỗ và thanh toán',
                 'q' => 'Làm thế nào để đặt lịch tư vấn?',
-                'a' => 'Duyệt danh sách luật sư theo chuyên môn, địa điểm và mức phí. Chọn một luật sư, chọn khung giờ trong hồ sơ của họ, rồi xác nhận thông tin của bạn. Chúng tôi sẽ giữ khoản đặt cọc 20% khi đặt chỗ.',
+                'a' => 'Duyệt danh sách luật sư theo chuyên môn, địa điểm và mức phí. Chọn một luật sư, chọn khung giờ trong hồ sơ của họ, rồi xác nhận thông tin của bạn. Chúng tôi sẽ giữ khoản đặt cọc bằng 20% phí tư vấn khi bạn đặt lịch.',
             ],
             [
                 'category' => 'Đặt chỗ và thanh toán',
@@ -35,7 +35,7 @@ class FAQs
             ],
             [
                 'category' => 'Đặt chỗ và thanh toán',
-                'q' => 'Những phương thức thanh toán nào bạn chấp nhận?',
+                'q' => 'Các bạn chấp nhận những phương thức thanh toán nào?',
                 'a' => 'Các loại thẻ tín dụng và thẻ ghi nợ phổ biến, cùng các phương thức thanh toán địa phương như chuyển khoản ngân hàng và ví điện tử.',
             ],
 
