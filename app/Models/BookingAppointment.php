@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BookingAppointment extends Model
 {
@@ -57,6 +58,11 @@ class BookingAppointment extends Model
         return $this->belongsTo(BookingTimeSlot::class, 'slot_id');
     }
 
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class, 'appointment_id');
+    }
+
     public function getAppointmentStartAtAttribute()
     {
         return $this->scheduled_start_at;
@@ -98,6 +104,7 @@ class BookingAppointment extends Model
             'CONFIRMED' => 'Da xac nhan',
             'CANCELLED' => 'Da huy',
             'PENDING' => 'Cho xac nhan',
+            'PAYMENT_PENDING' => 'Cho thanh toan',
             'COMPLETED' => 'Da hoan thanh',
             default => (string) $this->status,
         };

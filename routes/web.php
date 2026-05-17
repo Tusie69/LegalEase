@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingPaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -104,31 +105,10 @@ Route::post('/book/details', function (\Illuminate\Http\Request $request) {
 
 Route::get('/book/review', fn () => view('book.review'))->name('book.review');
 
-Route::get('/book/payment', function () {
-    if (!session('booking') || !session('booking_details')) {
-        return redirect()->route('lawyers.index');
-    }
-    return view('book.payment');
-})->name('book.payment');
-
-Route::post('/book/payment', function () {
-    if (!session('booking') || !session('booking_details')) {
-        return redirect()->route('lawyers.index');
-    }
-
-    $bookingCode = 'BK-' . now()->format('Ymd') . '-' . \Illuminate\Support\Str::upper(\Illuminate\Support\Str::random(6));
-
-    session([
-        'completed_booking' => array_merge(
-            session('booking'),
-            session('booking_details'),
-            ['booking_code' => $bookingCode],
-        ),
-    ]);
-    session()->forget(['booking', 'booking_details']);
-
-    return redirect()->route('book.success');
-})->name('book.payment.store');
+Route::get('/book/payment', [BookingPaymentController::class, 'show'])->name('book.payment');
+Route::post('/book/payment', [BookingPaymentController::class, 'store'])->name('book.payment.store');
+Route::get('/book/payment/paypal/success', [BookingPaymentController::class, 'paypalSuccess'])->name('paypal.success');
+Route::get('/book/payment/paypal/cancel', [BookingPaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 
 Route::get('/book/success', fn () => view('book.success'))->name('book.success');
 
@@ -164,6 +144,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('/admin/appointments/{appointment}/confirm', [AdminController::class, 'confirmAppointment'])->name('admin.appointments.confirm');
     Route::get('/dashboard', fn () => redirect()->route('home'))->name('dashboard');
 
     Route::get('/consultations/{code}', function (string $code) {

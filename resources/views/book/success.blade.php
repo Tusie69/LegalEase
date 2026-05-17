@@ -1,35 +1,47 @@
-@extends('layouts.app', ['title' => 'Đã xác nhận đặt chỗ · LegalEase'])
+@extends('layouts.app', ['title' => 'Dat lich thanh cong - LegalEase'])
 
 @php
     $completed = session('completed_booking');
     $lawyer = $completed ? \App\Data\Lawyers::findBySlug($completed['lawyer_slug']) : null;
     $user = auth()->user();
     $firstName = $user ? explode(' ', trim($user->name))[0] : null;
+    $isPaid = ($completed['payment_status'] ?? null) === 'PAID';
+    $isCash = ($completed['payment_method'] ?? null) === 'cash';
 @endphp
 
 @section('content')
 <section class="mx-auto max-w-[720px] px-8 py-20">
     @if (!$completed || !$lawyer)
         <div class="rounded-2xl border border-text/10 bg-surface p-8">
-            <p class="text-[15px] text-muted">Không tìm thấy đặt phòng. Duyệt luật sư để làm một cái mới.</p>
+            <p class="text-[15px] text-muted">Khong tim thay lich hen. Vui long chon luat su de dat lich moi.</p>
             <a href="{{ route('lawyers.index') }}" class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-text transition-colors hover:text-secondary">
-                Duyệt luật sư
-                <span aria-hidden="true">→</span>
+                Tim luat su
+                <span aria-hidden="true">-&gt;</span>
             </a>
         </div>
     @else
-        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Đã xác nhận đặt chỗ</p>
-        <h1 class="mt-3 font-display text-[48px] font-medium leading-[1.05] tracking-[-0.02em] md:text-[60px]">
-            Lịch hẹn của bạn đã sẵn sàng{{ $firstName ? ', ' . $firstName : '' }}.
+        <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">
+            {{ $isPaid ? 'PayPal paid' : 'Cash pending' }}
+        </p>
+        <h1 class="mt-3 font-display text-[44px] font-medium leading-[1.08] tracking-[-0.02em] md:text-[56px]">
+            {{ $isPaid ? 'Lich hen da duoc xac nhan' : 'Da tao lich hen' }}{{ $firstName ? ', ' . $firstName : '' }}.
         </h1>
-        <p class="mt-4 text-[17px] text-secondary">
-            Chúng tôi đã gửi chi tiết lịch hẹn tới email của bạn. {{ $lawyer['name'] }} cũng đã được thông báo.
+        <p class="mt-4 text-[17px] leading-relaxed text-secondary">
+            {{ $isPaid
+                ? 'PayPal da xac nhan thanh toan. Luat su da duoc thong bao ve lich hen cua ban.'
+                : 'Lich hen dang cho xac nhan thu cong. Ban se thanh toan tai van phong theo phuong thuc cash.' }}
         </p>
 
-        {{-- Booking card --}}
         <div class="mt-12 rounded-2xl border border-text/10 bg-surface p-8">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Mã đặt chỗ</p>
-            <p class="mt-2 font-display text-[28px] font-medium tracking-tight">{{ $completed['booking_code'] }}</p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                    <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Ma dat lich</p>
+                    <p class="mt-2 font-display text-[28px] font-medium tracking-tight">{{ $completed['booking_code'] }}</p>
+                </div>
+                <div class="rounded-full border px-4 py-2 text-[12px] font-medium {{ $isPaid ? 'border-success text-success' : 'border-gold text-gold' }}">
+                    {{ $isPaid ? 'Paid / Confirmed' : 'Cash / Pending' }}
+                </div>
+            </div>
 
             <div class="my-6 h-px bg-text/10"></div>
 
@@ -46,40 +58,48 @@
 
             <div class="space-y-3 text-[14px]">
                 <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Ngày</span>
-                    <span class="text-right text-text">{{ \Carbon\Carbon::parse($completed['date'])->format('l, F j, Y') }}</span>
-                </div>
-                <div class="flex items-baseline justify-between gap-4">
-                    <span class="text-muted">Giờ</span>
-                    <span class="text-text">{{ \Carbon\Carbon::createFromFormat('H:i', $completed['time'])->format('g:i A') }}</span>
-                </div>
-                <div class="flex items-baseline justify-between gap-4">
-                    <span class="flex-none text-muted">Địa chỉ</span>
+                    <span class="flex-none text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thoi gian</span>
                     <span class="text-right text-text">
-                        {{ $lawyer['address']['street_address'] ?? '' }}<br>
-                        {{ $lawyer['address']['province'] ?? '' }}
+                        {{ \Carbon\Carbon::parse($completed['date'])->format('d/m/Y') }} - {{ \Carbon\Carbon::createFromFormat('H:i', $completed['time'])->format('H:i') }}
+                    </span>
+                </div>
+                <div class="flex items-baseline justify-between gap-4">
+                    <span class="flex-none text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Dia diem</span>
+                    <span class="text-right text-text">
+                        {{ $lawyer['address']['street_address'] ?? '' }}, {{ $lawyer['address']['province'] ?? '' }}
+                    </span>
+                </div>
+                <div class="flex items-baseline justify-between gap-4">
+                    <span class="flex-none text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Thanh toan</span>
+                    <span class="text-right text-text">
+                        {{ $isCash ? 'Thanh toan tai van phong' : 'PayPal Checkout' }}
                     </span>
                 </div>
             </div>
         </div>
 
-        {{-- What happens next --}}
         <div class="mt-12">
-            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Điều gì xảy ra tiếp theo</p>
+            <p class="text-[12px] font-medium uppercase tracking-[0.1em] text-muted">Tiep theo</p>
             <ul class="mt-6 space-y-4 text-[15px] leading-relaxed text-secondary">
-                <li>Bạn sẽ nhận được lời nhắc qua {{ $completed['contact_preference'] === 'phone' ? 'điện thoại' : 'email' }} trước lịch hẹn 24 giờ.</li>
-                <li>Đến văn phòng sớm vài phút. Mang theo bất kỳ tài liệu nào bạn muốn luật sư xem xét.</li>
-                <li>Cần hủy bỏ? Hủy bỏ trước hơn 24 giờ sẽ được hoàn lại toàn bộ số tiền.</li>
+                @if ($isPaid)
+                    <li>Trang thai appointment da duoc cap nhat thanh confirmed va payment da duoc ghi paid.</li>
+                    <li>Ban se nhan nhac hen qua {{ $completed['contact_preference'] === 'phone' ? 'dien thoai' : 'email' }} truoc buoi hen.</li>
+                @else
+                    <li>Appointment dang o trang thai pending voi payment method cash.</li>
+                    <li>Lawyer hoac admin can xac nhan thu cong truoc khi lich hen chuyen sang confirmed.</li>
+                @endif
+                <li>Vui long den som vai phut va mang theo tai lieu lien quan.</li>
             </ul>
         </div>
 
-        {{-- Actions --}}
         <div class="mt-12">
-            <x-button variant="primary" href="{{ route('lawyers.index') }}" class="w-full">
-                Duyệt thêm luật sư
+            <x-button variant="primary" href="{{ route('appointments.index') }}" class="w-full">
+                Xem lich hen cua toi
             </x-button>
             <p class="mt-4 text-center text-[14px]">
-                <a href="/" class="text-muted transition-colors hover:text-accent">Trở về nhà</a>
+                <a href="{{ route('lawyers.index') }}" class="text-muted transition-colors hover:text-accent">
+                    Tim them luat su -&gt;
+                </a>
             </p>
         </div>
     @endif

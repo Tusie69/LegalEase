@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookingAppointment;
 use App\Models\BookingLawyer;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Schema;
 
 class AdminController extends Controller
@@ -24,7 +25,7 @@ class AdminController extends Controller
             'upcoming_appointments' => BookingAppointment::where('status', 'CONFIRMED')
                 ->where('scheduled_start_at', '>=', $now)
                 ->count(),
-            'pending_appointments' => BookingAppointment::where('status', 'PENDING')->count(),
+            'pending_appointments' => BookingAppointment::whereIn('status', ['PENDING', 'PAYMENT_PENDING'])->count(),
             'completed_appointments' => BookingAppointment::where('status', 'COMPLETED')->count(),
             'cancelled_appointments' => BookingAppointment::where('status', 'CANCELLED')->count(),
             'revenue_vnd' => BookingAppointment::where('status', 'COMPLETED')->sum('final_amount'),
@@ -36,7 +37,7 @@ class AdminController extends Controller
                 : 0,
         ];
 
-        $recentAppointments = BookingAppointment::with('lawyer.lawyerProfile', 'customer')
+        $recentAppointments = BookingAppointment::with('lawyer.lawyerProfile', 'customer', 'payments')
             ->orderByDesc('created_at')
             ->limit(8)
             ->get();
@@ -50,5 +51,19 @@ class AdminController extends Controller
             'recentAppointments' => $recentAppointments,
             'statusCounts' => $statusCounts,
         ]);
+    }
+
+    public function confirmAppointment(BookingAppointment $appointment): RedirectResponse
+    {
+        abort_unless((int) auth()->user()->role_id === 1, 403);
+        abort_unless($appointment->status === 'PENDING', 422);
+
+        $appointment->forceFill([
+            'status' => 'CONFIRMED',
+        ])->save();
+
+        return redirect()
+            ->route('admin.index')
+            ->with('status', 'Appointment ' . $appointment->booking_code . ' confirmed.');
     }
 }

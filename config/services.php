@@ -41,4 +41,12 @@ return [
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
     ],
 
+    'paypal' => [
+        'mode' => env('PAYPAL_MODE', 'sandbox'),
+        'client_id' => env('PAYPAL_CLIENT_ID'),
+        'client_secret' => env('PAYPAL_CLIENT_SECRET'),
+        'currency' => env('PAYPAL_CURRENCY', 'USD'),
+        'exchange_rate' => env('PAYPAL_EXCHANGE_RATE', 25000),
+    ],
+
 ];
